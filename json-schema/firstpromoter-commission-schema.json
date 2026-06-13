@@ -1,0 +1,61 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://firstpromoter.com/schemas/commission",
+  "title": "Commission",
+  "description": "A monetary or non-monetary reward earned by a promoter for a referral conversion.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "description": "Unique identifier for the commission record."
+    },
+    "status": {
+      "type": "string",
+      "enum": ["pending", "approved", "denied"],
+      "description": "Approval status of the commission."
+    },
+    "amount": {
+      "type": "number",
+      "format": "float",
+      "description": "Commission amount in the account's currency."
+    },
+    "currency": {
+      "type": "string",
+      "description": "ISO 4217 currency code for the commission amount."
+    },
+    "promoter_id": {
+      "type": "integer",
+      "description": "ID of the promoter who earned this commission."
+    },
+    "referral_id": {
+      "type": "integer",
+      "description": "ID of the referral that generated this commission."
+    },
+    "sale_amount": {
+      "type": "number",
+      "format": "float",
+      "description": "The sale amount that triggered this commission."
+    },
+    "is_self_referral": {
+      "type": "boolean",
+      "nullable": true,
+      "description": "Whether this commission was generated from a self-referral."
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Additional metadata about the commission event.",
+      "additionalProperties": true
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the commission was created."
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the commission was last updated."
+    }
+  },
+  "additionalProperties": true
+}

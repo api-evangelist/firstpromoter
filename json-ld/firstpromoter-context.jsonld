@@ -1,0 +1,83 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "fp": "https://firstpromoter.com/vocab#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+
+    "Promoter": "fp:Promoter",
+    "Referral": "fp:Referral",
+    "Commission": "fp:Commission",
+    "Payout": "fp:Payout",
+    "Campaign": "fp:Campaign",
+    "PromoterCampaign": "fp:PromoterCampaign",
+    "PromoCode": "fp:PromoCode",
+    "ReferralLink": "fp:ReferralLink",
+    "Lead": "fp:Lead",
+    "Reward": "fp:Reward",
+    "BatchProcess": "fp:BatchProcess",
+    "WebhookSubscription": "fp:WebhookSubscription",
+    "WebhookDelivery": "fp:WebhookDelivery",
+
+    "id": "@id",
+    "email": "schema:email",
+    "name": "schema:name",
+    "description": "schema:description",
+    "created_at": {
+      "@id": "schema:dateCreated",
+      "@type": "xsd:dateTime"
+    },
+    "updated_at": {
+      "@id": "schema:dateModified",
+      "@type": "xsd:dateTime"
+    },
+    "status": "fp:status",
+    "amount": {
+      "@id": "schema:price",
+      "@type": "xsd:decimal"
+    },
+    "currency": "schema:priceCurrency",
+    "ref_id": "fp:referenceId",
+    "promoter": {
+      "@id": "fp:promoter",
+      "@type": "@id"
+    },
+    "campaign": {
+      "@id": "fp:campaign",
+      "@type": "@id"
+    },
+    "referral_link": {
+      "@id": "fp:referralLink",
+      "@type": "@id"
+    },
+    "promo_code": {
+      "@id": "fp:promoCode",
+      "@type": "@id"
+    },
+    "clicks_count": "fp:clicksCount",
+    "referrals_count": "fp:referralsCount",
+    "customers_count": "fp:customersCount",
+    "revenue_amount": "fp:revenueAmount",
+    "paid_amount": "fp:paidAmount",
+    "pending_amount": "fp:pendingAmount",
+    "default_ref_id": "fp:defaultRefId",
+    "auth_token": "fp:authToken",
+    "root_ref_id": "fp:rootRefId",
+    "url": "fp:url",
+    "event_type": "fp:eventType",
+    "payload": "fp:payload",
+    "response_code": "fp:responseCode",
+    "delivered_at": {
+      "@id": "fp:deliveredAt",
+      "@type": "xsd:dateTime"
+    },
+    "sale_amount": "fp:saleAmount",
+    "mrr": "fp:mrr",
+    "tracking_id": "fp:trackingId",
+    "uid": "fp:uid",
+
+    "firstpromoter": {
+      "@id": "fp:",
+      "@prefix": true
+    }
+  }
+}

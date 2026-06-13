@@ -35,8 +35,24 @@ apis:
       - type: Documentation
         url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
       - type: OpenAPI
-        url: https://docs.firstpromoter.com/llms.txt
+        url: openapi/firstpromoter-firstpromoter-admin-api-openapi.yml
+      - type: JSONSchema
+        url: json-schema/firstpromoter-promoter-schema.json
+      - type: JSONSchema
+        url: json-schema/firstpromoter-referral-schema.json
+      - type: JSONSchema
+        url: json-schema/firstpromoter-commission-schema.json
+      - type: Examples
+        url: examples/firstpromoter-create-promoter-example.json
+      - type: Examples
+        url: examples/firstpromoter-track-sale-example.json
+      - type: Examples
+        url: examples/firstpromoter-webhook-event-example.json
 common:
+  - type: Vocabulary
+    url: vocabulary/firstpromoter-vocabulary.yml
+  - type: JSONLDContext
+    url: json-ld/firstpromoter-context.jsonld
   - type: Website
     url: https://firstpromoter.com/
   - type: Documentation

@@ -1,0 +1,56 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://firstpromoter.com/schemas/referral",
+  "title": "Referral",
+  "description": "A lead or customer referred by a FirstPromoter promoter.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "integer",
+      "description": "Unique identifier for the referral."
+    },
+    "email": {
+      "type": "string",
+      "format": "email",
+      "description": "Email address of the referred person."
+    },
+    "uid": {
+      "type": "string",
+      "description": "External unique identifier for this referral in the merchant's system."
+    },
+    "state": {
+      "type": "string",
+      "enum": ["subscribed", "signup", "active", "cancelled", "refunded"],
+      "description": "Lifecycle state of the referral."
+    },
+    "plan_name": {
+      "type": "string",
+      "nullable": true,
+      "description": "Name of the subscription plan the referral is on."
+    },
+    "mrr": {
+      "type": "number",
+      "format": "float",
+      "description": "Monthly recurring revenue attributed to this referral."
+    },
+    "promoter_id": {
+      "type": "integer",
+      "description": "ID of the promoter who referred this person."
+    },
+    "campaign_id": {
+      "type": "integer",
+      "description": "ID of the campaign through which this referral was tracked."
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the referral was first recorded."
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the referral record was last updated."
+    }
+  },
+  "additionalProperties": true
+}
