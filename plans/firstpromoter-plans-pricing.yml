@@ -1,0 +1,77 @@
+name: FirstPromoter Plans and Pricing
+description: Pricing plans for FirstPromoter affiliate and referral tracking platform
+  for SaaS companies.
+specificationVersion: '0.1'
+url: https://firstpromoter.com/pricing
+plans:
+  - name: Starter
+    description: Entry-level plan for early-stage SaaS companies launching an affiliate
+      program, supporting up to 1,000 affiliates and 3 campaigns.
+    price: 49.00
+    currency: USD
+    billingCycle: monthly
+    trial:
+      days: 14
+      requiresCreditCard: false
+    limits:
+      affiliates: 1000
+      campaigns: 3
+      websites: 2
+      revenuePerMonth: 5000
+    features:
+      - Affiliate tracking
+      - Referral link and coupon code tracking
+      - Email marketing integration
+      - Affiliate portal
+      - Reporting and analytics
+      - PayPal payouts
+      - Two-sided rewards
+      - 0% transaction fees
+  - name: Business
+    description: Most popular plan for growing SaaS businesses with unlimited affiliates
+      and campaigns, plus brandable dashboards and advanced payout features.
+    price: 99.00
+    currency: USD
+    billingCycle: monthly
+    trial:
+      days: 14
+      requiresCreditCard: false
+    limits:
+      affiliates: unlimited
+      campaigns: unlimited
+      websites: 3
+      revenuePerMonth: 15000
+    features:
+      - Everything in Starter
+      - Unlimited affiliates
+      - Unlimited campaigns
+      - Brandable dashboards
+      - Custom domains
+      - Multi-tiered commissions
+      - Advanced payouts
+      - Mass payouts
+      - 0% transaction fees
+  - name: Enterprise
+    description: Advanced plan for established SaaS companies with high affiliate revenue,
+      offering auto payouts, fraud protection, team management, and SSO.
+    price: 149.00
+    currency: USD
+    billingCycle: monthly
+    trial:
+      days: 14
+      requiresCreditCard: false
+    limits:
+      affiliates: unlimited
+      campaigns: unlimited
+      websites: unlimited
+      revenuePerMonth: unlimited
+    features:
+      - Everything in Business
+      - Auto payouts
+      - Fraud protection
+      - Team member management
+      - SSO (Single Sign-On)
+      - Advanced reporting (18 data points)
+      - Multi-currency support (190 currencies)
+      - Priority support
+      - 0% transaction fees

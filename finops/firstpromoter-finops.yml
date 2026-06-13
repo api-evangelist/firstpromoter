@@ -1,0 +1,63 @@
+name: FirstPromoter FinOps
+description: FinOps Framework 1.0 FOCUS-aligned cost and usage model for FirstPromoter
+  affiliate tracking platform subscription plans.
+specificationVersion: '1.0'
+url: https://firstpromoter.com/pricing
+provider: FirstPromoter
+currency: USD
+commitmentDiscountTypes:
+  - name: Annual Billing Discount
+    description: Discounted rate available when billed annually instead of monthly.
+    discountType: annual
+costModel:
+  type: subscription
+  billingCycles:
+    - monthly
+    - annually
+  transactionFees: false
+  overage: false
+skus:
+  - sku: firstpromoter-starter-monthly
+    name: Starter Plan (Monthly)
+    description: Affiliate tracking for early-stage SaaS, up to 1,000 affiliates and
+      $5k/month affiliate revenue.
+    unitPrice: 49.00
+    unit: month
+    currency: USD
+    category: SaaS Subscription
+    limits:
+      affiliates: 1000
+      campaigns: 3
+      websites: 2
+      affiliateRevenueCap: 5000
+  - sku: firstpromoter-business-monthly
+    name: Business Plan (Monthly)
+    description: Full-featured affiliate tracking with unlimited affiliates and campaigns,
+      brandable dashboards, up to $15k/month affiliate revenue.
+    unitPrice: 99.00
+    unit: month
+    currency: USD
+    category: SaaS Subscription
+    limits:
+      affiliates: unlimited
+      campaigns: unlimited
+      websites: 3
+      affiliateRevenueCap: 15000
+  - sku: firstpromoter-enterprise-monthly
+    name: Enterprise Plan (Monthly)
+    description: Advanced affiliate management with auto payouts, fraud protection,
+      SSO, and team management for high-volume programs.
+    unitPrice: 149.00
+    unit: month
+    currency: USD
+    category: SaaS Subscription
+    limits:
+      affiliates: unlimited
+      campaigns: unlimited
+      websites: unlimited
+      affiliateRevenueCap: unlimited
+tags:
+  - Affiliate Marketing
+  - SaaS
+  - Subscription
+  - Referral Tracking

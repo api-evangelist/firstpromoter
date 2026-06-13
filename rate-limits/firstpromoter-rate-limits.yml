@@ -1,0 +1,26 @@
+name: FirstPromoter API Rate Limits
+description: Rate limiting policies for the FirstPromoter REST API v2.
+specificationVersion: '0.1'
+url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
+limits:
+  - name: Global Request Limit
+    description: Maximum number of API requests allowed per account per minute across
+      all endpoints.
+    requests: 400
+    window: 60
+    windowUnit: seconds
+    scope: account
+    enforcement:
+      statusCode: 429
+      message: Too Many Requests
+      retryAfter: true
+pagination:
+  defaultPageSize: 20
+  maxPageSize: 100
+  pageParameter: page
+  perPageParameter: per_page
+notes:
+  - Rate limits apply per account, not per API key.
+  - Exceeding the rate limit returns HTTP 429 Too Many Requests.
+  - Implement exponential backoff when handling 429 responses.
+  - Pagination is available on list endpoints with page and per_page parameters.

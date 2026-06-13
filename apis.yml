@@ -1,0 +1,62 @@
+aid: firstpromoter
+name: FirstPromoter
+description: Affiliate and referral tracking platform for SaaS companies with a REST
+  API for managing promoters, tracking referrals, and handling reward distribution.
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+url: https://raw.githubusercontent.com/api-evangelist/firstpromoter/refs/heads/main/apis.yml
+created: '2026-06-13'
+modified: '2026-06-13'
+specificationVersion: '0.19'
+tags:
+  - Affiliate Marketing
+  - Referral Tracking
+  - SaaS
+  - Commission Management
+  - Reward Distribution
+  - Promoters
+apis:
+  - aid: firstpromoter:firstpromoter-admin-api
+    name: FirstPromoter Admin API
+    description: REST API for managing affiliate programs, promoters, campaigns, referrals,
+      rewards, and payouts in FirstPromoter. Supports pagination, filtering, and full
+      CRUD operations across all affiliate program resources.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
+    baseURL: https://api.firstpromoter.com/api/v2
+    tags:
+      - Affiliates
+      - Promoters
+      - Campaigns
+      - Referrals
+      - Rewards
+      - Payouts
+    properties:
+      - type: Documentation
+        url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
+      - type: OpenAPI
+        url: https://docs.firstpromoter.com/llms.txt
+common:
+  - type: Website
+    url: https://firstpromoter.com/
+  - type: Documentation
+    url: https://docs.firstpromoter.com/
+  - type: GitHubOrg
+    url: https://github.com/firstpromoter
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/first-promoter
+  - type: Blog
+    url: https://firstpromoter.com/blog
+  - type: Pricing
+    url: https://firstpromoter.com/pricing
+  - type: X
+    url: https://x.com/firstpromoter
+  - type: Plans
+    url: plans/firstpromoter-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/firstpromoter-rate-limits.yml
+  - type: FinOps
+    url: finops/firstpromoter-finops.yml
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
