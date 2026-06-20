@@ -3,7 +3,7 @@ name: FirstPromoter
 description: Affiliate and referral tracking platform for SaaS companies with a REST
   API for managing promoters, tracking referrals, and handling reward distribution.
 type: Index
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 url: https://raw.githubusercontent.com/api-evangelist/firstpromoter/refs/heads/main/apis.yml
 created: '2026-06-13'
 modified: '2026-06-13'
@@ -21,7 +21,7 @@ apis:
     description: REST API for managing affiliate programs, promoters, campaigns, referrals,
       rewards, and payouts in FirstPromoter. Supports pagination, filtering, and full
       CRUD operations across all affiliate program resources.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
     baseURL: https://api.firstpromoter.com/api/v2
     tags:
