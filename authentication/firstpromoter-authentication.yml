@@ -1,0 +1,13 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/firstpromoter-firstpromoter-admin-api-openapi.yml
+summary:
+  types:
+  - http
+schemes:
+- name: BearerAuth
+  type: http
+  scheme: bearer
+  description: API key passed as Bearer token
+  sources:
+  - openapi/firstpromoter-firstpromoter-admin-api-openapi.yml

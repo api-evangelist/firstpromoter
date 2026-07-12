@@ -49,6 +49,10 @@ apis:
       - type: Examples
         url: examples/firstpromoter-webhook-event-example.json
 common:
+  - type: DomainSecurity
+    url: security/firstpromoter-domain-security.yml
+  - type: Authentication
+    url: authentication/firstpromoter-authentication.yml
   - type: Vocabulary
     url: vocabulary/firstpromoter-vocabulary.yml
   - type: JSONLDContext
