@@ -49,6 +49,8 @@ apis:
       - type: Examples
         url: examples/firstpromoter-webhook-event-example.json
 common:
+  - type: AgenticAccess
+    url: agentic-access/firstpromoter-agentic-access.yml
   - type: DomainSecurity
     url: security/firstpromoter-domain-security.yml
   - type: Authentication
