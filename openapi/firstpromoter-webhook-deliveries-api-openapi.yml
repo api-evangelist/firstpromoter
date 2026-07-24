@@ -1,0 +1,220 @@
+openapi: 3.0.1
+info:
+  title: FirstPromoter Admin Commissions Webhook Deliveries API
+  version: '2.0'
+  description: REST API for managing affiliate programs, promoters, campaigns, referrals, rewards, and payouts in FirstPromoter. Supports pagination, filtering, and full CRUD operations across all affiliate program resources.
+  contact:
+    url: https://docs.firstpromoter.com
+  license:
+    name: Proprietary
+    url: https://firstpromoter.com/terms
+servers:
+- url: https://api.firstpromoter.com/api/v2
+  description: Production server
+security:
+- BearerAuth: []
+tags:
+- name: Webhook Deliveries
+paths:
+  /company/webhooks/{webhook_id}/webhook_deliveries:
+    get:
+      summary: List deliveries for a subscription
+      tags:
+      - Webhook Deliveries
+      description: "Returns a paginated list of delivery attempts for the given subscription, ordered most-recent first. \n <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/webhooks/{webhook_id}/webhook_deliveries`</Tip>"
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      - name: webhook_id
+        in: path
+        required: true
+        schema:
+          type: integer
+        description: ID of the webhook subscription.
+      - name: per_page
+        in: query
+        schema:
+          type: integer
+          default: 25
+        description: Number of results per page.
+      - name: page
+        in: query
+        schema:
+          type: integer
+          default: 1
+        description: Page number.
+      responses:
+        '200':
+          description: Paginated list of webhook deliveries
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/WebhookDelivery'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Subscription not found
+  /company/webhooks/{webhook_id}/webhook_deliveries/{id}:
+    get:
+      summary: Get a delivery
+      tags:
+      - Webhook Deliveries
+      description: "Returns the full details of a single delivery attempt, including the complete payload that was sent and the response received from your endpoint. \n <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/webhooks/{webhook_id}/webhook_deliveries/{id}`</Tip>"
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      - name: webhook_id
+        in: path
+        required: true
+        schema:
+          type: integer
+        description: ID of the webhook subscription.
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+        description: ID of the delivery.
+      responses:
+        '200':
+          description: Webhook delivery details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WebhookDelivery'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
+  /company/webhooks/{webhook_id}/webhook_deliveries/{id}/retry_delivery:
+    post:
+      summary: Retry a failed delivery
+      tags:
+      - Webhook Deliveries
+      description: "Re-queues a failed delivery for immediate retry. The delivery's `status` is reset to `pending` and `attempts` is reset to `0`. \n\n Returns `422` if the subscription's `max_retries` limit has already been reached. \n <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/company/webhooks/{webhook_id}/webhook_deliveries/{id}/retry_delivery`</Tip>"
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      - name: webhook_id
+        in: path
+        required: true
+        schema:
+          type: integer
+        description: ID of the webhook subscription.
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+        description: ID of the delivery to retry.
+      responses:
+        '200':
+          description: Delivery re-queued
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WebhookDelivery'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
+        '422':
+          description: Max retries already reached
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  schemas:
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+          example: Invalid user type
+        code:
+          type: string
+          example: forbidden
+    WebhookDelivery:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Unique ID of the delivery record.
+        event_id:
+          type: string
+          description: Unique ID of the source event that triggered this delivery.
+        event_type:
+          type: string
+          description: Event type string (e.g. `referral.created`).
+        action:
+          type: string
+          description: The CRUD action that triggered the event (e.g. `created`, `updated`, `deleted`).
+        entity_type:
+          type: string
+          description: The type of entity that changed (e.g. `Referral`, `Commission`).
+        entity_id:
+          type: integer
+          nullable: true
+          description: The ID of the entity that changed.
+        status:
+          type: string
+          enum:
+          - pending
+          - delivered
+          - retrying
+          - failed
+          description: Current delivery status. `pending` — queued for delivery. `delivered` — endpoint responded with 2xx. `retrying` — delivery failed, waiting for next retry attempt. `failed` — all retry attempts exhausted.
+        attempts:
+          type: integer
+          description: Number of delivery attempts made so far.
+        last_error:
+          type: string
+          nullable: true
+          description: Error message from the most recent failed attempt (timeout, connection error, non-2xx response). `null` on successful delivery.
+        response_code:
+          type: integer
+          nullable: true
+          description: HTTP status code returned by your endpoint on the last attempt.
+        response_body:
+          type: string
+          nullable: true
+          description: Response body returned by your endpoint on the last attempt (truncated if large).
+        object_changes:
+          type: object
+          nullable: true
+          description: For `updated` events — a map of changed fields to `[old_value, new_value]` pairs.
+          example:
+            state:
+            - lead
+            - customer
+        payload:
+          type: object
+          description: The exact JSON payload that was (or will be) sent to your endpoint.
+        created_at:
+          type: string
+          format: date-time
+          description: ISO 8601 timestamp of when this delivery record was created.
+        delivered_at:
+          type: string
+          format: date-time
+          nullable: true
+          description: ISO 8601 timestamp of when the delivery was acknowledged by your endpoint. `null` if not yet delivered.
+  parameters:
+    AccountId:
+      name: Account-ID
+      in: header
+      required: true
+      description: Account ID. You can find your Account ID on Your FirstPromoter Dashboard. Navigate to Settings → Integrations
+      schema:
+        type: string
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: API key passed as Bearer token

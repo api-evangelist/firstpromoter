@@ -1,0 +1,1202 @@
+openapi: 3.0.1
+info:
+  title: FirstPromoter Admin Commissions Promoters API
+  version: '2.0'
+  description: REST API for managing affiliate programs, promoters, campaigns, referrals, rewards, and payouts in FirstPromoter. Supports pagination, filtering, and full CRUD operations across all affiliate program resources.
+  contact:
+    url: https://docs.firstpromoter.com
+  license:
+    name: Proprietary
+    url: https://firstpromoter.com/terms
+servers:
+- url: https://api.firstpromoter.com/api/v2
+  description: Production server
+security:
+- BearerAuth: []
+tags:
+- name: Promoters
+paths:
+  /company/promoters:
+    get:
+      summary: Get available promoters
+      description: "With this endpoint you can list all promoters. \n <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/promoters`</Tip>"
+      operationId: getPromoters
+      tags:
+      - Promoters
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      - name: q
+        in: query
+        description: Search params for promoters, search using, email, name or ref_id
+        required: false
+        schema:
+          type: string
+      - name: ids[]
+        in: query
+        description: Array of promoter ids to get
+        required: false
+        schema:
+          type: array
+          items:
+            type: integer
+      - name: filters
+        in: query
+        description: Filter params
+        required: false
+        schema:
+          $ref: '#/components/schemas/PromoterFilters'
+      - name: sorting
+        in: query
+        description: Sorting params
+        required: false
+        schema:
+          type: object
+          properties:
+            clicks_count:
+              type: string
+              enum:
+              - asc
+              - desc
+            referrals_count:
+              type: string
+              enum:
+              - asc
+              - desc
+            customers_count:
+              type: string
+              enum:
+              - asc
+              - desc
+            revenue_amount:
+              type: string
+              enum:
+              - asc
+              - desc
+            joined_at:
+              type: string
+              enum:
+              - asc
+              - desc
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Promoter'
+                    description: List of Promoters
+                  meta:
+                    type: object
+                    properties:
+                      pending_count:
+                        type: integer
+        '401':
+          description: Unauthorized
+    post:
+      summary: Create promoter
+      description: "With this endpoint you can create a promoter. \n <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/company/promoters`</Tip>"
+      operationId: createPromoter
+      tags:
+      - Promoters
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PromoterCreate'
+      responses:
+        '201':
+          description: Promoter created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Promoter'
+        '401':
+          description: Unauthorized
+  /company/promoters/{id}:
+    get:
+      summary: Get promoter details
+      description: "With this endpoint you can get the details of a promoter. \n <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/promoters/{id}`</Tip>"
+      operationId: getPromoter
+      tags:
+      - Promoters
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      - name: id
+        description: The promoter's numeric ID, or the value of the attribute specified in `find_by` (e.g. an email address, auth token, ref token, promo code, or cust_id)
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: find_by
+        in: query
+        description: Find by attribute
+        schema:
+          type: string
+          enum:
+          - email
+          - cust_id
+          - auth_token
+          - ref_token
+          - promo_code
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Promoter'
+        '401':
+          description: Unauthorized
+    put:
+      summary: Update promoter
+      operationId: updatePromoter
+      description: "With this endpoint you can update a promoter. \n <Tip>**HTTP Request** <br/>`PUT https://api.firstpromoter.com/api/v2/company/promoters/{id}`</Tip>"
+      tags:
+      - Promoters
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      - name: id
+        in: path
+        description: Id of the promoter
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PromoterUpdate'
+      responses:
+        '200':
+          description: Promoter updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Promoter'
+        '401':
+          description: Unauthorized
+  /company/promoters/{id}/chart_data:
+    get:
+      summary: Get data used for chart
+      description: With this endpoint you can get the data used for charts.<Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/promoters/{id}/chart_data`</Tip>
+      operationId: getPromoterChartData
+      tags:
+      - Promoters
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      - name: id
+        in: path
+        required: true
+        description: Id of the promoter
+        schema:
+          type: integer
+      - name: period_from
+        description: From date of the period for the chart, ISO date format (YYYY-MM-DD)
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date
+      - name: period_to
+        in: query
+        required: true
+        schema:
+          type: string
+          format: date
+      - name: selection
+        in: query
+        required: true
+        schema:
+          type: string
+          enum:
+          - revenue
+          - clicks
+          - referrals
+          - customers
+          - cancellations
+      responses:
+        '200':
+          description: Chart data retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PromoterChartData'
+        '401':
+          description: Unauthorized
+  /company/promoters/accept:
+    post:
+      summary: Accept promoters
+      description: "With this endpoint you can accept promoters. \n <Note>If there are more than __5__ ids on the __ids__ param/field, the action will be processed asynchronously. The response for the batch status will most likely be `in_progress`. The available statuses are `pending`, `in_progress`, `completed`, `failed` and `stopped`</Note> \n <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/company/promoters/accept`</Tip>"
+      operationId: acceptPromoters
+      tags:
+      - Promoters
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - campaign_id
+              properties:
+                campaign_id:
+                  type: integer
+                  description: The ID of the campaign promoter will be accepted to
+                ids:
+                  $ref: '#/components/schemas/Ids'
+      responses:
+        '200':
+          description: Operation completed successfully
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/BatchOperationResponse'
+                - properties:
+                    status:
+                      type: string
+                      enum:
+                      - completed
+                      description: Status of the batch operation (always completed for synchronous operations)
+        '202':
+          description: Batch operation accepted and processing
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/BatchOperationResponse'
+                - properties:
+                    status:
+                      type: string
+                      enum:
+                      - pending
+                      description: Status of the batch operation (initially pending for asynchronous operations)
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Invalid parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /company/promoters/reject:
+    post:
+      summary: Reject promoters
+      description: "With this endpoint you can reject promoters. \n <Note>If there are more than __5__ ids on the __ids__ param/field, the action will be processed asynchronously. The response for the batch status will most likely be `in_progress`. The available statuses are `pending`, `in_progress`, `completed`, `failed` and `stopped`</Note> \n <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/company/promoters/reject`</Tip>"
+      operationId: rejectPromoters
+      tags:
+      - Promoters
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - campaign_id
+              properties:
+                campaign_id:
+                  type: integer
+                  description: The ID of the campaign promoter will be rejected from
+                ids:
+                  $ref: '#/components/schemas/Ids'
+      responses:
+        '200':
+          description: Operation completed successfully
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/BatchOperationResponse'
+                - properties:
+                    status:
+                      type: string
+                      enum:
+                      - completed
+                      description: Status of the batch operation (always completed for synchronous operations)
+        '202':
+          description: Batch operation accepted and processing
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/BatchOperationResponse'
+                - properties:
+                    status:
+                      type: string
+                      enum:
+                      - pending
+                      description: Status of the batch operation (initially pending for asynchronous operations)
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Invalid parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /company/promoters/block:
+    post:
+      summary: Block promoters
+      description: "With this endpoint you can block promoters. \n <Note>If there are more than __5__ ids on the __ids__ param/field, the action will be processed asynchronously. The response for the batch status will most likely be `in_progress`. The available statuses are `pending`, `in_progress`, `completed`, `failed` and `stopped`</Note> \n <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/company/promoters/block`</Tip>"
+      operationId: blockPromoters
+      tags:
+      - Promoters
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - campaign_id
+              properties:
+                campaign_id:
+                  type: integer
+                  description: The ID of the campaign promoter will be blocked from
+                ids:
+                  $ref: '#/components/schemas/Ids'
+      responses:
+        '200':
+          description: Operation completed successfully
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/BatchOperationResponse'
+                - properties:
+                    status:
+                      type: string
+                      enum:
+                      - completed
+                      description: Status of the batch operation (always completed for synchronous operations)
+        '202':
+          description: Batch operation accepted and processing
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/BatchOperationResponse'
+                - properties:
+                    status:
+                      type: string
+                      enum:
+                      - pending
+                      description: Status of the batch operation (initially pending for asynchronous operations)
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Invalid parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /company/promoters/archive:
+    post:
+      summary: Archive promoters
+      description: "With this endpoint you can archive promoters. \n <Note>If there are more than __5__ ids on the __ids__ param/field, the action will be processed asynchronously. The response for the batch status will most likely be `in_progress`. The available statuses are `pending`, `in_progress`, `completed`, `failed` and `stopped`</Note> \n <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/company/promoters/archive`</Tip>"
+      operationId: archivePromoters
+      tags:
+      - Promoters
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                ids:
+                  $ref: '#/components/schemas/Ids'
+      responses:
+        '200':
+          description: Operation completed successfully
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/BatchOperationResponse'
+                - properties:
+                    status:
+                      type: string
+                      enum:
+                      - completed
+                      description: Status of the batch operation (always completed for synchronous operations)
+        '202':
+          description: Batch operation accepted and processing
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/BatchOperationResponse'
+                - properties:
+                    status:
+                      type: string
+                      enum:
+                      - pending
+                      description: Status of the batch operation (initially pending for asynchronous operations)
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Invalid parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /company/promoters/move_to_campaign:
+    post:
+      summary: Move promoters to campaign
+      description: "With this endpoint you can move promoters from one campaign to another. \n <Note>If there are more than __5__ ids on the __ids__ param/field, the action will be processed asynchronously. The response for the batch status will most likely be `in_progress`. The available statuses are `pending`, `in_progress`, `completed`, `failed` and `stopped`</Note> \n <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/company/promoters/move_to_campaign`</Tip>"
+      operationId: movePromotersToCampaign
+      tags:
+      - Promoters
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - selection
+              - from_campaign_id
+              - to_campaign_id
+              properties:
+                ids:
+                  $ref: '#/components/schemas/Ids'
+                from_campaign_id:
+                  type: integer
+                  description: The ID of the campaign promoter will be moved from
+                to_campaign_id:
+                  type: integer
+                  description: The ID of the campaign promoter will be moved to
+                drip_emails:
+                  type: boolean
+                  description: If true, it will send an email to the promoter for this action
+                soft_move_referrals:
+                  type: boolean
+                  description: If `true`, move referrals to NEW campaign and future commissions from existing referrals will be tracked in the NEW campaign. However, if `false`, keep referrals in the old campaign and future commissions from existing referrals will be tracked in the OLD campaign.
+      responses:
+        '200':
+          description: Operation completed successfully
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/BatchOperationResponse'
+                - properties:
+                    status:
+                      type: string
+                      enum:
+                      - completed
+                      description: Status of the batch operation (always completed for synchronous operations)
+        '202':
+          description: Batch operation accepted and processing
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/BatchOperationResponse'
+                - properties:
+                    status:
+                      type: string
+                      enum:
+                      - pending
+                      description: Status of the batch operation (initially pending for asynchronous operations)
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Invalid parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /company/promoters/add_to_campaign:
+    post:
+      summary: Add promoters to campaign
+      description: "With this endpoint you can add promoters to a campaign. \n <Note>If there are more than __5__ ids on the __ids__ param/field, the action will be processed asynchronously. The response for the batch status will most likely be `in_progress`. The available statuses are `pending`, `in_progress`, `completed`, `failed` and `stopped`</Note> \n <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/company/promoters/add_to_campaign`</Tip>"
+      operationId: addPromotersToCampaign
+      tags:
+      - Promoters
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - selection
+              - campaign_id
+              properties:
+                ids:
+                  $ref: '#/components/schemas/Ids'
+                campaign_id:
+                  type: integer
+                  description: The ID of the campaign promoter will be added to
+                drip_emails:
+                  type: boolean
+                  description: If true, it will send an email to the promoter for this action
+      responses:
+        '200':
+          description: Operation completed successfully
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/BatchOperationResponse'
+                - properties:
+                    status:
+                      type: string
+                      enum:
+                      - completed
+                      description: Status of the batch operation (always completed for synchronous operations)
+        '202':
+          description: Batch operation accepted and processing
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/BatchOperationResponse'
+                - properties:
+                    status:
+                      type: string
+                      enum:
+                      - pending
+                      description: Status of the batch operation (initially pending for asynchronous operations)
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Invalid parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /company/promoters/assign_parent:
+    post:
+      summary: Assign a parent promoter
+      description: "With this endpoint you can assign a parent promoter to your promoters. \n <Note>If there are more than __5__ ids on the __ids__ param/field, the action will be processed asynchronously. The response for the batch status will most likely be `in_progress`. The available statuses are `pending`, `in_progress`, `completed`, `failed` and `stopped`</Note> \n <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/company/promoters/assign_parent`</Tip>"
+      operationId: acceptPromoters
+      tags:
+      - Promoters
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - parent_promoter_id
+              properties:
+                parent_promoter_id:
+                  type: integer
+                  description: The ID of the parent promoter you want to assign the promoters to
+                ids:
+                  $ref: '#/components/schemas/Ids'
+      responses:
+        '200':
+          description: Operation completed successfully
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/BatchOperationResponse'
+                - properties:
+                    status:
+                      type: string
+                      enum:
+                      - completed
+                      description: Status of the batch operation (always completed for synchronous operations)
+        '202':
+          description: Batch operation accepted and processing
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/BatchOperationResponse'
+                - properties:
+                    status:
+                      type: string
+                      enum:
+                      - pending
+                      description: Status of the batch operation (initially pending for asynchronous operations)
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Invalid parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /company/promoters/restore:
+    post:
+      summary: Restore promoters
+      description: "With this endpoint you can restore promoters. \n <Note>If there are more than __5__ ids on the __ids__ param/field, the action will be processed asynchronously. The response for the batch status will most likely be `in_progress`. The available statuses are `pending`, `in_progress`, `completed`, `failed` and `stopped`</Note> \n <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/company/promoters/restore`</Tip>"
+      operationId: restorePromoters
+      tags:
+      - Promoters
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                ids:
+                  $ref: '#/components/schemas/Ids'
+      responses:
+        '200':
+          description: Operation completed successfully
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/BatchOperationResponse'
+                - properties:
+                    status:
+                      type: string
+                      enum:
+                      - completed
+                      description: Status of the batch operation (always completed for synchronous operations)
+        '202':
+          description: Batch operation accepted and processing
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/BatchOperationResponse'
+                - properties:
+                    status:
+                      type: string
+                      enum:
+                      - pending
+                      description: Status of the batch operation (initially pending for asynchronous operations)
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Invalid parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  schemas:
+    PromoterChartData:
+      type: object
+      properties:
+        period_from:
+          type: string
+          format: date
+          description: Start date of the chart data period
+        period_to:
+          type: string
+          format: date
+          description: End date of the chart data period
+        selection:
+          type: string
+          description: Type of data being displayed
+          enum:
+          - revenue
+          - clicks
+          - referrals
+          - customers
+          - cancellations
+        selection_items:
+          type: array
+          description: Data points for the chart
+          items:
+            type: array
+            description: A date-value pair
+            items:
+              oneOf:
+              - type: string
+                description: Date label for the data point (format depends on group_by)
+              - type: number
+                description: Value for the data point
+            minItems: 2
+            maxItems: 2
+        group_by:
+          type: string
+          description: Time unit used for grouping the data
+          enum:
+          - day
+          - week
+          - month
+          - year
+    Promoter:
+      type: object
+      properties:
+        id:
+          type: integer
+        email:
+          type: string
+        name:
+          type: string
+    PromoterProfile:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: ID of the profile
+        first_name:
+          type: string
+          description: First name of the promoter
+        last_name:
+          type: string
+          description: Last name of the promoter
+        website:
+          type: string
+          nullable: true
+          description: Website of the promoter
+        company_name:
+          type: string
+          nullable: true
+          description: Company name of the promoter
+        company_number:
+          type: string
+          nullable: true
+          description: Company registration number
+        phone_number:
+          type: string
+          nullable: true
+          description: Phone number of the promoter
+        vat_id:
+          type: string
+          nullable: true
+          description: VAT ID of the promoter
+        country:
+          type: string
+          nullable: true
+          description: Country in 2 characters format
+          example: US
+        address:
+          type: string
+          nullable: true
+          description: Address of the promoter
+        avatar:
+          type: string
+          description: URL to the promoter's avatar image
+        w8_form_url:
+          type: string
+          nullable: true
+          description: URL to the promoter's W8 form if available
+        w9_form_url:
+          type: string
+          nullable: true
+          description: URL to the promoter's W9 form if available
+        description:
+          type: string
+          nullable: true
+          description: Description of the promoter
+        invoice_details_validation_errors:
+          type: object
+          nullable: true
+          description: Validation errors for invoice details
+        should_validate_invoice_details:
+          type: boolean
+          description: Should validate invoice details
+        instagram_url:
+          type: string
+          nullable: true
+          description: Promoter's Instagram URL
+        youtube_url:
+          type: string
+          nullable: true
+          description: Promoter's YouTube URL
+        linkedin_url:
+          type: string
+          nullable: true
+          description: Promoter's LinkedIn URL
+        facebook_url:
+          type: string
+          nullable: true
+          description: Promoter's Facebook URL
+        twitter_url:
+          type: string
+          nullable: true
+          description: Promoter's Twitter URL
+        twitch_url:
+          type: string
+          nullable: true
+          description: Promoter's Twitch URL
+        tiktok_url:
+          type: string
+          nullable: true
+          description: Promoter's TikTok URL
+    Ids:
+      type: array
+      items:
+        type: integer
+      description: Array of Payout IDs
+    PromoterCreate:
+      type: object
+      required:
+      - email
+      properties:
+        email:
+          type: string
+          format: email
+          description: Email address of the promoter
+        cust_id:
+          type: string
+          nullable: true
+          description: Cust ID of the promoter
+        profile:
+          $ref: '#/components/schemas/PromoterProfile'
+        initial_campaign_id:
+          type: integer
+          description: The ID of the campaign promoter will be added first
+        drip_emails:
+          type: boolean
+          description: Send a welcome email to the promoter
+    ErrorResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Error message
+        code:
+          type: string
+          description: Error code
+    PromoterUpdate:
+      type: object
+      properties:
+        email:
+          type: string
+          format: email
+          description: Email address of the promoter
+        find_by:
+          type: string
+          enum:
+          - email
+          - cust_id
+          - auth_token
+          - ref_token
+          - promo_code
+          description: "Find by attribute. Required when you want to find the promoter using another parameter like the email, cust_id, auth_token, ref_token, or promo_code instead of an ID. \n \n  Your request should follow the format `https://api.firstpromoter.com/api/v2/company/promoters/{email, cust_id, auth_token, ref_token, or promo_code}`"
+        cust_id:
+          type: string
+          nullable: true
+          description: Cust ID of the promoter
+        custom_fields:
+          type: array
+          description: "Custom fields must be a Hash with the keys being the ones from the company custom fields and values must be String or Array of Strings. These are based on the custom fields that you set in your Settings > Affiliate portal > Custom fields.\n \n **Note**: Each item will have to be set as `custom_fields[my_custom_field_key]: my_custom_field_value`"
+        profile:
+          $ref: '#/components/schemas/PromoterProfile'
+        profile[_destroy_w8form]:
+          type: boolean
+          description: Destroy W8 form
+        profile[_destroy_w9form]:
+          type: boolean
+          description: Destroy W9 form
+    BatchOperationResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Batch ID
+        status:
+          type: string
+          enum:
+          - completed
+          - pending
+          - in_progress
+          - failed
+          - stopped
+          description: Status of the batch operation
+        total:
+          type: integer
+          description: Total number of items
+        selected_total:
+          type: integer
+          description: Total number of selected items
+        processed_count:
+          type: integer
+          description: Number of processed items
+        failed_count:
+          type: integer
+          description: Number of failed operations
+        action_label:
+          type: string
+          description: Label for the action
+        created_at:
+          type: string
+          format: date-time
+          description: Creation date of the batch operation
+        updated_at:
+          type: string
+          format: date-time
+          description: Last update date of the batch operation
+        meta:
+          type: object
+          description: Additional metadata
+        progress:
+          type: integer
+          description: Progress of the batch operation
+        processing_errors:
+          type: array
+          items:
+            type: string
+          description: List of processing errors if any
+    PromoterFilters:
+      type: object
+      properties:
+        revenue_amount:
+          type: object
+          description: Revenue amount filter
+          properties:
+            from:
+              type: integer
+              minimum: 0
+              description: Minimum revenue amount
+            to:
+              type: integer
+              description: Maximum revenue amount
+        customers_count:
+          type: object
+          description: Customers count filter
+          properties:
+            from:
+              type: integer
+              minimum: 0
+              description: Minimum customers count
+            to:
+              type: integer
+              description: Maximum customers count
+        referrals_count:
+          type: object
+          description: Referrals count filter
+          properties:
+            from:
+              type: integer
+              minimum: 0
+              description: Minimum referrals count
+            to:
+              type: integer
+              description: Maximum referrals count
+        clicks_count:
+          type: object
+          description: Clicks count filter
+          properties:
+            from:
+              type: integer
+              minimum: 0
+              description: Minimum clicks count
+            to:
+              type: integer
+              description: Maximum clicks count
+        joined_at:
+          type: object
+          description: Joined at filter
+          properties:
+            from:
+              type: string
+              description: Minimum joined at date, ISO date format (YYYY-MM-DD HH:MM:SS)
+              format: date
+            to:
+              type: string
+              description: Maximum joined at date, ISO date format (YYYY-MM-DD HH:MM:SS)
+              format: date
+        last_login_at:
+          type: object
+          description: Last login at filter
+          properties:
+            from:
+              type: string
+              format: date
+              description: Minimum last login at date, ISO date format (YYYY-MM-DD HH:MM:SS)
+            to:
+              type: string
+              format: date
+              description: Maximum last login at date, ISO date format (YYYY-MM-DD HH:MM:SS)
+        campaign_id:
+          oneOf:
+          - type: integer
+            description: Campaign id
+          - type: array
+            description: Array of campaign ids
+            items:
+              type: integer
+        state:
+          type: string
+          enum:
+          - pending
+          - accepted
+          - rejected
+          - blocked
+          - inactive
+          - not_set
+          description: Promoter state filter
+        has_wform:
+          type: string
+          enum:
+          - 'yes'
+          - 'no'
+          description: Has wform filter
+        parent_promoter_id:
+          type: integer
+          description: Parent promoter id
+        archived:
+          type: string
+          enum:
+          - 'true'
+          - 'false'
+          - '`true`'
+          - '`false`'
+          - '`yes`'
+          - '`no`'
+          description: Archived filter
+        subscribed_to_email:
+          type: string
+          enum:
+          - 'true'
+          - 'false'
+          - '`true`'
+          - '`false`'
+          - '`yes`'
+          - '`no`'
+          description: Subscribed to email filter
+        custom_field1:
+          $ref: '#/components/schemas/CustomFieldFilter'
+        custom_field2:
+          $ref: '#/components/schemas/CustomFieldFilter'
+        fraud_suspicions:
+          type: array
+          items:
+            type: string
+            enum:
+            - same_ip_suspicion
+            - same_promoter_email
+            - ad_source
+            - no_suspicion
+            description: Suspicion type filter
+        inactivity:
+          type: object
+          description: Filter promoters by inactivity — promoters who have not performed the specified metric within the given number of days
+          properties:
+            metric:
+              type: string
+              enum:
+              - referral
+              - customer
+              - click
+              - sale
+              description: The activity metric to measure inactivity against
+            days:
+              type: integer
+              minimum: 1
+              description: Number of days of inactivity
+        invoice_details_status:
+          type: string
+          enum:
+          - approved
+          - pending
+          - rejected
+          - not_submitted
+          description: Filter promoters by their invoice details status
+    CustomFieldFilter:
+      type: object
+      required:
+      - key
+      - operator
+      - value
+      properties:
+        key:
+          type: string
+          description: The key custom_field key
+        operator:
+          type: string
+          enum:
+          - exact
+          - partial
+          description: The custom field operator
+        value:
+          oneOf:
+          - type: string
+          - type: array
+            items:
+              type: string
+          description: The value of the custom field. Must be String or Array of strings
+  parameters:
+    AccountId:
+      name: Account-ID
+      in: header
+      required: true
+      description: Account ID. You can find your Account ID on Your FirstPromoter Dashboard. Navigate to Settings → Integrations
+      schema:
+        type: string
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: API key passed as Bearer token

@@ -1,0 +1,967 @@
+openapi: 3.0.1
+info:
+  title: FirstPromoter Admin Commissions API
+  version: '2.0'
+  description: REST API for managing affiliate programs, promoters, campaigns, referrals, rewards, and payouts in FirstPromoter. Supports pagination, filtering, and full CRUD operations across all affiliate program resources.
+  contact:
+    url: https://docs.firstpromoter.com
+  license:
+    name: Proprietary
+    url: https://firstpromoter.com/terms
+servers:
+- url: https://api.firstpromoter.com/api/v2
+  description: Production server
+security:
+- BearerAuth: []
+tags:
+- name: Commissions
+paths:
+  /company/commissions:
+    get:
+      summary: Get all commissions
+      description: "With this endpoint you can list all rewards and commissions assigned to a promotion, promoter, campaign or entire account using the API. \n <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/commissions`</Tip>"
+      tags:
+      - Commissions
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      - name: q
+        in: query
+        description: Search params. Searches by event_id, referral.email, referral.uid
+        schema:
+          type: string
+      - name: ids[]
+        in: query
+        description: Array of commission ids to get
+        required: false
+        schema:
+          type: array
+          items:
+            type: integer
+      - name: filters
+        in: query
+        schema:
+          $ref: '#/components/schemas/CommissionFilters'
+      - name: sorting
+        in: query
+        schema:
+          $ref: '#/components/schemas/CommissionSorting'
+      responses:
+        '200':
+          description: Successfully retrieved commissions
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Commission'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    post:
+      summary: Create a commission
+      description: "With this endpoint you can create a commission. \n <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/company/commissions`</Tip>"
+      tags:
+      - Commissions
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CommissionCreate'
+      responses:
+        '200':
+          description: Successfully retrieved commissions
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Commission'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /company/commissions/{id}:
+    put:
+      summary: Update a commission
+      description: "With this endpoint you can update a commission. \n <Tip>**HTTP Request** <br/>`PUT https://api.firstpromoter.com/api/v2/company/commissions/{id}`</Tip>"
+      tags:
+      - Commissions
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+        description: Id of the commission
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CommissionUpdate'
+      responses:
+        '200':
+          description: Commission updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Commission'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Commission not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /company/commissions/approve:
+    post:
+      summary: Approve commissions
+      description: "With this endpoint you can approve commissions. \n <Note>If there are more than __5__ ids on the __ids__ param/field, the action will be processed asynchronously. The response for the batch status will most likely be `in_progress`. The available statuses are `pending`, `in_progress`, `completed`, `failed` and `stopped`</Note> \n <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/company/commissions/approve`</Tip>"
+      tags:
+      - Commissions
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BatchActionRequest'
+      responses:
+        '200':
+          description: Operation completed successfully
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/BatchOperationResponse'
+                - properties:
+                    status:
+                      type: string
+                      enum:
+                      - completed
+                      description: Status of the batch operation (always completed for synchronous operations)
+        '202':
+          description: Batch operation accepted and processing
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/BatchOperationResponse'
+                - properties:
+                    status:
+                      type: string
+                      enum:
+                      - pending
+                      description: Status of the batch operation (initially pending for asynchronous operations)
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Invalid parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /company/commissions/deny:
+    post:
+      summary: Deny commissions
+      description: "With this endpoint you can deny commissions. \n <Note>If there are more than __5__ ids on the __ids__ param/field, the action will be processed asynchronously. The response for the batch status will most likely be `in_progress`. The available statuses are `pending`, `in_progress`, `completed`, `failed` and `stopped`</Note> \n  <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/company/commissions/deny`</Tip>"
+      tags:
+      - Commissions
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BatchActionRequest'
+      responses:
+        '200':
+          description: Operation completed successfully
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/BatchOperationResponse'
+                - properties:
+                    status:
+                      type: string
+                      enum:
+                      - completed
+                      description: Status of the batch operation (always completed for synchronous operations)
+        '202':
+          description: Batch operation accepted and processing
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/BatchOperationResponse'
+                - properties:
+                    status:
+                      type: string
+                      enum:
+                      - pending
+                      description: Status of the batch operation (initially pending for asynchronous operations)
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Invalid parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /company/commissions/mark_fulfilled:
+    post:
+      summary: Mark nonmonetary commissions as fulfilled
+      description: "With this endpoint you can mark nonmonetary commissions as fulfilled. \n <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/company/commissions/mark_fulfilled`</Tip>"
+      tags:
+      - Commissions
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BatchActionRequest'
+      responses:
+        '200':
+          description: Operation completed successfully
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/BatchOperationResponse'
+                - properties:
+                    status:
+                      type: string
+                      enum:
+                      - completed
+                      description: Status of the batch operation (always completed for synchronous operations)
+        '202':
+          description: Batch operation accepted and processing
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/BatchOperationResponse'
+                - properties:
+                    status:
+                      type: string
+                      enum:
+                      - pending
+                      description: Status of the batch operation (initially pending for asynchronous operations)
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Invalid parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /company/commissions/mark_unfulfilled:
+    post:
+      summary: Mark nonmonetary commissions as unfulfilled
+      description: "With this endpoint you can mark nonmonetary commissions as unfulfilled. \n <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/company/commissions/mark_unfulfilled`</Tip>"
+      tags:
+      - Commissions
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BatchActionRequest'
+      responses:
+        '200':
+          description: Operation completed successfully
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/BatchOperationResponse'
+                - properties:
+                    status:
+                      type: string
+                      enum:
+                      - completed
+                      description: Status of the batch operation (always completed for synchronous operations)
+        '202':
+          description: Batch operation accepted and processing
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/BatchOperationResponse'
+                - properties:
+                    status:
+                      type: string
+                      enum:
+                      - pending
+                      description: Status of the batch operation (initially pending for asynchronous operations)
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Invalid parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /company/commissions/destroy:
+    delete:
+      summary: Delete commissions
+      description: "With this endpoint you can delete commissions. \n <Tip>**HTTP Request** <br/>`DELETE https://api.firstpromoter.com/api/v2/company/commissions/destroy`</Tip>"
+      tags:
+      - Commissions
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BatchActionRequest'
+      responses:
+        '200':
+          description: Operation completed successfully
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/BatchOperationResponse'
+                - properties:
+                    status:
+                      type: string
+                      enum:
+                      - completed
+                      description: Status of the batch operation (always completed for synchronous operations)
+        '202':
+          description: Batch operation accepted and processing
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/BatchOperationResponse'
+                - properties:
+                    status:
+                      type: string
+                      enum:
+                      - pending
+                      description: Status of the batch operation (initially pending for asynchronous operations)
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Invalid parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /company/commissions/generate_payouts:
+    post:
+      summary: Generate payouts for commissions
+      description: "With this endpoint you can generate payouts for commissions. \n <Note>If there are more than __5__ ids on the __ids__ param/field, the action will be processed asynchronously. The response for the batch status will most likely be `in_progress`. The available statuses are `pending`, `in_progress`, `completed`, `failed` and `stopped`</Note> \n <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/company/commissions/generate_payouts`</Tip>"
+      tags:
+      - Commissions
+      operationId: generatePayouts
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                ids:
+                  type: array
+                  items:
+                    type: integer
+                  description: Commission IDs to generate payouts for. If there are more than __5__ ids on the __ids__ param/field, the action will be processed asynchronously. The response for the batch status will most likely be `in_progress`. The available statuses are `pending`, `in_progress`, `completed`, `failed` and `stopped`.
+              required:
+              - ids
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    description: Operation ID
+                  status:
+                    type: string
+                    description: Status of the operation
+                  total:
+                    type: integer
+                    description: Total number of commissions
+                  selected_total:
+                    type: integer
+                    description: Number of selected commissions
+                  processed_count:
+                    type: integer
+                    description: Number of processed commissions
+                  failed_count:
+                    type: integer
+                    description: Number of failed operations
+                  action_label:
+                    type: string
+                    description: Action identifier
+                  created_at:
+                    type: string
+                    format: date-time
+                    description: Creation timestamp
+                  updated_at:
+                    type: string
+                    format: date-time
+                    description: Last update timestamp
+                  meta:
+                    type: object
+                    description: Additional metadata
+                  progress:
+                    type: number
+                    description: Progress indicator (0-1)
+                  processing_errors:
+                    type: array
+                    description: List of processing errors
+        '401':
+          description: Unauthorized - Missing or invalid bearer token
+components:
+  schemas:
+    CommissionSorting:
+      type: object
+      properties:
+        sale_amount:
+          type: string
+          enum:
+          - asc
+          - desc
+          description: The sort by sale direction
+        amount:
+          type: string
+          enum:
+          - asc
+          - desc
+          description: The sort by amount direction
+        created_at:
+          type: string
+          enum:
+          - asc
+          - desc
+          description: The sort by created_at direction
+        referral:
+          type: string
+          enum:
+          - asc
+          - desc
+          description: The sort by referral direction
+    ErrorResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Error message
+        code:
+          type: string
+          description: Error code
+    CommissionUpdate:
+      type: object
+      properties:
+        internal_note:
+          type: string
+          description: Internal note visible only by the team
+        external_note:
+          type: string
+          description: External note visible by the promoter
+    CommissionCreate:
+      oneOf:
+      - title: Sale Commission
+        type: object
+        required:
+        - commission_type
+        - referral_id
+        - sale_amount
+        properties:
+          commission_type:
+            type: string
+            enum:
+            - sale
+            description: The commission type
+          referral_id:
+            type: integer
+            description: Referral id. Required for sale commission type.
+          plan_id:
+            type: integer
+            description: One of the items id from price_ids
+          sale_amount:
+            type: integer
+            description: Sale amount in cents. Required for sale commission type.
+          event_id:
+            type: string
+            description: The ID of the event that generated the sale from billing provider
+          event_date:
+            type: string
+            format: date
+            description: The date of the event that generated the sale
+          internal_note:
+            type: string
+            description: Internal note visible only by the team
+          unit:
+            type: string
+            enum:
+            - cash
+            - credits
+            - points
+            - free_months
+            - mon_discount
+            - discount_per
+            description: Set the reward unit type
+          notify_promoter:
+            type: boolean
+            description: If true a notification email is sent to promoter if enabled on Emails section
+          billing_period:
+            type: string
+            enum:
+            - monthly
+            - yearly
+            - one_time
+            description: The billing period of the event that generated the sale
+      - title: Custom Commission
+        type: object
+        required:
+        - commission_type
+        - promoter_campaign_id
+        - amount
+        properties:
+          commission_type:
+            type: string
+            enum:
+            - custom
+            description: The commission type
+          promoter_campaign_id:
+            type: integer
+            description: PromoterCampaign id. Required for custom commission type. This ID is not the promoter’s ID or the campaign’s ID. It’s the linking record that defines the promoter’s participation in that campaign. You can find this id in each object in the promoter_campaigns array when you get the details of the promoter.
+          amount:
+            type: integer
+            description: Commission amount in cents. Required for custom commission type.
+          event_id:
+            type: string
+            description: The ID of the event that generated the sale from billing provider
+          event_date:
+            type: string
+            format: date
+            description: The date of the event that generated the sale
+          internal_note:
+            type: string
+            description: Internal note visible only by the team
+          unit:
+            type: string
+            enum:
+            - cash
+            - credits
+            - points
+            - free_months
+            - mon_discount
+            - discount_per
+            description: Set the reward unit type
+          notify_promoter:
+            type: boolean
+            description: If true a notification email is sent to promoter if enabled on Emails section
+          billing_period:
+            type: string
+            enum:
+            - monthly
+            - yearly
+            - one_time
+            description: The billing period of the event that generated the sale
+      discriminator:
+        propertyName: commission_type
+        mapping:
+          sale: '#/components/schemas/CommissionCreate/oneOf/0'
+          custom: '#/components/schemas/CommissionCreate/oneOf/1'
+    BatchOperationResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Batch ID
+        status:
+          type: string
+          enum:
+          - completed
+          - pending
+          - in_progress
+          - failed
+          - stopped
+          description: Status of the batch operation
+        total:
+          type: integer
+          description: Total number of items
+        selected_total:
+          type: integer
+          description: Total number of selected items
+        processed_count:
+          type: integer
+          description: Number of processed items
+        failed_count:
+          type: integer
+          description: Number of failed operations
+        action_label:
+          type: string
+          description: Label for the action
+        created_at:
+          type: string
+          format: date-time
+          description: Creation date of the batch operation
+        updated_at:
+          type: string
+          format: date-time
+          description: Last update date of the batch operation
+        meta:
+          type: object
+          description: Additional metadata
+        progress:
+          type: integer
+          description: Progress of the batch operation
+        processing_errors:
+          type: array
+          items:
+            type: string
+          description: List of processing errors if any
+    Commission:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Commission ID
+        status:
+          type: string
+          enum:
+          - pending
+          - approved
+          - denied
+          description: Current status of the commission
+        metadata:
+          type: object
+          description: Additional metadata about the commission
+        is_self_referral:
+          type: boolean
+          nullable: true
+          description: Whether this is a self-referral
+        commission_type:
+          type: string
+          enum:
+          - sale
+          - custom
+          description: Type of commission
+        created_by_user_email:
+          type: string
+          nullable: true
+          description: Email of the user who created the commission
+        created_by_user_at:
+          type: string
+          format: date-time
+          nullable: true
+          description: Timestamp when the user created the commission
+        sale_amount:
+          type: integer
+          description: Amount of the sale
+        original_sale_amount:
+          type: integer
+          description: Original amount of the sale
+        original_sale_currency:
+          type: string
+          nullable: true
+          description: Currency of the original sale
+        event_id:
+          type: string
+          nullable: true
+          description: ID of the event that generated the commission
+        plan_id:
+          type: string
+          nullable: true
+          description: Plan ID associated with the commission
+        tier:
+          type: integer
+          description: Reward tier
+        internal_note:
+          type: string
+          nullable: true
+          description: Internal note visible only to the team
+        external_note:
+          type: string
+          nullable: true
+          description: External note visible to the promoter
+        unit:
+          type: string
+          enum:
+          - cash
+          - credits
+          - points
+          - free_months
+          - mon_discount
+          - discount_per
+          description: Unit type for the reward
+        fraud_check:
+          type: string
+          nullable: true
+          enum:
+          - no_suspicion
+          - same_ip_suspicion
+          - same_promoter_email
+          - ad_source
+          description: Result of fraud check
+        amount:
+          type: integer
+          description: Commission amount
+        is_paid:
+          type: boolean
+          description: Whether the commission has been paid
+        is_split:
+          type: boolean
+          description: Whether the commission is split among multiple promoters
+        created_at:
+          type: string
+          format: date-time
+          description: Creation timestamp
+        status_updated_at:
+          type: string
+          format: date-time
+          nullable: true
+          description: Last status update timestamp
+        promoter_campaign:
+          type: object
+          properties:
+            id:
+              type: integer
+              description: Promoter campaign ID
+            campaign_id:
+              type: integer
+              description: Campaign ID
+            promoter_id:
+              type: integer
+              description: Promoter ID
+            created_at:
+              type: string
+              format: date-time
+              description: Creation timestamp
+            promoter:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  description: Promoter ID
+                email:
+                  type: string
+                  description: Promoter email
+                name:
+                  type: string
+                  description: Promoter name
+            campaign:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  description: Campaign ID
+                name:
+                  type: string
+                  description: Campaign name
+                color:
+                  type: string
+                  nullable: true
+                  description: Campaign color
+        referral:
+          type: object
+          nullable: true
+          properties:
+            id:
+              type: integer
+              description: Referral ID
+            email:
+              type: string
+              description: Referral email
+            uid:
+              type: string
+              description: Referral UID
+        reward:
+          type: object
+          properties:
+            id:
+              type: integer
+              description: Reward ID
+            name:
+              type: string
+              description: Reward name
+        split_details:
+          type: object
+          nullable: true
+          description: Commission split details from the associated referral, when the referral is shared between promoters
+    BatchActionRequest:
+      type: object
+      properties:
+        ids:
+          type: array
+          items:
+            type: integer
+          description: Array of commission Ids. If there are more than __5__ ids on this param/field, the action will be processed asynchronously. The response for the batch status will most likely be `in_progress`. The available statuses are `pending`, `in_progress`, `completed`, `failed` and `stopped`
+    CommissionFilters:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+          - pending
+          - approved
+          - denied
+        paid:
+          type: string
+          enum:
+          - 'yes'
+          - 'no'
+          description: Paid filter for monetary commissions
+        fulfilled:
+          type: string
+          enum:
+          - 'yes'
+          - 'no'
+          description: Fulfilled filter for non-monetary commissions
+        sale_amount:
+          type: object
+          properties:
+            from:
+              type: integer
+              description: Sale amount from
+            to:
+              type: integer
+              description: Sale amount to
+        amount:
+          type: object
+          properties:
+            from:
+              type: integer
+              description: Amount from
+            to:
+              type: integer
+              description: Amount to
+        created_at:
+          type: object
+          properties:
+            from:
+              type: string
+              format: date
+              description: created_at start date
+            to:
+              type: string
+              format: date
+              description: created_at end date
+        campaign_id:
+          oneOf:
+          - type: integer
+          - type: array
+            items:
+              type: integer
+          description: Campaign ids. Can be Integer or Array of Integers
+        payout_id:
+          oneOf:
+          - type: integer
+          - type: array
+            items:
+              type: integer
+          description: Payout ids. Can be Integer or Array of Integers
+        due_period:
+          type: string
+          enum:
+          - next
+          - overdue
+          - custom
+          description: Due period filter
+        promoter_id:
+          type: integer
+          description: Promoter id
+        first_commission:
+          type: boolean
+          description: First commission
+        refunded:
+          type: boolean
+          description: Refunded reward
+        fraud_check:
+          type: string
+          enum:
+          - no_suspicion
+          - same_ip_suspicion
+          - same_promoter_email
+          - ad_source
+          description: Referral fraud check (suspicion). Array accepted
+        plan_id:
+          oneOf:
+          - type: integer
+          - type: array
+            items:
+              type: integer
+          description: Plan id
+  parameters:
+    AccountId:
+      name: Account-ID
+      in: header
+      required: true
+      description: Account ID. You can find your Account ID on Your FirstPromoter Dashboard. Navigate to Settings → Integrations
+      schema:
+        type: string
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: API key passed as Bearer token

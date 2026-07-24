@@ -1,0 +1,700 @@
+openapi: 3.0.1
+info:
+  title: FirstPromoter Admin Commissions Track API
+  version: '2.0'
+  description: REST API for managing affiliate programs, promoters, campaigns, referrals, rewards, and payouts in FirstPromoter. Supports pagination, filtering, and full CRUD operations across all affiliate program resources.
+  contact:
+    url: https://docs.firstpromoter.com
+  license:
+    name: Proprietary
+    url: https://firstpromoter.com/terms
+servers:
+- url: https://api.firstpromoter.com/api/v2
+  description: Production server
+security:
+- BearerAuth: []
+tags:
+- name: Track
+paths:
+  /track/signup:
+    post:
+      description: Capture a lead when they sign-up or fill an optin form. This endpoint is used to track leads and sign-ups. It's not for tracking the actual sales and commissions. <br/>  <br/> Sign-ups are tracked as leads in FirstPromoter so when a person referred by the promoter/affiliate signs up, a new referral should be added inside FirstPromoter **(you can see them inside the `Referrals` section as `Leads`)**. <br/><br/><Tip>The recommended way to do this is to grab the `_fprom_tid` **(_fprom_track for accounts created prior to April 2021)** cookie value(which keeps the tracking id and referral identification) on your server and send it along with the sign-up data through the tid parameter. <br/><br/> **Alternative:** In some special cases, you can refer sign ups directly to a promoter, by passing the referral id through ref_id parameter. Be careful when using this because the referral id can be modified by the promoter by default, however you can disable that from the campaign configuration page.</Tip><Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/track/signup`</Tip>
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: Email of the lead/sign-up. Required if uid is not provided.
+                uid:
+                  type: string
+                  description: ID to match the sale with the lead if the email can be changed before the first sale. Required if email is not provided.
+                tid:
+                  type: string
+                  description: Visitor tracking ID. It's set when the visitor tracking script tracks the referral visit on our system. The value is found inside _fprom_tid cookie. Required if ref_id is not provided.
+                ref_id:
+                  type: string
+                  description: Default referral id of the promoter. Use this only when you want to assign the lead to a specific promoter. Required if tid is not provided.
+                ip:
+                  type: string
+                  description: IP of the visitor who generated the sign up. It's used for fraud analysis.
+                created_at:
+                  type: string
+                  description: ISO date string of the date of the signup event
+                skip_email_notification:
+                  type: boolean
+                  description: Set this to true to skip email notifications. Default is false.
+              oneOf:
+              - required:
+                - email
+              - required:
+                - uid
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      responses:
+        '200':
+          description: Successful signup response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 45831611
+                  etype:
+                    type: string
+                    example: signup
+                  sale_amount:
+                    type: integer
+                    nullable: true
+                    example: null
+                  original_sale_amount:
+                    type: integer
+                    nullable: true
+                    example: null
+                  original_sale_currency:
+                    type: string
+                    nullable: true
+                    example: null
+                  event_id:
+                    type: string
+                    nullable: true
+                    example: null
+                  plan_id:
+                    type: string
+                    nullable: true
+                    example: null
+                  billing_period:
+                    type: string
+                    nullable: true
+                    example: null
+                  created_at:
+                    type: string
+                    format: date-time
+                    example: '2025-04-25T09:29:51.973Z'
+                  referral:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 29203686
+                      email:
+                        type: string
+                        example: testme@test1.com
+                      uid:
+                        type: string
+                        nullable: true
+                        example: null
+                  commissions:
+                    type: array
+                    items: {}
+                    example: []
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Error. Email and uid can not be blank!
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Visitor  invalid, not found or you are trying to use the signup tracking test via API which doesn't work on API calls.
+        '422':
+          description: Unprocessable Entity
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  transaction_id:
+                    type: string
+                    example: there is already a signup event registered on this lead
+      tags:
+      - Track
+  /track/sale:
+    post:
+      description: Assign sales and commissions to your promoters. To track sales and generate commissions correctly, you need to use this API call each time a non-zero amount sale is processed in your system, even if it comes from a recurring charge or one-time charge. <Note>To avoid fraudulent sales, we don't use JS conversion pixels to track sales, which are very unreliable and can be easily faked. Instead, we use server-side tracking for all sales to ensure that a sale is tracked only when you actually receive money in your billing account.  <br/><br/>To maintain the same standards with the API, we recommend making the sale API call (this call) only when you receive confirmation of the sale from your billing provider, such as from a webhook, an IPN, or a success response from an API charge call.<br/><br/>You just need to pass the sale amount (before taxes) and we'll take care of the rest. The commissions/rewards will be calculated based on that amount and the plan ID, in case you use the plan-level rewards feature.</Note> Using email or UID parameters, we identify the lead/customer who generated the sale, which also helps us determine the promoter who owns the reward/commission. <br/><br/>The lead is added to our system either by the client signup tracking script when the user signs up or by calling the signup API endpoint. There is also the option to bypass the signup tracking by using TID or ref_id parameters, which will create the lead and assign the sale in one go.<br/><br/>**If we don't find the lead in our system, then it means that the sale is not a referral sale, you'll get a 404 response. Also, if the promoter is banned, you'll get a 404 response. You don't have to identify which sale is from referrals and which is not; we'll take care of that.** <Tip>**For zero-decimal** currencies like `JPY`, `amount` and `mrr` parameters should be sent as **whole values**. <br/><br/>**For other currencies**, `amount` and `mrr` parameter values should be in cents, i.e., you will need to **multiply the value by 100** before sending the request.</Tip><Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/track/sale`</Tip>
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - event_id
+              - amount
+              properties:
+                email:
+                  type: string
+                  description: Email of the lead/sign-up. Required if uid is not provided.
+                uid:
+                  type: string
+                  description: uid of the lead added on signup tracking. Required if email is not provided.
+                event_id:
+                  type: string
+                  description: Transaction or sale event ID. Required to avoid duplicate sales.
+                amount:
+                  type: integer
+                  description: The sale amount in cents. For zero-decimal currencies like JPY, amount should be whole values.
+                quantity:
+                  type: integer
+                  description: Number of subscriptions/items. Optional if quantity is 1.
+                plan:
+                  type: string
+                  description: Customer plan ID from billing provider. Used for plan-level rewards.
+                currency:
+                  type: string
+                  description: Required only if different from FirstPromoter settings default currency.
+                mrr:
+                  type: string
+                  description: Monthly Recurring Revenue generated by the customer.
+                promo_code:
+                  type: string
+                  description: For promo code tracking.
+                tid:
+                  type: string
+                  description: Visitor tracking ID from _fprom_tid cookie.
+                ref_id:
+                  type: string
+                  description: Referral ID of the promoter.
+                skip_email_notification:
+                  type: boolean
+                  description: Set true to skip email notifications. Default is false.
+              oneOf:
+              - required:
+                - email
+              - required:
+                - uid
+      responses:
+        '200':
+          description: Sale tracked successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 45831949
+                  etype:
+                    type: string
+                    example: sale
+                  sale_amount:
+                    type: integer
+                    example: 2000
+                  original_sale_amount:
+                    type: integer
+                    example: 2000
+                  original_sale_currency:
+                    type: string
+                    nullable: true
+                    example: null
+                  event_id:
+                    type: string
+                    nullable: true
+                    example: null
+                  plan_id:
+                    type: string
+                    nullable: true
+                    example: null
+                  billing_period:
+                    type: string
+                    nullable: true
+                    example: null
+                  created_at:
+                    type: string
+                    format: date-time
+                    example: '2025-04-25T09:39:42.289Z'
+                  referral:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 29203686
+                      email:
+                        type: string
+                        example: testme@test1.com
+                      uid:
+                        type: string
+                        nullable: true
+                        example: null
+                  commissions:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          example: 13533003
+                        status:
+                          type: string
+                          example: approved
+                        metadata:
+                          type: object
+                          example: {}
+                        is_self_referral:
+                          type: boolean
+                          example: false
+                        commission_type:
+                          type: string
+                          example: sale
+                        created_by_user_email:
+                          type: string
+                          nullable: true
+                          example: null
+                        created_by_user_at:
+                          type: string
+                          nullable: true
+                          example: null
+                        sale_amount:
+                          type: integer
+                          example: 2000
+                        original_sale_amount:
+                          type: integer
+                          example: 2000
+                        original_sale_currency:
+                          type: string
+                          nullable: true
+                          example: null
+                        event_id:
+                          type: string
+                          nullable: true
+                          example: null
+                        plan_id:
+                          type: string
+                          nullable: true
+                          example: null
+                        tier:
+                          type: integer
+                          example: 1
+                        internal_note:
+                          type: string
+                          nullable: true
+                          example: null
+                        external_note:
+                          type: string
+                          nullable: true
+                          example: null
+                        unit:
+                          type: string
+                          example: cash
+                        fraud_check:
+                          type: string
+                          example: no_suspicion
+                        amount:
+                          type: integer
+                          example: 400
+                        is_paid:
+                          type: boolean
+                          example: false
+                        is_split:
+                          type: boolean
+                          example: false
+                        created_at:
+                          type: string
+                          format: date-time
+                          example: '2025-04-25T09:39:42Z'
+                        status_updated_at:
+                          type: string
+                          nullable: true
+                          example: null
+                        promoter_campaign:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                              example: 14850130
+                            campaign_id:
+                              type: integer
+                              example: 28004
+                            promoter_id:
+                              type: integer
+                              example: 8262622
+                            created_at:
+                              type: string
+                              format: date-time
+                              example: '2025-01-16T18:16:41Z'
+                            promoter:
+                              type: object
+                              properties:
+                                id:
+                                  type: integer
+                                  example: 8262622
+                                email:
+                                  type: string
+                                  example: test@promoter.com
+                                name:
+                                  type: string
+                                  example: Test Promoter
+                            campaign:
+                              type: object
+                              properties:
+                                id:
+                                  type: integer
+                                  example: 28004
+                                name:
+                                  type: string
+                                  example: Quinn Ramirez
+                                color:
+                                  type: string
+                                  example: '#EC4899'
+                        referral:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                              example: 29203686
+                            email:
+                              type: string
+                              example: testme@test1.com
+                            uid:
+                              type: string
+                              nullable: true
+                              example: null
+                        reward:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                              example: 157427
+                            name:
+                              type: string
+                              example: 20% recurring commission
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Referral corresponding to email or uid parameter not found or promoter is banned.
+                  code:
+                    type: string
+                    example: not_found
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Error. Amount blank or invalid.
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: The 'sale' event with the id 'test_sale_12340987' already exists.
+      tags:
+      - Track
+  /track/refund:
+    post:
+      description: The refund call is similar to the sale call. It works the same way, except that it generates negative commissions. <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/track/refund`</Tip>
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - event_id
+              - amount
+              properties:
+                email:
+                  type: string
+                  description: Email of the lead/sign-up. Required if uid is not provided.
+                uid:
+                  type: string
+                  description: uid of the lead added on signup tracking. Required if email is not provided.
+                event_id:
+                  type: string
+                  description: Transaction or refund event ID. Required to avoid generating duplicate refunds.
+                amount:
+                  type: string
+                  description: The refund amount in cents. Used to calculate negative commissions/rewards.
+                currency:
+                  type: string
+                  description: This field is only required if the currency of the sale/refund is not the same as the one set on FirstPromoter settings. We'll automatically convert the amount from this currency to the default one set on your FirstPromoter account.
+                quantity:
+                  type: string
+                  description: Number of subscriptions/items refunded. Optional if quantity is 1.
+                sale_event_id:
+                  type: string
+                  description: The event id of the sale for which the refund is processed. Should match the event_id from the sales tracking API call. Required for accurate tracking of multiple products or changing commission levels.
+                skip_email_notification:
+                  type: boolean
+                  description: Set true to skip email notifications. Default is false.
+              oneOf:
+              - required:
+                - email
+              - required:
+                - uid
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 33847726
+                  type:
+                    type: string
+                    example: refund
+                  amount_cents:
+                    type: integer
+                    example: -1000
+                  reward:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 10940148
+                      status:
+                        type: string
+                        example: approved
+                      amount:
+                        type: integer
+                        example: -200
+                      unit:
+                        type: string
+                        example: cash
+                      created_at:
+                        type: string
+                        format: date-time
+                        example: '2024-09-11T14:36:01.016Z'
+                      lead:
+                        $ref: '#/components/schemas/Lead'
+                      event_id:
+                        type: string
+                        example: test_sale_12340987_refund
+                      conversion_amount:
+                        type: integer
+                        example: -1000
+                      tier_level:
+                        type: integer
+                        example: 1
+                      split_type:
+                        type: string
+                        nullable: true
+                        example: null
+                  lead:
+                    $ref: '#/components/schemas/Lead'
+                  promoter:
+                    $ref: '#/components/schemas/Promoter'
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Error. Amount blank or invalid.
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: The 'refund' event with the id 'test_sale_12340987_refund' already exists.
+      tags:
+      - Track
+  /track/cancellation:
+    post:
+      description: This call will mark the customer as cancelled and will decrease the MRR generated by them. <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/track/cancellation`</Tip>
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: Email of the lead/sign-up. Required if uid is not provided.
+                uid:
+                  type: string
+                  description: uid of the lead added on signup tracking. Required if email is not provided.
+              oneOf:
+              - required:
+                - email
+              - required:
+                - uid
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 33848911
+                  type:
+                    type: string
+                    example: cancellation
+                  amount_cents:
+                    type: integer
+                    nullable: true
+                    example: null
+                  reward:
+                    type: object
+                    nullable: true
+                    example: null
+                  lead:
+                    $ref: '#/components/schemas/Lead'
+                  promoter:
+                    $ref: '#/components/schemas/Promoter'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Error. Email and uid can not be blank!
+      tags:
+      - Track
+components:
+  schemas:
+    Lead:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 20738339
+        state:
+          type: string
+          example: cancelled
+        email:
+          type: string
+          example: hello@testmintli.com
+        uid:
+          type: string
+          nullable: true
+          example: null
+        customer_since:
+          type: string
+          format: date-time
+          example: '2024-09-11T14:22:12.160Z'
+        cancelled_at:
+          type: string
+          format: date-time
+          example: '2024-09-11T15:07:46.174Z'
+        plan_name:
+          type: string
+          nullable: true
+          example: null
+        suspicion:
+          type: string
+          example: no_suspicion
+        username:
+          type: string
+          nullable: true
+          example: null
+        website:
+          type: string
+          nullable: true
+          example: null
+        created_at:
+          type: string
+          format: date-time
+          example: '2024-09-09T16:22:44.168Z'
+        split_promotion_id:
+          type: string
+          nullable: true
+          example: null
+        custom_fields:
+          type: string
+          nullable: true
+          example: null
+        split_percentage_value:
+          type: string
+          nullable: true
+          example: null
+        visitor_sub_id:
+          type: string
+          nullable: true
+          example: null
+    Promoter:
+      type: object
+      properties:
+        id:
+          type: integer
+        email:
+          type: string
+        name:
+          type: string
+  parameters:
+    AccountId:
+      name: Account-ID
+      in: header
+      required: true
+      description: Account ID. You can find your Account ID on Your FirstPromoter Dashboard. Navigate to Settings → Integrations
+      schema:
+        type: string
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: API key passed as Bearer token

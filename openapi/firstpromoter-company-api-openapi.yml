@@ -1,0 +1,1342 @@
+openapi: 3.0.1
+info:
+  title: FirstPromoter Admin Commissions Company API
+  version: '2.0'
+  description: REST API for managing affiliate programs, promoters, campaigns, referrals, rewards, and payouts in FirstPromoter. Supports pagination, filtering, and full CRUD operations across all affiliate program resources.
+  contact:
+    url: https://docs.firstpromoter.com
+  license:
+    name: Proprietary
+    url: https://firstpromoter.com/terms
+servers:
+- url: https://api.firstpromoter.com/api/v2
+  description: Production server
+security:
+- BearerAuth: []
+tags:
+- name: Company
+paths:
+  /company/batch_processes:
+    get:
+      summary: List in progress batch processes.
+      description: "List batch processes that are in progress \n <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/batch_processes`</Tip>"
+      operationId: listBatchProcesses
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      - in: query
+        name: filters[status]
+        schema:
+          oneOf:
+          - type: string
+            enum:
+            - pending
+            - in_progress
+            - completed
+            - failed
+            - stopped
+          - type: array
+            items:
+              type: string
+              enum:
+              - pending
+              - in_progress
+              - completed
+              - failed
+              - stopped
+        description: Filter by status (array or string)
+        required: false
+      responses:
+        '200':
+          description: Successfully retrieved batch processes
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BatchProcess'
+        '401':
+          description: Unauthenticated or missing bearer token
+        '403':
+          description: Forbidden - invalid user type or insufficient permissions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      tags:
+      - Company
+  /company/batch_processes/{id}:
+    get:
+      summary: Show batch process
+      description: "Show details of a specific batch process \n <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/batch_processes/{id}`</Tip>"
+      operationId: getBatchProcess
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      - in: path
+        name: id
+        schema:
+          type: integer
+        required: true
+        description: Batch process id
+      responses:
+        '200':
+          description: Successfully retrieved batch process
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BatchProcess'
+        '401':
+          description: Unauthenticated or missing bearer token
+        '403':
+          description: Forbidden - invalid user type or insufficient permissions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      tags:
+      - Company
+  /company/batch_processes/progress:
+    get:
+      summary: Show progress
+      description: "Show progress of batch process. \n <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/batch_processes/progress`</Tip>"
+      operationId: getBatchProcessProgress
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      - in: query
+        name: filters[status]
+        schema:
+          oneOf:
+          - type: string
+            enum:
+            - pending
+            - in_progress
+            - completed
+            - failed
+            - stopped
+          - type: array
+            items:
+              type: string
+              enum:
+              - pending
+              - in_progress
+              - completed
+              - failed
+              - stopped
+        description: Filter by status (array or string)
+        required: false
+      responses:
+        '200':
+          description: Successfully retrieved batch process progress
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: integer
+                example:
+                  '32': 0
+                  '31': 0
+                  '30': 0
+        '401':
+          description: Unauthenticated or missing bearer token
+        '403':
+          description: Forbidden - invalid user type or insufficient permissions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      tags:
+      - Company
+  /company/payouts:
+    get:
+      summary: Get all payouts
+      description: "With this endpoint you can list all payouts. \n <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/payouts`</Tip>"
+      operationId: getAdminPayouts
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      - name: q
+        in: query
+        description: Search params. Searches by 'promoter.profile.first_name`, `promoter.profile.last_name`, `promoter.user.email`
+        required: false
+        schema:
+          type: string
+      - name: ids[]
+        in: query
+        description: Array of payout ids to get
+        required: false
+        schema:
+          type: array
+          items:
+            type: integer
+      - name: filters[status]
+        in: query
+        description: Filter by status
+        required: false
+        schema:
+          type: string
+          enum:
+          - pending
+          - completed
+          - failed
+          - processing
+          - cancelled
+      - name: filters[campaign_id]
+        in: query
+        description: Campaign ids. Can be Integer or Array of Integers
+        required: false
+        schema:
+          oneOf:
+          - type: integer
+          - type: array
+            items:
+              type: integer
+      - name: filters[payments_batch_id]
+        in: query
+        description: Payment batches ids. Can be Integer or Array of Integers
+        required: false
+        schema:
+          oneOf:
+          - type: integer
+          - type: array
+            items:
+              type: integer
+      - name: filters[due_period]
+        in: query
+        description: Due period
+        required: false
+        schema:
+          type: string
+          enum:
+          - next
+          - overdue
+          - custom
+      - name: filters[period_start][from]
+        in: query
+        description: period_start starting from date
+        required: false
+        schema:
+          type: string
+          format: date
+      - name: filters[period_start][to]
+        in: query
+        description: period_start end at date
+        required: false
+        schema:
+          type: string
+          format: date
+      - name: filters[period_end][from]
+        in: query
+        description: period_end starting from date
+        required: false
+        schema:
+          type: string
+          format: date
+      - name: filters[period_end][to]
+        in: query
+        description: period_end end at date
+        required: false
+        schema:
+          type: string
+          format: date
+      - name: filters[payout_method]
+        in: query
+        description: Payout method
+        required: false
+        schema:
+          type: string
+          enum:
+          - paypal
+          - bank
+          - wise
+          - crypto
+          - custom
+          - dots
+          - not_set
+      - name: filters[promoter_id]
+        in: query
+        description: Promoter id
+        required: false
+        schema:
+          type: integer
+      - name: filters[only_payable]
+        in: query
+        description: Only payable payouts
+        required: false
+        schema:
+          type: boolean
+      - name: filters[group_ref]
+        in: query
+        description: Group reference
+        required: false
+        schema:
+          type: string
+      - name: filters[fraud_suspicions]
+        in: query
+        description: Fraud suspicions. Multiple values can be passed as an array. Send ['no_suspicion'] to filter promoters with no fraud suspicions
+        required: false
+        schema:
+          type: array
+          items:
+            type: string
+            enum:
+            - same_ip_suspicion
+            - same_promoter_email
+            - ad_source
+            - no_suspicion
+      - name: sorting[amount]
+        in: query
+        description: The sort by amount direction
+        required: false
+        schema:
+          type: string
+          enum:
+          - asc
+          - desc
+      - name: sorting[period_start]
+        in: query
+        description: Period start
+        required: false
+        schema:
+          type: string
+          enum:
+          - asc
+          - desc
+      - name: sorting[period_end]
+        in: query
+        description: Period end
+        required: false
+        schema:
+          type: string
+          enum:
+          - asc
+          - desc
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Payout'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      tags:
+      - Company
+  /company/payouts/stats:
+    get:
+      summary: Get payout stats
+      description: "This endpoint returns statistics about payouts. \n <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/payouts/stats`</Tip>"
+      operationId: getAdminPayoutStats
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      - name: stats_by[paid_period]
+        in: query
+        description: Shows the stats by payout period only for paid payouts
+        required: false
+        schema:
+          type: boolean
+      - name: stats_by[status]
+        in: query
+        description: Shows the stats by status (pending, failed, processing, completed)
+        required: false
+        schema:
+          type: boolean
+      - name: stats_by[payout_method]
+        in: query
+        description: Shows the stats by payout method
+        required: false
+        schema:
+          type: boolean
+      - name: filters[status]
+        in: query
+        description: Filter by status
+        required: false
+        schema:
+          type: string
+          enum:
+          - pending
+          - completed
+          - failed
+          - processing
+          - cancelled
+      - name: filters[campaign_id]
+        in: query
+        description: Campaign ids. Can be Integer or Array of Integers
+        required: false
+        schema:
+          oneOf:
+          - type: integer
+          - type: array
+            items:
+              type: integer
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PayoutStats'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '422':
+          description: Unprocessable Entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      tags:
+      - Company
+  /company/payouts/due_stats:
+    get:
+      summary: Get due payout stats
+      description: "This endpoint returns statistics about due payouts. \n <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/payouts/due_stats`</Tip>"
+      operationId: getAdminPayoutDueStats
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      - name: q
+        in: query
+        description: Search params. Searches by 'promoter.profile.first_name`, `promoter.profile.last_name`, `promoter.user.email`
+        required: false
+        schema:
+          type: string
+      - name: filters[status]
+        in: query
+        description: Filter by status
+        required: false
+        schema:
+          type: string
+          enum:
+          - pending
+          - completed
+          - failed
+          - processing
+          - cancelled
+      - name: filters[campaign_id]
+        in: query
+        description: Campaign ids. Can be Integer or Array of Integers
+        required: false
+        schema:
+          oneOf:
+          - type: integer
+          - type: array
+            items:
+              type: integer
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PayoutDueStats'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      tags:
+      - Company
+  /company/payouts/group_by_promoters:
+    get:
+      summary: Get all payouts grouped by promoters
+      description: "This endpoint returns all payouts but grouped by promoters. \n <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/payouts/group_by_promoters`</Tip>"
+      operationId: getAdminPayoutsGroupedByPromoters
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      - name: q
+        in: query
+        description: Search params. Searches by 'promoter.profile.first_name`, `promoter.profile.last_name`, `promoter.user.email`
+        required: false
+        schema:
+          type: string
+      - name: filters[status]
+        in: query
+        description: Filter by status
+        required: false
+        schema:
+          type: string
+          enum:
+          - pending
+          - completed
+          - failed
+          - processing
+          - cancelled
+      - name: filters[campaign_id]
+        in: query
+        description: Campaign ids. Can be Integer or Array of Integers
+        required: false
+        schema:
+          oneOf:
+          - type: integer
+          - type: array
+            items:
+              type: integer
+      - name: include_payout_method_details
+        in: query
+        description: Set it true to include the payout_method_details
+        required: false
+        schema:
+          type: boolean
+      - name: filters[min_payment]
+        in: query
+        description: Filters payouts by the minimum payment amount possible
+        required: false
+        schema:
+          type: integer
+      - name: filters[invoiceable]
+        in: query
+        description: Filters payouts by invoiceable
+        required: false
+        schema:
+          type: string
+          enum:
+          - 'true'
+          - 'false'
+          - not_set
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PayoutsGroupedByPromoters'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      tags:
+      - Company
+  /company/payouts/create_payments_batch:
+    post:
+      summary: Create payments batch
+      description: "This endpoint creates a new payments batch. \n <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/company/payouts/create_payments_batch`</Tip>"
+      operationId: createPaymentsBatch
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                method:
+                  type: string
+                  enum:
+                  - paypal
+                  - bank
+                  - wise
+                  - crypto
+                  - dots
+                  description: Payment method
+              required:
+              - method
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaymentsBatch'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '422':
+          description: Unprocessable Entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      tags:
+      - Company
+  /company/payouts/mark_as_paid:
+    post:
+      summary: Mark payouts as paid
+      description: "Marks selected payouts as paid \n <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/company/payouts/mark_as_paid`</Tip>"
+      operationId: markPayoutsAsPaid
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                ids:
+                  $ref: '#/components/schemas/Ids'
+              required:
+              - ids
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BatchActionResult'
+        '202':
+          description: Accepted (Processing in background)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BatchActionResult'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '422':
+          description: Unprocessable Entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      tags:
+      - Company
+  /company/payouts/mark_as_unpaid:
+    post:
+      summary: Mark payouts as unpaid
+      description: "Marks selected payouts as unpaid \n <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/company/payouts/mark_as_unpaid`</Tip>"
+      operationId: markPayoutsAsUnpaid
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                ids:
+                  $ref: '#/components/schemas/Ids'
+              required:
+              - ids
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BatchActionResult'
+        '202':
+          description: Accepted (Processing in background)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BatchActionResult'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '422':
+          description: Unprocessable Entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      tags:
+      - Company
+  /company/payouts/destroy:
+    delete:
+      summary: Delete payouts
+      description: "Deletes selected payouts \n <Tip>**HTTP Request** <br/>`DELETE https://api.firstpromoter.com/api/v2/company/payouts/destroy`</Tip>"
+      operationId: deletePayouts
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                ids:
+                  $ref: '#/components/schemas/Ids'
+              required:
+              - ids
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BatchActionResult'
+        '202':
+          description: Accepted (Processing in background)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BatchActionResult'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '422':
+          description: Unprocessable Entity
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      tags:
+      - Company
+components:
+  schemas:
+    BatchProcess:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 8
+        status:
+          type: string
+          enum:
+          - pending
+          - in_progress
+          - completed
+          - failed
+          - stopped
+          example: stopped
+        total:
+          type: integer
+          example: 5
+        selected_total:
+          type: integer
+          example: 5
+        processed_count:
+          type: integer
+          example: 0
+        failed_count:
+          type: integer
+          example: 0
+        action_label:
+          type: string
+          example: referral/delete
+        created_at:
+          type: string
+          format: date-time
+          example: '2025-03-26T15:15:34.908Z'
+        updated_at:
+          type: string
+          format: date-time
+          example: '2025-03-26T15:15:34.908Z'
+        meta:
+          type: object
+          nullable: true
+        progress:
+          type: integer
+          example: 0
+        processing_errors:
+          type: array
+          items:
+            type: string
+          example: []
+    BatchActionResult:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            id:
+              type: integer
+              description: ID of the batch action
+            status:
+              type: string
+              enum:
+              - pending
+              - completed
+              - failed
+              description: Status of the batch action
+            total:
+              type: integer
+              description: Total number of items
+            selected_total:
+              type: integer
+              description: Number of selected items
+            processed_count:
+              type: integer
+              description: Number of processed items
+            failed_count:
+              type: integer
+              description: Number of failed items
+            action_label:
+              type: string
+              description: Label of the action
+            created_at:
+              type: string
+              format: date-time
+              description: When the action was created
+            updated_at:
+              type: string
+              format: date-time
+              description: When the action was last updated
+            meta:
+              type: object
+              description: Meta information about the action
+            progress:
+              type: integer
+              description: Progress of the action (0-100)
+            processing_errors:
+              type: array
+              items:
+                type: object
+              description: List of processing errors
+        meta:
+          type: object
+          properties:
+            total:
+              type: number
+              description: Total amount
+            promoters_count:
+              type: integer
+              description: Count of promoters
+            total_incl_tax:
+              type: number
+              description: Total amount including tax
+            all_promoters_count:
+              type: integer
+              description: Count of all promoters
+    PayoutDueStats:
+      type: object
+      properties:
+        meta:
+          type: object
+          properties:
+            net_payout_days:
+              type: integer
+              description: Number of days for net payout
+            payout_cycle:
+              type: string
+              description: Payout cycle (e.g., monthly)
+            min_payment:
+              type: integer
+              description: Minimum payment amount
+            min_paying_customers:
+              type: integer
+              description: Minimum number of paying customers
+            terms_description:
+              type: string
+              description: Description of payment terms
+            selected_payout_methods:
+              type: array
+              items:
+                type: string
+              description: List of selected payout methods
+            payout_method_options:
+              type: object
+              description: Options for payout methods
+            managed_payouts:
+              type: boolean
+              description: Whether payouts are managed by us (auto-payouts)
+        data:
+          type: object
+          properties:
+            next:
+              type: object
+              properties:
+                promoters_count:
+                  type: integer
+                  description: Count of promoters
+                amounts:
+                  type: object
+                  additionalProperties:
+                    type: number
+                  description: Amounts by currency or unit
+                total_incl_tax:
+                  type: number
+                  description: Total amount including tax
+                due_date:
+                  type: string
+                  format: date
+                  description: Due date for the next payout
+                period_end:
+                  type: string
+                  format: date
+                  description: End date of the period
+            overdue:
+              type: object
+              properties:
+                promoters_count:
+                  type: integer
+                  description: Count of promoters
+                amounts:
+                  type: object
+                  additionalProperties:
+                    type: number
+                  description: Amounts by currency or unit
+                total_incl_tax:
+                  type: number
+                  description: Total amount including tax
+                due_date:
+                  type: string
+                  format: date
+                  description: Due date for overdue payout
+                period_end:
+                  type: string
+                  format: date
+                  description: End date of the period
+            custom:
+              type: object
+              properties:
+                promoters_count:
+                  type: integer
+                  description: Count of promoters
+                amounts:
+                  type: object
+                  additionalProperties:
+                    type: number
+                  description: Amounts by currency or unit
+                total_incl_tax:
+                  type: number
+                  description: Total amount including tax
+    PaymentsBatch:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            id:
+              type: integer
+              description: ID of the payments batch
+            status:
+              type: string
+              enum:
+              - awaiting_confirmation
+              - pending
+              - processing
+              - completed
+              - failed
+              description: Status of the payments batch
+            ext_reference:
+              type: string
+              description: External reference
+            ext_id:
+              type: string
+              description: External ID
+            scheduled_at:
+              type: string
+              format: date-time
+              description: When the batch is scheduled
+            processing_started_at:
+              type: string
+              format: date-time
+              description: When processing started
+            completed_at:
+              type: string
+              format: date-time
+              description: When the batch was completed
+            is_payable:
+              type: boolean
+              description: Whether the batch is payable
+            is_retriable:
+              type: boolean
+              description: Whether the batch can be retried
+            is_payment_otp_required:
+              type: boolean
+              description: Whether OTP is required for payment
+            total:
+              type: number
+              description: Total amount
+            promoters_count:
+              type: integer
+              description: Count of promoters
+            error:
+              type: string
+              description: Error message if the batch failed
+        meta:
+          type: object
+          properties:
+            failed:
+              type: array
+              items:
+                type: object
+              description: List of failed items
+    Ids:
+      type: array
+      items:
+        type: integer
+      description: Array of Payout IDs
+    Payout:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Unique identifier for the payout
+        status:
+          type: string
+          enum:
+          - pending
+          - completed
+          - failed
+          - processing
+          - cancelled
+          description: Status of the payout
+        amount:
+          type: number
+          format: float
+          description: Amount of the payout
+        payments_batch_id:
+          type: integer
+          description: ID of the payments batch
+        tax_rate:
+          type: number
+          format: float
+          description: Tax rate applied to the payout
+        unit:
+          type: string
+          description: Unit of the payout (e.g., cash)
+        period_start:
+          type: string
+          format: date-time
+          description: Start date of the period
+        period_end:
+          type: string
+          format: date-time
+          description: End date of the period
+        paid_at:
+          type: string
+          format: date-time
+          description: Date when the payout was paid
+        processing_started_at:
+          type: string
+          format: date-time
+          description: Date when the payout processing started
+        failed_at:
+          type: string
+          format: date-time
+          description: Date when the payout failed
+        error:
+          type: string
+          description: Error message if the payout failed
+        total_incl_tax:
+          type: number
+          format: float
+          description: Total amount including tax
+        created_at:
+          type: string
+          format: date-time
+          description: Date when the payout was created
+        payout_method:
+          type: object
+          properties:
+            id:
+              type: integer
+              description: ID of the payout method
+            method:
+              type: string
+              description: Payout method name
+            date_added:
+              type: string
+              format: date-time
+              description: Date when the payout method was added
+            is_disabled:
+              type: boolean
+              description: Whether the payout method is disabled
+            meta:
+              type: object
+              description: Additional meta information
+            is_selected:
+              type: boolean
+              description: Whether the payout method is selected
+            details:
+              type: object
+              description: Details about the payout method
+            managed_payouts:
+              type: boolean
+              description: Whether payouts are managed by us (auto-payouts)
+        promoter:
+          type: object
+          properties:
+            id:
+              type: integer
+              description: ID of the promoter
+            email:
+              type: string
+              description: Email of the promoter
+            name:
+              type: string
+              description: Name of the promoter
+        campaign:
+          type: object
+          properties:
+            id:
+              type: integer
+              description: ID of the campaign
+            name:
+              type: string
+              description: Name of the campaign
+            color:
+              type: string
+              description: Color of the campaign
+    PayoutsGroupedByPromoters:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            type: object
+            properties:
+              promoter:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    description: ID of the promoter
+                  email:
+                    type: string
+                    description: Email of the promoter
+                  name:
+                    type: string
+                    description: Name of the promoter
+                  invoice_details_status:
+                    type: string
+                    description: Status of invoice details
+                  fraud_suspicions:
+                    type: array
+                    items:
+                      type: string
+                    description: List of fraud suspicions
+                  profile:
+                    type: object
+                    properties:
+                      invoice_details_validation_errors:
+                        type: object
+                        description: Validation errors for invoice details
+              payout_method:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    description: ID of the payout method
+                  method:
+                    type: string
+                    description: Payout method name
+                  date_added:
+                    type: string
+                    format: date-time
+                    description: Date when the payout method was added
+                  is_disabled:
+                    type: boolean
+                    description: Whether the payout method is disabled
+                  meta:
+                    type: object
+                    description: Additional meta information
+                  is_selected:
+                    type: boolean
+                    description: Whether the payout method is selected
+                  details:
+                    type: object
+                    description: Details about the payout method
+                  managed_payouts:
+                    type: boolean
+                    description: Whether payouts are managed by us (auto-payouts)
+              payouts:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Payout'
+              is_amount_payable:
+                type: boolean
+                description: Whether the amount is payable
+              payout_ids:
+                type: array
+                items:
+                  type: integer
+                description: List of payout IDs
+              amount:
+                type: number
+                description: Total amount
+              total_incl_tax:
+                type: number
+                description: Total amount including tax
+        meta:
+          type: object
+          properties:
+            total:
+              type: number
+              description: Total amount
+            promoters_count:
+              type: integer
+              description: Count of promoters
+            total_incl_tax:
+              type: number
+              description: Total amount including tax
+            due_date:
+              type: string
+              format: date
+              description: Due date
+            period_end:
+              type: string
+              format: date
+              description: End date of the period
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+          example: Invalid user type
+        code:
+          type: string
+          example: forbidden
+    PayoutStats:
+      type: object
+      properties:
+        meta:
+          type: object
+          properties:
+            net_payout_days:
+              type: integer
+              description: Number of days for net payout
+            payout_cycle:
+              type: string
+              description: Payout cycle (e.g., monthly)
+            min_payment:
+              type: integer
+              description: Minimum payment amount
+            min_paying_customers:
+              type: integer
+              description: Minimum number of paying customers
+            terms_description:
+              type: string
+              description: Description of payment terms
+            selected_payout_methods:
+              type: array
+              items:
+                type: string
+              description: List of selected payout methods
+            payout_method_options:
+              type: object
+              description: Options for payout methods
+            managed_payouts:
+              type: boolean
+              description: Whether payouts are managed by us (auto-payouts)
+        data:
+          type: object
+          properties:
+            by_paid_period:
+              type: array
+              items:
+                type: object
+                properties:
+                  period_start:
+                    type: string
+                    format: date-time
+                    description: Start date of the period
+                  period_end:
+                    type: string
+                    format: date-time
+                    description: End date of the period
+                  promoters_count:
+                    type: integer
+                    description: Count of promoters
+                  amounts:
+                    type: object
+                    additionalProperties:
+                      type: number
+                    description: Amounts by currency or unit
+                  total_incl_tax:
+                    type: number
+                    description: Total amount including tax
+            by_status:
+              type: object
+              additionalProperties:
+                type: object
+                properties:
+                  amounts:
+                    type: object
+                    additionalProperties:
+                      type: number
+                  total_incl_tax:
+                    type: number
+                  promoters_count:
+                    type: integer
+            by_payout_method:
+              type: object
+              additionalProperties:
+                type: object
+                properties:
+                  amounts:
+                    type: object
+                    additionalProperties:
+                      type: number
+                  total_incl_tax:
+                    type: number
+                  promoters_count:
+                    type: integer
+  parameters:
+    AccountId:
+      name: Account-ID
+      in: header
+      required: true
+      description: Account ID. You can find your Account ID on Your FirstPromoter Dashboard. Navigate to Settings → Integrations
+      schema:
+        type: string
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: API key passed as Bearer token

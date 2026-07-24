@@ -1,0 +1,479 @@
+openapi: 3.0.1
+info:
+  title: FirstPromoter Admin Commissions Emails API
+  version: '2.0'
+  description: REST API for managing affiliate programs, promoters, campaigns, referrals, rewards, and payouts in FirstPromoter. Supports pagination, filtering, and full CRUD operations across all affiliate program resources.
+  contact:
+    url: https://docs.firstpromoter.com
+  license:
+    name: Proprietary
+    url: https://firstpromoter.com/terms
+servers:
+- url: https://api.firstpromoter.com/api/v2
+  description: Production server
+security:
+- BearerAuth: []
+tags:
+- name: Emails
+paths:
+  /company/emails:
+    get:
+      summary: Get available emails
+      tags:
+      - Emails
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      - name: q
+        in: query
+        description: Search params. Searches by name, subject.
+        required: false
+        schema:
+          type: string
+      - name: filters[trigger_enabled]
+        in: query
+        description: Trigger state (Enabled / Disabled)
+        required: false
+        schema:
+          type: string
+          enum:
+          - 'yes'
+          - 'no'
+      - name: filters[trigger_on]
+        in: query
+        description: Trigger on
+        required: false
+        schema:
+          type: string
+          enum:
+          - not_set
+          - lead_subscribed
+          - lead_becomes_referral
+          - promoter_signs_up
+          - promoter_pending
+          - promoter_accepted
+          - promoter_rejected
+          - promoter_blocked
+          - promotion_reached_target
+          - reward_created
+          - reward_approved
+          - reward_denied
+          - fulfilment_pending
+          - fulfilment_completed
+          - lead_signup
+          - promoter_invited
+          - fulfilment_due
+          - lead_pending
+          - fulfilment_processing
+          - new_contract_document
+          - invalid_invoicing_details
+          - lead_cancelled
+          - count_reached
+          - inactivity
+          - broadcast
+          - recurring
+      - name: filters[sent_count][from]
+        in: query
+        description: sent_count from
+        required: false
+        schema:
+          type: integer
+      - name: filters[sent_count][to]
+        in: query
+        description: sent_count to
+        required: false
+        schema:
+          type: integer
+      - name: filters[campaign_id]
+        in: query
+        description: Campaign ids. Can be Integer or Array of Integers
+        required: false
+        schema:
+          oneOf:
+          - type: integer
+          - type: array
+            items:
+              type: integer
+      - name: sorting[sent_count]
+        in: query
+        description: The sort by sent_count direction
+        required: false
+        schema:
+          type: string
+          enum:
+          - asc
+          - desc
+      - name: sorting[subject]
+        in: query
+        description: The sort by subject direction
+        required: false
+        schema:
+          type: string
+          enum:
+          - asc
+          - desc
+      responses:
+        '200':
+          description: Success
+        '401':
+          description: Unauthorized
+    post:
+      summary: Create email
+      tags:
+      - Emails
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - name
+              - subject
+              - content
+              - allowed_campaign_ids
+              - trigger
+              properties:
+                name:
+                  type: string
+                  description: Name of the email
+                subject:
+                  type: string
+                  description: Subject of the email
+                content:
+                  type: string
+                  description: Content of the email
+                allowed_campaign_ids:
+                  type: array
+                  description: Array of allowed campaign ids
+                trigger:
+                  type: object
+                  required:
+                  - enabled
+                  - trigger_on
+                  - settings
+                  properties:
+                    enabled:
+                      type: boolean
+                      description: Flag to enable trigger
+                    trigger_on:
+                      type: string
+                      enum:
+                      - promoter_accepted
+                      - promoter_rejected
+                      - reward_created
+                      - fulfilment_completed
+                      - count_reached
+                      - lead_signup
+                      - inactivity
+                      - broadcast
+                      - recurring
+                    settings:
+                      type: object
+                      properties:
+                        delay_interval:
+                          type: string
+                          enum:
+                          - second
+                          - minute
+                          - hour
+                          - day
+                          description: Delay interval is required when trigger_on is 'promoter_accepted'
+                        delay_value:
+                          type: integer
+                          description: Delay value is required when trigger_on is 'promoter_accepted'
+                        count:
+                          type: integer
+                          description: Count is required when trigger_on is 'count_reached'
+                        metric:
+                          type: string
+                          enum:
+                          - clicks
+                          - referrals
+                          - customers
+                          - cancellations
+                          description: Metric is required when trigger_on is 'count_reached' or 'inactivity'
+                        period_in_days:
+                          type: integer
+                          description: Period in days is required when trigger_on is 'inactivity'
+                        frequency:
+                          type: string
+                          enum:
+                          - weekly
+                          - monthly
+                          description: Required for recurring trigger_on
+                        day:
+                          type: integer
+                          description: Required for recurring trigger_on. When frequency == weekly -> From 0(Sunday) to 6(Saturday). When frequency == montlhy -> From 1 to 31.
+                        hour:
+                          type: integer
+                          minimum: 0
+                          maximum: 23
+                          description: Required for recurring trigger_on
+                        minute:
+                          type: integer
+                          minimum: 0
+                          maximum: 59
+                          description: Required for recurring trigger_on
+      responses:
+        '200':
+          description: Success
+        '401':
+          description: Unauthorized
+  /company/emails/{id}:
+    get:
+      summary: Get email by id
+      tags:
+      - Emails
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      - name: id
+        in: path
+        required: true
+        description: The email id
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+        '401':
+          description: Unauthorized
+    put:
+      summary: Update email
+      tags:
+      - Emails
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      - name: id
+        in: path
+        required: true
+        description: The email id
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmailRequest'
+      responses:
+        '200':
+          description: Success
+        '401':
+          description: Unauthorized
+    delete:
+      summary: Delete email
+      tags:
+      - Emails
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      - name: id
+        in: path
+        required: true
+        description: The email id
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+        '401':
+          description: Unauthorized
+  /company/emails/{id}/copy:
+    post:
+      summary: Copy email
+      tags:
+      - Emails
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      - name: id
+        in: path
+        required: true
+        description: The email id
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+        '401':
+          description: Unauthorized
+  /company/emails/{id}/send_now:
+    post:
+      summary: Send email
+      tags:
+      - Emails
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      - name: id
+        in: path
+        required: true
+        description: The email id
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+        '401':
+          description: Unauthorized
+  /company/emails/{id}/send_test:
+    post:
+      summary: Send test email
+      tags:
+      - Emails
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      - name: id
+        in: path
+        required: true
+        description: The email id
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success
+        '401':
+          description: Unauthorized
+  /company/emails/template:
+    get:
+      summary: Get the html of the company email theme
+      tags:
+      - Emails
+      responses:
+        '200':
+          description: Success
+  /company/emails/custom_template:
+    patch:
+      summary: Updates the html of the company email theme
+      tags:
+      - Emails
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - html
+              properties:
+                html:
+                  type: string
+                  description: The new html content for the company email theme
+      responses:
+        '200':
+          description: Success
+        '401':
+          description: Unauthorized
+  /company/emails/test_custom_template:
+    post:
+      summary: Sends a test email to current user with the custom template
+      tags:
+      - Emails
+      responses:
+        '200':
+          description: Success
+        '401':
+          description: Unauthorized
+components:
+  schemas:
+    EmailRequest:
+      type: object
+      required:
+      - name
+      - subject
+      - content
+      - allowed_campaign_ids
+      - trigger
+      properties:
+        name:
+          type: string
+          description: Name of the email
+        subject:
+          type: string
+          description: Subject of the email
+        content:
+          type: string
+          description: Content of the email
+        allowed_campaign_ids:
+          type: array
+          description: Array of allowed campaign ids
+        trigger:
+          type: object
+          required:
+          - enabled
+          - trigger_on
+          - settings
+          properties:
+            enabled:
+              type: boolean
+              description: Flag to enable trigger
+            trigger_on:
+              type: string
+              enum:
+              - promoter_accepted
+              - promoter_rejected
+              - reward_created
+              - fulfilment_completed
+              - count_reached
+              - lead_signup
+              - inactivity
+              - broadcast
+              - recurring
+              description: Trigger on
+            settings:
+              type: object
+              properties:
+                delay_interval:
+                  type: string
+                  enum:
+                  - second
+                  - minute
+                  - hour
+                  - day
+                  description: Delay interval is required when trigger_on is 'promoter_accepted'
+                delay_value:
+                  type: integer
+                  description: Delay value is required when trigger_on is 'promoter_accepted'
+                count:
+                  type: integer
+                  description: Count is required when trigger_on is 'count_reached'
+                metric:
+                  type: string
+                  enum:
+                  - clicks
+                  - referrals
+                  - customers
+                  - cancellations
+                  description: Metric is required when trigger_on is 'count_reached' or 'inactivity'
+                period_in_days:
+                  type: integer
+                  description: Period in days is required when trigger_on is 'inactivity'
+                frequency:
+                  type: string
+                  enum:
+                  - weekly
+                  - monthly
+                  description: Required for recurring trigger_on
+                day:
+                  type: integer
+                  description: Required for recurring trigger_on. When frequency == weekly -> From 0(Sunday) to 6(Saturday). When frequency == montlhy -> From 1 to 31.
+                hour:
+                  type: integer
+                  minimum: 0
+                  maximum: 23
+                  description: Required for recurring trigger_on
+                minute:
+                  type: integer
+                  minimum: 0
+                  maximum: 59
+                  description: Required for recurring trigger_on
+  parameters:
+    AccountId:
+      name: Account-ID
+      in: header
+      required: true
+      description: Account ID. You can find your Account ID on Your FirstPromoter Dashboard. Navigate to Settings → Integrations
+      schema:
+        type: string
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: API key passed as Bearer token

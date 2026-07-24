@@ -1,0 +1,270 @@
+openapi: 3.0.1
+info:
+  title: FirstPromoter Admin Commissions Promo Codes API
+  version: '2.0'
+  description: REST API for managing affiliate programs, promoters, campaigns, referrals, rewards, and payouts in FirstPromoter. Supports pagination, filtering, and full CRUD operations across all affiliate program resources.
+  contact:
+    url: https://docs.firstpromoter.com
+  license:
+    name: Proprietary
+    url: https://firstpromoter.com/terms
+servers:
+- url: https://api.firstpromoter.com/api/v2
+  description: Production server
+security:
+- BearerAuth: []
+tags:
+- name: Promo Codes
+paths:
+  /company/promo_codes:
+    get:
+      summary: Get promo codes
+      operationId: getPromoCodes
+      description: "With this endpoint you can list all promo codes. \n <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/promo_codes`</Tip>"
+      tags:
+      - Promo Codes
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      - name: promoter_campaign_id
+        in: query
+        description: Filters promo codes by promoter campaign id
+        required: false
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: List of promo codes
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PromoCode'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    post:
+      summary: Create promo code (Stripe Only)
+      operationId: createPromoCode
+      description: "With this endpoint you can create a new promo code. \n <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/company/promo_codes`</Tip>"
+      tags:
+      - Promo Codes
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - code
+              - reward_id
+              - promoter_campaign_id
+              properties:
+                code:
+                  type: string
+                  description: Code of the promo code
+                description:
+                  type: string
+                  description: Description of the promo code
+                reward_id:
+                  type: integer
+                  description: ID of the reward
+                promoter_campaign_id:
+                  type: integer
+                  description: ID of the promoter campaign
+                metadata:
+                  type: object
+                  description: Metadata of the promo code
+                details:
+                  type: object
+                  description: Details of the promo code
+      responses:
+        '200':
+          description: Created promo code
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PromoCode'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /company/promo_codes/{id}:
+    get:
+      summary: Get promo code by id
+      operationId: getPromoCode
+      tags:
+      - Promo Codes
+      description: "With this endpoint you can get the details of a specific promo code. \n <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/promo_codes/{id}`</Tip>"
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      - name: id
+        in: path
+        description: ID of the promo code
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Promo code details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PromoCode'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    put:
+      summary: Update promo code by id
+      description: "Update promo code by id. Can not be updated if archived and ext_id present. \n<Tip>**HTTP Request** <br/>`PUT https://api.firstpromoter.com/api/v2/company/promo_codes/{id}`</Tip>"
+      operationId: updatePromoCode
+      tags:
+      - Promo Codes
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      - name: id
+        in: path
+        description: ID of the promo code
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                code:
+                  type: string
+                  description: Code of the promo code
+                description:
+                  type: string
+                  description: Description of the promo code
+                promoter_campaign_id:
+                  type: integer
+                  description: ID of the promoter campaign
+                metadata:
+                  type: object
+                  description: Metadata of the promo code
+                details:
+                  type: object
+                  description: Details of the promo code
+      responses:
+        '200':
+          description: Updated promo code
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PromoCode'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    delete:
+      summary: Archive promo code by id
+      description: "Archive promo code by id. \n<Tip>**HTTP Request** <br/>`DELETE https://api.firstpromoter.com/api/v2/company/promo_codes/{id}`</Tip>"
+      operationId: archivePromoCode
+      tags:
+      - Promo Codes
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      - name: id
+        in: path
+        description: ID of the promo code
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Promo code archived successfully
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  schemas:
+    PromoCode:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: ID of the promo code entry
+        code:
+          type: string
+          description: Code of the promo code
+        reward:
+          type: object
+          properties:
+            id:
+              type: integer
+              description: ID of the reward
+            name:
+              type: string
+              description: Name of the reward
+          description: Reward
+        ext_id:
+          type: string
+        description:
+          type: string
+          description: Description of the promo code
+        company_id:
+          type: integer
+        promoter_campaign_id:
+          type: integer
+          description: ID of the promoter campaign
+        metadata:
+          type: object
+          description: Metadata of the promo code
+        details:
+          type: object
+          description: Details of the promo code
+        archived_at:
+          type: string
+          format: date-time
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+          example: Invalid user type
+        code:
+          type: string
+          example: forbidden
+  parameters:
+    AccountId:
+      name: Account-ID
+      in: header
+      required: true
+      description: Account ID. You can find your Account ID on Your FirstPromoter Dashboard. Navigate to Settings → Integrations
+      schema:
+        type: string
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: API key passed as Bearer token

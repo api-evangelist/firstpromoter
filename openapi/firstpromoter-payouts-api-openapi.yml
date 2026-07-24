@@ -1,0 +1,103 @@
+openapi: 3.0.1
+info:
+  title: FirstPromoter Admin Commissions Payouts API
+  version: '2.0'
+  description: REST API for managing affiliate programs, promoters, campaigns, referrals, rewards, and payouts in FirstPromoter. Supports pagination, filtering, and full CRUD operations across all affiliate program resources.
+  contact:
+    url: https://docs.firstpromoter.com
+  license:
+    name: Proprietary
+    url: https://firstpromoter.com/terms
+servers:
+- url: https://api.firstpromoter.com/api/v2
+  description: Production server
+security:
+- BearerAuth: []
+tags:
+- name: Payouts
+paths:
+  /company/commissions/generate_payouts:
+    post:
+      summary: Generate payouts for commissions
+      description: "With this endpoint you can generate payouts for commissions. \n <Note>If there are more than __5__ ids on the __ids__ param/field, the action will be processed asynchronously. The response for the batch status will most likely be `in_progress`. The available statuses are `pending`, `in_progress`, `completed`, `failed` and `stopped`</Note> \n <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/company/commissions/generate_payouts`</Tip>"
+      tags:
+      - Payouts
+      operationId: generatePayouts
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                ids:
+                  type: array
+                  items:
+                    type: integer
+                  description: Commission IDs to generate payouts for. If there are more than __5__ ids on the __ids__ param/field, the action will be processed asynchronously. The response for the batch status will most likely be `in_progress`. The available statuses are `pending`, `in_progress`, `completed`, `failed` and `stopped`.
+              required:
+              - ids
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    description: Operation ID
+                  status:
+                    type: string
+                    description: Status of the operation
+                  total:
+                    type: integer
+                    description: Total number of commissions
+                  selected_total:
+                    type: integer
+                    description: Number of selected commissions
+                  processed_count:
+                    type: integer
+                    description: Number of processed commissions
+                  failed_count:
+                    type: integer
+                    description: Number of failed operations
+                  action_label:
+                    type: string
+                    description: Action identifier
+                  created_at:
+                    type: string
+                    format: date-time
+                    description: Creation timestamp
+                  updated_at:
+                    type: string
+                    format: date-time
+                    description: Last update timestamp
+                  meta:
+                    type: object
+                    description: Additional metadata
+                  progress:
+                    type: number
+                    description: Progress indicator (0-1)
+                  processing_errors:
+                    type: array
+                    description: List of processing errors
+        '401':
+          description: Unauthorized - Missing or invalid bearer token
+components:
+  parameters:
+    AccountId:
+      name: Account-ID
+      in: header
+      required: true
+      description: Account ID. You can find your Account ID on Your FirstPromoter Dashboard. Navigate to Settings → Integrations
+      schema:
+        type: string
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: API key passed as Bearer token
