@@ -3,7 +3,20 @@ name: FirstPromoter
 description: Affiliate and referral tracking platform for SaaS companies with a REST
   API for managing promoters, tracking referrals, and handling reward distribution.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: paid
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Paid · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/firstpromoter.png
 url: https://raw.githubusercontent.com/api-evangelist/firstpromoter/refs/heads/main/apis.yml
 created: '2026-06-13'
 modified: '2026-06-13'
@@ -16,38 +29,294 @@ tags:
   - Reward Distribution
   - Promoters
 apis:
-  - aid: firstpromoter:firstpromoter-admin-api
-    name: FirstPromoter Admin API
-    description: REST API for managing affiliate programs, promoters, campaigns, referrals,
-      rewards, and payouts in FirstPromoter. Supports pagination, filtering, and full
-      CRUD operations across all affiliate program resources.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
-    baseURL: https://api.firstpromoter.com/api/v2
-    tags:
-      - Affiliates
-      - Promoters
-      - Campaigns
-      - Referrals
-      - Rewards
-      - Payouts
-    properties:
-      - type: Documentation
-        url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
-      - type: OpenAPI
-        url: openapi/firstpromoter-firstpromoter-admin-api-openapi.yml
-      - type: JSONSchema
-        url: json-schema/firstpromoter-promoter-schema.json
-      - type: JSONSchema
-        url: json-schema/firstpromoter-referral-schema.json
-      - type: JSONSchema
-        url: json-schema/firstpromoter-commission-schema.json
-      - type: Examples
-        url: examples/firstpromoter-create-promoter-example.json
-      - type: Examples
-        url: examples/firstpromoter-track-sale-example.json
-      - type: Examples
-        url: examples/firstpromoter-webhook-event-example.json
+- aid: firstpromoter:firstpromoter-commissions-api
+  name: FirstPromoter Commissions API
+  description: The Commissions API from FirstPromoter — 8 operation(s) for commissions.
+  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
+  baseURL: https://api.firstpromoter.com/api/v2
+  tags:
+  - Commissions
+  properties:
+  - type: OpenAPI
+    url: openapi/firstpromoter-commissions-api-openapi.yml
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
+  - type: JSONSchema
+    url: json-schema/firstpromoter-promoter-schema.json
+  - type: JSONSchema
+    url: json-schema/firstpromoter-referral-schema.json
+  - type: JSONSchema
+    url: json-schema/firstpromoter-commission-schema.json
+  - type: Examples
+    url: examples/firstpromoter-create-promoter-example.json
+  - type: Examples
+    url: examples/firstpromoter-track-sale-example.json
+  - type: Examples
+    url: examples/firstpromoter-webhook-event-example.json
+- aid: firstpromoter:firstpromoter-company-api
+  name: FirstPromoter Company API
+  description: The Company API from FirstPromoter — 11 operation(s) for company.
+  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
+  baseURL: https://api.firstpromoter.com/api/v2
+  tags:
+  - Company
+  properties:
+  - type: OpenAPI
+    url: openapi/firstpromoter-company-api-openapi.yml
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
+  - type: JSONSchema
+    url: json-schema/firstpromoter-promoter-schema.json
+  - type: JSONSchema
+    url: json-schema/firstpromoter-referral-schema.json
+  - type: JSONSchema
+    url: json-schema/firstpromoter-commission-schema.json
+  - type: Examples
+    url: examples/firstpromoter-create-promoter-example.json
+  - type: Examples
+    url: examples/firstpromoter-track-sale-example.json
+  - type: Examples
+    url: examples/firstpromoter-webhook-event-example.json
+- aid: firstpromoter:firstpromoter-emails-api
+  name: FirstPromoter Emails API
+  description: The Emails API from FirstPromoter — 8 operation(s) for emails.
+  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
+  baseURL: https://api.firstpromoter.com/api/v2
+  tags:
+  - Emails
+  properties:
+  - type: OpenAPI
+    url: openapi/firstpromoter-emails-api-openapi.yml
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
+  - type: JSONSchema
+    url: json-schema/firstpromoter-promoter-schema.json
+  - type: JSONSchema
+    url: json-schema/firstpromoter-referral-schema.json
+  - type: JSONSchema
+    url: json-schema/firstpromoter-commission-schema.json
+  - type: Examples
+    url: examples/firstpromoter-create-promoter-example.json
+  - type: Examples
+    url: examples/firstpromoter-track-sale-example.json
+  - type: Examples
+    url: examples/firstpromoter-webhook-event-example.json
+- aid: firstpromoter:firstpromoter-payouts-api
+  name: FirstPromoter Payouts API
+  description: The Payouts API from FirstPromoter — 1 operation(s) for payouts.
+  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
+  baseURL: https://api.firstpromoter.com/api/v2
+  tags:
+  - Payouts
+  properties:
+  - type: OpenAPI
+    url: openapi/firstpromoter-payouts-api-openapi.yml
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
+  - type: JSONSchema
+    url: json-schema/firstpromoter-promoter-schema.json
+  - type: JSONSchema
+    url: json-schema/firstpromoter-referral-schema.json
+  - type: JSONSchema
+    url: json-schema/firstpromoter-commission-schema.json
+  - type: Examples
+    url: examples/firstpromoter-create-promoter-example.json
+  - type: Examples
+    url: examples/firstpromoter-track-sale-example.json
+  - type: Examples
+    url: examples/firstpromoter-webhook-event-example.json
+- aid: firstpromoter:firstpromoter-promo-codes-api
+  name: FirstPromoter Promo Codes API
+  description: The Promo Codes API from FirstPromoter — 2 operation(s) for promo codes.
+  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
+  baseURL: https://api.firstpromoter.com/api/v2
+  tags:
+  - Promo Codes
+  properties:
+  - type: OpenAPI
+    url: openapi/firstpromoter-promo-codes-api-openapi.yml
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
+  - type: JSONSchema
+    url: json-schema/firstpromoter-promoter-schema.json
+  - type: JSONSchema
+    url: json-schema/firstpromoter-referral-schema.json
+  - type: JSONSchema
+    url: json-schema/firstpromoter-commission-schema.json
+  - type: Examples
+    url: examples/firstpromoter-create-promoter-example.json
+  - type: Examples
+    url: examples/firstpromoter-track-sale-example.json
+  - type: Examples
+    url: examples/firstpromoter-webhook-event-example.json
+- aid: firstpromoter:firstpromoter-promoter-campaigns-api
+  name: FirstPromoter Promoter Campaigns API
+  description: The Promoter Campaigns API from FirstPromoter — 5 operation(s) for promoter campaigns.
+  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
+  baseURL: https://api.firstpromoter.com/api/v2
+  tags:
+  - Promoter Campaigns
+  properties:
+  - type: OpenAPI
+    url: openapi/firstpromoter-promoter-campaigns-api-openapi.yml
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
+  - type: JSONSchema
+    url: json-schema/firstpromoter-promoter-schema.json
+  - type: JSONSchema
+    url: json-schema/firstpromoter-referral-schema.json
+  - type: JSONSchema
+    url: json-schema/firstpromoter-commission-schema.json
+  - type: Examples
+    url: examples/firstpromoter-create-promoter-example.json
+  - type: Examples
+    url: examples/firstpromoter-track-sale-example.json
+  - type: Examples
+    url: examples/firstpromoter-webhook-event-example.json
+- aid: firstpromoter:firstpromoter-promoters-api
+  name: FirstPromoter Promoters API
+  description: The Promoters API from FirstPromoter — 11 operation(s) for promoters.
+  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
+  baseURL: https://api.firstpromoter.com/api/v2
+  tags:
+  - Promoters
+  properties:
+  - type: OpenAPI
+    url: openapi/firstpromoter-promoters-api-openapi.yml
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
+  - type: JSONSchema
+    url: json-schema/firstpromoter-promoter-schema.json
+  - type: JSONSchema
+    url: json-schema/firstpromoter-referral-schema.json
+  - type: JSONSchema
+    url: json-schema/firstpromoter-commission-schema.json
+  - type: Examples
+    url: examples/firstpromoter-create-promoter-example.json
+  - type: Examples
+    url: examples/firstpromoter-track-sale-example.json
+  - type: Examples
+    url: examples/firstpromoter-webhook-event-example.json
+- aid: firstpromoter:firstpromoter-referrals-api
+  name: FirstPromoter Referrals API
+  description: The Referrals API from FirstPromoter — 7 operation(s) for referrals.
+  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
+  baseURL: https://api.firstpromoter.com/api/v2
+  tags:
+  - Referrals
+  properties:
+  - type: OpenAPI
+    url: openapi/firstpromoter-referrals-api-openapi.yml
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
+  - type: JSONSchema
+    url: json-schema/firstpromoter-promoter-schema.json
+  - type: JSONSchema
+    url: json-schema/firstpromoter-referral-schema.json
+  - type: JSONSchema
+    url: json-schema/firstpromoter-commission-schema.json
+  - type: Examples
+    url: examples/firstpromoter-create-promoter-example.json
+  - type: Examples
+    url: examples/firstpromoter-track-sale-example.json
+  - type: Examples
+    url: examples/firstpromoter-webhook-event-example.json
+- aid: firstpromoter:firstpromoter-reports-api
+  name: FirstPromoter Reports API
+  description: The Reports API from FirstPromoter — 6 operation(s) for reports.
+  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
+  baseURL: https://api.firstpromoter.com/api/v2
+  tags:
+  - Reports
+  properties:
+  - type: OpenAPI
+    url: openapi/firstpromoter-reports-api-openapi.yml
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
+  - type: JSONSchema
+    url: json-schema/firstpromoter-promoter-schema.json
+  - type: JSONSchema
+    url: json-schema/firstpromoter-referral-schema.json
+  - type: JSONSchema
+    url: json-schema/firstpromoter-commission-schema.json
+  - type: Examples
+    url: examples/firstpromoter-create-promoter-example.json
+  - type: Examples
+    url: examples/firstpromoter-track-sale-example.json
+  - type: Examples
+    url: examples/firstpromoter-webhook-event-example.json
+- aid: firstpromoter:firstpromoter-track-api
+  name: FirstPromoter Track API
+  description: The Track API from FirstPromoter — 4 operation(s) for track.
+  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
+  baseURL: https://api.firstpromoter.com/api/v2
+  tags:
+  - Track
+  properties:
+  - type: OpenAPI
+    url: openapi/firstpromoter-track-api-openapi.yml
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
+  - type: JSONSchema
+    url: json-schema/firstpromoter-promoter-schema.json
+  - type: JSONSchema
+    url: json-schema/firstpromoter-referral-schema.json
+  - type: JSONSchema
+    url: json-schema/firstpromoter-commission-schema.json
+  - type: Examples
+    url: examples/firstpromoter-create-promoter-example.json
+  - type: Examples
+    url: examples/firstpromoter-track-sale-example.json
+  - type: Examples
+    url: examples/firstpromoter-webhook-event-example.json
+- aid: firstpromoter:firstpromoter-webhook-deliveries-api
+  name: FirstPromoter Webhook Deliveries API
+  description: The Webhook Deliveries API from FirstPromoter — 3 operation(s) for webhook deliveries.
+  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
+  baseURL: https://api.firstpromoter.com/api/v2
+  tags:
+  - Webhook Deliveries
+  properties:
+  - type: OpenAPI
+    url: openapi/firstpromoter-webhook-deliveries-api-openapi.yml
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
+  - type: JSONSchema
+    url: json-schema/firstpromoter-promoter-schema.json
+  - type: JSONSchema
+    url: json-schema/firstpromoter-referral-schema.json
+  - type: JSONSchema
+    url: json-schema/firstpromoter-commission-schema.json
+  - type: Examples
+    url: examples/firstpromoter-create-promoter-example.json
+  - type: Examples
+    url: examples/firstpromoter-track-sale-example.json
+  - type: Examples
+    url: examples/firstpromoter-webhook-event-example.json
+- aid: firstpromoter:firstpromoter-webhooks-api
+  name: FirstPromoter Webhooks API
+  description: The Webhooks API from FirstPromoter — 4 operation(s) for webhooks.
+  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
+  baseURL: https://api.firstpromoter.com/api/v2
+  tags:
+  - Webhooks
+  properties:
+  - type: OpenAPI
+    url: openapi/firstpromoter-webhooks-api-openapi.yml
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
+  - type: JSONSchema
+    url: json-schema/firstpromoter-promoter-schema.json
+  - type: JSONSchema
+    url: json-schema/firstpromoter-referral-schema.json
+  - type: JSONSchema
+    url: json-schema/firstpromoter-commission-schema.json
+  - type: Examples
+    url: examples/firstpromoter-create-promoter-example.json
+  - type: Examples
+    url: examples/firstpromoter-track-sale-example.json
+  - type: Examples
+    url: examples/firstpromoter-webhook-event-example.json
 common:
   - type: AgenticAccess
     url: agentic-access/firstpromoter-agentic-access.yml
