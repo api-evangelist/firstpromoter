@@ -1,0 +1,36 @@
+{
+  "provider": "firstpromoter",
+  "sources": [
+    "firstpromoter-commissions-api-openapi.yml",
+    "firstpromoter-company-api-openapi.yml",
+    "firstpromoter-emails-api-openapi.yml",
+    "firstpromoter-payouts-api-openapi.yml",
+    "firstpromoter-promo-codes-api-openapi.yml",
+    "firstpromoter-promoter-campaigns-api-openapi.yml",
+    "firstpromoter-promoters-api-openapi.yml",
+    "firstpromoter-referrals-api-openapi.yml",
+    "firstpromoter-reports-api-openapi.yml",
+    "firstpromoter-track-api-openapi.yml",
+    "firstpromoter-webhook-deliveries-api-openapi.yml",
+    "firstpromoter-webhooks-api-openapi.yml"
+  ],
+  "outputs": [
+    "firstpromoter-commissions-api-openapi.yml",
+    "firstpromoter-company-api-openapi.yml",
+    "firstpromoter-emails-api-openapi.yml",
+    "firstpromoter-payouts-api-openapi.yml",
+    "firstpromoter-promo-codes-api-openapi.yml",
+    "firstpromoter-promoter-campaigns-api-openapi.yml",
+    "firstpromoter-promoters-api-openapi.yml",
+    "firstpromoter-referrals-api-openapi.yml",
+    "firstpromoter-reports-api-openapi.yml",
+    "firstpromoter-track-api-openapi.yml",
+    "firstpromoter-webhook-deliveries-api-openapi.yml",
+    "firstpromoter-webhooks-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

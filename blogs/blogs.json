@@ -3,13 +3,10 @@
   "feeds": [
     {
       "source": "https://www.linkedin.com/company/first-promoter",
-      "feed_url": "https://www.linkedin.com/company/first-promoter",
-      "title": "",
-      "saved": 0,
-      "method": "none"
+      "error": "HTTPError"
     }
   ],
   "post_count": 5,
-  "fetched": "2026-07-11T11:50:51Z",
+  "fetched": "2026-08-01T15:49:00Z",
   "agent_pulled": "2026-06-27"
 }
