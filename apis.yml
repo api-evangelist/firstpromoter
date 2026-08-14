@@ -1,7 +1,11 @@
 aid: firstpromoter
 name: FirstPromoter
-description: Affiliate and referral tracking platform for SaaS companies with a REST
-  API for managing promoters, tracking referrals, and handling reward distribution.
+description: FirstPromoter is an affiliate, referral and influencer marketing platform for SaaS and subscription
+  businesses, run by Igil Web SRL since 2016. It tracks clicks, leads and sales, manages promoters and campaigns,
+  calculates multi-tier commissions and rewards, and pays affiliates through PayPal, Wise, Stripe and managed payouts.
+  The public v2 REST API spans 37 first-party OpenAPI definitions and 179 operations across an admin surface, a
+  promoter-facing surface and a server-side tracking surface, alongside a 44-event webhooks v2 system, a browser
+  tracking library, and a remote MCP server for AI clients.
 type: Index
 accessModel:
   pricing: paid
@@ -19,335 +23,761 @@ accessModel:
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/firstpromoter.png
 url: https://raw.githubusercontent.com/api-evangelist/firstpromoter/refs/heads/main/apis.yml
 created: '2026-06-13'
-modified: '2026-06-13'
+modified: '2026-08-13'
 specificationVersion: '0.19'
 tags:
-  - Affiliate Marketing
-  - Referral Tracking
-  - SaaS
-  - Commission Management
-  - Reward Distribution
-  - Promoters
+- Affiliate Marketing
+- Referral Tracking
+- SaaS
+- Commission Management
+- Reward Distribution
+- Promoters
+- Partner Marketing
+- Influencer Marketing
+- Payouts
+- Attribution
+- Webhooks
+- MCP
 apis:
-- aid: firstpromoter:firstpromoter-commissions-api
-  name: FirstPromoter Commissions API
-  description: The Commissions API from FirstPromoter — 8 operation(s) for commissions.
-  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
-  baseURL: https://api.firstpromoter.com/api/v2
+- aid: firstpromoter:firstpromoter-v2-advanced-payout-methods
+  name: FirstPromoter Admin Payout Methods API
+  description: FirstPromoter Admin Payout Methods API - 5 operation(s) on the admin (api/v2/company) surface, from
+    FirstPromoter's own published OpenAPI definition (3.0.1) indexed in https://docs.firstpromoter.com/llms.txt.
+  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-advanced/payout-methods-api
+  baseURL: https://api.firstpromoter.com/api/v2/company
+  tags:
+  - Payout Methods
+  properties:
+  - type: OpenAPI
+    url: openapi/firstpromoter-v2-advanced-payout-methods-openapi.yml
+  - type: Overlay
+    url: overlays/firstpromoter-v2-advanced-payout-methods-overlay.yaml
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/payout-methods-api
+  - type: APIReference
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
+- aid: firstpromoter:firstpromoter-v2-advanced-products
+  name: FirstPromoter Products API
+  description: FirstPromoter Products API - 5 operation(s) on the admin (api/v2/company) surface, from FirstPromoter's
+    own published OpenAPI definition (3.0.0) indexed in https://docs.firstpromoter.com/llms.txt.
+  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-advanced/products-api
+  baseURL: https://api.firstpromoter.com/api/v2/company
+  tags:
+  - Products
+  properties:
+  - type: OpenAPI
+    url: openapi/firstpromoter-v2-advanced-products-openapi.yml
+  - type: Overlay
+    url: overlays/firstpromoter-v2-advanced-products-overlay.yaml
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/products-api
+  - type: APIReference
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
+- aid: firstpromoter:firstpromoter-v2-affiliate-assets
+  name: FirstPromoter Affiliate Assets API
+  description: FirstPromoter Affiliate Assets API - 2 operation(s) on the promoter-facing (api/v2/affiliate) surface,
+    from FirstPromoter's own published OpenAPI definition (3.0.1) indexed in https://docs.firstpromoter.com/llms.txt.
+  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/assets
+  baseURL: https://api.firstpromoter.com/api/v2/affiliate
+  tags:
+  - Assets
+  properties:
+  - type: OpenAPI
+    url: openapi/firstpromoter-v2-affiliate-assets-openapi.yml
+  - type: Overlay
+    url: overlays/firstpromoter-v2-affiliate-assets-overlay.yaml
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/assets
+  - type: APIReference
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
+- aid: firstpromoter:firstpromoter-v2-affiliate-campaigns
+  name: FirstPromoter Affiliate Campaigns API
+  description: FirstPromoter Affiliate Campaigns API - 1 operation(s) on the promoter-facing (api/v2/affiliate)
+    surface, from FirstPromoter's own published OpenAPI definition (3.0.1) indexed in https://docs.firstpromoter.com/llms.txt.
+  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/campaigns
+  baseURL: https://api.firstpromoter.com/api/v2/affiliate
+  tags:
+  - Campaigns
+  properties:
+  - type: OpenAPI
+    url: openapi/firstpromoter-v2-affiliate-campaigns-openapi.yml
+  - type: Overlay
+    url: overlays/firstpromoter-v2-affiliate-campaigns-overlay.yaml
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/campaigns
+  - type: APIReference
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
+- aid: firstpromoter:firstpromoter-v2-affiliate-commissions
+  name: FirstPromoter Affiliate Commissions API
+  description: FirstPromoter Affiliate Commissions API - 2 operation(s) on the promoter-facing (api/v2/affiliate)
+    surface, from FirstPromoter's own published OpenAPI definition (3.0.1) indexed in https://docs.firstpromoter.com/llms.txt.
+  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/commissions
+  baseURL: https://api.firstpromoter.com/api/v2/affiliate
   tags:
   - Commissions
   properties:
   - type: OpenAPI
-    url: openapi/firstpromoter-commissions-api-openapi.yml
+    url: openapi/firstpromoter-v2-affiliate-commissions-openapi.yml
+  - type: Overlay
+    url: overlays/firstpromoter-v2-affiliate-commissions-overlay.yaml
   - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/commissions
+  - type: APIReference
     url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
-  - type: JSONSchema
-    url: json-schema/firstpromoter-promoter-schema.json
-  - type: JSONSchema
-    url: json-schema/firstpromoter-referral-schema.json
-  - type: JSONSchema
-    url: json-schema/firstpromoter-commission-schema.json
-  - type: Examples
-    url: examples/firstpromoter-create-promoter-example.json
-  - type: Examples
-    url: examples/firstpromoter-track-sale-example.json
-  - type: Examples
-    url: examples/firstpromoter-webhook-event-example.json
-- aid: firstpromoter:firstpromoter-company-api
-  name: FirstPromoter Company API
-  description: The Company API from FirstPromoter — 11 operation(s) for company.
-  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
-  baseURL: https://api.firstpromoter.com/api/v2
+- aid: firstpromoter:firstpromoter-v2-affiliate-contract-documents
+  name: FirstPromoter Affiliate Contract Documents API
+  description: FirstPromoter Affiliate Contract Documents API - 4 operation(s) on the promoter-facing (api/v2/affiliate)
+    surface, from FirstPromoter's own published OpenAPI definition (3.0.1) indexed in https://docs.firstpromoter.com/llms.txt.
+  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/contract-documents
+  baseURL: https://api.firstpromoter.com/api/v2/affiliate
   tags:
-  - Company
+  - Contract Documents
   properties:
   - type: OpenAPI
-    url: openapi/firstpromoter-company-api-openapi.yml
+    url: openapi/firstpromoter-v2-affiliate-contract-documents-openapi.yml
+  - type: Overlay
+    url: overlays/firstpromoter-v2-affiliate-contract-documents-overlay.yaml
   - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/contract-documents
+  - type: APIReference
     url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
-  - type: JSONSchema
-    url: json-schema/firstpromoter-promoter-schema.json
-  - type: JSONSchema
-    url: json-schema/firstpromoter-referral-schema.json
-  - type: JSONSchema
-    url: json-schema/firstpromoter-commission-schema.json
-  - type: Examples
-    url: examples/firstpromoter-create-promoter-example.json
-  - type: Examples
-    url: examples/firstpromoter-track-sale-example.json
-  - type: Examples
-    url: examples/firstpromoter-webhook-event-example.json
-- aid: firstpromoter:firstpromoter-emails-api
-  name: FirstPromoter Emails API
-  description: The Emails API from FirstPromoter — 8 operation(s) for emails.
-  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
-  baseURL: https://api.firstpromoter.com/api/v2
+- aid: firstpromoter:firstpromoter-v2-affiliate-email-settings
+  name: FirstPromoter Affiliate Email Settings API
+  description: FirstPromoter Affiliate Email Settings API - 2 operation(s) on the promoter-facing (api/v2/affiliate)
+    surface, from FirstPromoter's own published OpenAPI definition (3.0.1) indexed in https://docs.firstpromoter.com/llms.txt.
+  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/email-settings
+  baseURL: https://api.firstpromoter.com/api/v2/affiliate
   tags:
-  - Emails
+  - Email Settings
   properties:
   - type: OpenAPI
-    url: openapi/firstpromoter-emails-api-openapi.yml
+    url: openapi/firstpromoter-v2-affiliate-email-settings-openapi.yml
+  - type: Overlay
+    url: overlays/firstpromoter-v2-affiliate-email-settings-overlay.yaml
   - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/email-settings
+  - type: APIReference
     url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
-  - type: JSONSchema
-    url: json-schema/firstpromoter-promoter-schema.json
-  - type: JSONSchema
-    url: json-schema/firstpromoter-referral-schema.json
-  - type: JSONSchema
-    url: json-schema/firstpromoter-commission-schema.json
-  - type: Examples
-    url: examples/firstpromoter-create-promoter-example.json
-  - type: Examples
-    url: examples/firstpromoter-track-sale-example.json
-  - type: Examples
-    url: examples/firstpromoter-webhook-event-example.json
-- aid: firstpromoter:firstpromoter-payouts-api
-  name: FirstPromoter Payouts API
-  description: The Payouts API from FirstPromoter — 1 operation(s) for payouts.
-  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
-  baseURL: https://api.firstpromoter.com/api/v2
+- aid: firstpromoter:firstpromoter-v2-affiliate-payout-methods
+  name: FirstPromoter Affiliate Payout Methods API
+  description: FirstPromoter Affiliate Payout Methods API - 5 operation(s) on the promoter-facing (api/v2/affiliate)
+    surface, from FirstPromoter's own published OpenAPI definition (3.0.1) indexed in https://docs.firstpromoter.com/llms.txt.
+  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/payout-methods
+  baseURL: https://api.firstpromoter.com/api/v2/affiliate
+  tags:
+  - Payout Methods
+  properties:
+  - type: OpenAPI
+    url: openapi/firstpromoter-v2-affiliate-payout-methods-openapi.yml
+  - type: Overlay
+    url: overlays/firstpromoter-v2-affiliate-payout-methods-overlay.yaml
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/payout-methods
+  - type: APIReference
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
+- aid: firstpromoter:firstpromoter-v2-affiliate-payouts
+  name: FirstPromoter Affiliate Payouts API
+  description: FirstPromoter Affiliate Payouts API - 3 operation(s) on the promoter-facing (api/v2/affiliate) surface,
+    from FirstPromoter's own published OpenAPI definition (3.0.1) indexed in https://docs.firstpromoter.com/llms.txt.
+  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/payouts
+  baseURL: https://api.firstpromoter.com/api/v2/affiliate
   tags:
   - Payouts
   properties:
   - type: OpenAPI
-    url: openapi/firstpromoter-payouts-api-openapi.yml
+    url: openapi/firstpromoter-v2-affiliate-payouts-openapi.yml
+  - type: Overlay
+    url: overlays/firstpromoter-v2-affiliate-payouts-overlay.yaml
   - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/payouts
+  - type: APIReference
     url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
-  - type: JSONSchema
-    url: json-schema/firstpromoter-promoter-schema.json
-  - type: JSONSchema
-    url: json-schema/firstpromoter-referral-schema.json
-  - type: JSONSchema
-    url: json-schema/firstpromoter-commission-schema.json
-  - type: Examples
-    url: examples/firstpromoter-create-promoter-example.json
-  - type: Examples
-    url: examples/firstpromoter-track-sale-example.json
-  - type: Examples
-    url: examples/firstpromoter-webhook-event-example.json
-- aid: firstpromoter:firstpromoter-promo-codes-api
-  name: FirstPromoter Promo Codes API
-  description: The Promo Codes API from FirstPromoter — 2 operation(s) for promo codes.
-  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
-  baseURL: https://api.firstpromoter.com/api/v2
+- aid: firstpromoter:firstpromoter-v2-affiliate-promo-codes
+  name: FirstPromoter Affiliate Promo Codes API
+  description: FirstPromoter Affiliate Promo Codes API - 3 operation(s) on the promoter-facing (api/v2/affiliate)
+    surface, from FirstPromoter's own published OpenAPI definition (3.0.1) indexed in https://docs.firstpromoter.com/llms.txt.
+  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/promo-codes
+  baseURL: https://api.firstpromoter.com/api/v2/affiliate
   tags:
   - Promo Codes
   properties:
   - type: OpenAPI
-    url: openapi/firstpromoter-promo-codes-api-openapi.yml
+    url: openapi/firstpromoter-v2-affiliate-promo-codes-openapi.yml
+  - type: Overlay
+    url: overlays/firstpromoter-v2-affiliate-promo-codes-overlay.yaml
   - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/promo-codes
+  - type: APIReference
     url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
-  - type: JSONSchema
-    url: json-schema/firstpromoter-promoter-schema.json
-  - type: JSONSchema
-    url: json-schema/firstpromoter-referral-schema.json
-  - type: JSONSchema
-    url: json-schema/firstpromoter-commission-schema.json
-  - type: Examples
-    url: examples/firstpromoter-create-promoter-example.json
-  - type: Examples
-    url: examples/firstpromoter-track-sale-example.json
-  - type: Examples
-    url: examples/firstpromoter-webhook-event-example.json
-- aid: firstpromoter:firstpromoter-promoter-campaigns-api
-  name: FirstPromoter Promoter Campaigns API
-  description: The Promoter Campaigns API from FirstPromoter — 5 operation(s) for promoter campaigns.
-  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
-  baseURL: https://api.firstpromoter.com/api/v2
+- aid: firstpromoter:firstpromoter-v2-affiliate-promoter-campaigns
+  name: FirstPromoter Affiliate Promoter Campaigns API
+  description: FirstPromoter Affiliate Promoter Campaigns API - 1 operation(s) on the promoter-facing (api/v2/affiliate)
+    surface, from FirstPromoter's own published OpenAPI definition (3.0.1) indexed in https://docs.firstpromoter.com/llms.txt.
+  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/promoter-campaigns
+  baseURL: https://api.firstpromoter.com/api/v2/affiliate
   tags:
   - Promoter Campaigns
   properties:
   - type: OpenAPI
-    url: openapi/firstpromoter-promoter-campaigns-api-openapi.yml
+    url: openapi/firstpromoter-v2-affiliate-promoter-campaigns-openapi.yml
+  - type: Overlay
+    url: overlays/firstpromoter-v2-affiliate-promoter-campaigns-overlay.yaml
   - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/promoter-campaigns
+  - type: APIReference
     url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
-  - type: JSONSchema
-    url: json-schema/firstpromoter-promoter-schema.json
-  - type: JSONSchema
-    url: json-schema/firstpromoter-referral-schema.json
-  - type: JSONSchema
-    url: json-schema/firstpromoter-commission-schema.json
-  - type: Examples
-    url: examples/firstpromoter-create-promoter-example.json
-  - type: Examples
-    url: examples/firstpromoter-track-sale-example.json
-  - type: Examples
-    url: examples/firstpromoter-webhook-event-example.json
-- aid: firstpromoter:firstpromoter-promoters-api
-  name: FirstPromoter Promoters API
-  description: The Promoters API from FirstPromoter — 11 operation(s) for promoters.
-  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
-  baseURL: https://api.firstpromoter.com/api/v2
+- aid: firstpromoter:firstpromoter-v2-affiliate-promoters
+  name: FirstPromoter Affiliate Promoters API
+  description: FirstPromoter Affiliate Promoters API - 6 operation(s) on the promoter-facing (api/v2/affiliate)
+    surface, from FirstPromoter's own published OpenAPI definition (3.0.1) indexed in https://docs.firstpromoter.com/llms.txt.
+  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/promoters
+  baseURL: https://api.firstpromoter.com/api/v2/affiliate
   tags:
   - Promoters
   properties:
   - type: OpenAPI
-    url: openapi/firstpromoter-promoters-api-openapi.yml
+    url: openapi/firstpromoter-v2-affiliate-promoters-openapi.yml
+  - type: Overlay
+    url: overlays/firstpromoter-v2-affiliate-promoters-overlay.yaml
   - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/promoters
+  - type: APIReference
     url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
-  - type: JSONSchema
-    url: json-schema/firstpromoter-promoter-schema.json
-  - type: JSONSchema
-    url: json-schema/firstpromoter-referral-schema.json
-  - type: JSONSchema
-    url: json-schema/firstpromoter-commission-schema.json
-  - type: Examples
-    url: examples/firstpromoter-create-promoter-example.json
-  - type: Examples
-    url: examples/firstpromoter-track-sale-example.json
-  - type: Examples
-    url: examples/firstpromoter-webhook-event-example.json
-- aid: firstpromoter:firstpromoter-referrals-api
-  name: FirstPromoter Referrals API
-  description: The Referrals API from FirstPromoter — 7 operation(s) for referrals.
-  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
-  baseURL: https://api.firstpromoter.com/api/v2
+- aid: firstpromoter:firstpromoter-v2-affiliate-referral-links
+  name: FirstPromoter Affiliate Referral Links API
+  description: FirstPromoter Affiliate Referral Links API - 4 operation(s) on the promoter-facing (api/v2/affiliate)
+    surface, from FirstPromoter's own published OpenAPI definition (3.0.1) indexed in https://docs.firstpromoter.com/llms.txt.
+  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/referral-links
+  baseURL: https://api.firstpromoter.com/api/v2/affiliate
+  tags:
+  - Referral Links
+  properties:
+  - type: OpenAPI
+    url: openapi/firstpromoter-v2-affiliate-referral-links-openapi.yml
+  - type: Overlay
+    url: overlays/firstpromoter-v2-affiliate-referral-links-overlay.yaml
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/referral-links
+  - type: APIReference
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
+- aid: firstpromoter:firstpromoter-v2-affiliate-referrals
+  name: FirstPromoter Affiliate Referrals API
+  description: FirstPromoter Affiliate Referrals API - 5 operation(s) on the promoter-facing (api/v2/affiliate)
+    surface, from FirstPromoter's own published OpenAPI definition (3.0.1) indexed in https://docs.firstpromoter.com/llms.txt.
+  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/referrals
+  baseURL: https://api.firstpromoter.com/api/v2/affiliate
   tags:
   - Referrals
   properties:
   - type: OpenAPI
-    url: openapi/firstpromoter-referrals-api-openapi.yml
+    url: openapi/firstpromoter-v2-affiliate-referrals-openapi.yml
+  - type: Overlay
+    url: overlays/firstpromoter-v2-affiliate-referrals-overlay.yaml
   - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/referrals
+  - type: APIReference
     url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
-  - type: JSONSchema
-    url: json-schema/firstpromoter-promoter-schema.json
-  - type: JSONSchema
-    url: json-schema/firstpromoter-referral-schema.json
-  - type: JSONSchema
-    url: json-schema/firstpromoter-commission-schema.json
-  - type: Examples
-    url: examples/firstpromoter-create-promoter-example.json
-  - type: Examples
-    url: examples/firstpromoter-track-sale-example.json
-  - type: Examples
-    url: examples/firstpromoter-webhook-event-example.json
-- aid: firstpromoter:firstpromoter-reports-api
-  name: FirstPromoter Reports API
-  description: The Reports API from FirstPromoter — 6 operation(s) for reports.
-  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
-  baseURL: https://api.firstpromoter.com/api/v2
+- aid: firstpromoter:firstpromoter-v2-affiliate-reports
+  name: FirstPromoter Affiliate Reports API
+  description: FirstPromoter Affiliate Reports API - 3 operation(s) on the promoter-facing (api/v2/affiliate) surface,
+    from FirstPromoter's own published OpenAPI definition (3.0.1) indexed in https://docs.firstpromoter.com/llms.txt.
+  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/reports
+  baseURL: https://api.firstpromoter.com/api/v2/affiliate
   tags:
   - Reports
   properties:
   - type: OpenAPI
-    url: openapi/firstpromoter-reports-api-openapi.yml
+    url: openapi/firstpromoter-v2-affiliate-reports-openapi.yml
+  - type: Overlay
+    url: overlays/firstpromoter-v2-affiliate-reports-overlay.yaml
   - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/reports
+  - type: APIReference
     url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
-  - type: JSONSchema
-    url: json-schema/firstpromoter-promoter-schema.json
-  - type: JSONSchema
-    url: json-schema/firstpromoter-referral-schema.json
-  - type: JSONSchema
-    url: json-schema/firstpromoter-commission-schema.json
-  - type: Examples
-    url: examples/firstpromoter-create-promoter-example.json
-  - type: Examples
-    url: examples/firstpromoter-track-sale-example.json
-  - type: Examples
-    url: examples/firstpromoter-webhook-event-example.json
-- aid: firstpromoter:firstpromoter-track-api
-  name: FirstPromoter Track API
-  description: The Track API from FirstPromoter — 4 operation(s) for track.
-  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
-  baseURL: https://api.firstpromoter.com/api/v2
+- aid: firstpromoter:firstpromoter-v2-asset-categories
+  name: FirstPromoter Asset Categories API
+  description: FirstPromoter Asset Categories API - 2 operation(s) on the admin (api/v2/company) surface, from FirstPromoter's
+    own published OpenAPI definition (3.0.1) indexed in https://docs.firstpromoter.com/llms.txt.
+  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-advanced/asset-categories-api
+  baseURL: https://api.firstpromoter.com/api/v2/company
   tags:
-  - Track
+  - Asset Categories
   properties:
   - type: OpenAPI
-    url: openapi/firstpromoter-track-api-openapi.yml
+    url: openapi/firstpromoter-v2-asset-categories-openapi.yml
+  - type: Overlay
+    url: overlays/firstpromoter-v2-asset-categories-overlay.yaml
   - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/asset-categories-api
+  - type: APIReference
     url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
-  - type: JSONSchema
-    url: json-schema/firstpromoter-promoter-schema.json
-  - type: JSONSchema
-    url: json-schema/firstpromoter-referral-schema.json
-  - type: JSONSchema
-    url: json-schema/firstpromoter-commission-schema.json
-  - type: Examples
-    url: examples/firstpromoter-create-promoter-example.json
-  - type: Examples
-    url: examples/firstpromoter-track-sale-example.json
-  - type: Examples
-    url: examples/firstpromoter-webhook-event-example.json
-- aid: firstpromoter:firstpromoter-webhook-deliveries-api
-  name: FirstPromoter Webhook Deliveries API
-  description: The Webhook Deliveries API from FirstPromoter — 3 operation(s) for webhook deliveries.
-  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
-  baseURL: https://api.firstpromoter.com/api/v2
+- aid: firstpromoter:firstpromoter-v2-assets
+  name: FirstPromoter Assets API
+  description: FirstPromoter Assets API - 6 operation(s) on the admin (api/v2/company) surface, from FirstPromoter's
+    own published OpenAPI definition (3.0.1) indexed in https://docs.firstpromoter.com/llms.txt.
+  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-advanced/assets
+  baseURL: https://api.firstpromoter.com/api/v2/company
   tags:
-  - Webhook Deliveries
+  - Assets
   properties:
   - type: OpenAPI
-    url: openapi/firstpromoter-webhook-deliveries-api-openapi.yml
+    url: openapi/firstpromoter-v2-assets-openapi.yml
+  - type: Overlay
+    url: overlays/firstpromoter-v2-assets-overlay.yaml
   - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/assets
+  - type: APIReference
     url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
-  - type: JSONSchema
-    url: json-schema/firstpromoter-promoter-schema.json
-  - type: JSONSchema
-    url: json-schema/firstpromoter-referral-schema.json
-  - type: JSONSchema
-    url: json-schema/firstpromoter-commission-schema.json
-  - type: Examples
-    url: examples/firstpromoter-create-promoter-example.json
-  - type: Examples
-    url: examples/firstpromoter-track-sale-example.json
-  - type: Examples
-    url: examples/firstpromoter-webhook-event-example.json
-- aid: firstpromoter:firstpromoter-webhooks-api
+- aid: firstpromoter:firstpromoter-v2-batches
+  name: FirstPromoter Batch Processes API
+  description: FirstPromoter Batch Processes API - 3 operation(s) on the admin (api/v2/company) surface, from FirstPromoter's
+    own published OpenAPI definition (3.0.0) indexed in https://docs.firstpromoter.com/llms.txt.
+  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-admin/batches
+  baseURL: https://api.firstpromoter.com/api/v2/company
+  tags:
+  - Batch Processes
+  properties:
+  - type: OpenAPI
+    url: openapi/firstpromoter-v2-batches-openapi.yml
+  - type: Overlay
+    url: overlays/firstpromoter-v2-batches-overlay.yaml
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/batches
+  - type: APIReference
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
+- aid: firstpromoter:firstpromoter-v2-campaigns
+  name: FirstPromoter Campaigns API
+  description: FirstPromoter Campaigns API - 5 operation(s) on the admin (api/v2/company) surface, from FirstPromoter's
+    own published OpenAPI definition (3.0.1) indexed in https://docs.firstpromoter.com/llms.txt.
+  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-advanced/campaigns-api
+  baseURL: https://api.firstpromoter.com/api/v2/company
+  tags:
+  - Campaigns
+  properties:
+  - type: OpenAPI
+    url: openapi/firstpromoter-v2-campaigns-openapi.yml
+  - type: Overlay
+    url: overlays/firstpromoter-v2-campaigns-overlay.yaml
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/campaigns-api
+  - type: APIReference
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
+- aid: firstpromoter:firstpromoter-v2-commissions
+  name: FirstPromoter Commissions API
+  description: FirstPromoter Commissions API - 9 operation(s) on the admin (api/v2/company) surface, from FirstPromoter's
+    own published OpenAPI definition (3.0.1) indexed in https://docs.firstpromoter.com/llms.txt.
+  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-admin/commissions
+  baseURL: https://api.firstpromoter.com/api/v2/company
+  tags:
+  - Commissions
+  properties:
+  - type: OpenAPI
+    url: openapi/firstpromoter-v2-commissions-openapi.yml
+  - type: Overlay
+    url: overlays/firstpromoter-v2-commissions-overlay.yaml
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/commissions
+  - type: APIReference
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
+- aid: firstpromoter:firstpromoter-v2-contract-documents
+  name: FirstPromoter Contract Documents API
+  description: FirstPromoter Contract Documents API - 2 operation(s) on the admin (api/v2/company) surface, from
+    FirstPromoter's own published OpenAPI definition (3.0.1) indexed in https://docs.firstpromoter.com/llms.txt.
+  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-advanced/contract-documents-api
+  baseURL: https://api.firstpromoter.com/api/v2/company
+  tags:
+  - Contract Documents
+  properties:
+  - type: OpenAPI
+    url: openapi/firstpromoter-v2-contract-documents-openapi.yml
+  - type: Overlay
+    url: overlays/firstpromoter-v2-contract-documents-overlay.yaml
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/contract-documents-api
+  - type: APIReference
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
+- aid: firstpromoter:firstpromoter-v2-contracts
+  name: FirstPromoter Contracts API
+  description: FirstPromoter Contracts API - 5 operation(s) on the admin (api/v2/company) surface, from FirstPromoter's
+    own published OpenAPI definition (3.0.1) indexed in https://docs.firstpromoter.com/llms.txt.
+  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-advanced/contracts-api
+  baseURL: https://api.firstpromoter.com/api/v2/company
+  tags:
+  - Contracts
+  properties:
+  - type: OpenAPI
+    url: openapi/firstpromoter-v2-contracts-openapi.yml
+  - type: Overlay
+    url: overlays/firstpromoter-v2-contracts-overlay.yaml
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/contracts-api
+  - type: APIReference
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
+- aid: firstpromoter:firstpromoter-v2-custom-referral-statuses
+  name: FirstPromoter Custom Referral Statuses API
+  description: FirstPromoter Custom Referral Statuses API - 2 operation(s) on the legacy admin (api/admin/v1) surface,
+    from FirstPromoter's own published OpenAPI definition (3.0.0) indexed in https://docs.firstpromoter.com/llms.txt.
+  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-advanced/custom-referral-statuses
+  baseURL: https://api.firstpromoter.com/api/admin/v1
+  tags:
+  - Custom Referral Statuses
+  properties:
+  - type: OpenAPI
+    url: openapi/firstpromoter-v2-custom-referral-statuses-openapi.yml
+  - type: Overlay
+    url: overlays/firstpromoter-v2-custom-referral-statuses-overlay.yaml
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/custom-referral-statuses
+  - type: APIReference
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
+- aid: firstpromoter:firstpromoter-v2-dashboard
+  name: FirstPromoter Dashboards API
+  description: FirstPromoter Dashboards API - 4 operation(s) on the admin (api/v2/company) surface, from FirstPromoter's
+    own published OpenAPI definition (3.0.1) indexed in https://docs.firstpromoter.com/llms.txt.
+  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-advanced/dashboard-api
+  baseURL: https://api.firstpromoter.com/api/v2/company
+  tags:
+  - Dashboards
+  properties:
+  - type: OpenAPI
+    url: openapi/firstpromoter-v2-dashboard-openapi.yml
+  - type: Overlay
+    url: overlays/firstpromoter-v2-dashboard-overlay.yaml
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/dashboard-api
+  - type: APIReference
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
+- aid: firstpromoter:firstpromoter-v2-emails
+  name: FirstPromoter Emails API
+  description: FirstPromoter Emails API - 11 operation(s) on the admin (api/v2/company) surface, from FirstPromoter's
+    own published OpenAPI definition (3.0.1) indexed in https://docs.firstpromoter.com/llms.txt.
+  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-admin
+  baseURL: https://api.firstpromoter.com/api/v2/company
+  tags:
+  - Emails
+  properties:
+  - type: OpenAPI
+    url: openapi/firstpromoter-v2-emails-openapi.yml
+  - type: Overlay
+    url: overlays/firstpromoter-v2-emails-overlay.yaml
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin
+  - type: APIReference
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
+- aid: firstpromoter:firstpromoter-v2-invoices
+  name: FirstPromoter Invoices API
+  description: FirstPromoter Invoices API - 11 operation(s) on the admin (api/v2/company) surface, from FirstPromoter's
+    own published OpenAPI definition (3.0.0) indexed in https://docs.firstpromoter.com/llms.txt.
+  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-advanced/invoices
+  baseURL: https://api.firstpromoter.com/api/v2/company
+  tags:
+  - Invoices
+  properties:
+  - type: OpenAPI
+    url: openapi/firstpromoter-v2-invoices-openapi.yml
+  - type: Overlay
+    url: overlays/firstpromoter-v2-invoices-overlay.yaml
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/invoices
+  - type: APIReference
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
+- aid: firstpromoter:firstpromoter-v2-payent-batches
+  name: FirstPromoter Payments Batches API
+  description: FirstPromoter Payments Batches API - 2 operation(s) on the admin (api/v2/company) surface, from FirstPromoter's
+    own published OpenAPI definition (3.0.1) indexed in https://docs.firstpromoter.com/llms.txt.
+  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-advanced/payments-batches
+  baseURL: https://api.firstpromoter.com/api/v2/company
+  tags:
+  - Payments Batches
+  properties:
+  - type: OpenAPI
+    url: openapi/firstpromoter-v2-payent-batches-openapi.yml
+  - type: Overlay
+    url: overlays/firstpromoter-v2-payent-batches-overlay.yaml
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/payments-batches
+  - type: APIReference
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
+- aid: firstpromoter:firstpromoter-v2-payouts
+  name: FirstPromoter Payouts API
+  description: FirstPromoter Payouts API - 8 operation(s) on the admin (api/v2/company) surface, from FirstPromoter's
+    own published OpenAPI definition (3.0.3) indexed in https://docs.firstpromoter.com/llms.txt.
+  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-admin/payouts
+  baseURL: https://api.firstpromoter.com/api/v2/company
+  tags:
+  - Payouts
+  properties:
+  - type: OpenAPI
+    url: openapi/firstpromoter-v2-payouts-openapi.yml
+  - type: Overlay
+    url: overlays/firstpromoter-v2-payouts-overlay.yaml
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/payouts
+  - type: APIReference
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
+- aid: firstpromoter:firstpromoter-v2-promocodes
+  name: FirstPromoter Promo Codes API
+  description: FirstPromoter Promo Codes API - 5 operation(s) on the admin (api/v2/company) surface, from FirstPromoter's
+    own published OpenAPI definition (3.0.1) indexed in https://docs.firstpromoter.com/llms.txt.
+  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-admin/promo-codes
+  baseURL: https://api.firstpromoter.com/api/v2/company
+  tags:
+  - Promo Codes
+  properties:
+  - type: OpenAPI
+    url: openapi/firstpromoter-v2-promocodes-openapi.yml
+  - type: Overlay
+    url: overlays/firstpromoter-v2-promocodes-overlay.yaml
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/promo-codes
+  - type: APIReference
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
+- aid: firstpromoter:firstpromoter-v2-promoter-campaigns
+  name: FirstPromoter Promoter Campaigns API
+  description: FirstPromoter Promoter Campaigns API - 5 operation(s) on the admin (api/v2/company) surface, from
+    FirstPromoter's own published OpenAPI definition (3.0.1) indexed in https://docs.firstpromoter.com/llms.txt.
+  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-admin/promoter-campaigns
+  baseURL: https://api.firstpromoter.com/api/v2/company
+  tags:
+  - Promoter Campaigns
+  properties:
+  - type: OpenAPI
+    url: openapi/firstpromoter-v2-promoter-campaigns-openapi.yml
+  - type: Overlay
+    url: overlays/firstpromoter-v2-promoter-campaigns-overlay.yaml
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/promoter-campaigns
+  - type: APIReference
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
+- aid: firstpromoter:firstpromoter-v2-promoters
+  name: FirstPromoter Promoters API
+  description: FirstPromoter Promoters API - 13 operation(s) on the admin (api/v2/company) surface, from FirstPromoter's
+    own published OpenAPI definition (3.0.1) indexed in https://docs.firstpromoter.com/llms.txt.
+  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-admin/promoters
+  baseURL: https://api.firstpromoter.com/api/v2/company
+  tags:
+  - Promoters
+  properties:
+  - type: OpenAPI
+    url: openapi/firstpromoter-v2-promoters-openapi.yml
+  - type: Overlay
+    url: overlays/firstpromoter-v2-promoters-overlay.yaml
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/promoters
+  - type: APIReference
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
+- aid: firstpromoter:firstpromoter-v2-referral-custom-status
+  name: FirstPromoter Referral Custom Status API
+  description: FirstPromoter Referral Custom Status API - 1 operation(s) on the admin (api/v2/company) surface,
+    from FirstPromoter's own published OpenAPI definition (3.0.0) indexed in https://docs.firstpromoter.com/llms.txt.
+  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-advanced/custom-referral-statuses
+  baseURL: https://api.firstpromoter.com/api/v2/company
+  tags:
+  - Referrals
+  properties:
+  - type: OpenAPI
+    url: openapi/firstpromoter-v2-referral-custom-status-openapi.yml
+  - type: Overlay
+    url: overlays/firstpromoter-v2-referral-custom-status-overlay.yaml
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/custom-referral-statuses
+  - type: APIReference
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
+- aid: firstpromoter:firstpromoter-v2-referrals
+  name: FirstPromoter Referrals API
+  description: FirstPromoter Referrals API - 10 operation(s) on the admin (api/v2/company) surface, from FirstPromoter's
+    own published OpenAPI definition (3.0.0) indexed in https://docs.firstpromoter.com/llms.txt.
+  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-admin/referrals
+  baseURL: https://api.firstpromoter.com/api/v2/company
+  tags:
+  - Referrals
+  properties:
+  - type: OpenAPI
+    url: openapi/firstpromoter-v2-referrals-openapi.yml
+  - type: Overlay
+    url: overlays/firstpromoter-v2-referrals-overlay.yaml
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/referrals
+  - type: APIReference
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
+- aid: firstpromoter:firstpromoter-v2-reports
+  name: FirstPromoter Reports API
+  description: FirstPromoter Reports API - 6 operation(s) on the admin (api/v2/company) surface, from FirstPromoter's
+    own published OpenAPI definition (3.0.1) indexed in https://docs.firstpromoter.com/llms.txt.
+  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-admin/reports
+  baseURL: https://api.firstpromoter.com/api/v2/company
+  tags:
+  - Reports
+  properties:
+  - type: OpenAPI
+    url: openapi/firstpromoter-v2-reports-openapi.yml
+  - type: Overlay
+    url: overlays/firstpromoter-v2-reports-overlay.yaml
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/reports
+  - type: APIReference
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
+- aid: firstpromoter:firstpromoter-v2-rewards
+  name: FirstPromoter Rewards API
+  description: FirstPromoter Rewards API - 4 operation(s) on the admin (api/v2/company) surface, from FirstPromoter's
+    own published OpenAPI definition (3.0.0) indexed in https://docs.firstpromoter.com/llms.txt.
+  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-advanced/rewards
+  baseURL: https://api.firstpromoter.com/api/v2/company
+  tags:
+  - Rewards
+  properties:
+  - type: OpenAPI
+    url: openapi/firstpromoter-v2-rewards-openapi.yml
+  - type: Overlay
+    url: overlays/firstpromoter-v2-rewards-overlay.yaml
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/rewards
+  - type: APIReference
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
+- aid: firstpromoter:firstpromoter-v2-tracking
+  name: FirstPromoter Tracking API
+  description: FirstPromoter Tracking API - 4 operation(s) on the server-side tracking (api/v2/track) surface, from
+    FirstPromoter's own published OpenAPI definition (3.0.1) indexed in https://docs.firstpromoter.com/llms.txt.
+  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-admin/tracking-api
+  baseURL: https://api.firstpromoter.com/api/v2/track
+  tags:
+  - Tracking
+  properties:
+  - type: OpenAPI
+    url: openapi/firstpromoter-v2-tracking-openapi.yml
+  - type: Overlay
+    url: overlays/firstpromoter-v2-tracking-overlay.yaml
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/tracking-api
+  - type: APIReference
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
+- aid: firstpromoter:firstpromoter-v2-webhooks
   name: FirstPromoter Webhooks API
-  description: The Webhooks API from FirstPromoter — 4 operation(s) for webhooks.
-  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
-  baseURL: https://api.firstpromoter.com/api/v2
+  description: FirstPromoter Webhooks API - 10 operation(s) on the admin (api/v2/company) surface, from FirstPromoter's
+    own published OpenAPI definition (3.0.0) indexed in https://docs.firstpromoter.com/llms.txt.
+  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-admin/webhooks
+  baseURL: https://api.firstpromoter.com/api/v2/company
   tags:
   - Webhooks
   properties:
   - type: OpenAPI
-    url: openapi/firstpromoter-webhooks-api-openapi.yml
+    url: openapi/firstpromoter-v2-webhooks-openapi.yml
+  - type: Overlay
+    url: overlays/firstpromoter-v2-webhooks-overlay.yaml
   - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/webhooks
+  - type: APIReference
     url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
-  - type: JSONSchema
-    url: json-schema/firstpromoter-promoter-schema.json
-  - type: JSONSchema
-    url: json-schema/firstpromoter-referral-schema.json
-  - type: JSONSchema
-    url: json-schema/firstpromoter-commission-schema.json
-  - type: Examples
-    url: examples/firstpromoter-create-promoter-example.json
-  - type: Examples
-    url: examples/firstpromoter-track-sale-example.json
-  - type: Examples
-    url: examples/firstpromoter-webhook-event-example.json
+  - type: Webhooks
+    url: asyncapi/firstpromoter-webhooks.yml
 common:
-  - type: AgenticAccess
-    url: agentic-access/firstpromoter-agentic-access.yml
-  - type: DomainSecurity
-    url: security/firstpromoter-domain-security.yml
-  - type: Authentication
-    url: authentication/firstpromoter-authentication.yml
-  - type: Vocabulary
-    url: vocabulary/firstpromoter-vocabulary.yml
-  - type: JSONLDContext
-    url: json-ld/firstpromoter-context.jsonld
-  - type: Website
-    url: https://firstpromoter.com/
-  - type: Documentation
-    url: https://docs.firstpromoter.com/
-  - type: GitHubOrg
-    url: https://github.com/firstpromoter
-  - type: LinkedIn
-    url: https://www.linkedin.com/company/first-promoter
-  - type: Blog
-    url: https://firstpromoter.com/blog
-  - type: Pricing
-    url: https://firstpromoter.com/pricing
-  - type: X
-    url: https://x.com/firstpromoter
-  - type: Plans
-    url: plans/firstpromoter-plans-pricing.yml
-  - type: RateLimits
-    url: rate-limits/firstpromoter-rate-limits.yml
-  - type: FinOps
-    url: finops/firstpromoter-finops.yml
+- type: Website
+  url: https://firstpromoter.com/
+- type: DeveloperPortal
+  url: https://docs.firstpromoter.com/
+- type: Documentation
+  url: https://docs.firstpromoter.com/
+- type: APIReference
+  url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
+- type: GettingStarted
+  url: https://docs.firstpromoter.com/quickstart
+- type: Support
+  url: https://help.firstpromoter.com/en/
+- type: HelpCenter
+  url: https://help.firstpromoter.com/en/
+- type: Blog
+  url: https://firstpromoter.com/blog
+- type: GitHubOrg
+  url: https://github.com/firstpromoter
+- type: GitHubOrganization
+  url: https://github.com/firstpromoter
+- type: LinkedIn
+  url: https://www.linkedin.com/company/first-promoter
+- type: X
+  url: https://x.com/firstpromoter
+- type: Pricing
+  url: https://firstpromoter.com/pricing
+- type: SignUp
+  url: https://app.firstpromoter.com/signup
+- type: Login
+  url: https://app.firstpromoter.com/login
+- type: TermsOfService
+  url: https://firstpromoter.com/terms
+- type: PrivacyPolicy
+  url: https://firstpromoter.com/privacy
+- type: Compliance
+  url: https://firstpromoter.com/gdpr
+- type: ChangeLog
+  url: https://changelog.firstpromoter.com/
+- type: ChangeLog
+  url: changelog/firstpromoter-changelog.yml
+- type: AgenticAccess
+  url: agentic-access/firstpromoter-agentic-access.yml
+- type: DomainSecurity
+  url: security/firstpromoter-domain-security.yml
+- type: Authentication
+  url: authentication/firstpromoter-authentication.yml
+- type: OAuthScopes
+  url: scopes/firstpromoter-scopes.yml
+- type: Vocabulary
+  url: vocabulary/firstpromoter-vocabulary.yml
+- type: JSONLDContext
+  url: json-ld/firstpromoter-context.jsonld
+- type: Plans
+  url: plans/firstpromoter-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/firstpromoter-rate-limits.yml
+- type: FinOps
+  url: finops/firstpromoter-finops.yml
+- type: Packages
+  url: packages/firstpromoter-packages.yml
+- type: SDKs
+  url: packages/firstpromoter-packages.yml
+- type: WellKnown
+  url: well-known/firstpromoter-well-known.yml
+- type: MCPServer
+  url: mcp/firstpromoter-mcp.yml
+- type: ToolCrosswalk
+  url: mcp/firstpromoter-tool-crosswalk.yml
+- type: AgentCard
+  url: a2a/firstpromoter-a2a.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: LLMsTxt
+  url: llms/firstpromoter-llms.txt
+- type: Conventions
+  url: conventions/firstpromoter-conventions.yml
+- type: Conformance
+  url: conformance/firstpromoter-conformance.yml
+- type: ErrorCatalog
+  url: errors/firstpromoter-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/firstpromoter-lifecycle.yml
+- type: DataModel
+  url: data-model/firstpromoter-data-model.yml
+- type: Components
+  url: components/firstpromoter-components.yml
+- type: Webhooks
+  url: asyncapi/firstpromoter-webhooks.yml
+- type: Rules
+  url: rules/firstpromoter-jsonschema-spectral-rules.yml
+- type: JSONSchema
+  url: json-schema/firstpromoter-promoter-schema.json
+- type: JSONSchema
+  url: json-schema/firstpromoter-referral-schema.json
+- type: JSONSchema
+  url: json-schema/firstpromoter-commission-schema.json
+- type: Examples
+  url: examples/firstpromoter-create-promoter-example.json
+- type: Examples
+  url: examples/firstpromoter-track-sale-example.json
+- type: Examples
+  url: examples/firstpromoter-webhook-event-example.json
 maintainers:
-  - FN: Kin Lane
-    email: kin@apievangelist.com
+- FN: Kin Lane
+  email: kin@apievangelist.com
+x-enrichment:
+  date: '2026-08-13'
+  status: enriched
+  artifacts_added: 152
+  pass: local-v1
