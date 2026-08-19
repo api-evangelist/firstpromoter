@@ -1,0 +1,1630 @@
+{
+  "item": [
+    {
+      "id": "1a9358ec-8ce0-42ff-8b92-7c838edc9f0c",
+      "name": "Payout Methods",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "56cccc17-39cb-4100-bfa3-ef1bc15b4c5e",
+          "name": "Get all payout methods",
+          "request": {
+            "name": "Get all payout methods",
+            "description": {},
+            "url": {
+              "path": [
+                "payout_methods"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Account identifier that specifies which account is making the request",
+                "key": "Account-ID",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "847d4e73-539c-4aae-9c37-04824820c3ad",
+              "name": "List of payout methods",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payout_methods"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account identifier that specifies which account is making the request",
+                    "key": "Account-ID",
+                    "value": "acc_123456"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": 1413,\n      \"method\": \"wise\",\n      \"date_added\": \"2011-04-10T03:16:55.822Z\",\n      \"is_disabled\": false,\n      \"meta\": {},\n      \"is_selected\": true,\n      \"details\": {\n        \"paypal_email\": \"string\",\n        \"wise_email\": \"string\",\n        \"wallet_address\": \"string\",\n        \"crypto_currency\": \"string\",\n        \"bank_country\": \"SM\",\n        \"account_holder_name\": \"string\",\n        \"account_number\": \"string\",\n        \"routing_aba_number\": \"string\",\n        \"country\": \"string\",\n        \"state\": \"string\",\n        \"postal_code\": \"string\",\n        \"address\": \"string\",\n        \"city\": \"string\",\n        \"transit_number\": \"string\",\n        \"institution_number\": \"string\",\n        \"bsb_code\": \"string\",\n        \"sort_code\": \"string\",\n        \"iban\": \"string\",\n        \"swift_bic_code\": \"string\",\n        \"bank_name\": \"string\",\n        \"bank_city\": \"string\",\n        \"bank_address\": \"string\"\n      },\n      \"managed_payouts\": true\n    },\n    {\n      \"id\": 3775,\n      \"method\": \"wise\",\n      \"date_added\": \"1967-03-25T20:24:37.722Z\",\n      \"is_disabled\": false,\n      \"meta\": {},\n      \"is_selected\": false,\n      \"details\": {\n        \"paypal_email\": \"string\",\n        \"wise_email\": \"string\",\n        \"wallet_address\": \"string\",\n        \"crypto_currency\": \"string\",\n        \"bank_country\": \"BY\",\n        \"account_holder_name\": \"string\",\n        \"account_number\": \"string\",\n        \"routing_aba_number\": \"string\",\n        \"country\": \"string\",\n        \"state\": \"string\",\n        \"postal_code\": \"string\",\n        \"address\": \"string\",\n        \"city\": \"string\",\n        \"transit_number\": \"string\",\n        \"institution_number\": \"string\",\n        \"bsb_code\": \"string\",\n        \"sort_code\": \"string\",\n        \"iban\": \"string\",\n        \"swift_bic_code\": \"string\",\n        \"bank_name\": \"string\",\n        \"bank_city\": \"string\",\n        \"bank_address\": \"string\"\n      },\n      \"managed_payouts\": false\n    }\n  ],\n  \"meta\": {\n    \"selected_payout_methods\": [\n      \"string\",\n      \"string\"\n    ],\n    \"payout_method_options\": {}\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c273cf75-3879-43b3-b23a-528279b1dec2",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payout_methods"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account identifier that specifies which account is making the request",
+                    "key": "Account-ID",
+                    "value": "acc_123456"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\",\n  \"errors\": {\n    \"key_0\": [\n      \"string\",\n      \"string\"\n    ],\n    \"key_1\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a673c539-3954-43cf-b07e-d1590b0d7c4c",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payout_methods"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account identifier that specifies which account is making the request",
+                    "key": "Account-ID",
+                    "value": "acc_123456"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\",\n  \"errors\": {\n    \"key_0\": [\n      \"string\",\n      \"string\"\n    ],\n    \"key_1\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "dfb4abe4-32fa-4dcb-81a8-2999d2c6644a",
+          "name": "Create a payout method",
+          "request": {
+            "name": "Create a payout method",
+            "description": {},
+            "url": {
+              "path": [
+                "payout_methods"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Account identifier that specifies which account is making the request",
+                "key": "Account-ID",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"method\": \"<string>\",\n  \"details\": {\n    \"paypal_email\": \"<string>\",\n    \"wise_email\": \"<string>\",\n    \"wallet_address\": \"<string>\",\n    \"crypto_currency\": \"<string>\",\n    \"bank_country\": \"<string>\",\n    \"account_holder_name\": \"<string>\",\n    \"account_number\": \"<string>\",\n    \"routing_aba_number\": \"<string>\",\n    \"country\": \"<string>\",\n    \"state\": \"<string>\",\n    \"postal_code\": \"<string>\",\n    \"address\": \"<string>\",\n    \"city\": \"<string>\",\n    \"transit_number\": \"<string>\",\n    \"institution_number\": \"<string>\",\n    \"bsb_code\": \"<string>\",\n    \"sort_code\": \"<string>\",\n    \"iban\": \"<string>\",\n    \"swift_bic_code\": \"<string>\",\n    \"bank_name\": \"<string>\",\n    \"bank_city\": \"<string>\",\n    \"bank_address\": \"<string>\"\n  },\n  \"is_disabled\": \"<boolean>\",\n  \"is_selected\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0a521742-b0bd-4543-848f-7a0d116449c8",
+              "name": "Created payout method",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payout_methods"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account identifier that specifies which account is making the request",
+                    "key": "Account-ID",
+                    "value": "acc_123456"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"method\": \"<string>\",\n  \"details\": {\n    \"paypal_email\": \"<string>\",\n    \"wise_email\": \"<string>\",\n    \"wallet_address\": \"<string>\",\n    \"crypto_currency\": \"<string>\",\n    \"bank_country\": \"<string>\",\n    \"account_holder_name\": \"<string>\",\n    \"account_number\": \"<string>\",\n    \"routing_aba_number\": \"<string>\",\n    \"country\": \"<string>\",\n    \"state\": \"<string>\",\n    \"postal_code\": \"<string>\",\n    \"address\": \"<string>\",\n    \"city\": \"<string>\",\n    \"transit_number\": \"<string>\",\n    \"institution_number\": \"<string>\",\n    \"bsb_code\": \"<string>\",\n    \"sort_code\": \"<string>\",\n    \"iban\": \"<string>\",\n    \"swift_bic_code\": \"<string>\",\n    \"bank_name\": \"<string>\",\n    \"bank_city\": \"<string>\",\n    \"bank_address\": \"<string>\"\n  },\n  \"is_disabled\": \"<boolean>\",\n  \"is_selected\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 6031,\n  \"method\": \"wise\",\n  \"date_added\": \"2007-09-17T16:23:31.957Z\",\n  \"is_disabled\": true,\n  \"meta\": {},\n  \"is_selected\": false,\n  \"details\": {\n    \"paypal_email\": \"<string>\",\n    \"wise_email\": \"<string>\",\n    \"wallet_address\": \"<string>\",\n    \"crypto_currency\": \"<string>\",\n    \"bank_country\": \"<string>\",\n    \"account_holder_name\": \"<string>\",\n    \"account_number\": \"<string>\",\n    \"routing_aba_number\": \"<string>\",\n    \"country\": \"<string>\",\n    \"state\": \"<string>\",\n    \"postal_code\": \"<string>\",\n    \"address\": \"<string>\",\n    \"city\": \"<string>\",\n    \"transit_number\": \"<string>\",\n    \"institution_number\": \"<string>\",\n    \"bsb_code\": \"<string>\",\n    \"sort_code\": \"<string>\",\n    \"iban\": \"<string>\",\n    \"swift_bic_code\": \"<string>\",\n    \"bank_name\": \"<string>\",\n    \"bank_city\": \"<string>\",\n    \"bank_address\": \"<string>\"\n  },\n  \"managed_payouts\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d62f7837-33c7-464d-872c-00ce2ef9ab1e",
+              "name": "Validation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payout_methods"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account identifier that specifies which account is making the request",
+                    "key": "Account-ID",
+                    "value": "acc_123456"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"method\": \"<string>\",\n  \"details\": {\n    \"paypal_email\": \"<string>\",\n    \"wise_email\": \"<string>\",\n    \"wallet_address\": \"<string>\",\n    \"crypto_currency\": \"<string>\",\n    \"bank_country\": \"<string>\",\n    \"account_holder_name\": \"<string>\",\n    \"account_number\": \"<string>\",\n    \"routing_aba_number\": \"<string>\",\n    \"country\": \"<string>\",\n    \"state\": \"<string>\",\n    \"postal_code\": \"<string>\",\n    \"address\": \"<string>\",\n    \"city\": \"<string>\",\n    \"transit_number\": \"<string>\",\n    \"institution_number\": \"<string>\",\n    \"bsb_code\": \"<string>\",\n    \"sort_code\": \"<string>\",\n    \"iban\": \"<string>\",\n    \"swift_bic_code\": \"<string>\",\n    \"bank_name\": \"<string>\",\n    \"bank_city\": \"<string>\",\n    \"bank_address\": \"<string>\"\n  },\n  \"is_disabled\": \"<boolean>\",\n  \"is_selected\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\",\n  \"errors\": {\n    \"key_0\": [\n      \"string\",\n      \"string\"\n    ],\n    \"key_1\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "10cf66ec-7046-4269-9715-18485e121122",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payout_methods"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account identifier that specifies which account is making the request",
+                    "key": "Account-ID",
+                    "value": "acc_123456"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"method\": \"<string>\",\n  \"details\": {\n    \"paypal_email\": \"<string>\",\n    \"wise_email\": \"<string>\",\n    \"wallet_address\": \"<string>\",\n    \"crypto_currency\": \"<string>\",\n    \"bank_country\": \"<string>\",\n    \"account_holder_name\": \"<string>\",\n    \"account_number\": \"<string>\",\n    \"routing_aba_number\": \"<string>\",\n    \"country\": \"<string>\",\n    \"state\": \"<string>\",\n    \"postal_code\": \"<string>\",\n    \"address\": \"<string>\",\n    \"city\": \"<string>\",\n    \"transit_number\": \"<string>\",\n    \"institution_number\": \"<string>\",\n    \"bsb_code\": \"<string>\",\n    \"sort_code\": \"<string>\",\n    \"iban\": \"<string>\",\n    \"swift_bic_code\": \"<string>\",\n    \"bank_name\": \"<string>\",\n    \"bank_city\": \"<string>\",\n    \"bank_address\": \"<string>\"\n  },\n  \"is_disabled\": \"<boolean>\",\n  \"is_selected\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\",\n  \"errors\": {\n    \"key_0\": [\n      \"string\",\n      \"string\"\n    ],\n    \"key_1\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d381c6ce-8e80-4ba5-b7db-9c3ebf1c73b8",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payout_methods"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account identifier that specifies which account is making the request",
+                    "key": "Account-ID",
+                    "value": "acc_123456"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"method\": \"<string>\",\n  \"details\": {\n    \"paypal_email\": \"<string>\",\n    \"wise_email\": \"<string>\",\n    \"wallet_address\": \"<string>\",\n    \"crypto_currency\": \"<string>\",\n    \"bank_country\": \"<string>\",\n    \"account_holder_name\": \"<string>\",\n    \"account_number\": \"<string>\",\n    \"routing_aba_number\": \"<string>\",\n    \"country\": \"<string>\",\n    \"state\": \"<string>\",\n    \"postal_code\": \"<string>\",\n    \"address\": \"<string>\",\n    \"city\": \"<string>\",\n    \"transit_number\": \"<string>\",\n    \"institution_number\": \"<string>\",\n    \"bsb_code\": \"<string>\",\n    \"sort_code\": \"<string>\",\n    \"iban\": \"<string>\",\n    \"swift_bic_code\": \"<string>\",\n    \"bank_name\": \"<string>\",\n    \"bank_city\": \"<string>\",\n    \"bank_address\": \"<string>\"\n  },\n  \"is_disabled\": \"<boolean>\",\n  \"is_selected\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\",\n  \"errors\": {\n    \"key_0\": [\n      \"string\",\n      \"string\"\n    ],\n    \"key_1\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d65b5807-d5b0-45d4-9ae7-7c2546ff9349",
+              "name": "Unprocessable Entity",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payout_methods"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account identifier that specifies which account is making the request",
+                    "key": "Account-ID",
+                    "value": "acc_123456"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"method\": \"<string>\",\n  \"details\": {\n    \"paypal_email\": \"<string>\",\n    \"wise_email\": \"<string>\",\n    \"wallet_address\": \"<string>\",\n    \"crypto_currency\": \"<string>\",\n    \"bank_country\": \"<string>\",\n    \"account_holder_name\": \"<string>\",\n    \"account_number\": \"<string>\",\n    \"routing_aba_number\": \"<string>\",\n    \"country\": \"<string>\",\n    \"state\": \"<string>\",\n    \"postal_code\": \"<string>\",\n    \"address\": \"<string>\",\n    \"city\": \"<string>\",\n    \"transit_number\": \"<string>\",\n    \"institution_number\": \"<string>\",\n    \"bsb_code\": \"<string>\",\n    \"sort_code\": \"<string>\",\n    \"iban\": \"<string>\",\n    \"swift_bic_code\": \"<string>\",\n    \"bank_name\": \"<string>\",\n    \"bank_city\": \"<string>\",\n    \"bank_address\": \"<string>\"\n  },\n  \"is_disabled\": \"<boolean>\",\n  \"is_selected\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\",\n  \"errors\": {\n    \"key_0\": [\n      \"string\",\n      \"string\"\n    ],\n    \"key_1\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "37b596b3-1b75-4de4-920a-ece6ca50a58e",
+          "name": "Get a payout method",
+          "request": {
+            "name": "Get a payout method",
+            "description": {},
+            "url": {
+              "path": [
+                "payout_methods",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) Payout method ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Account identifier that specifies which account is making the request",
+                "key": "Account-ID",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "52101679-f77b-4161-a38e-c9c5548150f1",
+              "name": "Payout method details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payout_methods",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Payout method ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account identifier that specifies which account is making the request",
+                    "key": "Account-ID",
+                    "value": "acc_123456"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 6031,\n  \"method\": \"wise\",\n  \"date_added\": \"2007-09-17T16:23:31.957Z\",\n  \"is_disabled\": true,\n  \"meta\": {},\n  \"is_selected\": false,\n  \"details\": {\n    \"paypal_email\": \"<string>\",\n    \"wise_email\": \"<string>\",\n    \"wallet_address\": \"<string>\",\n    \"crypto_currency\": \"<string>\",\n    \"bank_country\": \"<string>\",\n    \"account_holder_name\": \"<string>\",\n    \"account_number\": \"<string>\",\n    \"routing_aba_number\": \"<string>\",\n    \"country\": \"<string>\",\n    \"state\": \"<string>\",\n    \"postal_code\": \"<string>\",\n    \"address\": \"<string>\",\n    \"city\": \"<string>\",\n    \"transit_number\": \"<string>\",\n    \"institution_number\": \"<string>\",\n    \"bsb_code\": \"<string>\",\n    \"sort_code\": \"<string>\",\n    \"iban\": \"<string>\",\n    \"swift_bic_code\": \"<string>\",\n    \"bank_name\": \"<string>\",\n    \"bank_city\": \"<string>\",\n    \"bank_address\": \"<string>\"\n  },\n  \"managed_payouts\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2947c91a-28b7-4b68-805b-e43e5fa72d50",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payout_methods",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Payout method ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account identifier that specifies which account is making the request",
+                    "key": "Account-ID",
+                    "value": "acc_123456"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\",\n  \"errors\": {\n    \"key_0\": [\n      \"string\",\n      \"string\"\n    ],\n    \"key_1\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "eafdd9e2-165f-4151-bf3d-e84cd46a877d",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payout_methods",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Payout method ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account identifier that specifies which account is making the request",
+                    "key": "Account-ID",
+                    "value": "acc_123456"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\",\n  \"errors\": {\n    \"key_0\": [\n      \"string\",\n      \"string\"\n    ],\n    \"key_1\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4ca06fbb-cbdc-4a6a-97cf-91f39162de8d",
+              "name": "Record not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payout_methods",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Payout method ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account identifier that specifies which account is making the request",
+                    "key": "Account-ID",
+                    "value": "acc_123456"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\",\n  \"errors\": {\n    \"key_0\": [\n      \"string\",\n      \"string\"\n    ],\n    \"key_1\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7635ffb3-0c9b-43b7-93b9-bef115ddf9e8",
+          "name": "Update a payout method",
+          "request": {
+            "name": "Update a payout method",
+            "description": {},
+            "url": {
+              "path": [
+                "payout_methods",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) Payout method ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Account identifier that specifies which account is making the request",
+                "key": "Account-ID",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"details\": {\n    \"paypal_email\": \"<string>\",\n    \"wise_email\": \"<string>\",\n    \"wallet_address\": \"<string>\",\n    \"crypto_currency\": \"<string>\",\n    \"bank_country\": \"<string>\",\n    \"account_holder_name\": \"<string>\",\n    \"account_number\": \"<string>\",\n    \"routing_aba_number\": \"<string>\",\n    \"country\": \"<string>\",\n    \"state\": \"<string>\",\n    \"postal_code\": \"<string>\",\n    \"address\": \"<string>\",\n    \"city\": \"<string>\",\n    \"transit_number\": \"<string>\",\n    \"institution_number\": \"<string>\",\n    \"bsb_code\": \"<string>\",\n    \"sort_code\": \"<string>\",\n    \"iban\": \"<string>\",\n    \"swift_bic_code\": \"<string>\",\n    \"bank_name\": \"<string>\",\n    \"bank_city\": \"<string>\",\n    \"bank_address\": \"<string>\"\n  },\n  \"method\": \"<string>\",\n  \"is_disabled\": \"<boolean>\",\n  \"is_selected\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ed73750c-b488-46f7-ae0c-c346ef95cd30",
+              "name": "Updated payout method",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payout_methods",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Payout method ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account identifier that specifies which account is making the request",
+                    "key": "Account-ID",
+                    "value": "acc_123456"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"details\": {\n    \"paypal_email\": \"<string>\",\n    \"wise_email\": \"<string>\",\n    \"wallet_address\": \"<string>\",\n    \"crypto_currency\": \"<string>\",\n    \"bank_country\": \"<string>\",\n    \"account_holder_name\": \"<string>\",\n    \"account_number\": \"<string>\",\n    \"routing_aba_number\": \"<string>\",\n    \"country\": \"<string>\",\n    \"state\": \"<string>\",\n    \"postal_code\": \"<string>\",\n    \"address\": \"<string>\",\n    \"city\": \"<string>\",\n    \"transit_number\": \"<string>\",\n    \"institution_number\": \"<string>\",\n    \"bsb_code\": \"<string>\",\n    \"sort_code\": \"<string>\",\n    \"iban\": \"<string>\",\n    \"swift_bic_code\": \"<string>\",\n    \"bank_name\": \"<string>\",\n    \"bank_city\": \"<string>\",\n    \"bank_address\": \"<string>\"\n  },\n  \"method\": \"<string>\",\n  \"is_disabled\": \"<boolean>\",\n  \"is_selected\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 6031,\n  \"method\": \"wise\",\n  \"date_added\": \"2007-09-17T16:23:31.957Z\",\n  \"is_disabled\": true,\n  \"meta\": {},\n  \"is_selected\": false,\n  \"details\": {\n    \"paypal_email\": \"<string>\",\n    \"wise_email\": \"<string>\",\n    \"wallet_address\": \"<string>\",\n    \"crypto_currency\": \"<string>\",\n    \"bank_country\": \"<string>\",\n    \"account_holder_name\": \"<string>\",\n    \"account_number\": \"<string>\",\n    \"routing_aba_number\": \"<string>\",\n    \"country\": \"<string>\",\n    \"state\": \"<string>\",\n    \"postal_code\": \"<string>\",\n    \"address\": \"<string>\",\n    \"city\": \"<string>\",\n    \"transit_number\": \"<string>\",\n    \"institution_number\": \"<string>\",\n    \"bsb_code\": \"<string>\",\n    \"sort_code\": \"<string>\",\n    \"iban\": \"<string>\",\n    \"swift_bic_code\": \"<string>\",\n    \"bank_name\": \"<string>\",\n    \"bank_city\": \"<string>\",\n    \"bank_address\": \"<string>\"\n  },\n  \"managed_payouts\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fec498df-a2f2-423b-a41b-4ab26439c62c",
+              "name": "Validation error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payout_methods",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Payout method ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account identifier that specifies which account is making the request",
+                    "key": "Account-ID",
+                    "value": "acc_123456"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"details\": {\n    \"paypal_email\": \"<string>\",\n    \"wise_email\": \"<string>\",\n    \"wallet_address\": \"<string>\",\n    \"crypto_currency\": \"<string>\",\n    \"bank_country\": \"<string>\",\n    \"account_holder_name\": \"<string>\",\n    \"account_number\": \"<string>\",\n    \"routing_aba_number\": \"<string>\",\n    \"country\": \"<string>\",\n    \"state\": \"<string>\",\n    \"postal_code\": \"<string>\",\n    \"address\": \"<string>\",\n    \"city\": \"<string>\",\n    \"transit_number\": \"<string>\",\n    \"institution_number\": \"<string>\",\n    \"bsb_code\": \"<string>\",\n    \"sort_code\": \"<string>\",\n    \"iban\": \"<string>\",\n    \"swift_bic_code\": \"<string>\",\n    \"bank_name\": \"<string>\",\n    \"bank_city\": \"<string>\",\n    \"bank_address\": \"<string>\"\n  },\n  \"method\": \"<string>\",\n  \"is_disabled\": \"<boolean>\",\n  \"is_selected\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\",\n  \"errors\": {\n    \"key_0\": [\n      \"string\",\n      \"string\"\n    ],\n    \"key_1\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b6fe2886-52fb-41c4-982a-1a6a99cb8169",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payout_methods",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Payout method ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account identifier that specifies which account is making the request",
+                    "key": "Account-ID",
+                    "value": "acc_123456"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"details\": {\n    \"paypal_email\": \"<string>\",\n    \"wise_email\": \"<string>\",\n    \"wallet_address\": \"<string>\",\n    \"crypto_currency\": \"<string>\",\n    \"bank_country\": \"<string>\",\n    \"account_holder_name\": \"<string>\",\n    \"account_number\": \"<string>\",\n    \"routing_aba_number\": \"<string>\",\n    \"country\": \"<string>\",\n    \"state\": \"<string>\",\n    \"postal_code\": \"<string>\",\n    \"address\": \"<string>\",\n    \"city\": \"<string>\",\n    \"transit_number\": \"<string>\",\n    \"institution_number\": \"<string>\",\n    \"bsb_code\": \"<string>\",\n    \"sort_code\": \"<string>\",\n    \"iban\": \"<string>\",\n    \"swift_bic_code\": \"<string>\",\n    \"bank_name\": \"<string>\",\n    \"bank_city\": \"<string>\",\n    \"bank_address\": \"<string>\"\n  },\n  \"method\": \"<string>\",\n  \"is_disabled\": \"<boolean>\",\n  \"is_selected\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\",\n  \"errors\": {\n    \"key_0\": [\n      \"string\",\n      \"string\"\n    ],\n    \"key_1\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5159620c-6962-45f8-b131-c21c4d93cf16",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payout_methods",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Payout method ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account identifier that specifies which account is making the request",
+                    "key": "Account-ID",
+                    "value": "acc_123456"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"details\": {\n    \"paypal_email\": \"<string>\",\n    \"wise_email\": \"<string>\",\n    \"wallet_address\": \"<string>\",\n    \"crypto_currency\": \"<string>\",\n    \"bank_country\": \"<string>\",\n    \"account_holder_name\": \"<string>\",\n    \"account_number\": \"<string>\",\n    \"routing_aba_number\": \"<string>\",\n    \"country\": \"<string>\",\n    \"state\": \"<string>\",\n    \"postal_code\": \"<string>\",\n    \"address\": \"<string>\",\n    \"city\": \"<string>\",\n    \"transit_number\": \"<string>\",\n    \"institution_number\": \"<string>\",\n    \"bsb_code\": \"<string>\",\n    \"sort_code\": \"<string>\",\n    \"iban\": \"<string>\",\n    \"swift_bic_code\": \"<string>\",\n    \"bank_name\": \"<string>\",\n    \"bank_city\": \"<string>\",\n    \"bank_address\": \"<string>\"\n  },\n  \"method\": \"<string>\",\n  \"is_disabled\": \"<boolean>\",\n  \"is_selected\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\",\n  \"errors\": {\n    \"key_0\": [\n      \"string\",\n      \"string\"\n    ],\n    \"key_1\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "be1d75f9-98e7-4aae-930f-a50eb601200b",
+              "name": "Record not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payout_methods",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Payout method ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account identifier that specifies which account is making the request",
+                    "key": "Account-ID",
+                    "value": "acc_123456"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"details\": {\n    \"paypal_email\": \"<string>\",\n    \"wise_email\": \"<string>\",\n    \"wallet_address\": \"<string>\",\n    \"crypto_currency\": \"<string>\",\n    \"bank_country\": \"<string>\",\n    \"account_holder_name\": \"<string>\",\n    \"account_number\": \"<string>\",\n    \"routing_aba_number\": \"<string>\",\n    \"country\": \"<string>\",\n    \"state\": \"<string>\",\n    \"postal_code\": \"<string>\",\n    \"address\": \"<string>\",\n    \"city\": \"<string>\",\n    \"transit_number\": \"<string>\",\n    \"institution_number\": \"<string>\",\n    \"bsb_code\": \"<string>\",\n    \"sort_code\": \"<string>\",\n    \"iban\": \"<string>\",\n    \"swift_bic_code\": \"<string>\",\n    \"bank_name\": \"<string>\",\n    \"bank_city\": \"<string>\",\n    \"bank_address\": \"<string>\"\n  },\n  \"method\": \"<string>\",\n  \"is_disabled\": \"<boolean>\",\n  \"is_selected\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\",\n  \"errors\": {\n    \"key_0\": [\n      \"string\",\n      \"string\"\n    ],\n    \"key_1\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "14e6d142-3362-4049-a02a-67ca25e6c340",
+              "name": "Unprocessable Entity",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payout_methods",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Payout method ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account identifier that specifies which account is making the request",
+                    "key": "Account-ID",
+                    "value": "acc_123456"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"details\": {\n    \"paypal_email\": \"<string>\",\n    \"wise_email\": \"<string>\",\n    \"wallet_address\": \"<string>\",\n    \"crypto_currency\": \"<string>\",\n    \"bank_country\": \"<string>\",\n    \"account_holder_name\": \"<string>\",\n    \"account_number\": \"<string>\",\n    \"routing_aba_number\": \"<string>\",\n    \"country\": \"<string>\",\n    \"state\": \"<string>\",\n    \"postal_code\": \"<string>\",\n    \"address\": \"<string>\",\n    \"city\": \"<string>\",\n    \"transit_number\": \"<string>\",\n    \"institution_number\": \"<string>\",\n    \"bsb_code\": \"<string>\",\n    \"sort_code\": \"<string>\",\n    \"iban\": \"<string>\",\n    \"swift_bic_code\": \"<string>\",\n    \"bank_name\": \"<string>\",\n    \"bank_city\": \"<string>\",\n    \"bank_address\": \"<string>\"\n  },\n  \"method\": \"<string>\",\n  \"is_disabled\": \"<boolean>\",\n  \"is_selected\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\",\n  \"errors\": {\n    \"key_0\": [\n      \"string\",\n      \"string\"\n    ],\n    \"key_1\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "14ffc8c9-6934-46c8-b5da-0f04cb967fb6",
+          "name": "Delete a payout method",
+          "request": {
+            "name": "Delete a payout method",
+            "description": {},
+            "url": {
+              "path": [
+                "payout_methods",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) Payout method ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Account identifier that specifies which account is making the request",
+                "key": "Account-ID",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "78cc8c06-8d64-4b8c-9642-0577a4643c71",
+              "name": "Payout method deleted successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payout_methods",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Payout method ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account identifier that specifies which account is making the request",
+                    "key": "Account-ID",
+                    "value": "acc_123456"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "c7328e78-d630-4361-ba66-6729555e7ee4",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payout_methods",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Payout method ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account identifier that specifies which account is making the request",
+                    "key": "Account-ID",
+                    "value": "acc_123456"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\",\n  \"errors\": {\n    \"key_0\": [\n      \"string\",\n      \"string\"\n    ],\n    \"key_1\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "51a7e50e-038e-4d79-a6c3-4a1bab7020b2",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payout_methods",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Payout method ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account identifier that specifies which account is making the request",
+                    "key": "Account-ID",
+                    "value": "acc_123456"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\",\n  \"errors\": {\n    \"key_0\": [\n      \"string\",\n      \"string\"\n    ],\n    \"key_1\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8096788a-b4b8-430d-880c-ee5b36b601a6",
+              "name": "Record not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payout_methods",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Payout method ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account identifier that specifies which account is making the request",
+                    "key": "Account-ID",
+                    "value": "acc_123456"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\",\n  \"errors\": {\n    \"key_0\": [\n      \"string\",\n      \"string\"\n    ],\n    \"key_1\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5ea6df63-5d02-4ffd-8a26-6d37b75778a4",
+              "name": "Conflict",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "payout_methods",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Payout method ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account identifier that specifies which account is making the request",
+                    "key": "Account-ID",
+                    "value": "acc_123456"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\",\n  \"errors\": {\n    \"key_0\": [\n      \"string\",\n      \"string\"\n    ],\n    \"key_1\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.firstpromoter.com/api/v2/affiliate",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "b5892306-d0df-47bc-9982-bb44de525313",
+    "name": "FirstPromoter API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for managing affiliate payout methods",
+      "type": "text/plain"
+    }
+  }
+}

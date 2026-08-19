@@ -1,0 +1,3183 @@
+{
+  "item": [
+    {
+      "id": "c638de3d-3eb1-4840-b33a-ec99d7a751db",
+      "name": "Commissions",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9a6daab0-2c32-4c0a-a7bb-1c6541efd2fe",
+          "name": "Get all commissions",
+          "request": {
+            "name": "Get all commissions",
+            "description": {
+              "content": "With this endpoint you can list all rewards and commissions assigned to a promotion, promoter, campaign or entire account using the API. \n <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/commissions`</Tip>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "commissions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "Search params. Searches by event_id, referral.email, referral.uid"
+                },
+                {
+                  "disabled": false,
+                  "key": "ids[]",
+                  "value": "<integer>",
+                  "description": "Array of commission ids to get"
+                },
+                {
+                  "disabled": false,
+                  "key": "ids[]",
+                  "value": "<integer>",
+                  "description": "Array of commission ids to get"
+                },
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "paid",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "fulfilled",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "sale_amount",
+                  "value": "{\"from\":\"<integer>\",\"to\":\"<integer>\"}"
+                },
+                {
+                  "disabled": false,
+                  "key": "amount",
+                  "value": "{\"from\":\"<integer>\",\"to\":\"<integer>\"}"
+                },
+                {
+                  "disabled": false,
+                  "key": "created_at",
+                  "value": "{\"from\":\"<date>\",\"to\":\"<date>\"}"
+                },
+                {
+                  "disabled": false,
+                  "key": "campaign_id",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "payout_id",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "due_period",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "promoter_id",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "first_commission",
+                  "value": "<boolean>"
+                },
+                {
+                  "disabled": false,
+                  "key": "refunded",
+                  "value": "<boolean>"
+                },
+                {
+                  "disabled": false,
+                  "key": "fraud_check",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "plan_id",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "sale_amount",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "amount",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "created_at",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "referral",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Account id. You can find your Account ID on Your FirstPromoter Dashboard. Navigate to Settings → Integrations",
+                "key": "Account-ID",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b77bde26-ac1b-48da-a73d-17c930a0f550",
+              "name": "Successfully retrieved commissions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "commissions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ids[]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "ids[]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "paid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fulfilled",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sale_amount",
+                      "value": "[object Object]"
+                    },
+                    {
+                      "key": "amount",
+                      "value": "[object Object]"
+                    },
+                    {
+                      "key": "created_at",
+                      "value": "[object Object]"
+                    },
+                    {
+                      "key": "campaign_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "payout_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "due_period",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "promoter_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "first_commission",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "refunded",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "fraud_check",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "plan_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "sale_amount",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "amount",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "created_at",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "referral",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account id. You can find your Account ID on Your FirstPromoter Dashboard. Navigate to Settings → Integrations",
+                    "key": "Account-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": 4415,\n    \"status\": \"denied\",\n    \"metadata\": {},\n    \"is_self_referral\": false,\n    \"commission_type\": \"custom\",\n    \"created_by_user_email\": \"string\",\n    \"created_by_user_at\": \"2017-03-22T03:45:43.264Z\",\n    \"sale_amount\": 5602,\n    \"original_sale_amount\": 2084,\n    \"original_sale_currency\": \"string\",\n    \"event_id\": \"string\",\n    \"plan_id\": \"string\",\n    \"tier\": 9798,\n    \"internal_note\": \"string\",\n    \"external_note\": \"string\",\n    \"unit\": \"mon_discount\",\n    \"fraud_check\": \"same_promoter_email\",\n    \"amount\": 7470,\n    \"is_paid\": false,\n    \"is_split\": true,\n    \"created_at\": \"1966-07-21T12:21:12.598Z\",\n    \"status_updated_at\": \"1966-09-20T03:54:34.797Z\",\n    \"promoter_campaign\": {\n      \"id\": 8133,\n      \"campaign_id\": 2148,\n      \"promoter_id\": 4935,\n      \"created_at\": \"2014-07-17T01:50:08.976Z\",\n      \"promoter\": {\n        \"id\": 2353,\n        \"email\": \"string\",\n        \"name\": \"string\"\n      },\n      \"campaign\": {\n        \"id\": 2908,\n        \"name\": \"string\",\n        \"color\": \"string\"\n      }\n    },\n    \"referral\": {\n      \"id\": 4743,\n      \"email\": \"string\",\n      \"uid\": \"string\"\n    },\n    \"reward\": {\n      \"id\": 4402,\n      \"name\": \"string\"\n    },\n    \"split_details\": {}\n  },\n  {\n    \"id\": 522,\n    \"status\": \"denied\",\n    \"metadata\": {},\n    \"is_self_referral\": true,\n    \"commission_type\": \"sale\",\n    \"created_by_user_email\": \"string\",\n    \"created_by_user_at\": \"1971-01-22T12:42:45.853Z\",\n    \"sale_amount\": 8354,\n    \"original_sale_amount\": 8461,\n    \"original_sale_currency\": \"string\",\n    \"event_id\": \"string\",\n    \"plan_id\": \"string\",\n    \"tier\": 5545,\n    \"internal_note\": \"string\",\n    \"external_note\": \"string\",\n    \"unit\": \"points\",\n    \"fraud_check\": \"same_ip_suspicion\",\n    \"amount\": 2850,\n    \"is_paid\": false,\n    \"is_split\": true,\n    \"created_at\": \"1963-12-04T10:45:50.019Z\",\n    \"status_updated_at\": \"2010-08-28T09:20:36.023Z\",\n    \"promoter_campaign\": {\n      \"id\": 3521,\n      \"campaign_id\": 8809,\n      \"promoter_id\": 6505,\n      \"created_at\": \"2015-07-26T16:48:41.331Z\",\n      \"promoter\": {\n        \"id\": 4609,\n        \"email\": \"string\",\n        \"name\": \"string\"\n      },\n      \"campaign\": {\n        \"id\": 5577,\n        \"name\": \"string\",\n        \"color\": \"string\"\n      }\n    },\n    \"referral\": {\n      \"id\": 3505,\n      \"email\": \"string\",\n      \"uid\": \"string\"\n    },\n    \"reward\": {\n      \"id\": 2720,\n      \"name\": \"string\"\n    },\n    \"split_details\": {}\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2219af2a-c5b9-447c-ae93-acc73be4390d",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "commissions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ids[]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "ids[]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "paid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fulfilled",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sale_amount",
+                      "value": "[object Object]"
+                    },
+                    {
+                      "key": "amount",
+                      "value": "[object Object]"
+                    },
+                    {
+                      "key": "created_at",
+                      "value": "[object Object]"
+                    },
+                    {
+                      "key": "campaign_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "payout_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "due_period",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "promoter_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "first_commission",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "refunded",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "fraud_check",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "plan_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "sale_amount",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "amount",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "created_at",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "referral",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account id. You can find your Account ID on Your FirstPromoter Dashboard. Navigate to Settings → Integrations",
+                    "key": "Account-ID",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ba5144af-b2f9-4d72-8194-d274427b95b5",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "commissions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "ids[]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "ids[]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "paid",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fulfilled",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sale_amount",
+                      "value": "[object Object]"
+                    },
+                    {
+                      "key": "amount",
+                      "value": "[object Object]"
+                    },
+                    {
+                      "key": "created_at",
+                      "value": "[object Object]"
+                    },
+                    {
+                      "key": "campaign_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "payout_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "due_period",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "promoter_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "first_commission",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "refunded",
+                      "value": "<boolean>"
+                    },
+                    {
+                      "key": "fraud_check",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "plan_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "sale_amount",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "amount",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "created_at",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "referral",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account id. You can find your Account ID on Your FirstPromoter Dashboard. Navigate to Settings → Integrations",
+                    "key": "Account-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9ee6af5f-43c8-4bf1-92a2-76f674ffaad1",
+          "name": "Create a commission",
+          "request": {
+            "name": "Create a commission",
+            "description": {
+              "content": "With this endpoint you can create a commission. \n <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/company/commissions`</Tip>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "commissions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Account id. You can find your Account ID on Your FirstPromoter Dashboard. Navigate to Settings → Integrations",
+                "key": "Account-ID",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"commission_type\": \"<string>\",\n  \"referral_id\": \"<integer>\",\n  \"sale_amount\": \"<integer>\",\n  \"plan_id\": \"<integer>\",\n  \"event_id\": \"<string>\",\n  \"event_date\": \"<date>\",\n  \"internal_note\": \"<string>\",\n  \"external_note\": \"<string>\",\n  \"unit\": \"<string>\",\n  \"notify_promoter\": \"<boolean>\",\n  \"billing_period\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "16f87230-1468-4dd1-8b01-c2b87be9d387",
+              "name": "Successfully retrieved commissions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "commissions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account id. You can find your Account ID on Your FirstPromoter Dashboard. Navigate to Settings → Integrations",
+                    "key": "Account-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"commission_type\": \"<string>\",\n  \"referral_id\": \"<integer>\",\n  \"sale_amount\": \"<integer>\",\n  \"plan_id\": \"<integer>\",\n  \"event_id\": \"<string>\",\n  \"event_date\": \"<date>\",\n  \"internal_note\": \"<string>\",\n  \"external_note\": \"<string>\",\n  \"unit\": \"<string>\",\n  \"notify_promoter\": \"<boolean>\",\n  \"billing_period\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": 4415,\n    \"status\": \"denied\",\n    \"metadata\": {},\n    \"is_self_referral\": false,\n    \"commission_type\": \"custom\",\n    \"created_by_user_email\": \"string\",\n    \"created_by_user_at\": \"2017-03-22T03:45:43.264Z\",\n    \"sale_amount\": 5602,\n    \"original_sale_amount\": 2084,\n    \"original_sale_currency\": \"string\",\n    \"event_id\": \"string\",\n    \"plan_id\": \"string\",\n    \"tier\": 9798,\n    \"internal_note\": \"string\",\n    \"external_note\": \"string\",\n    \"unit\": \"mon_discount\",\n    \"fraud_check\": \"same_promoter_email\",\n    \"amount\": 7470,\n    \"is_paid\": false,\n    \"is_split\": true,\n    \"created_at\": \"1966-07-21T12:21:12.598Z\",\n    \"status_updated_at\": \"1966-09-20T03:54:34.797Z\",\n    \"promoter_campaign\": {\n      \"id\": 8133,\n      \"campaign_id\": 2148,\n      \"promoter_id\": 4935,\n      \"created_at\": \"2014-07-17T01:50:08.976Z\",\n      \"promoter\": {\n        \"id\": 2353,\n        \"email\": \"string\",\n        \"name\": \"string\"\n      },\n      \"campaign\": {\n        \"id\": 2908,\n        \"name\": \"string\",\n        \"color\": \"string\"\n      }\n    },\n    \"referral\": {\n      \"id\": 4743,\n      \"email\": \"string\",\n      \"uid\": \"string\"\n    },\n    \"reward\": {\n      \"id\": 4402,\n      \"name\": \"string\"\n    },\n    \"split_details\": {}\n  },\n  {\n    \"id\": 522,\n    \"status\": \"denied\",\n    \"metadata\": {},\n    \"is_self_referral\": true,\n    \"commission_type\": \"sale\",\n    \"created_by_user_email\": \"string\",\n    \"created_by_user_at\": \"1971-01-22T12:42:45.853Z\",\n    \"sale_amount\": 8354,\n    \"original_sale_amount\": 8461,\n    \"original_sale_currency\": \"string\",\n    \"event_id\": \"string\",\n    \"plan_id\": \"string\",\n    \"tier\": 5545,\n    \"internal_note\": \"string\",\n    \"external_note\": \"string\",\n    \"unit\": \"points\",\n    \"fraud_check\": \"same_ip_suspicion\",\n    \"amount\": 2850,\n    \"is_paid\": false,\n    \"is_split\": true,\n    \"created_at\": \"1963-12-04T10:45:50.019Z\",\n    \"status_updated_at\": \"2010-08-28T09:20:36.023Z\",\n    \"promoter_campaign\": {\n      \"id\": 3521,\n      \"campaign_id\": 8809,\n      \"promoter_id\": 6505,\n      \"created_at\": \"2015-07-26T16:48:41.331Z\",\n      \"promoter\": {\n        \"id\": 4609,\n        \"email\": \"string\",\n        \"name\": \"string\"\n      },\n      \"campaign\": {\n        \"id\": 5577,\n        \"name\": \"string\",\n        \"color\": \"string\"\n      }\n    },\n    \"referral\": {\n      \"id\": 3505,\n      \"email\": \"string\",\n      \"uid\": \"string\"\n    },\n    \"reward\": {\n      \"id\": 2720,\n      \"name\": \"string\"\n    },\n    \"split_details\": {}\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fe86ba7a-252b-416c-bdd6-8d65827a4c6c",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "commissions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account id. You can find your Account ID on Your FirstPromoter Dashboard. Navigate to Settings → Integrations",
+                    "key": "Account-ID",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"commission_type\": \"<string>\",\n  \"referral_id\": \"<integer>\",\n  \"sale_amount\": \"<integer>\",\n  \"plan_id\": \"<integer>\",\n  \"event_id\": \"<string>\",\n  \"event_date\": \"<date>\",\n  \"internal_note\": \"<string>\",\n  \"external_note\": \"<string>\",\n  \"unit\": \"<string>\",\n  \"notify_promoter\": \"<boolean>\",\n  \"billing_period\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "be2c8dc3-128e-4fc7-a9db-0cf3b6a4ee01",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "commissions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account id. You can find your Account ID on Your FirstPromoter Dashboard. Navigate to Settings → Integrations",
+                    "key": "Account-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"commission_type\": \"<string>\",\n  \"referral_id\": \"<integer>\",\n  \"sale_amount\": \"<integer>\",\n  \"plan_id\": \"<integer>\",\n  \"event_id\": \"<string>\",\n  \"event_date\": \"<date>\",\n  \"internal_note\": \"<string>\",\n  \"external_note\": \"<string>\",\n  \"unit\": \"<string>\",\n  \"notify_promoter\": \"<boolean>\",\n  \"billing_period\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bceb9bc4-33df-41ce-a52c-46f5c1a5cdd5",
+          "name": "Update a commission",
+          "request": {
+            "name": "Update a commission",
+            "description": {
+              "content": "With this endpoint you can update a commission. \n <Tip>**HTTP Request** <br/>`PUT https://api.firstpromoter.com/api/v2/company/commissions/{id}`</Tip>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "commissions",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) Id of the commission"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Account id. You can find your Account ID on Your FirstPromoter Dashboard. Navigate to Settings → Integrations",
+                "key": "Account-ID",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"internal_note\": \"<string>\",\n  \"external_note\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "45219497-b568-453e-b0ac-70b02ce4aa99",
+              "name": "Commission updated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "commissions",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Id of the commission"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account id. You can find your Account ID on Your FirstPromoter Dashboard. Navigate to Settings → Integrations",
+                    "key": "Account-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"internal_note\": \"<string>\",\n  \"external_note\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 8232,\n  \"status\": \"pending\",\n  \"metadata\": {},\n  \"is_self_referral\": false,\n  \"commission_type\": \"sale\",\n  \"created_by_user_email\": \"string\",\n  \"created_by_user_at\": \"1964-11-23T18:09:46.255Z\",\n  \"sale_amount\": 9448,\n  \"original_sale_amount\": 4462,\n  \"original_sale_currency\": \"string\",\n  \"event_id\": \"string\",\n  \"plan_id\": \"string\",\n  \"tier\": 6128,\n  \"internal_note\": \"string\",\n  \"external_note\": \"string\",\n  \"unit\": \"points\",\n  \"fraud_check\": \"same_promoter_email\",\n  \"amount\": 396,\n  \"is_paid\": false,\n  \"is_split\": false,\n  \"created_at\": \"1953-08-15T14:42:06.432Z\",\n  \"status_updated_at\": \"2024-06-12T23:30:40.750Z\",\n  \"promoter_campaign\": {\n    \"id\": 8619,\n    \"campaign_id\": 860,\n    \"promoter_id\": 9449,\n    \"created_at\": \"2004-10-02T04:03:37.031Z\",\n    \"promoter\": {\n      \"id\": 3773,\n      \"email\": \"string\",\n      \"name\": \"string\"\n    },\n    \"campaign\": {\n      \"id\": 9971,\n      \"name\": \"string\",\n      \"color\": \"string\"\n    }\n  },\n  \"referral\": {\n    \"id\": 2399,\n    \"email\": \"string\",\n    \"uid\": \"string\"\n  },\n  \"reward\": {\n    \"id\": 9393,\n    \"name\": \"string\"\n  },\n  \"split_details\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "081334a4-c73e-440c-a298-3333ad3ace62",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "commissions",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Id of the commission"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account id. You can find your Account ID on Your FirstPromoter Dashboard. Navigate to Settings → Integrations",
+                    "key": "Account-ID",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"internal_note\": \"<string>\",\n  \"external_note\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1d466a15-2e51-4189-bec8-8e820fe45f50",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "commissions",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Id of the commission"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account id. You can find your Account ID on Your FirstPromoter Dashboard. Navigate to Settings → Integrations",
+                    "key": "Account-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"internal_note\": \"<string>\",\n  \"external_note\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "21c37043-a2eb-4751-871a-eb5ac1b85922",
+              "name": "Commission not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "commissions",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) Id of the commission"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account id. You can find your Account ID on Your FirstPromoter Dashboard. Navigate to Settings → Integrations",
+                    "key": "Account-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"internal_note\": \"<string>\",\n  \"external_note\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "eafdd428-91d5-42f2-a7aa-6d38cf404f0f",
+          "name": "Approve commissions",
+          "request": {
+            "name": "Approve commissions",
+            "description": {
+              "content": "With this endpoint you can approve commissions. \n <Note>If there are more than __5__ ids on the __ids__ param/field, the action will be processed asynchronously. The response for the batch status will most likely be `in_progress`. The available statuses are `pending`, `in_progress`, `completed`, `failed` and `stopped`</Note> \n <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/company/commissions/approve`</Tip>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "commissions",
+                "approve"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Account id. You can find your Account ID on Your FirstPromoter Dashboard. Navigate to Settings → Integrations",
+                "key": "Account-ID",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6b82dd9a-3fde-4046-abe8-7741b71de8a0",
+              "name": "Operation completed successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "commissions",
+                    "approve"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account id. You can find your Account ID on Your FirstPromoter Dashboard. Navigate to Settings → Integrations",
+                    "key": "Account-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 2715,\n  \"status\": \"completed\",\n  \"total\": 9719,\n  \"selected_total\": 2864,\n  \"processed_count\": 363,\n  \"failed_count\": 9399,\n  \"action_label\": \"string\",\n  \"created_at\": \"2013-09-22T07:30:22.511Z\",\n  \"updated_at\": \"1977-11-11T17:17:11.799Z\",\n  \"meta\": {},\n  \"progress\": 4272,\n  \"processing_errors\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "33c9da0a-da61-4e3a-b145-b71d5d88cf5f",
+              "name": "Batch operation accepted and processing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "commissions",
+                    "approve"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account id. You can find your Account ID on Your FirstPromoter Dashboard. Navigate to Settings → Integrations",
+                    "key": "Account-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 2808,\n  \"status\": \"in_progress\",\n  \"total\": 176,\n  \"selected_total\": 2275,\n  \"processed_count\": 8007,\n  \"failed_count\": 2687,\n  \"action_label\": \"string\",\n  \"created_at\": \"2007-09-29T06:33:22.149Z\",\n  \"updated_at\": \"1982-08-29T16:38:01.533Z\",\n  \"meta\": {},\n  \"progress\": 5039,\n  \"processing_errors\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4faeb6b0-2095-4717-9adc-0322654d62da",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "commissions",
+                    "approve"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account id. You can find your Account ID on Your FirstPromoter Dashboard. Navigate to Settings → Integrations",
+                    "key": "Account-ID",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "24c3f170-27c2-4e01-9419-d4eb5578c1f9",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "commissions",
+                    "approve"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account id. You can find your Account ID on Your FirstPromoter Dashboard. Navigate to Settings → Integrations",
+                    "key": "Account-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "334ce210-aab5-4050-a3d3-bf49ee9e90e2",
+              "name": "Invalid parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "commissions",
+                    "approve"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account id. You can find your Account ID on Your FirstPromoter Dashboard. Navigate to Settings → Integrations",
+                    "key": "Account-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d3d1d623-3631-4a7e-8a9d-d2ec2d22cf88",
+          "name": "Deny commissions",
+          "request": {
+            "name": "Deny commissions",
+            "description": {
+              "content": "With this endpoint you can deny commissions. \n <Note>If there are more than __5__ ids on the __ids__ param/field, the action will be processed asynchronously. The response for the batch status will most likely be `in_progress`. The available statuses are `pending`, `in_progress`, `completed`, `failed` and `stopped`</Note> \n  <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/company/commissions/deny`</Tip>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "commissions",
+                "deny"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Account id. You can find your Account ID on Your FirstPromoter Dashboard. Navigate to Settings → Integrations",
+                "key": "Account-ID",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "fb6d4458-3b1e-4b3f-86c1-28f7eb05ef98",
+              "name": "Operation completed successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "commissions",
+                    "deny"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account id. You can find your Account ID on Your FirstPromoter Dashboard. Navigate to Settings → Integrations",
+                    "key": "Account-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 2808,\n  \"status\": \"in_progress\",\n  \"total\": 176,\n  \"selected_total\": 2275,\n  \"processed_count\": 8007,\n  \"failed_count\": 2687,\n  \"action_label\": \"string\",\n  \"created_at\": \"2007-09-29T06:33:22.149Z\",\n  \"updated_at\": \"1982-08-29T16:38:01.533Z\",\n  \"meta\": {},\n  \"progress\": 5039,\n  \"processing_errors\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cbaf7da9-9a86-40a0-8042-e5240d24688a",
+              "name": "Batch operation accepted and processing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "commissions",
+                    "deny"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account id. You can find your Account ID on Your FirstPromoter Dashboard. Navigate to Settings → Integrations",
+                    "key": "Account-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 2808,\n  \"status\": \"in_progress\",\n  \"total\": 176,\n  \"selected_total\": 2275,\n  \"processed_count\": 8007,\n  \"failed_count\": 2687,\n  \"action_label\": \"string\",\n  \"created_at\": \"2007-09-29T06:33:22.149Z\",\n  \"updated_at\": \"1982-08-29T16:38:01.533Z\",\n  \"meta\": {},\n  \"progress\": 5039,\n  \"processing_errors\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d6f4493f-8dec-409f-9ca6-b336dfaaea65",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "commissions",
+                    "deny"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account id. You can find your Account ID on Your FirstPromoter Dashboard. Navigate to Settings → Integrations",
+                    "key": "Account-ID",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0a18e31e-9167-4133-8261-9b531ca9cb2a",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "commissions",
+                    "deny"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account id. You can find your Account ID on Your FirstPromoter Dashboard. Navigate to Settings → Integrations",
+                    "key": "Account-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f62b44f1-4246-47a4-b9ee-a73284cdea31",
+              "name": "Invalid parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "commissions",
+                    "deny"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account id. You can find your Account ID on Your FirstPromoter Dashboard. Navigate to Settings → Integrations",
+                    "key": "Account-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a65dc180-47f1-4ab5-8f5e-c373a4a2b371",
+          "name": "Mark nonmonetary commissions as fulfilled",
+          "request": {
+            "name": "Mark nonmonetary commissions as fulfilled",
+            "description": {
+              "content": "With this endpoint you can mark nonmonetary commissions as fulfilled. \n <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/company/commissions/mark_fulfilled`</Tip>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "commissions",
+                "mark_fulfilled"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Account id. You can find your Account ID on Your FirstPromoter Dashboard. Navigate to Settings → Integrations",
+                "key": "Account-ID",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "21287f4b-ffb4-4d90-a814-d740ac411181",
+              "name": "Operation completed successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "commissions",
+                    "mark_fulfilled"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account id. You can find your Account ID on Your FirstPromoter Dashboard. Navigate to Settings → Integrations",
+                    "key": "Account-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 2808,\n  \"status\": \"in_progress\",\n  \"total\": 176,\n  \"selected_total\": 2275,\n  \"processed_count\": 8007,\n  \"failed_count\": 2687,\n  \"action_label\": \"string\",\n  \"created_at\": \"2007-09-29T06:33:22.149Z\",\n  \"updated_at\": \"1982-08-29T16:38:01.533Z\",\n  \"meta\": {},\n  \"progress\": 5039,\n  \"processing_errors\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e52e7502-af40-4ed7-9e09-2e34e3781d4e",
+              "name": "Batch operation accepted and processing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "commissions",
+                    "mark_fulfilled"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account id. You can find your Account ID on Your FirstPromoter Dashboard. Navigate to Settings → Integrations",
+                    "key": "Account-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 2808,\n  \"status\": \"in_progress\",\n  \"total\": 176,\n  \"selected_total\": 2275,\n  \"processed_count\": 8007,\n  \"failed_count\": 2687,\n  \"action_label\": \"string\",\n  \"created_at\": \"2007-09-29T06:33:22.149Z\",\n  \"updated_at\": \"1982-08-29T16:38:01.533Z\",\n  \"meta\": {},\n  \"progress\": 5039,\n  \"processing_errors\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3800be48-f3a5-4fc4-9302-32bd6c348c73",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "commissions",
+                    "mark_fulfilled"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account id. You can find your Account ID on Your FirstPromoter Dashboard. Navigate to Settings → Integrations",
+                    "key": "Account-ID",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "a99077d0-7658-4fc1-a23f-d0206f920408",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "commissions",
+                    "mark_fulfilled"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account id. You can find your Account ID on Your FirstPromoter Dashboard. Navigate to Settings → Integrations",
+                    "key": "Account-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "16dc57c1-4b59-4bbe-89a7-947b239f7b60",
+              "name": "Invalid parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "commissions",
+                    "mark_fulfilled"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account id. You can find your Account ID on Your FirstPromoter Dashboard. Navigate to Settings → Integrations",
+                    "key": "Account-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "33de84c5-0a17-4980-9da7-d70e24e56965",
+          "name": "Mark nonmonetary commissions as unfulfilled",
+          "request": {
+            "name": "Mark nonmonetary commissions as unfulfilled",
+            "description": {
+              "content": "With this endpoint you can mark nonmonetary commissions as unfulfilled. \n <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/company/commissions/mark_unfulfilled`</Tip>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "commissions",
+                "mark_unfulfilled"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Account id. You can find your Account ID on Your FirstPromoter Dashboard. Navigate to Settings → Integrations",
+                "key": "Account-ID",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e1bddbdc-289b-490b-8a1a-b5069ed4cfb3",
+              "name": "Operation completed successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "commissions",
+                    "mark_unfulfilled"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account id. You can find your Account ID on Your FirstPromoter Dashboard. Navigate to Settings → Integrations",
+                    "key": "Account-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 2808,\n  \"status\": \"in_progress\",\n  \"total\": 176,\n  \"selected_total\": 2275,\n  \"processed_count\": 8007,\n  \"failed_count\": 2687,\n  \"action_label\": \"string\",\n  \"created_at\": \"2007-09-29T06:33:22.149Z\",\n  \"updated_at\": \"1982-08-29T16:38:01.533Z\",\n  \"meta\": {},\n  \"progress\": 5039,\n  \"processing_errors\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1a5ab9e1-9c33-426c-87e7-8f6e0a3acafd",
+              "name": "Batch operation accepted and processing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "commissions",
+                    "mark_unfulfilled"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account id. You can find your Account ID on Your FirstPromoter Dashboard. Navigate to Settings → Integrations",
+                    "key": "Account-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 2808,\n  \"status\": \"in_progress\",\n  \"total\": 176,\n  \"selected_total\": 2275,\n  \"processed_count\": 8007,\n  \"failed_count\": 2687,\n  \"action_label\": \"string\",\n  \"created_at\": \"2007-09-29T06:33:22.149Z\",\n  \"updated_at\": \"1982-08-29T16:38:01.533Z\",\n  \"meta\": {},\n  \"progress\": 5039,\n  \"processing_errors\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "728d729a-8aed-4a93-b059-512b733981fa",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "commissions",
+                    "mark_unfulfilled"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account id. You can find your Account ID on Your FirstPromoter Dashboard. Navigate to Settings → Integrations",
+                    "key": "Account-ID",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "636dcfc4-a45c-4b8b-965d-ce204e2b5ff6",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "commissions",
+                    "mark_unfulfilled"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account id. You can find your Account ID on Your FirstPromoter Dashboard. Navigate to Settings → Integrations",
+                    "key": "Account-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "825cd186-c396-47b5-ac40-b5e1e4eda477",
+              "name": "Invalid parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "commissions",
+                    "mark_unfulfilled"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account id. You can find your Account ID on Your FirstPromoter Dashboard. Navigate to Settings → Integrations",
+                    "key": "Account-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3444aaff-e2b8-4683-b128-61aaec9cbc28",
+          "name": "Delete commissions",
+          "request": {
+            "name": "Delete commissions",
+            "description": {
+              "content": "With this endpoint you can delete commissions. \n <Tip>**HTTP Request** <br/>`DELETE https://api.firstpromoter.com/api/v2/company/commissions/destroy`</Tip>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "commissions",
+                "destroy"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Account id. You can find your Account ID on Your FirstPromoter Dashboard. Navigate to Settings → Integrations",
+                "key": "Account-ID",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0e56846e-6abc-4f9a-a75d-f5772af37827",
+              "name": "Operation completed successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "commissions",
+                    "destroy"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account id. You can find your Account ID on Your FirstPromoter Dashboard. Navigate to Settings → Integrations",
+                    "key": "Account-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 2808,\n  \"status\": \"in_progress\",\n  \"total\": 176,\n  \"selected_total\": 2275,\n  \"processed_count\": 8007,\n  \"failed_count\": 2687,\n  \"action_label\": \"string\",\n  \"created_at\": \"2007-09-29T06:33:22.149Z\",\n  \"updated_at\": \"1982-08-29T16:38:01.533Z\",\n  \"meta\": {},\n  \"progress\": 5039,\n  \"processing_errors\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5d73d025-598f-4924-97a0-b6e9f730aa6b",
+              "name": "Batch operation accepted and processing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "commissions",
+                    "destroy"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account id. You can find your Account ID on Your FirstPromoter Dashboard. Navigate to Settings → Integrations",
+                    "key": "Account-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 2808,\n  \"status\": \"in_progress\",\n  \"total\": 176,\n  \"selected_total\": 2275,\n  \"processed_count\": 8007,\n  \"failed_count\": 2687,\n  \"action_label\": \"string\",\n  \"created_at\": \"2007-09-29T06:33:22.149Z\",\n  \"updated_at\": \"1982-08-29T16:38:01.533Z\",\n  \"meta\": {},\n  \"progress\": 5039,\n  \"processing_errors\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "81a38e44-aa09-49e0-9123-9ac8b42a743d",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "commissions",
+                    "destroy"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account id. You can find your Account ID on Your FirstPromoter Dashboard. Navigate to Settings → Integrations",
+                    "key": "Account-ID",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9fd560d2-33ab-4757-a717-911673cb6bbf",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "commissions",
+                    "destroy"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account id. You can find your Account ID on Your FirstPromoter Dashboard. Navigate to Settings → Integrations",
+                    "key": "Account-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f9b8552a-f773-4b5b-bd12-0f11b442c3ef",
+              "name": "Invalid parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "commissions",
+                    "destroy"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account id. You can find your Account ID on Your FirstPromoter Dashboard. Navigate to Settings → Integrations",
+                    "key": "Account-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9dc03f9d-734d-49cb-bad9-175e21fa602f",
+          "name": "Generate payouts for commissions",
+          "request": {
+            "name": "Generate payouts for commissions",
+            "description": {
+              "content": "With this endpoint you can generate payouts for commissions. \n <Note>If there are more than __5__ ids on the __ids__ param/field, the action will be processed asynchronously. The response for the batch status will most likely be `in_progress`. The available statuses are `pending`, `in_progress`, `completed`, `failed` and `stopped`</Note> \n <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/company/commissions/generate_payouts`</Tip>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "commissions",
+                "generate_payouts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Account id. You can find your Account ID on Your FirstPromoter Dashboard. Navigate to Settings → Integrations",
+                "key": "Account-ID",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "239f1e4f-c39b-47e7-9e58-19e42c73a00f",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "commissions",
+                    "generate_payouts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account id. You can find your Account ID on Your FirstPromoter Dashboard. Navigate to Settings → Integrations",
+                    "key": "Account-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 1687,\n  \"status\": \"string\",\n  \"total\": 6354,\n  \"selected_total\": 729,\n  \"processed_count\": 2733,\n  \"failed_count\": 9884,\n  \"action_label\": \"string\",\n  \"created_at\": \"1949-03-16T23:49:53.774Z\",\n  \"updated_at\": \"1966-11-15T17:48:23.322Z\",\n  \"meta\": {},\n  \"progress\": 9529.684854318431\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d3d3232a-0648-466a-ac0b-df91f9f312ae",
+              "name": "Unauthorized - Missing or invalid bearer token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "commissions",
+                    "generate_payouts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account id. You can find your Account ID on Your FirstPromoter Dashboard. Navigate to Settings → Integrations",
+                    "key": "Account-ID",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "eaee05f7-d127-448d-8416-ad79b07198eb",
+      "name": "Payouts",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "21ec6568-82e8-4803-90cb-a873a50f3935",
+          "name": "Generate payouts for commissions",
+          "request": {
+            "name": "Generate payouts for commissions",
+            "description": {
+              "content": "With this endpoint you can generate payouts for commissions. \n <Note>If there are more than __5__ ids on the __ids__ param/field, the action will be processed asynchronously. The response for the batch status will most likely be `in_progress`. The available statuses are `pending`, `in_progress`, `completed`, `failed` and `stopped`</Note> \n <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/company/commissions/generate_payouts`</Tip>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "commissions",
+                "generate_payouts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Account id. You can find your Account ID on Your FirstPromoter Dashboard. Navigate to Settings → Integrations",
+                "key": "Account-ID",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c606d641-7cec-4d17-a378-334a8b9aae4d",
+              "name": "Successful operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "commissions",
+                    "generate_payouts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account id. You can find your Account ID on Your FirstPromoter Dashboard. Navigate to Settings → Integrations",
+                    "key": "Account-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 1687,\n  \"status\": \"string\",\n  \"total\": 6354,\n  \"selected_total\": 729,\n  \"processed_count\": 2733,\n  \"failed_count\": 9884,\n  \"action_label\": \"string\",\n  \"created_at\": \"1949-03-16T23:49:53.774Z\",\n  \"updated_at\": \"1966-11-15T17:48:23.322Z\",\n  \"meta\": {},\n  \"progress\": 9529.684854318431\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "938afa17-7b37-47bc-97db-94a0d22f66d4",
+              "name": "Unauthorized - Missing or invalid bearer token",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "commissions",
+                    "generate_payouts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account id. You can find your Account ID on Your FirstPromoter Dashboard. Navigate to Settings → Integrations",
+                    "key": "Account-ID",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.firstpromoter.com/api/v2/company",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "a406c2bc-3815-40ef-9871-9765915d585e",
+    "name": "FirstPromoter Commissions API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for managing commissions in FirstPromoter",
+      "type": "text/plain"
+    }
+  }
+}

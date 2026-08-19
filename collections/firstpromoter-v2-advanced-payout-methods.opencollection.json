@@ -1,0 +1,131 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "FirstPromoter Admin Payouts API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Payout Methods",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get all payout methods",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.firstpromoter.com/api/v2/company/payout_methods",
+            "params": [
+              {
+                "name": "filters[promoter_id]",
+                "value": "",
+                "type": "query",
+                "description": "Promoter id"
+              }
+            ]
+          },
+          "docs": "This endpoint gets all payout methods \n <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/payout_methods`</Tip>"
+        },
+        {
+          "info": {
+            "name": "Create a payout method",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.firstpromoter.com/api/v2/company/payout_methods",
+            "headers": [
+              {
+                "name": "Account-ID",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This endpoint creates a payout method under a promoter \n <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/company/payout_methods`</Tip>"
+        },
+        {
+          "info": {
+            "name": "Get a payout method",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.firstpromoter.com/api/v2/company/payout_methods/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Payout method ID"
+              }
+            ]
+          },
+          "docs": "This endpoint gets a payout method \n <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/payout_methods/{id}`</Tip>"
+        },
+        {
+          "info": {
+            "name": "Update a payout method",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.firstpromoter.com/api/v2/company/payout_methods/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Payout method ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This endpoint updates a payout method under a promoter \n <Tip>**HTTP Request** <br/>`PUT https://api.firstpromoter.com/api/v2/company/payout_methods/{id}`</Tip>"
+        },
+        {
+          "info": {
+            "name": "Delete a payout method",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.firstpromoter.com/api/v2/company/payout_methods/:id",
+            "headers": [
+              {
+                "name": "Account-ID",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Payout method ID"
+              }
+            ]
+          },
+          "docs": "Delete a payout method"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

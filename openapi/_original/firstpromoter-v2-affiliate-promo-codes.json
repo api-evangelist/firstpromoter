@@ -1,0 +1,326 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "FirstPromoter API",
+    "version": "1.0",
+    "description": "API for managing promo codes in the FirstPromoter system"
+  },
+  "servers": [
+    {
+      "url": "https://api.firstpromoter.com/api/v2/affiliate"
+    }
+  ],
+  "security": [
+    {
+      "BearerAuth": []
+    }
+  ],
+  "paths": {
+    "/promo_codes": {
+      "post": {
+        "summary": "Create promo code",
+        "tags": ["Promo Codes"],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/AccountId"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PromoCodeCreate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Promo code created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PromoCode"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/promo_codes/{id}": {
+      "put": {
+        "summary": "Update promo code by id",
+        "description": "Can not be updated if archived and ext_id present and promoter can manage tracking coupons.",
+        "tags": ["Promo Codes"],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/AccountId"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PromoCodeUpdate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Promo code updated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PromoCode"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "summary": "Archive promo code by id",
+        "description": "Archive promo code by id only if promo code is created by current promoter.",
+        "tags": ["Promo Codes"],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/AccountId"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Promo code archived successfully"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+   "components": {
+    "parameters": {
+      "AccountId": {
+        "name": "Account-ID",
+        "in": "header",
+        "required": true,
+        "description": "Account identifier that specifies which account is making the request",
+        "schema": {
+          "type": "string",
+          "example": "acc_123456"
+        }
+      }
+    },
+    "schemas": {
+      "PromoCodeCreate": {
+        "type": "object",
+        "required": ["code", "reward_id", "promoter_campaign_id"],
+        "properties": {
+          "code": {
+            "type": "string",
+            "description": "Code of the promo code"
+          },
+          "description": {
+            "type": "string",
+            "description": "Description of the promo code"
+          },
+          "reward_id": {
+            "type": "integer",
+            "description": "ID of the reward"
+          },
+          "promoter_campaign_id": {
+            "type": "integer",
+            "description": "ID of the promoter campaign"
+          },
+          "metadata": {
+            "type": "object",
+            "description": "Metadata of the promo code"
+          },
+          "details": {
+            "type": "object",
+            "description": "Details of the promo code"
+          }
+        }
+      },
+      "PromoCodeUpdate": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string",
+            "description": "Code of the promo code"
+          },
+          "description": {
+            "type": "string",
+            "description": "Description of the promo code"
+          },
+          "reward_id": {
+            "type": "integer",
+            "description": "ID of the reward"
+          },
+          "promoter_campaign_id": {
+            "type": "integer",
+            "description": "ID of the promoter campaign"
+          },
+          "metadata": {
+            "type": "object",
+            "description": "Metadata of the promo code"
+          },
+          "details": {
+            "type": "object",
+            "description": "Details of the promo code"
+          }
+        }
+      },
+      "PromoCode": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "code": {
+            "type": "string"
+          },
+          "reward": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "integer"
+              },
+              "name": {
+                "type": "string"
+              }
+            }
+          },
+          "ext_id": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "company_id": {
+            "type": "integer"
+          },
+          "promoter_campaign_id": {
+            "type": "integer"
+          },
+          "metadata": {
+            "type": "object"
+          },
+          "details": {
+            "type": "object"
+          },
+          "archived_at": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      },
+      "Error": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string"
+          },
+          "code": {
+            "type": "string"
+          },
+          "errors": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "description": "Access token passed as a Bearer token in the Authorization header"
+      },
+      "accountId": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "ACCOUNT-ID",
+        "description": "Account ID required with bearer token"
+      }
+    }
+  }
+}

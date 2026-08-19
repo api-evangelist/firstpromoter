@@ -1,0 +1,122 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "FirstPromoter Contract Documents API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Contract Documents",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get current version contract documents",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.firstpromoter.com/api/v2/affiliate/contract_documents",
+            "headers": [
+              {
+                "name": "Account-ID",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Returns the current contract document  \n <Tip>**HTTP Request** <br/>` GET  https://api.firstpromoter.com/api/v2/affiliate/contract_documents`</Tip>"
+        },
+        {
+          "info": {
+            "name": "Get contract documents by id (html/pdf)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.firstpromoter.com/api/v2/affiliate/contract_documents/:id",
+            "headers": [
+              {
+                "name": "Account-ID",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Contract document ID"
+              },
+              {
+                "name": "content_type",
+                "value": "",
+                "type": "query",
+                "description": "Format of the document content"
+              }
+            ]
+          },
+          "docs": "Gets contract document and returns it in the selected format  \n <Tip>**HTTP Request** <br/>` GET  https://api.firstpromoter.com/api/v2/affiliate/contract_documents/{id}`</Tip>"
+        },
+        {
+          "info": {
+            "name": "Sign a document with id",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.firstpromoter.com/api/v2/affiliate/contract_documents/:id/sign",
+            "headers": [
+              {
+                "name": "Account-ID",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Contract document ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Signs a contract document with id \n <Tip>**HTTP Request** <br/>` GET  https://api.firstpromoter.com/api/v2/affiliate/contract_documents/{id}/sign`</Tip>"
+        },
+        {
+          "info": {
+            "name": "Get the draft content of the contract",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.firstpromoter.com/api/v2/affiliate/contract_documents/draft",
+            "headers": [
+              {
+                "name": "Account-ID",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Returns the draft content of the contract with user details \n <Tip>**HTTP Request** <br/>` GET  https://api.firstpromoter.com/api/v2/affiliate/contract_documents/draft`</Tip>"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,145 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "FirstPromoter Affiliate Payouts API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Payouts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get all payouts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.firstpromoter.com/api/v2/affiliate/payouts",
+            "headers": [
+              {
+                "name": "Account-ID",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Search params. Searches by 'promoter.profile.first_name`, `promoter.profile.last_name`, `promoter.user.email`"
+              },
+              {
+                "name": "filters[status]",
+                "value": "",
+                "type": "query",
+                "description": "Status filter"
+              },
+              {
+                "name": "filters[campaign_id]",
+                "value": "",
+                "type": "query",
+                "description": "Campaign ids filter"
+              },
+              {
+                "name": "filters[payments_batch_id]",
+                "value": "",
+                "type": "query",
+                "description": "Payment batches ids filter"
+              },
+              {
+                "name": "filters[due_period]",
+                "value": "",
+                "type": "query",
+                "description": "Due period filter"
+              },
+              {
+                "name": "filters[period_start]",
+                "value": "",
+                "type": "query",
+                "description": "Period start filter. Send \"not_set\" for returning the ones with period_start == null"
+              },
+              {
+                "name": "filters[period_end]",
+                "value": "",
+                "type": "query",
+                "description": "Period end filter. Send \"not_set\" for returning the ones with period_end == null"
+              },
+              {
+                "name": "filters[payout_method]",
+                "value": "",
+                "type": "query",
+                "description": "Payout method filter"
+              },
+              {
+                "name": "filters[group_ref]",
+                "value": "",
+                "type": "query",
+                "description": "Group ref filter"
+              }
+            ]
+          },
+          "docs": "Get all payouts"
+        },
+        {
+          "info": {
+            "name": "Get due payout stats",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.firstpromoter.com/api/v2/affiliate/payouts/due_stats",
+            "headers": [
+              {
+                "name": "Account-ID",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Get due payout stats"
+        },
+        {
+          "info": {
+            "name": "Export payouts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.firstpromoter.com/api/v2/affiliate/payouts/export",
+            "headers": [
+              {
+                "name": "Account-ID",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Search params"
+              },
+              {
+                "name": "filters",
+                "value": "",
+                "type": "query",
+                "description": "Filter parameters"
+              }
+            ]
+          },
+          "docs": "Export payouts"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

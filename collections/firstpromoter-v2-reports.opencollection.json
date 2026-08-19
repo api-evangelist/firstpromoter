@@ -1,0 +1,330 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "FirstPromoter Reports API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Reports",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get reports for overview",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.firstpromoter.com/api/v2/company/reports/overview",
+            "headers": [
+              {
+                "name": "Account-ID",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "columns",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "group_by",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "start_date",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "end_date",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sorting",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get reports for overview \n <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/reports/overview`</Tip>"
+        },
+        {
+          "info": {
+            "name": "Get reports for campaigns",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.firstpromoter.com/api/v2/company/reports/campaigns",
+            "headers": [
+              {
+                "name": "Account-ID",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "columns",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "group_by",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "start_date",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "end_date",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sorting",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "With this endpoint you can get the report data grouped by campaigns.<Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/reports/campaigns`</Tip>"
+        },
+        {
+          "info": {
+            "name": "Get reports for promoters",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.firstpromoter.com/api/v2/company/reports/promoters",
+            "headers": [
+              {
+                "name": "Account-ID",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "columns",
+                "value": "",
+                "type": "query",
+                "description": "Fields to be included in the report"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Search query string"
+              },
+              {
+                "name": "group_by",
+                "value": "",
+                "type": "query",
+                "description": "Time period grouping"
+              },
+              {
+                "name": "start_date",
+                "value": "",
+                "type": "query",
+                "description": "Start date for the report period"
+              },
+              {
+                "name": "end_date",
+                "value": "",
+                "type": "query",
+                "description": "End date for the report period"
+              },
+              {
+                "name": "sorting",
+                "value": "",
+                "type": "query",
+                "description": "Sorting parameters"
+              }
+            ]
+          },
+          "docs": " With this endpoint you can get the report data grouped by promoters.<Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/reports/promoters`</Tip>"
+        },
+        {
+          "info": {
+            "name": "Get reports for traffic sources",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.firstpromoter.com/api/v2/company/reports/traffic_sources",
+            "headers": [
+              {
+                "name": "Account-ID",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "columns",
+                "value": "",
+                "type": "query",
+                "description": "Fields to be included in the report"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Search query string"
+              },
+              {
+                "name": "group_by",
+                "value": "",
+                "type": "query",
+                "description": "Time period grouping"
+              },
+              {
+                "name": "start_date",
+                "value": "",
+                "type": "query",
+                "description": "Start date for the report period"
+              },
+              {
+                "name": "end_date",
+                "value": "",
+                "type": "query",
+                "description": "End date for the report period"
+              },
+              {
+                "name": "sorting",
+                "value": "",
+                "type": "query",
+                "description": "Sorting parameters"
+              }
+            ]
+          },
+          "docs": "With this endpoint you can get the report data grouped by traffic sources. \n <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/reports/traffic_sources`</Tip>"
+        },
+        {
+          "info": {
+            "name": "Get reports for URLs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.firstpromoter.com/api/v2/company/reports/urls",
+            "headers": [
+              {
+                "name": "Account-ID",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "columns",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "q",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "group_by",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "start_date",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "end_date",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sorting",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "With this endpoint you can get the report data grouped by URLs.<Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/reports/urls`</Tip>"
+        },
+        {
+          "info": {
+            "name": "Download reports",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.firstpromoter.com/api/v2/company/reports/download",
+            "headers": [
+              {
+                "name": "Account-ID",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "report_type",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "totals",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "columns",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "group_by",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "start_date",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "end_date",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "With this endpoint you can download reports.<Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/reports/download`</Tip>"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,202 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "FirstPromoter Dashboards API",
+    "version": "2.0.0",
+    "description": "API for retrieving dashboard data"
+  },
+
+  "servers": [
+    {
+      "url": "https://api.firstpromoter.com/api/v2/company"
+    }
+  ],
+  "security": [
+    {
+      "BearerAuth": []
+    }
+  ],
+  "paths": {
+    "/dashboards/stats": {
+      "get": {
+        "summary": "Get dashboard stats",
+        "description": "Returns data for stats from the top and pending actions. \n <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/dashboards/stats`</Tip>",
+        "tags": ["Dashboards"],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/AccountId"
+          },
+          {
+            "name": "filters",
+            "in": "query",
+            "schema": {
+              "$ref": "#/components/schemas/DashboardFilters"
+            }
+          }
+        ],
+        "responses": {
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/dashboards/trendings": {
+      "get": {
+        "summary": "Get dashboard trendings",
+        "description": "Returns data for stats from the top and pending actions. \n <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/dashboards/trendings`</Tip>",
+        "tags": ["Dashboards"],
+
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/AccountId"
+          },
+          {
+            "name": "filters",
+            "in": "query",
+            "schema": {
+              "$ref": "#/components/schemas/DashboardFilters"
+            }
+          }
+        ],
+        "responses": {
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/dashboards/chart_data": {
+      "get": {
+        "summary": "Get dashboard chart data",
+        "description": "Returns data for chart. \n <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/dashboards/chart_data`</Tip>",
+        "tags": ["Dashboards"],
+
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/AccountId"
+          },
+          {
+            "name": "filters",
+            "in": "query",
+            "schema": {
+              "$ref": "#/components/schemas/DashboardFilters"
+            }
+          },
+          {
+            "name": "period_from",
+            "in": "query",
+            "description": "Date from",
+            "schema": {
+              "type": "string",
+              "format": "date"
+            }
+          },
+          {
+            "name": "period_to",
+            "in": "query",
+            "description": "Date to",
+            "schema": {
+              "type": "string",
+              "format": "date"
+            }
+          },
+          {
+            "name": "selection",
+            "in": "query",
+            "description": "Selection",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "revenue",
+                "commissions",
+                "clicks",
+                "referrals",
+                "customers",
+                "cancellations"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/dashboards/payouts_and_commissions": {
+      "get": {
+        "summary": "Get dashboard payouts and commissions data",
+        "description": "Returns data for payouts and commissions. \n <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/dashboards/payouts_and_commissions`</Tip>",
+        "tags": ["Dashboards"],
+
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/AccountId"
+          },
+          {
+            "name": "filters",
+            "in": "query",
+            "schema": {
+              "$ref": "#/components/schemas/DashboardFilters"
+            }
+          }
+        ],
+        "responses": {
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    }
+  },
+   "components": {
+    "parameters": {
+      "AccountId": {
+        "name": "Account-ID",
+        "in": "header",
+        "required": true,
+        "description": "Account identifier that specifies which account is making the request",
+        "schema": {
+          "type": "string",
+          "example": "acc_123456"
+        }
+      }
+    },
+    "schemas": {
+      "DashboardFilters": {
+        "type": "object",
+        "properties": {
+          "campaign_id": {
+            "oneOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "array",
+                "items": {
+                  "type": "integer"
+                }
+              }
+            ],
+            "description": "Campaign ids. Can be Integer or Array of Integers"
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "description": "Access token passed as a Bearer token in the Authorization header"
+      },
+      "accountId": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "ACCOUNT-ID",
+        "description": "Account ID required with bearer token"
+      }
+    }
+  }
+}

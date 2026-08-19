@@ -1,0 +1,357 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "FirstPromoter API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Promoters",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get available promoters",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.firstpromoter.com/api/v2/company/promoters",
+            "headers": [
+              {
+                "name": "Account-ID",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Search params for promoters, search using, email, name or ref_id"
+              },
+              {
+                "name": "ids[]",
+                "value": "",
+                "type": "query",
+                "description": "Array of promoter ids to get"
+              },
+              {
+                "name": "filters",
+                "value": "",
+                "type": "query",
+                "description": "Filter params"
+              },
+              {
+                "name": "sorting",
+                "value": "",
+                "type": "query",
+                "description": "Sorting params"
+              }
+            ]
+          },
+          "docs": "With this endpoint you can list all promoters. \n <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/promoters`</Tip>"
+        },
+        {
+          "info": {
+            "name": "Create promoter",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.firstpromoter.com/api/v2/company/promoters",
+            "headers": [
+              {
+                "name": "Account-ID",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "With this endpoint you can create a promoter. \n <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/company/promoters`</Tip>"
+        },
+        {
+          "info": {
+            "name": "Get promoter details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.firstpromoter.com/api/v2/company/promoters/:id",
+            "headers": [
+              {
+                "name": "Account-ID",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The promoter's numeric ID, or the value of the attribute specified in `find_by` (e.g. an email address, auth token, ref token, promo code, or cust_id)"
+              },
+              {
+                "name": "find_by",
+                "value": "",
+                "type": "query",
+                "description": "Find by attribute"
+              }
+            ]
+          },
+          "docs": "With this endpoint you can get the details of a promoter. \n <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/promoters/{id}`</Tip>"
+        },
+        {
+          "info": {
+            "name": "Update promoter",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.firstpromoter.com/api/v2/company/promoters/:id",
+            "headers": [
+              {
+                "name": "Account-ID",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Id of the promoter"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "With this endpoint you can update a promoter. \n <Tip>**HTTP Request** <br/>`PUT https://api.firstpromoter.com/api/v2/company/promoters/{id}`</Tip>"
+        },
+        {
+          "info": {
+            "name": "Get data used for chart",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.firstpromoter.com/api/v2/company/promoters/:id/chart_data",
+            "headers": [
+              {
+                "name": "Account-ID",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Id of the promoter"
+              },
+              {
+                "name": "period_from",
+                "value": "",
+                "type": "query",
+                "description": "From date of the period for the chart, ISO date format (YYYY-MM-DD)"
+              },
+              {
+                "name": "period_to",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "selection",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "With this endpoint you can get the data used for charts.<Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/promoters/{id}/chart_data`</Tip>"
+        },
+        {
+          "info": {
+            "name": "Accept promoters",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.firstpromoter.com/api/v2/company/promoters/accept",
+            "headers": [
+              {
+                "name": "Account-ID",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "With this endpoint you can accept promoters. \n <Note>If there are more than __5__ ids on the __ids__ param/field, the action will be processed asynchronously. The response for the batch status will most likely be `in_progress`. The available statuses are `pending`, `in_progress`, `completed`, `failed` and `stopped`</Note> \n <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/company/promoters/accept`</Tip>"
+        },
+        {
+          "info": {
+            "name": "Reject promoters",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.firstpromoter.com/api/v2/company/promoters/reject",
+            "headers": [
+              {
+                "name": "Account-ID",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "With this endpoint you can reject promoters. \n <Note>If there are more than __5__ ids on the __ids__ param/field, the action will be processed asynchronously. The response for the batch status will most likely be `in_progress`. The available statuses are `pending`, `in_progress`, `completed`, `failed` and `stopped`</Note> \n <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/company/promoters/reject`</Tip>"
+        },
+        {
+          "info": {
+            "name": "Block promoters",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.firstpromoter.com/api/v2/company/promoters/block",
+            "headers": [
+              {
+                "name": "Account-ID",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "With this endpoint you can block promoters. \n <Note>If there are more than __5__ ids on the __ids__ param/field, the action will be processed asynchronously. The response for the batch status will most likely be `in_progress`. The available statuses are `pending`, `in_progress`, `completed`, `failed` and `stopped`</Note> \n <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/company/promoters/block`</Tip>"
+        },
+        {
+          "info": {
+            "name": "Archive promoters",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.firstpromoter.com/api/v2/company/promoters/archive",
+            "headers": [
+              {
+                "name": "Account-ID",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "With this endpoint you can archive promoters. \n <Note>If there are more than __5__ ids on the __ids__ param/field, the action will be processed asynchronously. The response for the batch status will most likely be `in_progress`. The available statuses are `pending`, `in_progress`, `completed`, `failed` and `stopped`</Note> \n <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/company/promoters/archive`</Tip>"
+        },
+        {
+          "info": {
+            "name": "Move promoters to campaign",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.firstpromoter.com/api/v2/company/promoters/move_to_campaign",
+            "headers": [
+              {
+                "name": "Account-ID",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "With this endpoint you can move promoters from one campaign to another. \n <Note>If there are more than __5__ ids on the __ids__ param/field, the action will be processed asynchronously. The response for the batch status will most likely be `in_progress`. The available statuses are `pending`, `in_progress`, `completed`, `failed` and `stopped`</Note> \n <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/company/promoters/move_to_campaign`</Tip>"
+        },
+        {
+          "info": {
+            "name": "Add promoters to campaign",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.firstpromoter.com/api/v2/company/promoters/add_to_campaign",
+            "headers": [
+              {
+                "name": "Account-ID",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "With this endpoint you can add promoters to a campaign. \n <Note>If there are more than __5__ ids on the __ids__ param/field, the action will be processed asynchronously. The response for the batch status will most likely be `in_progress`. The available statuses are `pending`, `in_progress`, `completed`, `failed` and `stopped`</Note> \n <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/company/promoters/add_to_campaign`</Tip>"
+        },
+        {
+          "info": {
+            "name": "Assign a parent promoter",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.firstpromoter.com/api/v2/company/promoters/assign_parent",
+            "headers": [
+              {
+                "name": "Account-ID",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "With this endpoint you can assign a parent promoter to your promoters. \n <Note>If there are more than __5__ ids on the __ids__ param/field, the action will be processed asynchronously. The response for the batch status will most likely be `in_progress`. The available statuses are `pending`, `in_progress`, `completed`, `failed` and `stopped`</Note> \n <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/company/promoters/assign_parent`</Tip>"
+        },
+        {
+          "info": {
+            "name": "Restore promoters",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.firstpromoter.com/api/v2/company/promoters/restore",
+            "headers": [
+              {
+                "name": "Account-ID",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "With this endpoint you can restore promoters. \n <Note>If there are more than __5__ ids on the __ids__ param/field, the action will be processed asynchronously. The response for the batch status will most likely be `in_progress`. The available statuses are `pending`, `in_progress`, `completed`, `failed` and `stopped`</Note> \n <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/company/promoters/restore`</Tip>"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

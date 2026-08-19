@@ -1,0 +1,146 @@
+openapi: 3.0.1
+info:
+  title: FirstPromoter Contracts API
+  version: 2.0.0
+  description: API for managing contracts in FirstPromoter
+servers:
+- url: https://api.firstpromoter.com/api/v2/company
+security:
+- BearerAuth: []
+paths:
+  /contracts:
+    get:
+      summary: Get all contracts
+      description: "Returns all contracts \n <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/contracts`</Tip>"
+      tags:
+      - Contracts
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      responses:
+        '401':
+          description: Unauthorized
+    post:
+      summary: Create a contract. Calls the service that generates the contract documents.
+      description: "Create a contract \n <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/company/contracts`</Tip>"
+      tags:
+      - Contracts
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ContractCreate'
+      responses:
+        '401':
+          description: Unauthorized
+  /contracts/{id}:
+    get:
+      summary: Get contract by id
+      description: "Returns a contract by id \n <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/contracts/{id}`</Tip>"
+      tags:
+      - Contracts
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '401':
+          description: Unauthorized
+    put:
+      summary: Update a contract. Calls the service that generates the contract documents if needed.
+      description: "Update a contract \n <Tip>**HTTP Request** <br/>`PUT https://api.firstpromoter.com/api/v2/company/contracts/{id}`</Tip>"
+      tags:
+      - Contracts
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ContractUpdate'
+      responses:
+        '401':
+          description: Unauthorized
+    delete:
+      summary: Delete a contract
+      description: "Delete a contract \n <Tip>**HTTP Request** <br/>`DELETE https://api.firstpromoter.com/api/v2/company/contracts/{id}`</Tip>"
+      tags:
+      - Contracts
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '401':
+          description: Unauthorized
+components:
+  parameters:
+    AccountId:
+      name: Account-ID
+      in: header
+      required: true
+      description: Account identifier that specifies which account is making the request
+      schema:
+        type: string
+        example: acc_123456
+  schemas:
+    ContractCreate:
+      type: object
+      required:
+      - name
+      - checkbox_label
+      - content_hosted
+      properties:
+        name:
+          type: string
+          description: The name of the contract
+        checkbox_label:
+          type: string
+          description: The checkbox label
+          pattern: \[(\S.*)\]
+        content_hosted:
+          type: boolean
+          description: True if "Hosted inside FirstPromoter (recommended)" is selected, False if "External link" is selected
+        content:
+          type: string
+          description: Content. Required if "content_hosted" == true
+        external_link:
+          type: string
+          description: The external T&C link. Required if "content_hosted" == false
+        campaign_ids:
+          type: array
+          description: The selected campaign ids
+          items:
+            type: integer
+    ContractUpdate:
+      allOf:
+      - $ref: '#/components/schemas/ContractCreate'
+      - type: object
+        properties:
+          default:
+            type: boolean
+            description: Tells if this contract is the default one
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: Access token passed as a Bearer token in the Authorization header
+    accountId:
+      type: apiKey
+      in: header
+      name: ACCOUNT-ID
+      description: Account ID required with bearer token

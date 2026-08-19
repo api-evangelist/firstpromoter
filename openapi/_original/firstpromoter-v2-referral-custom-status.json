@@ -1,0 +1,154 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "FirstPromoter Referral Custom Status API",
+    "version": "1.0.0",
+    "description": "Assign or clear a custom referral status on a referral"
+  },
+  "servers": [
+    {
+      "url": "https://api.firstpromoter.com/api/v2/company",
+      "description": "Production server"
+    }
+  ],
+  "security": [
+    {
+      "BearerAuth": []
+    }
+  ],
+  "paths": {
+    "/referrals/{id}": {
+      "put": {
+        "summary": "Set custom status on a referral",
+        "tags": ["Custom Referral Statuses"],
+        "description": "Assign or clear a custom status on an existing referral by passing `custom_status_id`. \n\nFirst use `GET /api/admin/v1/custom_referral_statuses` to retrieve the IDs of your available statuses, then pass the desired `id` here. Pass `null` to remove the status.\n\n<Tip>**HTTP Request** <br/>`PUT https://api.firstpromoter.com/api/v2/company/referrals/{id}`</Tip>",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/AccountId"
+          },
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "The referral ID. Can also be an email, uid, or username when used with `find_by`."
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "custom_status_id": {
+                    "type": "integer",
+                    "nullable": true,
+                    "description": "The `id` of the custom referral status to assign. Pass `null` to clear the current status."
+                  },
+                  "find_by": {
+                    "type": "string",
+                    "enum": ["email", "uid", "username"],
+                    "description": "Required when the `id` path parameter is an email, uid, or username instead of a numeric ID."
+                  }
+                }
+              },
+              "examples": {
+                "assign": {
+                  "summary": "Assign a status",
+                  "value": {
+                    "custom_status_id": 42
+                  }
+                },
+                "clear": {
+                  "summary": "Clear the status",
+                  "value": {
+                    "custom_status_id": null
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Referral updated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Referral"
+                }
+              }
+            }
+          },
+          "401": { "description": "Unauthorized" },
+          "403": { "description": "Forbidden" },
+          "404": { "description": "Referral not found" },
+          "422": {
+            "description": "Validation error",
+            "content": {
+              "application/json": {
+                "schema": { "$ref": "#/components/schemas/Error" }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "parameters": {
+      "AccountId": {
+        "name": "Account-ID",
+        "in": "header",
+        "required": true,
+        "description": "Your FirstPromoter Account ID. Found in Settings → Integrations.",
+        "schema": { "type": "string" }
+      }
+    },
+    "schemas": {
+      "Referral": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "integer" },
+          "email": { "type": "string", "format": "email" },
+          "uid": { "type": "string", "nullable": true },
+          "state": {
+            "type": "string",
+            "enum": ["subscribed", "signup", "active", "cancelled", "refunded", "denied", "pending", "moved"]
+          },
+          "custom_status": {
+            "type": "object",
+            "nullable": true,
+            "description": "The custom status assigned to this referral after the update. `null` if no status is set.",
+            "properties": {
+              "id": { "type": "integer" },
+              "name": { "type": "string" },
+              "description": { "type": "string", "nullable": true },
+              "order": { "type": "integer" },
+              "company_id": { "type": "integer" },
+              "created_at": { "type": "string", "format": "date-time" },
+              "updated_at": { "type": "string", "format": "date-time" }
+            }
+          }
+        }
+      },
+      "Error": {
+        "type": "object",
+        "properties": {
+          "message": { "type": "string" },
+          "code": { "type": "string" }
+        }
+      }
+    },
+    "securitySchemes": {
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "description": "API key passed as a Bearer token in the Authorization header. Found in Settings → Integrations → Manage API Keys."
+      }
+    }
+  }
+}

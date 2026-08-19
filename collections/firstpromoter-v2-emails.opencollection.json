@@ -1,0 +1,297 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "FirstPromoter Email API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Emails",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get available emails",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.firstpromoter.com/api/v2/company/emails",
+            "headers": [
+              {
+                "name": "Account-ID",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Search params. Searches by name, subject."
+              },
+              {
+                "name": "filters[trigger_enabled]",
+                "value": "",
+                "type": "query",
+                "description": "Trigger state (Enabled / Disabled)"
+              },
+              {
+                "name": "filters[trigger_on]",
+                "value": "",
+                "type": "query",
+                "description": "Trigger on"
+              },
+              {
+                "name": "filters[sent_count][from]",
+                "value": "",
+                "type": "query",
+                "description": "sent_count from"
+              },
+              {
+                "name": "filters[sent_count][to]",
+                "value": "",
+                "type": "query",
+                "description": "sent_count to"
+              },
+              {
+                "name": "filters[campaign_id]",
+                "value": "",
+                "type": "query",
+                "description": "Campaign ids. Can be Integer or Array of Integers"
+              },
+              {
+                "name": "sorting[sent_count]",
+                "value": "",
+                "type": "query",
+                "description": "The sort by sent_count direction"
+              },
+              {
+                "name": "sorting[subject]",
+                "value": "",
+                "type": "query",
+                "description": "The sort by subject direction"
+              }
+            ]
+          },
+          "docs": "Get available emails"
+        },
+        {
+          "info": {
+            "name": "Create email",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.firstpromoter.com/api/v2/company/emails",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create email"
+        },
+        {
+          "info": {
+            "name": "Get email by id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.firstpromoter.com/api/v2/company/emails/:id",
+            "headers": [
+              {
+                "name": "Account-ID",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The email id"
+              }
+            ]
+          },
+          "docs": "Get email by id"
+        },
+        {
+          "info": {
+            "name": "Update email",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.firstpromoter.com/api/v2/company/emails/:id",
+            "headers": [
+              {
+                "name": "Account-ID",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The email id"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update email"
+        },
+        {
+          "info": {
+            "name": "Delete email",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.firstpromoter.com/api/v2/company/emails/:id",
+            "headers": [
+              {
+                "name": "Account-ID",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The email id"
+              }
+            ]
+          },
+          "docs": "Delete email"
+        },
+        {
+          "info": {
+            "name": "Copy email",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.firstpromoter.com/api/v2/company/emails/:id/copy",
+            "headers": [
+              {
+                "name": "Account-ID",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The email id"
+              }
+            ]
+          },
+          "docs": "Copy email"
+        },
+        {
+          "info": {
+            "name": "Send email",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.firstpromoter.com/api/v2/company/emails/:id/send_now",
+            "headers": [
+              {
+                "name": "Account-ID",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The email id"
+              }
+            ]
+          },
+          "docs": "Send email"
+        },
+        {
+          "info": {
+            "name": "Send test email",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.firstpromoter.com/api/v2/company/emails/:id/send_test",
+            "headers": [
+              {
+                "name": "Account-ID",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The email id"
+              }
+            ]
+          },
+          "docs": "Send test email"
+        },
+        {
+          "info": {
+            "name": "Get the html of the company email theme",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.firstpromoter.com/api/v2/company/emails/template"
+          },
+          "docs": "Get the html of the company email theme"
+        },
+        {
+          "info": {
+            "name": "Updates the html of the company email theme",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://api.firstpromoter.com/api/v2/company/emails/custom_template",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the html of the company email theme"
+        },
+        {
+          "info": {
+            "name": "Sends a test email to current user with the custom template",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.firstpromoter.com/api/v2/company/emails/test_custom_template"
+          },
+          "docs": "Sends a test email to current user with the custom template"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

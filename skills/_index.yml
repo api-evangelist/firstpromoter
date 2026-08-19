@@ -1,0 +1,55 @@
+generated: '2026-08-13'
+method: searched
+source: >-
+  https://docs.firstpromoter.com/.well-known/agent-skills/index.json (provider-published) plus
+  skills generated from openapi/firstpromoter-*-openapi.yml
+name: FirstPromoter Agent Skills
+description: >-
+  One provider-published Agent Skill saved verbatim from FirstPromoter's own
+  /.well-known/agent-skills/ discovery surface, plus three skills generated from the provider's
+  published OpenAPI documents for the flows the published skill only summarises.
+skills:
+  - name: firstpromoter
+    file: skills/firstpromoter-firstpromoter.md
+    method: searched
+    source: https://docs.firstpromoter.com/.well-known/agent-skills/firstpromoter/skill.md
+    http_status: 200
+    digest: sha256:53d6467a36ce6c8c57bb9813bd1b1d2d3342b8728f77b86dc229e944a6acb95e
+    discovery: https://docs.firstpromoter.com/.well-known/agent-skills/index.json
+    schema: https://schemas.agentskills.io/discovery/0.2.0/schema.json
+    description: >-
+      FirstPromoter's own skill document. Covers tracking setup, promoter management, billing
+      provider integration, server-side tracking, commissions, payouts, webhooks, promo codes and
+      reporting, with an endpoint quick-reference table.
+  - name: firstpromoter-track-revenue-events
+    file: skills/firstpromoter-track-revenue-events.md
+    method: generated
+    api: firstpromoter:firstpromoter-v2-tracking
+    operations:
+      - POST /signup
+      - POST /sale
+      - POST /refund
+      - POST /cancellation
+  - name: firstpromoter-onboard-a-promoter
+    file: skills/firstpromoter-onboard-a-promoter.md
+    method: generated
+    api: firstpromoter:firstpromoter-v2-promoters
+    operations:
+      - createPromoter
+      - getPromoter
+      - acceptPromoters
+      - addPromotersToCampaign
+      - movePromotersToCampaign
+      - updatePromoterCampaign
+      - listBatchProcesses
+      - getBatchProcessProgress
+  - name: firstpromoter-subscribe-to-webhooks
+    file: skills/firstpromoter-subscribe-to-webhooks.md
+    method: generated
+    api: firstpromoter:firstpromoter-v2-webhooks
+    operations:
+      - GET /webhooks/event_types
+      - POST /webhooks
+      - POST /webhooks/test
+      - GET /webhooks/{webhook_id}/webhook_deliveries
+      - POST /webhooks/{webhook_id}/webhook_deliveries/{id}/retry_delivery

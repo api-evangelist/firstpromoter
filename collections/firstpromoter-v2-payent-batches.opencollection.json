@@ -1,0 +1,78 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "FirstPromoter API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Payments Batches",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Pay / Start payments batch",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.firstpromoter.com/api/v2/company/payments_batches/:id/pay",
+            "headers": [
+              {
+                "name": "Account-ID",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Payment batch ID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "This endpoint starts a payments batch. \n <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/company/payments_batches/{id}/pay`</Tip>"
+        },
+        {
+          "info": {
+            "name": "Delete payments batch",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.firstpromoter.com/api/v2/company/payments_batches/:id",
+            "headers": [
+              {
+                "name": "Account-ID",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Payment batch ID"
+              }
+            ]
+          },
+          "docs": "Deletes selected payments batch \n <Tip>**HTTP Request** <br/>`DELETE https://api.firstpromoter.com/api/v2/company/payments_batches/{id}`</Tip>"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

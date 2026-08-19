@@ -1,0 +1,149 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "FirstPromoter PromoCodes API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Promo Codes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get promo codes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.firstpromoter.com/api/v2/company/promo_codes",
+            "headers": [
+              {
+                "name": "Account-ID",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "promoter_campaign_id",
+                "value": "",
+                "type": "query",
+                "description": "Filters promo codes by promoter campaign id"
+              }
+            ]
+          },
+          "docs": "With this endpoint you can list all promo codes. \n <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/promo_codes`</Tip>"
+        },
+        {
+          "info": {
+            "name": "Create promo code (Stripe Only)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.firstpromoter.com/api/v2/company/promo_codes",
+            "headers": [
+              {
+                "name": "Account-ID",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "With this endpoint you can create a new promo code. \n <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/company/promo_codes`</Tip>"
+        },
+        {
+          "info": {
+            "name": "Get promo code by id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.firstpromoter.com/api/v2/company/promo_codes/:id",
+            "headers": [
+              {
+                "name": "Account-ID",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the promo code"
+              }
+            ]
+          },
+          "docs": "With this endpoint you can get the details of a specific promo code. \n <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/promo_codes/{id}`</Tip>"
+        },
+        {
+          "info": {
+            "name": "Update promo code by id",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.firstpromoter.com/api/v2/company/promo_codes/:id",
+            "headers": [
+              {
+                "name": "Account-ID",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the promo code"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update promo code by id. Can not be updated if archived and ext_id present. \n<Tip>**HTTP Request** <br/>`PUT https://api.firstpromoter.com/api/v2/company/promo_codes/{id}`</Tip>"
+        },
+        {
+          "info": {
+            "name": "Archive promo code by id",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.firstpromoter.com/api/v2/company/promo_codes/:id",
+            "headers": [
+              {
+                "name": "Account-ID",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the promo code"
+              }
+            ]
+          },
+          "docs": "Archive promo code by id. \n<Tip>**HTTP Request** <br/>`DELETE https://api.firstpromoter.com/api/v2/company/promo_codes/{id}`</Tip>"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

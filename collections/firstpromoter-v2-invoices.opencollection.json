@@ -1,0 +1,283 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "FirstPromoter Invoices API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Invoices",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get invoices",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.firstpromoter.com/api/v2/company/invoices",
+            "headers": [
+              {
+                "name": "Account-ID",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "filters[promoter_id]",
+                "value": "",
+                "type": "query",
+                "description": "Filter by promoter ID"
+              },
+              {
+                "name": "filters[status]",
+                "value": "",
+                "type": "query",
+                "description": "Filter by status"
+              }
+            ]
+          },
+          "docs": "Returns all invoices. \n <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/invoices`</Tip>"
+        },
+        {
+          "info": {
+            "name": "Get invoice by id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.firstpromoter.com/api/v2/company/invoices/:id",
+            "headers": [
+              {
+                "name": "Account-ID",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Invoice ID"
+              }
+            ]
+          },
+          "docs": "Returns single invoice \n <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/invoices/{id}`</Tip>"
+        },
+        {
+          "info": {
+            "name": "Void invoices",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.firstpromoter.com/api/v2/company/invoices/void",
+            "headers": [
+              {
+                "name": "Account-ID",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Marks invoices as void \n <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/company/invoices/void`</Tip>"
+        },
+        {
+          "info": {
+            "name": "Finalize invoices",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.firstpromoter.com/api/v2/company/invoices/finalize",
+            "headers": [
+              {
+                "name": "Account-ID",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Marks invoices as finalized \n <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/company/invoices/finalize`</Tip>"
+        },
+        {
+          "info": {
+            "name": "Destroy invoices",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.firstpromoter.com/api/v2/company/invoices/destroy",
+            "headers": [
+              {
+                "name": "Account-ID",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Deletes invoices \n <Tip>**HTTP Request** <br/>`DELETE https://api.firstpromoter.com/api/v2/company/invoices/destroy`</Tip>"
+        },
+        {
+          "info": {
+            "name": "Export invoices as csv",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.firstpromoter.com/api/v2/company/invoices/export",
+            "headers": [
+              {
+                "name": "Account-ID",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "filters[promoter_id]",
+                "value": "",
+                "type": "query",
+                "description": "Filter by promoter ID"
+              }
+            ]
+          },
+          "docs": "Exports invoices as csv \n <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/invoices/export`</Tip>"
+        },
+        {
+          "info": {
+            "name": "Export all invoices PDF in a single zip",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.firstpromoter.com/api/v2/company/invoices/export_zip",
+            "headers": [
+              {
+                "name": "Account-ID",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Exports invoices PDF in a single zip \n <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/invoices/export_zip`</Tip>"
+        },
+        {
+          "info": {
+            "name": "Show invoice preview",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.firstpromoter.com/api/v2/company/invoices/preview",
+            "headers": [
+              {
+                "name": "Account-ID",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "promoter_id",
+                "value": "",
+                "type": "query",
+                "description": "The promoter id"
+              },
+              {
+                "name": "payout_ids",
+                "value": "",
+                "type": "query",
+                "description": "Payout ids"
+              }
+            ]
+          },
+          "docs": "<Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/invoices/preview`</Tip>"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Invoice Templates",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Show invoice template",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.firstpromoter.com/api/v2/company/invoices/template",
+            "headers": [
+              {
+                "name": "Account-ID",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "<Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/invoices/template`</Tip>"
+        },
+        {
+          "info": {
+            "name": "Show invoice template preview",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.firstpromoter.com/api/v2/company/invoices/preview_template",
+            "headers": [
+              {
+                "name": "Account-ID",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "<Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/company/invoices/preview_template`</Tip>"
+        },
+        {
+          "info": {
+            "name": "Update invoice template",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.firstpromoter.com/api/v2/company/invoices/custom_template",
+            "headers": [
+              {
+                "name": "Account-ID",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "<Tip>**HTTP Request** <br/>`PUT https://api.firstpromoter.com/api/v2/company/invoices/custom_template`</Tip>"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

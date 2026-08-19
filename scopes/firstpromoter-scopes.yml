@@ -1,0 +1,75 @@
+generated: '2026-08-13'
+method: probed
+source: >-
+  https://api.firstpromoter.com/.well-known/oauth-authorization-server,
+  https://mcp.firstpromoter.com/.well-known/oauth-authorization-server,
+  https://mcp.firstpromoter.com/.well-known/oauth-protected-resource
+docs: https://docs.firstpromoter.com/mcp/overview
+name: FirstPromoter OAuth scopes
+description: >-
+  FirstPromoter runs an OAuth 2.1 authorization server on both its API host and its MCP host. Two
+  scopes are advertised. No scope reference page is published in the documentation, and none of the
+  37 published OpenAPI documents declares an oauth2 security scheme - the REST API is documented
+  as API-key only, so these scopes govern the connector/MCP path.
+authorization_servers:
+  - issuer: https://api.firstpromoter.com
+    metadata: https://api.firstpromoter.com/.well-known/oauth-authorization-server
+    http_status: 200
+    authorization_endpoint: https://api.firstpromoter.com/oauth/authorize
+    token_endpoint: https://api.firstpromoter.com/oauth/token
+    registration_endpoint: https://api.firstpromoter.com/oauth/register
+    revocation_endpoint: https://api.firstpromoter.com/oauth/revoke
+  - issuer: https://mcp.firstpromoter.com
+    metadata: https://mcp.firstpromoter.com/.well-known/oauth-authorization-server
+    http_status: 200
+    authorization_endpoint: https://mcp.firstpromoter.com/oauth/authorize
+    token_endpoint: https://mcp.firstpromoter.com/oauth/token
+    registration_endpoint: https://mcp.firstpromoter.com/oauth/register
+    revocation_endpoint: https://mcp.firstpromoter.com/oauth/revoke
+flows:
+  grant_types:
+    - authorization_code
+    - refresh_token
+  response_types:
+    - code
+  pkce:
+    required_methods:
+      - S256
+  token_endpoint_auth_methods:
+    - none
+  dynamic_client_registration: true
+  dynamic_client_registration_spec: RFC 7591
+protected_resource:
+  resource: https://mcp.firstpromoter.com
+  metadata: https://mcp.firstpromoter.com/.well-known/oauth-protected-resource
+  http_status: 200
+  spec: RFC 9728
+  authorization_servers:
+    - https://mcp.firstpromoter.com
+  scopes_supported:
+    - mcp
+  bearer_methods_supported:
+    - header
+scopes:
+  - name: user
+    description: >-
+      Advertised in scopes_supported on both authorization servers. FirstPromoter publishes no
+      description for it; recorded as advertised, not as documented.
+    source: RFC 8414 authorization server metadata
+    documented: false
+  - name: mcp
+    description: >-
+      The scope the MCP protected resource requires. Advertised by both authorization servers and
+      named in the RFC 9728 protected-resource metadata for https://mcp.firstpromoter.com.
+    source: RFC 8414 + RFC 9728 metadata
+    documented: false
+scope_count: 2
+granularity: coarse
+findings:
+  - >-
+    Two scopes for a 179-operation API and a 53-tool MCP server. There is no per-resource or
+    read/write separation - an agent granted mcp holds the whole documented tool surface, including
+    every mutation the server exposes.
+  - >-
+    No scopes/permissions reference page exists in the documentation, so the only public source for
+    these values is the machine-readable metadata probed here.

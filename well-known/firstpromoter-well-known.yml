@@ -1,0 +1,151 @@
+generated: '2026-08-13'
+method: probed
+source: live HTTP probes of every FirstPromoter host named in apis.yml and in the OpenAPI servers[] blocks
+name: FirstPromoter well-known probe
+description: >-
+  Anonymous probe of the standard /.well-known/ discovery paths on every FirstPromoter host.
+  FirstPromoter serves real documents on four of them: RFC 8414 OAuth authorization-server
+  metadata on both the API host and the MCP host, RFC 9728 protected-resource metadata on the
+  MCP host, and an A2A agent card plus an Agent Skills discovery index on the documentation host.
+  No security.txt, OpenID Connect discovery, api-catalog or ai-plugin.json is served on any host.
+hosts:
+  - host: firstpromoter.com
+    probes:
+      - path: /.well-known/security.txt
+        status: 404
+        file: null
+      - path: /.well-known/openid-configuration
+        status: 404
+        file: null
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+        file: null
+      - path: /.well-known/api-catalog
+        status: 404
+        file: null
+      - path: /.well-known/ai-plugin.json
+        status: 404
+        file: null
+      - path: /.well-known/agent-card.json
+        status: 404
+        file: null
+      - path: /.well-known/agent.json
+        status: 404
+        file: null
+  - host: api.firstpromoter.com
+    probes:
+      - path: /.well-known/oauth-authorization-server
+        status: 200
+        content_type: application/json
+        file: well-known/firstpromoter-api-oauth-authorization-server.json
+        note: >-
+          RFC 8414 authorization server metadata. Authorization code + refresh token grants,
+          PKCE S256 required, RFC 7591 dynamic client registration endpoint published,
+          scopes_supported [user, mcp].
+      - path: /.well-known/security.txt
+        status: 404
+        file: null
+      - path: /.well-known/openid-configuration
+        status: 404
+        file: null
+      - path: /.well-known/api-catalog
+        status: 404
+        file: null
+      - path: /.well-known/ai-plugin.json
+        status: 404
+        file: null
+      - path: /.well-known/agent-card.json
+        status: 404
+        file: null
+      - path: /.well-known/agent.json
+        status: 404
+        file: null
+  - host: mcp.firstpromoter.com
+    probes:
+      - path: /.well-known/oauth-authorization-server
+        status: 200
+        content_type: application/json
+        file: well-known/firstpromoter-mcp-oauth-authorization-server.json
+        note: RFC 8414 metadata for the MCP server's own issuer (https://mcp.firstpromoter.com).
+      - path: /.well-known/oauth-protected-resource
+        status: 200
+        content_type: application/json
+        file: well-known/firstpromoter-mcp-oauth-protected-resource.json
+        note: >-
+          RFC 9728 protected-resource metadata. The MCP endpoint returns 401 with
+          WWW-Authenticate Bearer resource_metadata pointing at this document, which is the
+          correct MCP authorization discovery handshake.
+      - path: /.well-known/security.txt
+        status: 404
+        file: null
+      - path: /.well-known/openid-configuration
+        status: 404
+        file: null
+      - path: /.well-known/api-catalog
+        status: 404
+        file: null
+      - path: /.well-known/ai-plugin.json
+        status: 404
+        file: null
+      - path: /.well-known/agent-card.json
+        status: 404
+        file: null
+  - host: docs.firstpromoter.com
+    probes:
+      - path: /.well-known/agent-card.json
+        status: 200
+        content_type: application/json
+        file: well-known/firstpromoter-docs-agent-card.json
+        note: >-
+          A2A agent card, protocolVersion 0.3. Graded in a2a/firstpromoter-a2a.yml.
+      - path: /.well-known/agent-skills/index.json
+        status: 200
+        content_type: application/json
+        file: well-known/firstpromoter-docs-agent-skills-index.json
+        note: >-
+          Agent Skills discovery index (schemas.agentskills.io/discovery/0.2.0) listing one
+          skill-md skill with a sha256 digest.
+      - path: /.well-known/agent-skills/firstpromoter/skill.md
+        status: 200
+        content_type: text/markdown
+        file: skills/firstpromoter-firstpromoter.md
+        note: The provider-published Agent Skill, saved verbatim.
+      - path: /.well-known/mcp.json
+        status: 200
+        content_type: application/json
+        file: well-known/firstpromoter-docs-mcp.json
+        note: >-
+          Documentation-search MCP manifest emitted by the Mintlify docs platform. It points at
+          https://firstpromoter.main-kill-isr.mintlify.me/mcp - a Mintlify preview host, not a
+          firstpromoter.com host - so it is recorded but NOT treated as the product MCP server.
+          The product MCP server is https://mcp.firstpromoter.com (see mcp/firstpromoter-mcp.yml).
+      - path: /.well-known/security.txt
+        status: 404
+        file: null
+      - path: /.well-known/openid-configuration
+        status: 404
+        file: null
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+        file: null
+      - path: /.well-known/api-catalog
+        status: 404
+        file: null
+      - path: /.well-known/ai-plugin.json
+        status: 404
+        file: null
+      - path: /.well-known/agent.json
+        status: 404
+        file: null
+summary:
+  hosts_probed: 4
+  paths_probed: 30
+  documents_served: 6
+  security_txt: false
+  openid_configuration: false
+  oauth_authorization_server: true
+  oauth_protected_resource: true
+  api_catalog: false
+  ai_plugin: false
+  agent_card: true
+checked: '2026-08-13'

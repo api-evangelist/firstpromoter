@@ -1,0 +1,89 @@
+generated: '2026-08-13'
+method: searched
+source: >-
+  https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction,
+  https://changelog.firstpromoter.com/, https://docs.firstpromoter.com/webhooks-v2/overview,
+  https://status.firstpromoter.com (probed), openapi/firstpromoter-*-openapi.yml
+name: FirstPromoter API lifecycle
+description: >-
+  Versioning, deprecation and operational-transparency posture for the FirstPromoter API, read from
+  the provider's own documentation, changelog and published specs, plus live probes.
+versioning:
+  style: URI path
+  current: v2
+  documented: true
+  bases:
+    - https://api.firstpromoter.com/api/v2/company
+    - https://api.firstpromoter.com/api/v2/affiliate
+    - https://api.firstpromoter.com/api/v2/track
+    - https://api.firstpromoter.com/api/admin/v1
+  policy_published: false
+  note: >-
+    v1 existed and is referenced by name throughout the docs and by abandoned third-party SDKs, but
+    the v1 OpenAPI documents indexed in llms.txt (openapi-promoters, openapi-payouts,
+    openapi-reports, openapi-rewards, openapi-tracking, openapi-leads) all 404 as of 2026-08-13 -
+    the index still advertises contracts that are no longer served. One current spec, custom
+    referral statuses, still serves from /api/admin/v1 while everything else is on /api/v2.
+previous_versions:
+  - version: v1
+    status: withdrawn from documentation
+    evidence:
+      - url: https://docs.firstpromoter.com/api-reference-v1/openapi-promoters.json
+        status: 404
+      - url: https://docs.firstpromoter.com/api-reference-v1/openapi-payouts.json
+        status: 404
+      - url: https://docs.firstpromoter.com/api-reference-v1/openapi-tracking.json
+        status: 404
+      - url: https://docs.firstpromoter.com/api-reference-v1/openapi-reports.json
+        status: 404
+      - url: https://docs.firstpromoter.com/api-reference-v1/openapi-rewards.json
+        status: 404
+      - url: https://docs.firstpromoter.com/api-reference-v1/openapi-leads.json
+        status: 404
+    note: >-
+      No sunset date, migration guide or end-of-life notice was found for v1. The specs are simply
+      gone while llms.txt still lists them.
+deprecation:
+  policy_published: false
+  sunset_header: false
+  deprecation_header: false
+  rfc8594: false
+  deprecated_operations_in_spec: 0
+  note: >-
+    No operation in any of the 37 published specs carries deprecated: true, and no Sunset or
+    Deprecation response header is documented. The legacy webhook system is described as superseded
+    by webhooks v2 in a comparison table, with no retirement date attached.
+status_page:
+  published: false
+  probes:
+    - url: https://status.firstpromoter.com/
+      status: 403
+      note: The hostname resolves and is served by Vercel, but returns 403 Forbidden to the public.
+  note: >-
+    No public status page, uptime history or incident feed could be reached. There is no
+    machine-readable status endpoint.
+sla:
+  published: false
+  note: No uptime or support SLA is published on the pricing page or in the terms.
+changelog:
+  published: true
+  url: https://changelog.firstpromoter.com/
+  api_scoped: false
+  detail: changelog/firstpromoter-changelog.yml
+support:
+  help_center: https://help.firstpromoter.com/en/
+  contact: In-account chat and the support team; a Calendly link for sales conversations.
+maturity_signals:
+  - signal: MCP server declared experimental by the provider
+    detail: "The FirstPromoter MCP server is experimental. The tool surface and authentication flow may change without notice."
+  - signal: llms.txt advertises six 404 contracts
+    detail: The docs index is not reconciled against what the docs host actually serves.
+  - signal: duplicate operationId in a published spec
+    detail: >-
+      POST /promoters/accept and POST /promoters/assign_parent both carry operationId
+      acceptPromoters in firstpromoter-v2-promoters-openapi.yml, which breaks code generation.
+  - signal: invalid JSON in a published spec
+    detail: >-
+      openapi-v2-referrals.json is served with a trailing comma before the end of an array
+      (line 142) and does not parse with a strict JSON parser. The copy in this repository has that
+      single comma removed so it is machine-readable; the defect is in the provider's published file.

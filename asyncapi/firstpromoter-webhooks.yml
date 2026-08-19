@@ -1,0 +1,246 @@
+generated: '2026-08-13'
+method: searched
+source: >-
+  https://docs.firstpromoter.com/webhooks-v2/overview,
+  https://docs.firstpromoter.com/webhooks-v2/event-types,
+  https://docs.firstpromoter.com/webhooks-v2/payload,
+  https://docs.firstpromoter.com/webhooks-v2/deliveries,
+  openapi/firstpromoter-v2-webhooks-openapi.yml
+name: FirstPromoter Webhooks v2
+description: >-
+  FirstPromoter publishes no AsyncAPI document. Its event surface is an HTTP webhook system
+  (webhooks v2) with 44 documented event types, a uniform payload envelope, a delivery-record model
+  with published retry backoff, and a full REST management API for subscriptions and deliveries.
+  This artifact captures that catalog; it is not an AsyncAPI and does not claim to be one.
+asyncapi_published: false
+asyncapi_probed:
+  - url: https://docs.firstpromoter.com/asyncapi.yaml
+    status: 404
+  - url: https://api.firstpromoter.com/asyncapi.json
+    status: 404
+transport:
+  protocol: https
+  method: POST
+  content_type: application/json
+  timeout_seconds: 30
+  subscription_scope: account
+  subscription_limit: unlimited
+  campaign_filtering: true
+  custom_headers: true
+  signature: null
+  signature_note: >-
+    No HMAC or signature header is documented. Sender authentication is left to the consumer, via
+    arbitrary custom headers configured on the subscription.
+delivery:
+  statuses:
+    - name: pending
+      meaning: Queued but not yet attempted.
+    - name: delivered
+      meaning: The endpoint returned a 2xx response.
+    - name: retrying
+      meaning: An attempt failed; more retries are scheduled.
+    - name: failed
+      meaning: All retries exhausted without a successful response.
+  retry:
+    default_max_retries: 3
+    disable_with: max_retries = 0
+    backoff: attempt x 20 minutes
+    schedule:
+      - attempt: 1
+        delay: 20 minutes
+      - attempt: 2
+        delay: 40 minutes
+      - attempt: 3
+        delay: 60 minutes
+  manual_retry_operation: POST /webhooks/{webhook_id}/webhook_deliveries/{id}/retry_delivery
+payload:
+  envelope_fields:
+    - name: event_id
+      type: string
+      description: Unique UUID for the event. The deduplication key - the same event_id may arrive twice.
+    - name: event_type
+      type: string
+      description: The {entity}.{action} event type string.
+    - name: action
+      type: string
+      enum: [created, updated, deleted]
+    - name: entity_type
+      type: string
+      description: Type of the resource that changed, e.g. promoter, referral, commission.
+    - name: entity_id
+      type: number
+      description: Database ID of the resource.
+    - name: changes
+      type: object
+      description: >-
+        For updated events, each changed field maps to [old_value, new_value]. Empty on created and
+        deleted, where the full resource is in data.
+    - name: data
+      type: object
+      description: Full serialized state of the resource at the time of the event.
+    - name: timestamp
+      type: string
+      format: date-time
+  request_headers:
+    - name: Content-Type
+      value: application/json
+    - name: X-Event-Id
+      value: Same as event_id in the payload.
+    - name: X-Event-Type
+      value: Same as event_type in the payload.
+management_api:
+  base: https://api.firstpromoter.com/api/v2/company
+  spec: openapi/firstpromoter-v2-webhooks-openapi.yml
+  operations:
+    - GET /webhooks
+    - POST /webhooks
+    - GET /webhooks/{id}
+    - PUT /webhooks/{id}
+    - DELETE /webhooks/{id}
+    - GET /webhooks/event_types
+    - POST /webhooks/test
+    - GET /webhooks/{webhook_id}/webhook_deliveries
+    - GET /webhooks/{webhook_id}/webhook_deliveries/{id}
+    - POST /webhooks/{webhook_id}/webhook_deliveries/{id}/retry_delivery
+subscription_fields:
+  - name: url
+    required: true
+    type: string
+  - name: event_types
+    required: true
+    type: array
+  - name: campaign_ids
+    required: false
+    type: array
+    default: '[1] (all campaigns)'
+  - name: description
+    required: false
+    type: string
+  - name: active
+    required: false
+    type: boolean
+    default: true
+  - name: headers
+    required: false
+    type: object
+  - name: max_retries
+    required: false
+    type: integer
+    default: 3
+events:
+  - group: Promoters
+    types:
+      - name: promoter.created
+        description: A new promoter signed up or was created via the API.
+      - name: promoter.updated
+        description: A promoter's account details were changed.
+      - name: promoter.deleted
+        description: A promoter was deleted.
+      - name: promoter.balance.updated
+        description: A promoter's earnings, current, or paid balance changed.
+  - group: Promoter campaigns
+    types:
+      - name: promoter_campaign.created
+        description: A promoter was added to a campaign.
+      - name: promoter_campaign.updated
+        description: A promoter's participation in a campaign was changed.
+      - name: promoter_campaign.deleted
+        description: A promoter was removed from a campaign.
+      - name: promoter_campaign.accepted
+        description: A promoter's campaign application was accepted.
+      - name: promoter_campaign.pending
+        description: A promoter's campaign participation was set to pending review.
+      - name: promoter_campaign.rejected
+        description: A promoter's campaign application was rejected.
+      - name: promoter_campaign.blocked
+        description: A promoter was blocked from a campaign.
+      - name: promoter_campaign.inactive
+        description: A promoter was set to inactive in a campaign.
+  - group: Referrals
+    types:
+      - name: referral.created
+        description: A new referral (lead or customer) was tracked.
+      - name: referral.updated
+        description: A referral's details changed.
+      - name: referral.deleted
+        description: A referral was deleted.
+      - name: referral.converted
+        description: A referral (lead) was converted to a customer.
+      - name: referral.cancelled
+        description: A referral was cancelled.
+      - name: referral.moved
+        description: >-
+          A referral was moved between campaigns. Only fires on a campaign upgrade/downgrade
+          threshold crossing when referral moving is enabled on the campaign.
+  - group: Commissions
+    types:
+      - name: commission.created
+        description: A new commission was created.
+      - name: commission.updated
+        description: A commission was updated; the changes field carries the specific fields.
+      - name: commission.deleted
+        description: A commission was deleted.
+      - name: commission.approved
+        description: A commission was approved.
+      - name: commission.pending
+        description: A commission was set to pending.
+      - name: commission.denied
+        description: A commission was denied.
+  - group: Payouts
+    types:
+      - name: payout.created
+        description: A new payout was created.
+      - name: payout.updated
+        description: A payout was updated.
+      - name: payout.deleted
+        description: A payout was deleted.
+      - name: payout.pending
+        description: A payout was set to pending.
+      - name: payout.processing
+        description: A payout started processing.
+      - name: payout.completed
+        description: A payout was completed successfully.
+      - name: payout.failed
+        description: A payout failed.
+      - name: payout.cancelled
+        description: A payout was cancelled.
+      - name: payout.commissions.added
+        description: A commission was added to a payout.
+      - name: payout.commissions.removed
+        description: A commission was removed from a payout.
+  - group: Payout methods
+    types:
+      - name: payout_method.created
+        description: A promoter added a new payout method.
+      - name: payout_method.updated
+        description: A payout method was updated.
+      - name: payout_method.deleted
+        description: A payout method was removed.
+  - group: Payments batches
+    types:
+      - name: payments_batch.created
+        description: A new payment batch was created.
+      - name: payments_batch.updated
+        description: A payment batch was updated.
+      - name: payments_batch.deleted
+        description: A payment batch was deleted.
+      - name: payments_batch.initiated
+        description: A payment batch was initiated.
+      - name: payments_batch.processing
+        description: A payment batch started processing.
+      - name: payments_batch.completed
+        description: A payment batch completed successfully.
+      - name: payments_batch.failed
+        description: A payment batch failed.
+  - group: Contract documents
+    types:
+      - name: contract_document.signed
+        description: A promoter signed a contract document.
+event_count: 44
+legacy:
+  name: Legacy webhooks
+  shape: 3 hardcoded URLs per campaign, fixed event list, no campaign filtering, 15 s timeout
+  status: superseded by webhooks v2
+  note: >-
+    FirstPromoter documents the legacy system only in a comparison table on the v2 overview page.
+    No deprecation date or sunset policy is published for it.

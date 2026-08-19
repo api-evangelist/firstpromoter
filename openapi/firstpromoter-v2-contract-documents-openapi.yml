@@ -1,0 +1,104 @@
+openapi: 3.0.1
+info:
+  title: FirstPromoter Contract Documents API
+  version: 2.0.0
+  description: API for managing contract documents in FirstPromoter
+servers:
+- url: https://api.firstpromoter.com/api/v2/company
+security:
+- BearerAuth: []
+paths:
+  /contract_documents:
+    get:
+      summary: Get all current version contract documents
+      tags:
+      - Contract Documents
+      description: " Get all current version contract documents \n <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/contract_documents`</Tip>"
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      - name: q
+        in: query
+        description: Search params. Searches by promoter name and email
+        schema:
+          type: string
+      - name: filters
+        in: query
+        schema:
+          $ref: '#/components/schemas/DocumentFilters'
+      - name: sorting
+        in: query
+        schema:
+          $ref: '#/components/schemas/DocumentSorting'
+      responses:
+        '401':
+          description: Unauthorized
+  /contract_documents/{id}:
+    get:
+      summary: Get contract documents by id and return it in the selected format (html/pdf)
+      description: "Get contract documents by id(html/pdf) \n <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/contract_documents/{id}`</Tip>"
+      tags:
+      - Contract Documents
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      - name: content_type
+        in: query
+        required: true
+        schema:
+          type: string
+          enum:
+          - html
+          - pdf
+      responses:
+        '401':
+          description: Unauthorized
+components:
+  parameters:
+    AccountId:
+      name: Account-ID
+      in: header
+      required: true
+      description: Account identifier that specifies which account is making the request
+      schema:
+        type: string
+        example: acc_123456
+  schemas:
+    DocumentFilters:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+          - pending
+          - signed
+        promoter_id:
+          type: integer
+        contract_id:
+          type: integer
+    DocumentSorting:
+      type: object
+      properties:
+        created_at:
+          type: string
+          enum:
+          - asc
+          - desc
+        signed_at:
+          type: string
+          enum:
+          - asc
+          - desc
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: Access token passed as a Bearer token in the Authorization header
+    accountId:
+      type: apiKey
+      in: header
+      name: ACCOUNT-ID
+      description: Account ID required with bearer token

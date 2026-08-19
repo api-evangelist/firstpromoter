@@ -1,0 +1,566 @@
+{
+  "item": [
+    {
+      "id": "55a8715b-8c24-4775-9ddd-d1e02bc22db1",
+      "name": "Custom Referral Statuses",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "48bb9c16-0a80-4768-8a32-afc31ab95818",
+          "name": "List custom referral statuses",
+          "request": {
+            "name": "List custom referral statuses",
+            "description": {
+              "content": "Returns all custom referral statuses for your account, ordered by the `order` field ascending.\n\n <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/admin/v1/custom_referral_statuses`</Tip>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "custom_referral_statuses"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Your FirstPromoter Account ID. Found in Settings → Integrations.",
+                "key": "Account-ID",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a2f3aca2-8575-43ee-977d-f8b65cd397c1",
+              "name": "List of custom referral statuses",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "custom_referral_statuses"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Your FirstPromoter Account ID. Found in Settings → Integrations.",
+                    "key": "Account-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": 8689,\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"order\": 4391,\n    \"company_id\": 1290,\n    \"created_at\": \"1994-08-20T06:41:01.551Z\",\n    \"updated_at\": \"2021-03-18T06:43:58.252Z\"\n  },\n  {\n    \"id\": 3844,\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"order\": 6,\n    \"company_id\": 3982,\n    \"created_at\": \"1961-06-24T13:13:12.742Z\",\n    \"updated_at\": \"1984-05-23T04:20:38.775Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b38d1da7-397a-4f2d-a8bf-420342f746bb",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "custom_referral_statuses"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Your FirstPromoter Account ID. Found in Settings → Integrations.",
+                    "key": "Account-ID",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "878f8d4d-6e71-4284-9e1a-fd623072490d",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "custom_referral_statuses"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Your FirstPromoter Account ID. Found in Settings → Integrations.",
+                    "key": "Account-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\",\n  \"errors\": {\n    \"key_0\": [\n      \"string\",\n      \"string\"\n    ],\n    \"key_1\": [\n      \"string\",\n      \"string\"\n    ],\n    \"key_2\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2e70c30a-0341-466d-92c2-4e27851a7f70",
+          "name": "Create, update, or delete custom referral statuses",
+          "request": {
+            "name": "Create, update, or delete custom referral statuses",
+            "description": {
+              "content": "Batch operation to create, update, and/or delete custom referral statuses in a single request. Pass an array of status objects under the `custom_referral_statuses` key.\n\n- **Create**: omit `id`\n- **Update**: include the existing `id`\n- **Delete**: include `id` and set `_destroy` to `true`\n\n <Note>Both `name` and `order` must be unique within your account. Leading and trailing whitespace is stripped from `name`.</Note>\n\n <Tip>**HTTP Request** <br/>`PUT https://api.firstpromoter.com/api/admin/v1/custom_referral_statuses/update`</Tip>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "custom_referral_statuses",
+                "update"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Your FirstPromoter Account ID. Found in Settings → Integrations.",
+                "key": "Account-ID",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"custom_referral_statuses\": [\n    {\n      \"name\": \"<string>\",\n      \"order\": \"<integer>\",\n      \"id\": \"<integer>\",\n      \"description\": \"<string>\",\n      \"_destroy\": \"<boolean>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"order\": \"<integer>\",\n      \"id\": \"<integer>\",\n      \"description\": \"<string>\",\n      \"_destroy\": \"<boolean>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f36b6026-4d04-43ee-b3b4-cc89b21f7c1e",
+              "name": "Updated list of all custom referral statuses, ordered by `order` ascending",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "custom_referral_statuses",
+                    "update"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Your FirstPromoter Account ID. Found in Settings → Integrations.",
+                    "key": "Account-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"custom_referral_statuses\": [\n    {\n      \"name\": \"<string>\",\n      \"order\": \"<integer>\",\n      \"id\": \"<integer>\",\n      \"description\": \"<string>\",\n      \"_destroy\": \"<boolean>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"order\": \"<integer>\",\n      \"id\": \"<integer>\",\n      \"description\": \"<string>\",\n      \"_destroy\": \"<boolean>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": 8689,\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"order\": 4391,\n    \"company_id\": 1290,\n    \"created_at\": \"1994-08-20T06:41:01.551Z\",\n    \"updated_at\": \"2021-03-18T06:43:58.252Z\"\n  },\n  {\n    \"id\": 3844,\n    \"name\": \"string\",\n    \"description\": \"string\",\n    \"order\": 6,\n    \"company_id\": 3982,\n    \"created_at\": \"1961-06-24T13:13:12.742Z\",\n    \"updated_at\": \"1984-05-23T04:20:38.775Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "505bce9f-5271-4787-89cb-ae132774f700",
+              "name": "Missing required parameter",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "custom_referral_statuses",
+                    "update"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Your FirstPromoter Account ID. Found in Settings → Integrations.",
+                    "key": "Account-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"custom_referral_statuses\": [\n    {\n      \"name\": \"<string>\",\n      \"order\": \"<integer>\",\n      \"id\": \"<integer>\",\n      \"description\": \"<string>\",\n      \"_destroy\": \"<boolean>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"order\": \"<integer>\",\n      \"id\": \"<integer>\",\n      \"description\": \"<string>\",\n      \"_destroy\": \"<boolean>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\",\n  \"errors\": {\n    \"key_0\": [\n      \"string\",\n      \"string\"\n    ],\n    \"key_1\": [\n      \"string\",\n      \"string\"\n    ],\n    \"key_2\": [\n      \"string\",\n      \"string\"\n    ],\n    \"key_3\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "6c7ec142-4542-4b2a-9367-26c3873cfd55",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "custom_referral_statuses",
+                    "update"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Your FirstPromoter Account ID. Found in Settings → Integrations.",
+                    "key": "Account-ID",
+                    "value": "<string>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"custom_referral_statuses\": [\n    {\n      \"name\": \"<string>\",\n      \"order\": \"<integer>\",\n      \"id\": \"<integer>\",\n      \"description\": \"<string>\",\n      \"_destroy\": \"<boolean>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"order\": \"<integer>\",\n      \"id\": \"<integer>\",\n      \"description\": \"<string>\",\n      \"_destroy\": \"<boolean>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e471cd54-d5e7-4acd-b3a2-c824bc1dd6a8",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "custom_referral_statuses",
+                    "update"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Your FirstPromoter Account ID. Found in Settings → Integrations.",
+                    "key": "Account-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"custom_referral_statuses\": [\n    {\n      \"name\": \"<string>\",\n      \"order\": \"<integer>\",\n      \"id\": \"<integer>\",\n      \"description\": \"<string>\",\n      \"_destroy\": \"<boolean>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"order\": \"<integer>\",\n      \"id\": \"<integer>\",\n      \"description\": \"<string>\",\n      \"_destroy\": \"<boolean>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\",\n  \"errors\": {\n    \"key_0\": [\n      \"string\",\n      \"string\"\n    ],\n    \"key_1\": [\n      \"string\",\n      \"string\"\n    ],\n    \"key_2\": [\n      \"string\",\n      \"string\"\n    ],\n    \"key_3\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e1e2f01c-915d-4b28-a180-170517dbcd37",
+              "name": "Validation error (e.g. duplicate name or order)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "custom_referral_statuses",
+                    "update"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Your FirstPromoter Account ID. Found in Settings → Integrations.",
+                    "key": "Account-ID",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"custom_referral_statuses\": [\n    {\n      \"name\": \"<string>\",\n      \"order\": \"<integer>\",\n      \"id\": \"<integer>\",\n      \"description\": \"<string>\",\n      \"_destroy\": \"<boolean>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"order\": \"<integer>\",\n      \"id\": \"<integer>\",\n      \"description\": \"<string>\",\n      \"_destroy\": \"<boolean>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\",\n  \"errors\": {\n    \"key_0\": [\n      \"string\",\n      \"string\"\n    ],\n    \"key_1\": [\n      \"string\",\n      \"string\"\n    ],\n    \"key_2\": [\n      \"string\",\n      \"string\"\n    ],\n    \"key_3\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.firstpromoter.com/api/admin/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "7bc5a805-63d6-4fd1-8d28-f62ea7f60eec",
+    "name": "FirstPromoter Custom Referral Statuses API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API endpoints for managing custom referral statuses in FirstPromoter",
+      "type": "text/plain"
+    }
+  }
+}

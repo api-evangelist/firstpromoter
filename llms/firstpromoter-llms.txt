@@ -1,0 +1,158 @@
+# FirstPromoter Docs
+
+## Docs
+
+- [Introduction](https://docs.firstpromoter.com/introduction.md): Turn Affiliate Marketing into Your Competitive Advantage
+- [How FirstPromoter works](https://docs.firstpromoter.com/how-it-works.md): Set up and manage your own affiliate program, no matter how simple or complex your affiliate scheme is.
+- [Quickstart](https://docs.firstpromoter.com/quickstart.md): Start building your awesome affiliate or referral program in minutes.
+- [Integrate Your Website](https://docs.firstpromoter.com/guides/integrate-your-website.md): Connect your website to FirstPromoter so clicks, sign-ups, and sales are tracked and attributed to the right affiliate.
+- [Tracking with fpr.js](https://docs.firstpromoter.com/guides/tracking-with-fprjs.md): Track clicks and referrals using the fpr.js scripts
+- [Tracking without fpr.js](https://docs.firstpromoter.com/guides/tracking-without-fprjs.md): Track affiliate leads and sales/payments using API calls
+- [Proxy Setup (Optional)](https://docs.firstpromoter.com/guides/proxy-setup.md): FirstPromoter Proxy Integration Guide for Bypassing Ad Blockers
+- [Deep Linking for Mobile Apps (Flutter, iOS, Android, React Native)](https://docs.firstpromoter.com/guides/mobile-deep-linking.md): Track affiliate referrals inside native mobile apps by capturing the referral ID from a deep link and reporting it to FirstPromoter's Tracking API.
+- [Mobile Attribution Providers (Branch.io, AppsFlyer, Adjust)](https://docs.firstpromoter.com/guides/mobile-attribution-providers.md): Use a deep linking/attribution provider to solve new-install (deferred) referral tracking on iOS and Android, and report the result to FirstPromoter.
+- [Embed the Dashboard & Auto-Login Promoters](https://docs.firstpromoter.com/advanced/embed-dashboard-login.md): Embed the full promoter dashboard inside your own app as an iframe and automatically sign promoters in — no separate URL, no credentials.
+- [Log Promoters Out of the Embedded Dashboard](https://docs.firstpromoter.com/advanced/embed-dashboard-logout.md): End a specific promoter's embedded dashboard session from your backend, or let promoters sign out from inside the iframe itself.
+- [FirstPromoter JavaScript Library (fpr.js)](https://docs.firstpromoter.com/script-docs/fpr-js-docs.md): This is a reference document for all the methods available in FirstPromoter's browser-side JavaScript Library, fpr.js
+- [Advanced use cases & examples](https://docs.firstpromoter.com/script-docs/advanced.md)
+- [Concepts & Key Terminologies](https://docs.firstpromoter.com/script-docs/concepts.md): List of concepts and key terminologies used in the documentation
+- [Stripe](https://docs.firstpromoter.com/integrations/billing/stripe.md): Connecting FirstPromoter with Stripe
+- [Chargebee](https://docs.firstpromoter.com/integrations/billing/chargebee.md): Connecting FirstPromoter with Chargebee
+- [Recurly](https://docs.firstpromoter.com/integrations/billing/recurly.md): Connecting FirstPromoter with Recurly
+- [Paddle](https://docs.firstpromoter.com/integrations/billing/paddle.md): Connecting FirstPromoter with Paddle
+- [Braintree](https://docs.firstpromoter.com/integrations/billing/braintree.md): Connecting FirstPromoter with Braintree
+- [API](https://docs.firstpromoter.com/integrations/billing/api.md): Tracking sales with API
+- [WordPress](https://docs.firstpromoter.com/integrations/tracking/platform/wordpress.md): Add FirstPromoter affiliate tracking to your WordPress website using our dedicated plugin.
+- [Highlevel](https://docs.firstpromoter.com/integrations/tracking/platform/highlevel.md): Adding FirstPromoter to Highlevel
+- [ClickFunnels](https://docs.firstpromoter.com/integrations/tracking/platform/clickfunnels.md): Adding FirstPromoter to your ClickFunnels website
+- [Payment Links](https://docs.firstpromoter.com/integrations/tracking/platform/stripe/payment-links.md): Adding FirstPromoter when using Stripe payment links
+- [Pricing Table](https://docs.firstpromoter.com/integrations/tracking/platform/stripe/pricing-table.md): Adding FirstPromoter when using Stripe pricing table
+- [Ghost](https://docs.firstpromoter.com/integrations/tracking/platform/ghost.md): Adding FirstPromoter to your Ghost Website
+- [Kajabi](https://docs.firstpromoter.com/integrations/tracking/platform/kajabi.md): Adding FirstPromoter to Kajabi
+- [ThriveCart](https://docs.firstpromoter.com/integrations/tracking/platform/thrivecart.md): Adding FirstPromoter to ThriveCart
+- [Samcart](https://docs.firstpromoter.com/integrations/tracking/platform/samcart.md): Adding FirstPromoter to Samcart
+- [Kartra](https://docs.firstpromoter.com/integrations/tracking/platform/kartra.md): Adding FirstPromoter to Kartra
+- [DropFunnels](https://docs.firstpromoter.com/integrations/tracking/platform/dropfunnels.md): Adding FirstPromoter to your DropFunnels website
+- [Calendly](https://docs.firstpromoter.com/integrations/tracking/platform/calendly.md): Working with FirstPromoter and Calendly
+- [Kickpages](https://docs.firstpromoter.com/integrations/tracking/platform/kickpages.md): Adding FirstPromoter to Kickpages
+- [Thinkific](https://docs.firstpromoter.com/integrations/tracking/platform/thinkific.md): Adding FirstPromoter to Thinkific
+- [Drop-in Scripts](https://docs.firstpromoter.com/integrations/tracking/platform/chargebee/drop-in-scripts.md): Integrating FirstPromoter with Chargebee Drop-in Scripts
+- [Hosted Pages](https://docs.firstpromoter.com/integrations/tracking/platform/chargebee/hosted-pages.md): Integrating FirstPromoter with Chargebee Hosted pages
+- [JavaScript Tracking](https://docs.firstpromoter.com/integrations/tracking/custom/js.md): Use our Javascript option to track clicks and sign-ups
+- [API Integration](https://docs.firstpromoter.com/integrations/tracking/custom/api.md): Track referrals server-side with the FirstPromoter Tracking API
+- [Django](https://docs.firstpromoter.com/integrations/tracking/custom/django.md): Adding FirstPromoter to your Django website
+- [PHP](https://docs.firstpromoter.com/integrations/tracking/custom/php.md): Adding FirstPromoter to your custom PHP website
+- [Ruby on Rails](https://docs.firstpromoter.com/integrations/tracking/custom/rails.md): Adding FirstPromoter to your Rails website
+- [Stripe Checkout](https://docs.firstpromoter.com/integrations/tracking/custom/stripe-checkout.md): Tracking using Stripe Checkout
+- [Paddle Checkout](https://docs.firstpromoter.com/integrations/tracking/custom/paddle-checkout.md): Tracking using Paddle Checkout
+- [Google Tag Manager](https://docs.firstpromoter.com/integrations/tracking/custom/gtm.md): Setting up your Main tracking script in Google Tag Manager (GTM)
+- [n8n node](https://docs.firstpromoter.com/automation/n8n-node.md): Integrate FirstPromoter n8n node in your workflow.
+- [Zapier](https://docs.firstpromoter.com/automation/zapier.md): Integrate FirstPromoter v2 with Zapier to connect your affiliate program to thousands of other apps.
+- [Make.com](https://docs.firstpromoter.com/automation/make.md): Integrate FirstPromoter v2 with Make (formerly Integromat) to automate your affiliate program alongside thousands of other apps.
+- [Webhooks v2 Overview](https://docs.firstpromoter.com/webhooks-v2/overview.md): Subscribe to real-time events from your FirstPromoter account with the new webhooks system.
+- [Event Types](https://docs.firstpromoter.com/webhooks-v2/event-types.md): All event types available for webhooks v2 subscriptions.
+- [Payload Structure](https://docs.firstpromoter.com/webhooks-v2/payload.md): The JSON payload sent to your webhook endpoint for every event.
+- [Delivery Tracking & Retries](https://docs.firstpromoter.com/webhooks-v2/deliveries.md): Monitor delivery attempts, understand retry behaviour, and manually retry failed deliveries.
+- [Non-Monetary Rewards](https://docs.firstpromoter.com/webhooks-v2/non-monetary-rewards.md): How to listen to webhook events and use the API to fulfill non-monetary rewards such as points, credits, and free months.
+- [MCP Server](https://docs.firstpromoter.com/mcp/overview.md): Connect AI tools like Claude and ChatGPT directly to your FirstPromoter account.
+- [Available Tools](https://docs.firstpromoter.com/mcp/tools.md): Full reference for every tool exposed by the FirstPromoter MCP server.
+- [Introduction](https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction.md): This is the public API documentation for FirstPromoter V2.
+- [Authentication](https://docs.firstpromoter.com/api-reference-v2/api-admin/authentication.md): How to authenticate your API
+- [List in progress batch processes.](https://docs.firstpromoter.com/api-reference-v2/api-admin/batches/list-inprogress-batch-processes.md): List batch processes that are in progress   <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/batch_processes`</Tip>
+- [Show batch process](https://docs.firstpromoter.com/api-reference-v2/api-admin/batches/show-batch-process.md): Show details of a specific batch process   <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/batch_processes/{id}`</Tip>
+- [Show progress](https://docs.firstpromoter.com/api-reference-v2/api-admin/batches/show-progress.md): Show progress of batch process.   <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/batch_processes/progress`</Tip>
+- [Tracking leads and sign-ups](https://docs.firstpromoter.com/api-reference-v2/api-admin/tracking-api/leads-and-signups.md): Capture a lead when they sign-up or fill an optin form. This endpoint is used to track leads and sign-ups. It's not for tracking the actual sales and commissions. <br/>  <br/> Sign-ups are tracked as leads in FirstPromoter so when a person referred by the promoter/affiliate signs up, a new referral…
+- [Tracking sales and commissions](https://docs.firstpromoter.com/api-reference-v2/api-admin/tracking-api/sales.md): Assign sales and commissions to your promoters. To track sales and generate commissions correctly, you need to use this API call each time a non-zero amount sale is processed in your system, even if it comes from a recurring charge or one-time charge. <Note>To avoid fraudulent sales, we don't use JS…
+- [Tracking refunds and negative commissions](https://docs.firstpromoter.com/api-reference-v2/api-admin/tracking-api/refund.md): The refund call is similar to the sale call. It works the same way, except that it generates negative commissions. <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/track/refund`</Tip>
+- [Tracking cancellations](https://docs.firstpromoter.com/api-reference-v2/api-admin/tracking-api/cancellation.md): This call will mark the customer as cancelled and will decrease the MRR generated by them. <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/track/cancellation`</Tip>
+- [Get available referrals](https://docs.firstpromoter.com/api-reference-v2/api-admin/referrals/get-referrals.md): Get available referrals   <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/referrals`</Tip>
+- [Get referral](https://docs.firstpromoter.com/api-reference-v2/api-admin/referrals/get-referral.md): Get a specific referral   <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/referrals/{id}`</Tip>
+- [Update referral](https://docs.firstpromoter.com/api-reference-v2/api-admin/referrals/update-referral.md): Update a specific referral. The id can be a referral ID, email, uid, or username when used with the find_by parameter in the request body.   <Tip>**HTTP Request** <br/>`PUT https://api.firstpromoter.com/api/v2/company/referrals/{id}`</Tip>
+- [Move referrals to promoter](https://docs.firstpromoter.com/api-reference-v2/api-admin/referrals/move-referrals-to-promoter.md): With this endpoint you can move referrals to another promoter.   <Note>If there are more than __5__ ids on the __ids__ param/field, the action will be processed asynchronously. The response for the batch status will most likely be `in_progress`. The available statuses are `pending`, `in_progress`, `…
+- [Delete referrals](https://docs.firstpromoter.com/api-reference-v2/api-admin/referrals/delete-referrals.md): With this endpoint you can delete referrals.   <Note>If there are more than __5__ ids on the __ids__ param/field, the action will be processed asynchronously. The response for the batch status will most likely be `in_progress`. The available statuses are `pending`, `in_progress`, `completed`, `faile…
+- [Get available promoters](https://docs.firstpromoter.com/api-reference-v2/api-admin/promoters/get-available-promoters.md): With this endpoint you can list all promoters.   <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/promoters`</Tip>
+- [Create promoter](https://docs.firstpromoter.com/api-reference-v2/api-admin/promoters/create-promoter.md): With this endpoint you can create a promoter.   <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/company/promoters`</Tip>
+- [Get promoter details](https://docs.firstpromoter.com/api-reference-v2/api-admin/promoters/get-promoter-details.md): With this endpoint you can get the details of a promoter.   <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/promoters/{id}`</Tip>
+- [Update promoter](https://docs.firstpromoter.com/api-reference-v2/api-admin/promoters/update-promoter.md): With this endpoint you can update a promoter.   <Tip>**HTTP Request** <br/>`PUT https://api.firstpromoter.com/api/v2/company/promoters/{id}`</Tip>
+- [Assign a parent promoter](https://docs.firstpromoter.com/api-reference-v2/api-admin/promoters/assign-parent-promoter.md): With this endpoint you can assign a parent promoter to your promoters.   <Note>If there are more than __5__ ids on the __ids__ param/field, the action will be processed asynchronously. The response for the batch status will most likely be `in_progress`. The available statuses are `pending`, `in_prog…
+- [Add promoters to campaign](https://docs.firstpromoter.com/api-reference-v2/api-admin/promoters/add-promoter-to-campaign.md): With this endpoint you can add promoters to a campaign.   <Note>If there are more than __5__ ids on the __ids__ param/field, the action will be processed asynchronously. The response for the batch status will most likely be `in_progress`. The available statuses are `pending`, `in_progress`, `complet…
+- [Move promoters to campaign](https://docs.firstpromoter.com/api-reference-v2/api-admin/promoters/move-promoter-to-campaign.md): With this endpoint you can move promoters from one campaign to another.   <Note>If there are more than __5__ ids on the __ids__ param/field, the action will be processed asynchronously. The response for the batch status will most likely be `in_progress`. The available statuses are `pending`, `in_pro…
+- [Accept promoters](https://docs.firstpromoter.com/api-reference-v2/api-admin/promoters/accept-promoters.md): With this endpoint you can accept promoters.   <Note>If there are more than __5__ ids on the __ids__ param/field, the action will be processed asynchronously. The response for the batch status will most likely be `in_progress`. The available statuses are `pending`, `in_progress`, `completed`, `faile…
+- [Reject promoters](https://docs.firstpromoter.com/api-reference-v2/api-admin/promoters/reject-promoters.md): With this endpoint you can reject promoters.   <Note>If there are more than __5__ ids on the __ids__ param/field, the action will be processed asynchronously. The response for the batch status will most likely be `in_progress`. The available statuses are `pending`, `in_progress`, `completed`, `faile…
+- [Block promoters](https://docs.firstpromoter.com/api-reference-v2/api-admin/promoters/block-promoters.md): With this endpoint you can block promoters.   <Note>If there are more than __5__ ids on the __ids__ param/field, the action will be processed asynchronously. The response for the batch status will most likely be `in_progress`. The available statuses are `pending`, `in_progress`, `completed`, `failed…
+- [Archive promoters](https://docs.firstpromoter.com/api-reference-v2/api-admin/promoters/archive-promoters.md): With this endpoint you can archive promoters.   <Note>If there are more than __5__ ids on the __ids__ param/field, the action will be processed asynchronously. The response for the batch status will most likely be `in_progress`. The available statuses are `pending`, `in_progress`, `completed`, `fail…
+- [Restore promoters](https://docs.firstpromoter.com/api-reference-v2/api-admin/promoters/restore-unarchived-promoters.md): With this endpoint you can restore promoters.   <Note>If there are more than __5__ ids on the __ids__ param/field, the action will be processed asynchronously. The response for the batch status will most likely be `in_progress`. The available statuses are `pending`, `in_progress`, `completed`, `fail…
+- [Get available promoter campaigns](https://docs.firstpromoter.com/api-reference-v2/api-admin/promoter-campaigns/get-available-promoter-campaigns.md): With this endpoint you can list all promoter campaigns.   <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/promoter_campaigns`</Tip>
+- [Update promoter campaign](https://docs.firstpromoter.com/api-reference-v2/api-admin/promoter-campaigns/update-promoter-campaign.md): With this endpoint you can update a promoter campaign.   <Tip>**HTTP Request** <br/>`PUT https://api.firstpromoter.com/api/v2/company/promoter_campaigns/{id}`</Tip>
+- [Get all commissions](https://docs.firstpromoter.com/api-reference-v2/api-admin/commissions/get-all-commissions.md): With this endpoint you can list all rewards and commissions assigned to a promotion, promoter, campaign or entire account using the API.   <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/commissions`</Tip>
+- [Create a commission](https://docs.firstpromoter.com/api-reference-v2/api-admin/commissions/create-a-commission.md): With this endpoint you can create a commission.   <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/company/commissions`</Tip>
+- [Update a commission](https://docs.firstpromoter.com/api-reference-v2/api-admin/commissions/update-a-commission.md): With this endpoint you can update a commission.   <Tip>**HTTP Request** <br/>`PUT https://api.firstpromoter.com/api/v2/company/commissions/{id}`</Tip>
+- [Approve commissions](https://docs.firstpromoter.com/api-reference-v2/api-admin/commissions/approve-commissions.md): With this endpoint you can approve commissions.   <Note>If there are more than __5__ ids on the __ids__ param/field, the action will be processed asynchronously. The response for the batch status will most likely be `in_progress`. The available statuses are `pending`, `in_progress`, `completed`, `fa…
+- [Deny commissions](https://docs.firstpromoter.com/api-reference-v2/api-admin/commissions/deny-commissions.md): With this endpoint you can deny commissions.   <Note>If there are more than __5__ ids on the __ids__ param/field, the action will be processed asynchronously. The response for the batch status will most likely be `in_progress`. The available statuses are `pending`, `in_progress`, `completed`, `faile…
+- [Mark nonmonetary commissions as fulfilled](https://docs.firstpromoter.com/api-reference-v2/api-admin/commissions/mark-nonmonetary-commissions-as-fulfilled.md): With this endpoint you can mark nonmonetary commissions as fulfilled.   <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/company/commissions/mark_fulfilled`</Tip>
+- [Mark nonmonetary commissions as unfulfilled](https://docs.firstpromoter.com/api-reference-v2/api-admin/commissions/mark-nonmonetary-commissions-as-unfulfilled.md): With this endpoint you can mark nonmonetary commissions as unfulfilled.   <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/company/commissions/mark_unfulfilled`</Tip>
+- [Get promo codes](https://docs.firstpromoter.com/api-reference-v2/api-admin/promo-codes/get-promo-codes.md): With this endpoint you can list all promo codes.   <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/promo_codes`</Tip>
+- [Get promo code by id](https://docs.firstpromoter.com/api-reference-v2/api-admin/promo-codes/get-promo-code-by-id.md): With this endpoint you can get the details of a specific promo code.   <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/promo_codes/{id}`</Tip>
+- [Create promo code (Stripe Only)](https://docs.firstpromoter.com/api-reference-v2/api-admin/promo-codes/create-promo-code.md): With this endpoint you can create a new promo code.   <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/company/promo_codes`</Tip>
+- [Update promo code by id](https://docs.firstpromoter.com/api-reference-v2/api-admin/promo-codes/update-promo-code-by-id.md): Update promo code by id. Can not be updated if archived and ext_id present.  <Tip>**HTTP Request** <br/>`PUT https://api.firstpromoter.com/api/v2/company/promo_codes/{id}`</Tip>
+- [Archive promo code by id](https://docs.firstpromoter.com/api-reference-v2/api-admin/promo-codes/archive-promo-code-by-id.md): Archive promo code by id.  <Tip>**HTTP Request** <br/>`DELETE https://api.firstpromoter.com/api/v2/company/promo_codes/{id}`</Tip>
+- [Get all payouts](https://docs.firstpromoter.com/api-reference-v2/api-admin/payouts/get-all-payouts.md): With this endpoint you can list all payouts.   <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/payouts`</Tip>
+- [Get payout stats](https://docs.firstpromoter.com/api-reference-v2/api-admin/payouts/get-payout-stats.md): This endpoint returns statistics about payouts.   <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/payouts/stats`</Tip>
+- [Get due payout stats](https://docs.firstpromoter.com/api-reference-v2/api-admin/payouts/get-due-payout-stats.md): This endpoint returns statistics about due payouts.   <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/payouts/due_stats`</Tip>
+- [Get all payouts grouped by promoters](https://docs.firstpromoter.com/api-reference-v2/api-admin/payouts/get-all-payouts-grouped-by-promoters.md): This endpoint returns all payouts but grouped by promoters.   <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/payouts/group_by_promoters`</Tip>
+- [Get reports for campaigns](https://docs.firstpromoter.com/api-reference-v2/api-admin/reports/get-reports-for-campaigns.md): With this endpoint you can get the report data grouped by campaigns.<Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/reports/campaigns`</Tip>
+- [Get reports for overview](https://docs.firstpromoter.com/api-reference-v2/api-admin/reports/get-reports-for-overview.md): Get reports for overview   <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/reports/overview`</Tip>
+- [Get reports for promoters](https://docs.firstpromoter.com/api-reference-v2/api-admin/reports/get-reports-for-promoters.md): With this endpoint you can get the report data grouped by promoters.<Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/reports/promoters`</Tip>
+- [Get reports for URLs](https://docs.firstpromoter.com/api-reference-v2/api-admin/reports/get-reports-for-urls.md): With this endpoint you can get the report data grouped by URLs.<Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/reports/urls`</Tip>
+- [Get reports for traffic sources](https://docs.firstpromoter.com/api-reference-v2/api-admin/reports/get-reports-for-traffic-sources.md): With this endpoint you can get the report data grouped by traffic sources.   <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/reports/traffic_sources`</Tip>
+
+## OpenAPI Specs
+
+- [openapi-v2-promoters](https://docs.firstpromoter.com/api-reference-v2/api-admin/promoters/openapi-v2-promoters.json)
+- [openapi-v2-commissions](https://docs.firstpromoter.com/api-reference-v2/api-admin/commissions/openapi-v2-commissions.json)
+- [openapi-v2-referrals](https://docs.firstpromoter.com/api-reference-v2/api-admin/referrals/openapi-v2-referrals.json)
+- [openapi-v2-referral-custom-status](https://docs.firstpromoter.com/api-reference-v2/api-advanced/custom-referral-statuses/openapi-v2-referral-custom-status.json)
+- [openapi-v2-custom-referral-statuses](https://docs.firstpromoter.com/api-reference-v2/api-advanced/custom-referral-statuses/openapi-v2-custom-referral-statuses.json)
+- [openapi-rewards](https://docs.firstpromoter.com/api-reference-v1/openapi-rewards.json)
+- [openapi-promoters](https://docs.firstpromoter.com/api-reference-v1/openapi-promoters.json)
+- [openapi-v2-webhooks](https://docs.firstpromoter.com/api-reference-v2/api-admin/webhooks/openapi-v2-webhooks.json)
+- [openapi-v2-emails](https://docs.firstpromoter.com/api-reference-v2/api-admin/openapi-v2-emails.json)
+- [openapi-reports](https://docs.firstpromoter.com/api-reference-v1/openapi-reports.json)
+- [openapi-v2-affiliate-promoter-campaigns](https://docs.firstpromoter.com/api-reference-v2/api-affiliate/promoter-campaigns/openapi-v2-affiliate-promoter-campaigns.json)
+- [openapi-v2-payouts](https://docs.firstpromoter.com/api-reference-v2/api-admin/payouts/openapi-v2-payouts.json)
+- [openapi-tracking](https://docs.firstpromoter.com/api-reference-v1/openapi-tracking.json)
+- [openapi-v2-affiliate-payouts](https://docs.firstpromoter.com/api-reference-v2/api-affiliate/payouts/openapi-v2-affiliate-payouts.json)
+- [openapi-v2-advanced-payout-methods](https://docs.firstpromoter.com/api-reference-v2/api-advanced/payout-methods-api/openapi-v2-advanced-payout-methods.json)
+- [openapi-payouts](https://docs.firstpromoter.com/api-reference-v1/openapi-payouts.json)
+- [openapi-v2-affiliate-campaigns](https://docs.firstpromoter.com/api-reference-v2/api-affiliate/campaigns/openapi-v2-affiliate-campaigns.json)
+- [openapi-v2-campaigns](https://docs.firstpromoter.com/api-reference-v2/api-advanced/campaigns-api/openapi-v2-campaigns.json)
+- [openapi-v2-asset-categories](https://docs.firstpromoter.com/api-reference-v2/api-advanced/asset-categories-api/openapi-v2-asset-categories.json)
+- [openapi-leads](https://docs.firstpromoter.com/api-reference-v1/openapi-leads.json)
+- [openapi-v2-affiliate-reports](https://docs.firstpromoter.com/api-reference-v2/api-affiliate/reports/openapi-v2-affiliate-reports.json)
+- [openapi-v2-affiliate-referrals](https://docs.firstpromoter.com/api-reference-v2/api-affiliate/referrals/openapi-v2-affiliate-referrals.json)
+- [openapi-v2-affiliate-promoters](https://docs.firstpromoter.com/api-reference-v2/api-affiliate/promoters/openapi-v2-affiliate-promoters.json)
+- [openapi-v2-affiliate-promo-codes](https://docs.firstpromoter.com/api-reference-v2/api-affiliate/promo-codes/openapi-v2-affiliate-promo-codes.json)
+- [openapi-v2-affiliate-payout-methods](https://docs.firstpromoter.com/api-reference-v2/api-affiliate/payout-methods/openapi-v2-affiliate-payout-methods.json)
+- [openapi-v2-affiliate-email-settings](https://docs.firstpromoter.com/api-reference-v2/api-affiliate/email-settings/openapi-v2-affiliate-email-settings.json)
+- [openapi-v2-affiliate-contract-documents](https://docs.firstpromoter.com/api-reference-v2/api-affiliate/contract-documents/openapi-v2-affiliate-contract-documents.json)
+- [openapi-v2-affiliate-commissions](https://docs.firstpromoter.com/api-reference-v2/api-affiliate/commissions/openapi-v2-affiliate-commissions.json)
+- [openapi-v2-affiliate-assets](https://docs.firstpromoter.com/api-reference-v2/api-affiliate/assets/openapi-v2-affiliate-assets.json)
+- [openapi-v2-rewards](https://docs.firstpromoter.com/api-reference-v2/api-advanced/rewards/openapi-v2-rewards.json)
+- [openapi-v2-advanced-products](https://docs.firstpromoter.com/api-reference-v2/api-advanced/products-api/openapi-v2-advanced-products.json)
+- [openapi-v2-assets](https://docs.firstpromoter.com/api-reference-v2/api-advanced/assets/openapi-v2-assets.json)
+- [openapi-v2-invoices](https://docs.firstpromoter.com/api-reference-v2/api-advanced/invoices/openapi-v2-invoices.json)
+- [openapi-v2-dashboard](https://docs.firstpromoter.com/api-reference-v2/api-advanced/dashboard-api/openapi-v2-dashboard.json)
+- [openapi-v2-contracts](https://docs.firstpromoter.com/api-reference-v2/api-advanced/contracts-api/openapi-v2-contracts.json)
+- [openapi-v2-contract-documents](https://docs.firstpromoter.com/api-reference-v2/api-advanced/contract-documents-api/openapi-v2-contract-documents.json)
+- [openapi-v2-payent-batches](https://docs.firstpromoter.com/api-reference-v2/api-advanced/payments-batches/openapi-v2-payent-batches.json)
+- [openapi-v2-tracking](https://docs.firstpromoter.com/api-reference-v2/api-admin/tracking-api/openapi-v2-tracking.json)
+- [openapi-v2-promoter-campaigns](https://docs.firstpromoter.com/api-reference-v2/api-admin/promoter-campaigns/openapi-v2-promoter-campaigns.json)
+- [openapi-v2-reports](https://docs.firstpromoter.com/api-reference-v2/api-admin/reports/openapi-v2-reports.json)
+- [openapi-v2-promocodes](https://docs.firstpromoter.com/api-reference-v2/api-admin/promo-codes/openapi-v2-promocodes.json)
+- [openapi-v2-batches](https://docs.firstpromoter.com/api-reference-v2/api-admin/batches/openapi-v2-batches.json)
+- [openapi-v2-affiliate-referral-links](https://docs.firstpromoter.com/api-reference-v2/api-affiliate/referral-links/openapi-v2-affiliate-referral-links.json)
+
+## Optional
+
+- [API Reference](https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction)
+- [Help Center](https://help.firstpromoter.com/en/)

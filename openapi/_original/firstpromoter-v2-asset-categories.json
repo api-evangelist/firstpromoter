@@ -1,0 +1,163 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "FirstPromoter Asset Categories API",
+    "version": "1.0",
+    "description": "API for managing asset categories in FirstPromoter"
+  },
+  "servers": [
+    {
+      "url": "https://api.firstpromoter.com/api/v2/company"
+    }
+  ],
+  "security": [
+    {
+      "BearerAuth": []
+    }
+  ],
+  "paths": {
+    "/assets/categories": {
+      "get": {
+        "summary": "Get available asset categories",
+        "description": "Get all available asset categories \n <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/assets/categories`</Tip>",
+        "tags": ["Asset Categories"],
+        "responses": {
+          "200": {
+            "description": "Successfully retrieved asset categories",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/AssetCategory"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      },
+      "put": {
+        "summary": "Update asset categories",
+        "tags": ["Asset Categories"],
+        "description": "Update asset categories. \n <Tip>**HTTP Request** <br/>`PUT https://api.firstpromoter.com/api/v2/company/assets/categories`</Tip>",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "asset_categories": {
+                    "type": "array",
+                    "description": "Array of asset categories to be created, updated or deleted",
+                    "items": {
+                      "type": "object",
+                      "required": ["name", "position"],
+                      "properties": {
+                        "id": {
+                          "type": "integer",
+                          "description": "ID of the asset category to be updated or deleted"
+                        },
+                        "name": {
+                          "type": "string",
+                          "description": "Name of the asset category"
+                        },
+                        "position": {
+                          "type": "integer",
+                          "description": "Position of the asset category"
+                        },
+                        "_destroy": {
+                          "type": "boolean",
+                          "description": "Flag to destroy the asset category, if set to true and id is present"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successfully updated asset categories",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/AssetCategory"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    }
+  },
+   "components": {
+    "parameters": {
+      "AccountId": {
+        "name": "Account-ID",
+        "in": "header",
+        "required": true,
+        "description": "Account identifier that specifies which account is making the request",
+        "schema": {
+          "type": "string",
+          "example": "acc_123456"
+        }
+      }
+    },
+    "schemas": {
+      "AssetCategory": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Asset category ID"
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the asset category"
+          },
+          "position": {
+            "type": "integer",
+            "description": "Position/order of the asset category"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Creation timestamp"
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Last update timestamp"
+          }
+        },
+        "required": ["name", "position"]
+      }
+    },
+    "securitySchemes": {
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "description": "Access token passed as a Bearer token in the Authorization header"
+      },
+      "accountId": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "ACCOUNT-ID",
+        "description": "Account ID required with bearer token"
+      }
+    }
+  }
+}

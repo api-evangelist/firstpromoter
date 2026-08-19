@@ -1,0 +1,257 @@
+generated: '2026-08-13'
+method: searched
+source: https://docs.firstpromoter.com/mcp/overview
+name: FirstPromoter MCP Server
+description: >-
+  FirstPromoter ships a first-party remote MCP server at https://mcp.firstpromoter.com. It is an
+  HTTP-transport server behind OAuth 2.1 (authorization code + PKCE S256, RFC 7591 dynamic client
+  registration), and the provider documents connection recipes for Claude Desktop/Web, ChatGPT
+  developer mode, Claude Code and generic MCP clients. Money-movement operations are deliberately
+  excluded from the tool surface.
+status: published
+deployment:
+  mode: remote
+  endpoint: https://mcp.firstpromoter.com
+  install: null
+  package: null
+  auth: oauth
+  verified: probed
+x-evidence:
+  fetched: '2026-08-13'
+  probes:
+    - url: https://mcp.firstpromoter.com
+      method: POST
+      body: '{"jsonrpc":"2.0","id":1,"method":"tools/list"}'
+      http_status: 401
+      response: '{"error":"Unauthorized"}'
+      www_authenticate: Bearer resource_metadata="https://mcp.firstpromoter.com/.well-known/oauth-protected-resource"
+      note: >-
+        The live tool schemas are OAuth-gated. The endpoint answers the MCP authorization
+        handshake correctly (RFC 9728 challenge), so the server is real and reachable, but
+        inputSchema for each tool requires an authenticated introspection we do not perform.
+    - url: https://mcp.firstpromoter.com/.well-known/oauth-protected-resource
+      http_status: 200
+    - url: https://mcp.firstpromoter.com/.well-known/oauth-authorization-server
+      http_status: 200
+    - url: https://docs.firstpromoter.com/mcp/tools.md
+      http_status: 200
+      note: Source of the tool names and descriptions recorded below.
+authorization:
+  issuer: https://mcp.firstpromoter.com
+  authorization_endpoint: https://mcp.firstpromoter.com/oauth/authorize
+  token_endpoint: https://mcp.firstpromoter.com/oauth/token
+  registration_endpoint: https://mcp.firstpromoter.com/oauth/register
+  revocation_endpoint: https://mcp.firstpromoter.com/oauth/revoke
+  grant_types_supported:
+    - authorization_code
+    - refresh_token
+  code_challenge_methods_supported:
+    - S256
+  scopes_supported:
+    - user
+    - mcp
+  dynamic_client_registration: true
+clients_documented:
+  - client: Claude Desktop / Claude Web
+    method: Custom connector, URL https://mcp.firstpromoter.com (paid Claude plan required)
+  - client: ChatGPT
+    method: Connector in Developer Mode, MCP Server URL https://mcp.firstpromoter.com
+  - client: Claude Code
+    method: claude mcp add firstpromoter --transport http https://mcp.firstpromoter.com
+  - client: Cursor and other MCP clients
+    method: Server entry pointing at https://mcp.firstpromoter.com with transport http
+maturity:
+  stability: experimental
+  provider_statement: >-
+    "The FirstPromoter MCP server is experimental. The tool surface and authentication flow may
+    change without notice."
+safety:
+  confirmation: >-
+    All mutating tools require explicit user approval through a confirmation card that resolves IDs
+    to human-readable names and shows a field-level diff before applying any change.
+  excluded_by_design:
+    - payouts
+    - invoices
+    - commission creation
+    - payment batches
+    - broadcast emails
+    - send-now email actions
+  provider_statement: >-
+    "Money-movement operations (payouts, invoices, commission creation, payment batches) are
+    intentionally not exposed - they remain dashboard-only."
+tool_count_published: 53
+tool_count_enumerated: 54
+tool_count_note: >-
+  The MCP overview page states 53 tools; the tools reference page enumerates 54 rows. Recorded as
+  published rather than reconciled, because the live tools/list is OAuth-gated.
+tools:
+  - name: get_company_context
+    category: Reports & analytics
+    description: Campaigns, currency, active/pending promoter counts. The "what is this company?" entry point.
+  - name: get_dashboard_stats
+    category: Reports & analytics
+    description: Revenue, referrals, customers, accepted/pending promoters, pending commissions.
+  - name: get_dashboard_trending
+    category: Reports & analytics
+    description: Top 3 trending promoters and campaigns over the last 30 days.
+  - name: get_overview_report
+    category: Reports & analytics
+    description: Revenue, referrals, customers, clicks, sales, refunds and earnings grouped by day, week, month or year.
+  - name: get_promoters_report
+    category: Reports & analytics
+    description: Performance ranking per promoter for a date range.
+  - name: get_campaigns_report
+    category: Reports & analytics
+    description: Performance ranking per campaign for a date range.
+  - name: get_urls_report
+    category: Reports & analytics
+    description: Landing-page traffic broken down by clicks, customers, sales and revenue.
+  - name: get_traffic_sources_report
+    category: Reports & analytics
+    description: Where referral traffic comes from - direct, organic, social, paid.
+  - name: list_campaigns
+    category: Campaigns
+    description: Every campaign with key metrics.
+  - name: get_campaign
+    category: Campaigns
+    description: Full detail for one campaign by ID.
+  - name: create_campaign
+    category: Campaigns
+    description: New campaign in the company's default program; attach rewards in the same call.
+  - name: update_campaign
+    category: Campaigns
+    description: Change name, landing URL, cookie life, referral param, visibility, attached rewards.
+  - name: list_promoters
+    category: Promoters
+    description: Filterable by status, signup/approval date, campaign, revenue. Supports a q parameter for fuzzy search.
+  - name: get_promoter
+    category: Promoters
+    description: Detailed profile, balances, campaign membership and all profile fields.
+  - name: create_promoter
+    category: Promoters
+    description: New promoter on an initial campaign with profile data.
+  - name: update_promoter
+    category: Promoters
+    description: Every field the admin Edit modal exposes, including custom fields and behaviour flags.
+  - name: accept_promoter
+    category: Promoters
+    description: State change scoped to a single campaign; verifies the per-campaign state persisted.
+  - name: reject_promoter
+    category: Promoters
+    description: State change scoped to a single campaign.
+  - name: block_promoter
+    category: Promoters
+    description: State change scoped to a single campaign.
+  - name: add_promoter_to_campaign
+    category: Promoters
+    description: Enrol in an additional campaign without affecting existing memberships.
+  - name: move_promoter_to_campaign
+    category: Promoters
+    description: Move between campaigns; optionally soft-move existing referrals.
+  - name: assign_parent_promoter
+    category: Promoters
+    description: Set or remove the parent in a sub-affiliate hierarchy.
+  - name: restore_promoter
+    category: Promoters
+    description: Bring an archived promoter back - history and referrals preserved.
+  - name: update_promoter_campaign
+    category: Promoters
+    description: Per-promoter overrides on a specific campaign - ref token, coupon, direct URL, state, reward override.
+  - name: list_referrals
+    category: Referrals
+    description: Filter by state, date range, campaign, promoter; sorted newest first.
+  - name: get_referral
+    category: Referrals
+    description: Single referral with promoter, campaign, customer email and the full event log.
+  - name: list_commissions
+    category: Commissions & payouts
+    description: Filter by status, date, campaign, promoter.
+  - name: list_payouts
+    category: Commissions & payouts
+    description: Cash rewards paid to promoters; amounts in cents.
+  - name: mark_commission_fulfilled
+    category: Commissions & payouts
+    description: For non-monetary commissions only (badges, points, free months).
+  - name: mark_commission_unfulfilled
+    category: Commissions & payouts
+    description: Revert a fulfilled non-monetary commission.
+  - name: list_rewards
+    category: Rewards
+    description: All reward rules defined in the company.
+  - name: get_reward
+    category: Rewards
+    description: Single reward with name, type, schemas, tier level and coupon.
+  - name: create_reward
+    category: Rewards
+    description: New commission or discount rule.
+  - name: update_reward
+    category: Rewards
+    description: Change name, type, schemas, coupon, tier.
+  - name: hide_reward
+    category: Rewards
+    description: Soft-delete a reward; existing attachments and pending commissions keep working.
+  - name: list_promo_codes
+    category: Promo codes
+    description: Codes attached to promoters or campaigns; optional filters for promoter campaign and archived.
+  - name: get_promo_code
+    category: Promo codes
+    description: Single code with reward and scope details.
+  - name: create_promo_code
+    category: Promo codes
+    description: New code attached to a reward, optionally scoped to a promoter and campaign.
+  - name: update_promo_code
+    category: Promo codes
+    description: Change code, description, reward, scope.
+  - name: archive_promo_code
+    category: Promo codes
+    description: Soft-delete; preserved for historical reporting, new redemptions rejected.
+  - name: list_products
+    category: Products
+    description: SKUs that can have product-specific commission rules attached.
+  - name: get_product
+    category: Products
+    description: Single product detail.
+  - name: create_product
+    category: Products
+    description: New product with name, external billing-provider ID and prices.
+  - name: update_product
+    category: Products
+    description: Update name, external billing-provider ID and prices.
+  - name: delete_product
+    category: Products
+    description: Permanent delete; historical sales keep the name as a snapshot.
+  - name: list_assets
+    category: Assets
+    description: Marketing assets (banners, swipe copy, images) promoters can download.
+  - name: get_asset
+    category: Assets
+    description: Single asset detail.
+  - name: list_contracts
+    category: Contracts
+    description: Affiliate program contracts (Terms of Service, NDAs) that promoters agree to.
+  - name: get_contract
+    category: Contracts
+    description: Single contract detail.
+  - name: list_emails
+    category: Emails
+    description: Filter by status (draft, scheduled, sent, failed) and trigger event.
+  - name: get_email
+    category: Emails
+    description: Full HTML body and trigger configuration for a single email.
+  - name: create_email
+    category: Emails
+    description: Draft a new transactional email tied to a trigger event; created disabled for admin review.
+  - name: update_email
+    category: Emails
+    description: Edit name, subject, body or trigger on a non-sent email.
+notes:
+  - >-
+    Tool names and descriptions are transcribed from the provider's published reference. Tool
+    inputSchemas are NOT recorded - they require an authenticated tools/list call against the
+    OAuth-gated endpoint.
+  - >-
+    A second, unrelated MCP manifest is served at
+    https://docs.firstpromoter.com/.well-known/mcp.json pointing at a Mintlify preview host
+    (firstpromoter.main-kill-isr.mintlify.me). That is the documentation-search MCP emitted by the
+    docs platform, not the FirstPromoter product MCP server, and it is not treated as an agent
+    surface for FirstPromoter.

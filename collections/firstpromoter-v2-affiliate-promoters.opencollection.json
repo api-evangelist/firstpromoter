@@ -1,0 +1,161 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "FirstPromoter API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Promoters",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get current promoter",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.firstpromoter.com/api/v2/affiliate/promoters/current",
+            "headers": [
+              {
+                "name": "Account-ID",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Get current promoter"
+        },
+        {
+          "info": {
+            "name": "Get current promoter sub affiliates",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.firstpromoter.com/api/v2/affiliate/promoters/sub_affiliates",
+            "headers": [
+              {
+                "name": "Account-ID",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Get current promoter sub affiliates"
+        },
+        {
+          "info": {
+            "name": "Get chart data",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.firstpromoter.com/api/v2/affiliate/promoters/chart_data",
+            "headers": [
+              {
+                "name": "Account-ID",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "promoter_campaign_id",
+                "value": "",
+                "type": "query",
+                "description": "If provided, the given promoter campaign will be used in chart. Otherwise all the current_promoter campaigns will be used."
+              },
+              {
+                "name": "period_from",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "period_to",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "selection",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get chart data"
+        },
+        {
+          "info": {
+            "name": "Get the promoter email",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.firstpromoter.com/api/v2/affiliate/promoters/email_from_encrypted_id",
+            "headers": [
+              {
+                "name": "Account-ID",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "query",
+                "description": "The encrypted id"
+              }
+            ]
+          },
+          "docs": "Get the promoter email"
+        },
+        {
+          "info": {
+            "name": "Set the user password",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.firstpromoter.com/api/v2/affiliate/promoters/set_password",
+            "headers": [
+              {
+                "name": "Account-ID",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Set the user password"
+        },
+        {
+          "info": {
+            "name": "Archives current promoter",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.firstpromoter.com/api/v2/affiliate/promoters/archive",
+            "headers": [
+              {
+                "name": "Account-ID",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Archives current promoter"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

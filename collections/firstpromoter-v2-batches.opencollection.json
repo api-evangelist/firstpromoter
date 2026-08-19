@@ -1,0 +1,91 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "FirstPromoter Batch Processes API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "List in progress batch processes.",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.firstpromoter.com/api/v2/company/batch_processes",
+        "headers": [
+          {
+            "name": "Account-ID",
+            "value": ""
+          }
+        ],
+        "params": [
+          {
+            "name": "filters[status]",
+            "value": "",
+            "type": "query",
+            "description": "Filter by status (array or string)"
+          }
+        ]
+      },
+      "docs": "List batch processes that are in progress \n <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/batch_processes`</Tip>"
+    },
+    {
+      "info": {
+        "name": "Show batch process",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.firstpromoter.com/api/v2/company/batch_processes/:id",
+        "headers": [
+          {
+            "name": "Account-ID",
+            "value": ""
+          }
+        ],
+        "params": [
+          {
+            "name": "id",
+            "value": "",
+            "type": "path",
+            "description": "Batch process id"
+          }
+        ]
+      },
+      "docs": "Show details of a specific batch process \n <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/batch_processes/{id}`</Tip>"
+    },
+    {
+      "info": {
+        "name": "Show progress",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.firstpromoter.com/api/v2/company/batch_processes/progress",
+        "headers": [
+          {
+            "name": "Account-ID",
+            "value": ""
+          }
+        ],
+        "params": [
+          {
+            "name": "filters[status]",
+            "value": "",
+            "type": "query",
+            "description": "Filter by status (array or string)"
+          }
+        ]
+      },
+      "docs": "Show progress of batch process. \n <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/batch_processes/progress`</Tip>"
+    }
+  ],
+  "bundled": true
+}

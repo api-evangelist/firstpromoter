@@ -1,0 +1,166 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "FirstPromoter Promoter Campaigns API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Promoter Campaigns",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get available promoter campaigns",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.firstpromoter.com/api/v2/company/promoter_campaigns",
+            "headers": [
+              {
+                "name": "Account-ID",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "With this endpoint you can list all promoter campaigns. \n <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/promoter_campaigns`</Tip>"
+        },
+        {
+          "info": {
+            "name": "Returns results for promoter campaigns dropdown search. Max results: 5",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.firstpromoter.com/api/v2/company/promoter_campaigns/search",
+            "headers": [
+              {
+                "name": "Account-ID",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Search params"
+              }
+            ]
+          },
+          "docs": "With this endpoint you can search for promoter campaigns. \n <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/promoter_campaigns/search?q=...`</Tip>"
+        },
+        {
+          "info": {
+            "name": "Update promoter campaign",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.firstpromoter.com/api/v2/company/promoter_campaigns/:id",
+            "headers": [
+              {
+                "name": "Account-ID",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Promoter campaign ID. This ID is not the promoter’s ID or the campaign’s ID. It’s the linking record that defines the promoter’s participation in that campaign. You can find this id in each object in the promoter_campaigns array when you get the details of the promoter."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "With this endpoint you can update a promoter campaign. \n <Tip>**HTTP Request** <br/>`PUT https://api.firstpromoter.com/api/v2/company/promoter_campaigns/{id}`</Tip>"
+        },
+        {
+          "info": {
+            "name": "Get promoter campaign referral links",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.firstpromoter.com/api/v2/company/promoter_campaigns/:id/referral_links",
+            "headers": [
+              {
+                "name": "Account-ID",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Promoter campaign ID"
+              }
+            ]
+          },
+          "docs": "With this endpoint you can get the referral links associated with this promoter campaign. <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/promoter_campaigns/{id}/referral_links`</Tip>"
+        },
+        {
+          "info": {
+            "name": "Get data used for chart",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.firstpromoter.com/api/v2/company/promoter_campaigns/:id/chart_data",
+            "headers": [
+              {
+                "name": "Account-ID",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "Promoter campaign ID. This ID is not the promoter’s ID or the campaign’s ID. It’s the linking record that defines the promoter’s participation in that campaign. You can find this id in each object in the promoter_campaigns array when you get the details of the promoter."
+              },
+              {
+                "name": "period_from",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "period_to",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "selection",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "with_totals",
+                "value": "",
+                "type": "query",
+                "description": "If true, it will also return the totals for the period"
+              }
+            ]
+          },
+          "docs": "With this endpoint you can get the data used for charts.<Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/promoter_campaigns/{id}/chart_data`</Tip>"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,13 +1,147 @@
-generated: '2026-07-11'
-method: derived
-source: openapi/firstpromoter-firstpromoter-admin-api-openapi.yml
+generated: '2026-08-13'
+method: searched
+source: https://docs.firstpromoter.com/api-reference-v2/api-admin/authentication + openapi/firstpromoter-*-openapi.yml
+  (37 published specs)
 summary:
   types:
+  - apiKey
   - http
+  api_key_in:
+  - header
 schemes:
 - name: BearerAuth
   type: http
   scheme: bearer
-  description: API key passed as Bearer token
+  description: Access token passed as a Bearer token in the Authorization header
   sources:
-  - openapi/firstpromoter-firstpromoter-admin-api-openapi.yml
+  - openapi/firstpromoter-v2-advanced-payout-methods-openapi.yml
+  - openapi/firstpromoter-v2-advanced-products-openapi.yml
+  - openapi/firstpromoter-v2-affiliate-assets-openapi.yml
+  - openapi/firstpromoter-v2-affiliate-campaigns-openapi.yml
+  - openapi/firstpromoter-v2-affiliate-commissions-openapi.yml
+  - openapi/firstpromoter-v2-affiliate-contract-documents-openapi.yml
+  - openapi/firstpromoter-v2-affiliate-email-settings-openapi.yml
+  - openapi/firstpromoter-v2-affiliate-payout-methods-openapi.yml
+  - openapi/firstpromoter-v2-affiliate-payouts-openapi.yml
+  - openapi/firstpromoter-v2-affiliate-promo-codes-openapi.yml
+  - openapi/firstpromoter-v2-affiliate-promoter-campaigns-openapi.yml
+  - openapi/firstpromoter-v2-affiliate-promoters-openapi.yml
+  - openapi/firstpromoter-v2-affiliate-referral-links-openapi.yml
+  - openapi/firstpromoter-v2-affiliate-referrals-openapi.yml
+  - openapi/firstpromoter-v2-affiliate-reports-openapi.yml
+  - openapi/firstpromoter-v2-asset-categories-openapi.yml
+  - openapi/firstpromoter-v2-assets-openapi.yml
+  - openapi/firstpromoter-v2-batches-openapi.yml
+  - openapi/firstpromoter-v2-campaigns-openapi.yml
+  - openapi/firstpromoter-v2-commissions-openapi.yml
+  - openapi/firstpromoter-v2-contract-documents-openapi.yml
+  - openapi/firstpromoter-v2-contracts-openapi.yml
+  - openapi/firstpromoter-v2-custom-referral-statuses-openapi.yml
+  - openapi/firstpromoter-v2-dashboard-openapi.yml
+  - openapi/firstpromoter-v2-emails-openapi.yml
+  - openapi/firstpromoter-v2-invoices-openapi.yml
+  - openapi/firstpromoter-v2-payent-batches-openapi.yml
+  - openapi/firstpromoter-v2-payouts-openapi.yml
+  - openapi/firstpromoter-v2-promocodes-openapi.yml
+  - openapi/firstpromoter-v2-promoter-campaigns-openapi.yml
+  - openapi/firstpromoter-v2-promoters-openapi.yml
+  - openapi/firstpromoter-v2-referral-custom-status-openapi.yml
+  - openapi/firstpromoter-v2-referrals-openapi.yml
+  - openapi/firstpromoter-v2-reports-openapi.yml
+  - openapi/firstpromoter-v2-rewards-openapi.yml
+  - openapi/firstpromoter-v2-tracking-openapi.yml
+  - openapi/firstpromoter-v2-webhooks-openapi.yml
+- name: accountId
+  type: apiKey
+  in: header
+  parameter: ACCOUNT-ID
+  description: Account identifier that specifies which account is making the request
+  sources:
+  - openapi/firstpromoter-v2-advanced-payout-methods-openapi.yml
+  - openapi/firstpromoter-v2-affiliate-assets-openapi.yml
+  - openapi/firstpromoter-v2-affiliate-campaigns-openapi.yml
+  - openapi/firstpromoter-v2-affiliate-contract-documents-openapi.yml
+  - openapi/firstpromoter-v2-affiliate-payout-methods-openapi.yml
+  - openapi/firstpromoter-v2-affiliate-payouts-openapi.yml
+  - openapi/firstpromoter-v2-affiliate-promo-codes-openapi.yml
+  - openapi/firstpromoter-v2-affiliate-promoter-campaigns-openapi.yml
+  - openapi/firstpromoter-v2-affiliate-promoters-openapi.yml
+  - openapi/firstpromoter-v2-affiliate-reports-openapi.yml
+  - openapi/firstpromoter-v2-asset-categories-openapi.yml
+  - openapi/firstpromoter-v2-assets-openapi.yml
+  - openapi/firstpromoter-v2-batches-openapi.yml
+  - openapi/firstpromoter-v2-campaigns-openapi.yml
+  - openapi/firstpromoter-v2-commissions-openapi.yml
+  - openapi/firstpromoter-v2-contract-documents-openapi.yml
+  - openapi/firstpromoter-v2-contracts-openapi.yml
+  - openapi/firstpromoter-v2-dashboard-openapi.yml
+  - openapi/firstpromoter-v2-emails-openapi.yml
+  - openapi/firstpromoter-v2-invoices-openapi.yml
+  - openapi/firstpromoter-v2-payent-batches-openapi.yml
+  - openapi/firstpromoter-v2-payouts-openapi.yml
+  - openapi/firstpromoter-v2-promocodes-openapi.yml
+  - openapi/firstpromoter-v2-promoter-campaigns-openapi.yml
+  - openapi/firstpromoter-v2-promoters-openapi.yml
+  - openapi/firstpromoter-v2-referrals-openapi.yml
+  - openapi/firstpromoter-v2-tracking-openapi.yml
+- name: accountId
+  type: apiKey
+  in: header
+  parameter: Account-ID
+  description: Account ID required with bearer token
+  sources:
+  - openapi/firstpromoter-v2-advanced-products-openapi.yml
+  - openapi/firstpromoter-v2-rewards-openapi.yml
+docs: https://docs.firstpromoter.com/api-reference-v2/api-admin/authentication
+name: FirstPromoter authentication
+description: 'FirstPromoter requires two credentials on every REST call: an API key sent as an Authorization Bearer
+  token, and the account id sent in an ACCOUNT-ID header. Both are created in Settings - Integrations - Manage API
+  Keys. A separate OAuth 2.1 authorization server backs the MCP server and connector flow.'
+primary:
+  style: api-key + account header
+  headers:
+  - name: Authorization
+    value: Bearer {api_key}
+    required: true
+  - name: ACCOUNT-ID
+    value: '{account_id}'
+    required: true
+  credential_creation: Dashboard - Settings - Integrations - Manage API Keys - Add new Key. The key is shown once.
+  account_id_location: Same Settings - Integrations panel.
+  transport: HTTPS only
+  example: GET https://api.firstpromoter.com/api/v2/company/referrals
+oauth:
+  present: true
+  used_by: MCP server (https://mcp.firstpromoter.com) and the AI connector flow
+  issuers:
+  - https://api.firstpromoter.com
+  - https://mcp.firstpromoter.com
+  grant_types:
+  - authorization_code
+  - refresh_token
+  pkce: S256 required
+  dynamic_client_registration: true
+  scopes:
+  - user
+  - mcp
+  detail: scopes/firstpromoter-scopes.yml
+  note: Not declared as an oauth2 securityScheme in any published OpenAPI document.
+sso:
+  available: true
+  protocol: SAML
+  plan: Enterprise
+  source: https://changelog.firstpromoter.com/ (Single Sign-On (SAML)) and the pricing comparison table
+  note: Dashboard sign-in only; it does not apply to API authentication.
+guidance_published:
+- Keep the API key secure and never expose it in client-side code.
+- Consider implementing IP restrictions for API access.
+- Regularly audit API usage and rotate keys if suspicious activity occurs.
+- Use HTTPS for all API communications.
+findings:
+- 'The published specs disagree with themselves on the account header name: 27 specs declare ACCOUNT-ID and 2 (advanced
+  products, rewards) declare Account-ID. HTTP header names are case-insensitive so both work, but a strict generated
+  client keyed on the literal will not match across specs.'
+- The account header is declared as an apiKey securityScheme in 29 of 37 specs; the remaining 8 declare BearerAuth
+  alone even though the documentation says both credentials are required on every request.
+- No key rotation policy, key expiry, or scoped/restricted API keys are documented for the REST API. The only scoping
+  available is the coarse OAuth mcp/user pair on the connector path.

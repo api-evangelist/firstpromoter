@@ -1,0 +1,1016 @@
+{
+  "item": [
+    {
+      "id": "ce88ec97-ad42-4633-8572-b6b04f48a984",
+      "name": "Promoters",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "61eff831-be30-464c-ac12-3b8b0b9c694e",
+          "name": "Get current promoter",
+          "request": {
+            "name": "Get current promoter",
+            "description": {},
+            "url": {
+              "path": [
+                "promoters",
+                "current"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Account identifier that specifies which account is making the request",
+                "key": "Account-ID",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8b9123f8-6c07-4f25-b308-7f4002eecb84",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "promoters",
+                    "current"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account identifier that specifies which account is making the request",
+                    "key": "Account-ID",
+                    "value": "acc_123456"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 614,\n  \"email\": \"string\",\n  \"name\": \"string\",\n  \"stats\": {\n    \"clicks_count\": 1892,\n    \"referrals_count\": 802,\n    \"sales_count\": 3701,\n    \"customers_count\": 245,\n    \"revenue_amount\": 7482.508964008364,\n    \"active_customers_count\": 8921\n  },\n  \"balances\": {},\n  \"custom_fields\": {},\n  \"first_event_at\": \"1980-10-07T14:11:14.899Z\",\n  \"invoice_details_status\": \"string\",\n  \"joined_at\": \"1965-09-26T20:06:03.255Z\",\n  \"selected_payout_method\": \"string\",\n  \"pending_contract_documents\": [\n    \"string\",\n    \"string\"\n  ],\n  \"profile\": {\n    \"id\": 5245,\n    \"first_name\": \"string\",\n    \"last_name\": \"string\",\n    \"website\": \"string\",\n    \"company_name\": \"string\",\n    \"phone_number\": \"string\",\n    \"vat_id\": \"string\",\n    \"country\": \"string\",\n    \"address\": \"string\",\n    \"avatar\": \"string\",\n    \"instagram_url\": \"string\",\n    \"youtube_url\": \"string\",\n    \"linkedin_url\": \"string\",\n    \"facebook_url\": \"string\",\n    \"twitter_url\": \"string\",\n    \"twitch_url\": \"string\",\n    \"tiktok_url\": \"string\"\n  },\n  \"promoter_campaigns\": [\n    {\n      \"id\": 1044,\n      \"campaign_id\": 3744,\n      \"created_at\": \"1999-03-23T19:37:17.822Z\",\n      \"campaign\": {\n        \"id\": 7526,\n        \"name\": \"string\",\n        \"color\": \"string\"\n      },\n      \"state\": \"string\",\n      \"promoter_id\": 5104,\n      \"stats\": {\n        \"clicks_count\": 337,\n        \"referrals_count\": 2659,\n        \"sales_count\": 6431,\n        \"customers_count\": 6549,\n        \"revenue_amount\": 5888.828003049468\n      },\n      \"ref_token\": \"string\",\n      \"ref_link\": \"string\",\n      \"has_monetary_rewards\": false\n    },\n    {\n      \"id\": 164,\n      \"campaign_id\": 3589,\n      \"created_at\": \"1987-03-28T03:04:58.649Z\",\n      \"campaign\": {\n        \"id\": 6068,\n        \"name\": \"string\",\n        \"color\": \"string\"\n      },\n      \"state\": \"string\",\n      \"promoter_id\": 3396,\n      \"stats\": {\n        \"clicks_count\": 2748,\n        \"referrals_count\": 2711,\n        \"sales_count\": 3358,\n        \"customers_count\": 8129,\n        \"revenue_amount\": 6648.113927376623\n      },\n      \"ref_token\": \"string\",\n      \"ref_link\": \"string\",\n      \"has_monetary_rewards\": true\n    }\n  ],\n  \"is_confirmed\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2b0a89c0-3df9-4bcb-9ea5-5575213641c3",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "promoters",
+                    "current"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account identifier that specifies which account is making the request",
+                    "key": "Account-ID",
+                    "value": "acc_123456"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "88215ffb-bfb6-4c44-9894-7b1be54c5cf3",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "promoters",
+                    "current"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account identifier that specifies which account is making the request",
+                    "key": "Account-ID",
+                    "value": "acc_123456"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "76df61c7-3ef3-4d0b-89b6-ea56a39a914d",
+          "name": "Get current promoter sub affiliates",
+          "request": {
+            "name": "Get current promoter sub affiliates",
+            "description": {},
+            "url": {
+              "path": [
+                "promoters",
+                "sub_affiliates"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Account identifier that specifies which account is making the request",
+                "key": "Account-ID",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "03c23888-aa67-4c65-ab95-7747f27d60df",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "promoters",
+                    "sub_affiliates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account identifier that specifies which account is making the request",
+                    "key": "Account-ID",
+                    "value": "acc_123456"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": 3572,\n    \"name\": \"string\",\n    \"email\": \"string\",\n    \"stats\": {\n      \"clicks_count\": 2541,\n      \"referrals_count\": 2067,\n      \"sales_count\": 8148,\n      \"customers_count\": 4600,\n      \"revenue_amount\": 5963.400770965706,\n      \"active_customers_count\": 424\n    },\n    \"joined_at\": \"2008-01-29T23:10:25.943Z\"\n  },\n  {\n    \"id\": 7015,\n    \"name\": \"string\",\n    \"email\": \"string\",\n    \"stats\": {\n      \"clicks_count\": 7914,\n      \"referrals_count\": 4618,\n      \"sales_count\": 9803,\n      \"customers_count\": 2750,\n      \"revenue_amount\": 6922.584403890461,\n      \"active_customers_count\": 6469\n    },\n    \"joined_at\": \"1958-03-18T17:02:11.624Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f100fdc6-6fe9-4bcb-a936-9b0417d2025d",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "promoters",
+                    "sub_affiliates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account identifier that specifies which account is making the request",
+                    "key": "Account-ID",
+                    "value": "acc_123456"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d4cf33d0-658b-4906-83db-b1df01d763d5",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "promoters",
+                    "sub_affiliates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account identifier that specifies which account is making the request",
+                    "key": "Account-ID",
+                    "value": "acc_123456"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "60416cb6-2a87-433a-9629-da6c33f6ad5a",
+          "name": "Get chart data",
+          "request": {
+            "name": "Get chart data",
+            "description": {},
+            "url": {
+              "path": [
+                "promoters",
+                "chart_data"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "promoter_campaign_id",
+                  "value": "<integer>",
+                  "description": "If provided, the given promoter campaign will be used in chart. Otherwise all the current_promoter campaigns will be used."
+                },
+                {
+                  "disabled": false,
+                  "key": "period_from",
+                  "value": "<date>"
+                },
+                {
+                  "disabled": false,
+                  "key": "period_to",
+                  "value": "<date>"
+                },
+                {
+                  "disabled": false,
+                  "key": "selection",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Account identifier that specifies which account is making the request",
+                "key": "Account-ID",
+                "value": "<string>"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "00b8fd6c-d8d0-4dbf-a890-2fc2600e35d2",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "promoters",
+                    "chart_data"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "promoter_campaign_id",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "period_from",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "period_to",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "selection",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account identifier that specifies which account is making the request",
+                    "key": "Account-ID",
+                    "value": "acc_123456"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5747f336-ca55-4d98-9a76-b0e356513e79",
+          "name": "Get the promoter email",
+          "request": {
+            "name": "Get the promoter email",
+            "description": {},
+            "url": {
+              "path": [
+                "promoters",
+                "email_from_encrypted_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "id",
+                  "value": "<string>",
+                  "description": "(Required) The encrypted id"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Account identifier that specifies which account is making the request",
+                "key": "Account-ID",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "404d12c4-dddb-4298-9a37-44bf0daa7511",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "promoters",
+                    "email_from_encrypted_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account identifier that specifies which account is making the request",
+                    "key": "Account-ID",
+                    "value": "acc_123456"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"email\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ae28f51a-5b1e-43f2-8873-71d29f612cbf",
+              "name": "Unprocessable Entity",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "promoters",
+                    "email_from_encrypted_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "id",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account identifier that specifies which account is making the request",
+                    "key": "Account-ID",
+                    "value": "acc_123456"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8ca92a3a-f37b-4438-9619-6929bc8f8423",
+          "name": "Set the user password",
+          "request": {
+            "name": "Set the user password",
+            "description": {},
+            "url": {
+              "path": [
+                "promoters",
+                "set_password"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Account identifier that specifies which account is making the request",
+                "key": "Account-ID",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<string>\",\n  \"user\": {\n    \"new_password\": \"<string>\",\n    \"new_password_confirmation\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b0242941-08a2-4be2-bb56-4bc644bdc751",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "promoters",
+                    "set_password"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account identifier that specifies which account is making the request",
+                    "key": "Account-ID",
+                    "value": "acc_123456"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"user\": {\n    \"new_password\": \"<string>\",\n    \"new_password_confirmation\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 7189,\n  \"email\": \"string\",\n  \"name\": \"string\",\n  \"stats\": {\n    \"clicks_count\": 2223,\n    \"referrals_count\": 2598,\n    \"sales_count\": 1379,\n    \"customers_count\": 2675,\n    \"revenue_amount\": 3651.6712516106463,\n    \"active_customers_count\": 4115\n  },\n  \"balances\": {},\n  \"custom_fields\": {},\n  \"first_event_at\": \"1969-04-14T05:39:21.505Z\",\n  \"invoice_details_status\": \"string\",\n  \"joined_at\": \"1980-08-01T08:13:26.203Z\",\n  \"selected_payout_method\": \"string\",\n  \"pending_contract_documents\": [\n    \"string\",\n    \"string\"\n  ],\n  \"profile\": {\n    \"id\": 1738,\n    \"first_name\": \"string\",\n    \"last_name\": \"string\",\n    \"website\": \"string\",\n    \"company_name\": \"string\",\n    \"phone_number\": \"string\",\n    \"vat_id\": \"string\",\n    \"country\": \"string\",\n    \"address\": \"string\",\n    \"avatar\": \"string\",\n    \"instagram_url\": \"string\",\n    \"youtube_url\": \"string\",\n    \"linkedin_url\": \"string\",\n    \"facebook_url\": \"string\",\n    \"twitter_url\": \"string\",\n    \"twitch_url\": \"string\",\n    \"tiktok_url\": \"string\"\n  },\n  \"promoter_campaigns\": [\n    {\n      \"id\": 2727,\n      \"campaign_id\": 7312,\n      \"created_at\": \"1979-06-25T05:08:36.806Z\",\n      \"campaign\": {\n        \"id\": 7529,\n        \"name\": \"string\",\n        \"color\": \"string\"\n      },\n      \"state\": \"string\",\n      \"promoter_id\": 3061,\n      \"stats\": {\n        \"clicks_count\": 2895,\n        \"referrals_count\": 2164,\n        \"sales_count\": 6765,\n        \"customers_count\": 40,\n        \"revenue_amount\": 2167.561972932934\n      },\n      \"ref_token\": \"string\",\n      \"ref_link\": \"string\",\n      \"has_monetary_rewards\": true\n    },\n    {\n      \"id\": 8431,\n      \"campaign_id\": 2291,\n      \"created_at\": \"1950-02-09T03:28:44.999Z\",\n      \"campaign\": {\n        \"id\": 6260,\n        \"name\": \"string\",\n        \"color\": \"string\"\n      },\n      \"state\": \"string\",\n      \"promoter_id\": 8737,\n      \"stats\": {\n        \"clicks_count\": 6883,\n        \"referrals_count\": 8330,\n        \"sales_count\": 7572,\n        \"customers_count\": 5365,\n        \"revenue_amount\": 8298.867594727988\n      },\n      \"ref_token\": \"string\",\n      \"ref_link\": \"string\",\n      \"has_monetary_rewards\": false\n    }\n  ],\n  \"is_confirmed\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bd3b8ce4-74da-40de-97ad-3153a0dd38c9",
+              "name": "Unprocessable Entity",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "promoters",
+                    "set_password"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account identifier that specifies which account is making the request",
+                    "key": "Account-ID",
+                    "value": "acc_123456"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"user\": {\n    \"new_password\": \"<string>\",\n    \"new_password_confirmation\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4707daaf-df79-40b3-873f-4520d077dce4",
+          "name": "Archives current promoter",
+          "request": {
+            "name": "Archives current promoter",
+            "description": {},
+            "url": {
+              "path": [
+                "promoters",
+                "archive"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Account identifier that specifies which account is making the request",
+                "key": "Account-ID",
+                "value": "<string>"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "431ed92b-1a15-44cb-bc64-1b1c8e373384",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "promoters",
+                    "archive"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account identifier that specifies which account is making the request",
+                    "key": "Account-ID",
+                    "value": "acc_123456"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "df6a9336-5611-48b6-81c5-ac61c3c70d99",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "promoters",
+                    "archive"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account identifier that specifies which account is making the request",
+                    "key": "Account-ID",
+                    "value": "acc_123456"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1b5a742f-13ec-43c7-bed0-31dbb3ff7442",
+              "name": "Unprocessable Entity",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "promoters",
+                    "archive"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account identifier that specifies which account is making the request",
+                    "key": "Account-ID",
+                    "value": "acc_123456"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.firstpromoter.com/api/v2/affiliate",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "1f1ba3ff-cbf0-4d3b-96fb-459114617626",
+    "name": "FirstPromoter API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "FirstPromoter API documentation",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,326 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "FirstPromoter Admin API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Referrals",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get available referrals",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.firstpromoter.com/api/v2/company/referrals",
+            "headers": [
+              {
+                "name": "Account-ID",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Search params. Searches by email, uid, username, website"
+              },
+              {
+                "name": "ids[]",
+                "value": "",
+                "type": "query",
+                "description": "Array of referral ids to get"
+              },
+              {
+                "name": "filters[type]",
+                "value": "",
+                "type": "query",
+                "description": "Filter the referrals by type (lead or customer)"
+              },
+              {
+                "name": "filters[promoter_id]",
+                "value": "",
+                "type": "query",
+                "description": "Filter the referrals by a promoter id"
+              },
+              {
+                "name": "filters[state]",
+                "value": "",
+                "type": "query",
+                "description": "Filter the referrals by state"
+              },
+              {
+                "name": "filters[customer_since][from]",
+                "value": "",
+                "type": "query",
+                "description": "Filter referrals where customer_since is on or after this date (ISO 8601 format: YYYY-MM-DD)"
+              },
+              {
+                "name": "filters[customer_since][to]",
+                "value": "",
+                "type": "query",
+                "description": "Filter referrals where customer_since is on or before this date (ISO 8601 format: YYYY-MM-DD)"
+              },
+              {
+                "name": "filters[created_at][from]",
+                "value": "",
+                "type": "query",
+                "description": "Filter referrals created on or after this date (ISO 8601 format: YYYY-MM-DD)"
+              },
+              {
+                "name": "filters[created_at][to]",
+                "value": "",
+                "type": "query",
+                "description": "Filter referrals created on or before this date (ISO 8601 format: YYYY-MM-DD)"
+              },
+              {
+                "name": "filters[cancelled_at][from]",
+                "value": "",
+                "type": "query",
+                "description": "Filter referrals cancelled on or after this date (ISO 8601 format: YYYY-MM-DD)"
+              },
+              {
+                "name": "filters[cancelled_at][to]",
+                "value": "",
+                "type": "query",
+                "description": "Filter referrals cancelled on or before this date (ISO 8601 format: YYYY-MM-DD)"
+              }
+            ]
+          },
+          "docs": "Get available referrals \n <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/referrals`</Tip>"
+        },
+        {
+          "info": {
+            "name": "Create referral",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.firstpromoter.com/api/v2/company/referrals",
+            "headers": [
+              {
+                "name": "Account-ID",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new referral \n <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/company/referrals`</Tip>"
+        },
+        {
+          "info": {
+            "name": "Delete referrals",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.firstpromoter.com/api/v2/company/referrals",
+            "headers": [
+              {
+                "name": "Account-ID",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "With this endpoint you can delete referrals. \n <Note>If there are more than __5__ ids on the __ids__ param/field, the action will be processed asynchronously. The response for the batch status will most likely be `in_progress`. The available statuses are `pending`, `in_progress`, `completed`, `failed` and `stopped`</Note> \n <Tip>**HTTP Request** <br/>`DELETE https://api.firstpromoter.com/api/v2/company/referrals`</Tip>"
+        },
+        {
+          "info": {
+            "name": "Get referral",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.firstpromoter.com/api/v2/company/referrals/:id",
+            "headers": [
+              {
+                "name": "Account-ID",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the referral"
+              },
+              {
+                "name": "find_by",
+                "value": "",
+                "type": "query",
+                "description": "Find by attribute"
+              }
+            ]
+          },
+          "docs": "Get a specific referral \n <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/referrals/{id}`</Tip>"
+        },
+        {
+          "info": {
+            "name": "Update referral",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.firstpromoter.com/api/v2/company/referrals/:id",
+            "headers": [
+              {
+                "name": "Account-ID",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the referral"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update a specific referral. The id can be a referral ID, email, uid, or username when used with the find_by parameter in the request body. \n <Tip>**HTTP Request** <br/>`PUT https://api.firstpromoter.com/api/v2/company/referrals/{id}`</Tip>"
+        },
+        {
+          "info": {
+            "name": "Approve referrals",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.firstpromoter.com/api/v2/company/referrals/approve",
+            "headers": [
+              {
+                "name": "Account-ID",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "With this endpoint you can approve referrals. \n <Note>If there are more than __5__ ids on the __ids__ param/field, the action will be processed asynchronously. The response for the batch status will most likely be `in_progress`. The available statuses are `pending`, `in_progress`, `completed`, `failed` and `stopped`</Note> \n <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/company/referrals/approve`</Tip>"
+        },
+        {
+          "info": {
+            "name": "Disable referrals",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.firstpromoter.com/api/v2/company/referrals/disable",
+            "headers": [
+              {
+                "name": "Account-ID",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "With this endpoint you can disable referrals. \n <Note>If there are more than __5__ ids on the __ids__ param/field, the action will be processed asynchronously. The response for the batch status will most likely be `in_progress`. The available statuses are `pending`, `in_progress`, `completed`, `failed` and `stopped`</Note> \n <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/company/referrals/disable`</Tip>"
+        },
+        {
+          "info": {
+            "name": "Enable referrals",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.firstpromoter.com/api/v2/company/referrals/enable",
+            "headers": [
+              {
+                "name": "Account-ID",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "With this endpoint you can enable referrals. \n <Note>If there are more than __5__ ids on the __ids__ param/field, the action will be processed asynchronously. The response for the batch status will most likely be `in_progress`. The available statuses are `pending`, `in_progress`, `completed`, `failed` and `stopped`</Note> \n <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/company/referrals/enable`</Tip>"
+        },
+        {
+          "info": {
+            "name": "Move referrals to promoter",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.firstpromoter.com/api/v2/company/referrals/move_to_promoter",
+            "headers": [
+              {
+                "name": "Account-ID",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "With this endpoint you can move referrals to another promoter. \n <Note>If there are more than __5__ ids on the __ids__ param/field, the action will be processed asynchronously. The response for the batch status will most likely be `in_progress`. The available statuses are `pending`, `in_progress`, `completed`, `failed` and `stopped`</Note> \n <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/company/referrals/move_to_promoter`</Tip>"
+        },
+        {
+          "info": {
+            "name": "Import previous sales from stripe",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.firstpromoter.com/api/v2/company/referrals/:id/import_events",
+            "headers": [
+              {
+                "name": "Account-ID",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the referral"
+              },
+              {
+                "name": "find_by",
+                "value": "",
+                "type": "query",
+                "description": "Find by attribute"
+              }
+            ]
+          },
+          "docs": "With this endpoint you can import previous sales from Stripe. \n <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/company/referrals/{id}/import_events`</Tip>"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

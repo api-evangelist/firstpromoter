@@ -1,0 +1,81 @@
+generated: '2026-08-13'
+method: searched
+source: https://changelog.firstpromoter.com/
+name: FirstPromoter changelog
+description: >-
+  FirstPromoter publishes a dated, subscribable product changelog on its own host, with RSS and
+  Atom feeds. It is a product changelog, not an API changelog - entries are written for program
+  operators and do not carry API versions, breaking-change notices or deprecation windows.
+url: https://changelog.firstpromoter.com/
+feeds:
+  - type: rss
+    url: https://changelog.firstpromoter.com/rss.xml
+    status: 200
+  - type: atom
+    url: https://changelog.firstpromoter.com/atom.xml
+    note: Linked from the changelog page as "Atom Feed".
+subscribe: Email notifications available from the changelog page.
+scheme: dated-entries
+versioned: false
+api_versions_referenced: false
+breaking_changes_flagged: false
+current_api_version: v2
+entries:
+  - title: 'Stripe Payouts: Pay affiliates directly from your Stripe balance'
+    date: '2026-07-01'
+    url: https://changelog.firstpromoter.com/stripe-payouts-pay-affiliates-directly-from-your-stripe-balance-1SFpUk
+    type: addition
+    breaking: false
+    highlights:
+      - Third built-in payout option alongside PayPal Payouts and Managed Payouts with Dots.
+      - Available on every plan; uses a Stripe restricted API key with Accounts/Account Links/Transfers write only.
+      - Two-factor authentication required before payout settings can change or payments can be sent.
+  - title: 'Introducing FirstPromoter MCP Server: Connect AI tools directly to your affiliate program'
+    date: '2026-06-16'
+    url: https://changelog.firstpromoter.com/introducing-firstpromoter-mcp-server-connect-ai-tools-directly-to-your-affiliate-program-2T64ko
+    type: addition
+    breaking: false
+    highlights:
+      - Remote MCP server for Claude, ChatGPT, Cursor and other MCP clients.
+      - Every mutating action requires explicit user approval before it is applied.
+  - title: 'What we shipped in the last 6 months: Activity Logs, Managed Payouts and much more'
+    date: '2026-06-12'
+    url: https://changelog.firstpromoter.com/what-we-shipped-in-the-last-6-months-activity-logs-managed-payouts-and-much-more-7ElLq
+    type: addition
+    breaking: false
+    highlights:
+      - Managed Payouts with Dots, Activity Logs, Custom Roles & Permissions.
+      - Webhooks V2 - the event surface captured in asyncapi/firstpromoter-webhooks.yml.
+      - Single Sign-On (SAML).
+  - title: 'Introducing a new feature: contests!'
+    date: '2025-11-19'
+    url: https://changelog.firstpromoter.com/introducing-a-new-feature-contests-44G1Hy
+    type: addition
+    breaking: false
+  - title: Translated Campaigns
+    date: '2025-07-22'
+    url: https://changelog.firstpromoter.com/translated-campaigns-3ovLJS
+    type: addition
+    breaking: false
+  - title: New features & improvements
+    date: '2025-03-02'
+    url: https://changelog.firstpromoter.com/new-features-improvements-3SZISA
+    type: addition
+    breaking: false
+  - title: Postbacks
+    date: '2025-01-21'
+    url: https://changelog.firstpromoter.com/postbacks-PkVva
+    type: addition
+    breaking: false
+  - title: Stripe coupon codes
+    date: '2024-10-16'
+    url: https://changelog.firstpromoter.com/stripe-coupon-codes-1T3476
+    type: addition
+    breaking: false
+entry_count_recent: 8
+cadence_note: >-
+  Three entries in 2026 and roughly one entry per quarter before that. The changelog is a release
+  announcement channel, so an API consumer cannot use it to detect contract changes.
+gaps:
+  - No API-level changelog. None of the 37 published OpenAPI documents carries a version history.
+  - No breaking-change or deprecation notices are published anywhere on the changelog.

@@ -1,0 +1,368 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "FirstPromoter Admin Payouts API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Get all payouts",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.firstpromoter.com/api/v2/company/payouts",
+        "headers": [
+          {
+            "name": "Account-ID",
+            "value": ""
+          }
+        ],
+        "params": [
+          {
+            "name": "q",
+            "value": "",
+            "type": "query",
+            "description": "Search params. Searches by 'promoter.profile.first_name`, `promoter.profile.last_name`, `promoter.user.email`"
+          },
+          {
+            "name": "ids[]",
+            "value": "",
+            "type": "query",
+            "description": "Array of payout ids to get"
+          },
+          {
+            "name": "filters[status]",
+            "value": "",
+            "type": "query",
+            "description": "Filter by status"
+          },
+          {
+            "name": "filters[campaign_id]",
+            "value": "",
+            "type": "query",
+            "description": "Campaign ids. Can be Integer or Array of Integers"
+          },
+          {
+            "name": "filters[payments_batch_id]",
+            "value": "",
+            "type": "query",
+            "description": "Payment batches ids. Can be Integer or Array of Integers"
+          },
+          {
+            "name": "filters[due_period]",
+            "value": "",
+            "type": "query",
+            "description": "Due period"
+          },
+          {
+            "name": "filters[period_start][from]",
+            "value": "",
+            "type": "query",
+            "description": "period_start starting from date"
+          },
+          {
+            "name": "filters[period_start][to]",
+            "value": "",
+            "type": "query",
+            "description": "period_start end at date"
+          },
+          {
+            "name": "filters[period_end][from]",
+            "value": "",
+            "type": "query",
+            "description": "period_end starting from date"
+          },
+          {
+            "name": "filters[period_end][to]",
+            "value": "",
+            "type": "query",
+            "description": "period_end end at date"
+          },
+          {
+            "name": "filters[payout_method]",
+            "value": "",
+            "type": "query",
+            "description": "Payout method"
+          },
+          {
+            "name": "filters[promoter_id]",
+            "value": "",
+            "type": "query",
+            "description": "Promoter id"
+          },
+          {
+            "name": "filters[only_payable]",
+            "value": "",
+            "type": "query",
+            "description": "Only payable payouts"
+          },
+          {
+            "name": "filters[group_ref]",
+            "value": "",
+            "type": "query",
+            "description": "Group reference"
+          },
+          {
+            "name": "filters[fraud_suspicions]",
+            "value": "",
+            "type": "query",
+            "description": "Fraud suspicions. Multiple values can be passed as an array. Send ['no_suspicion'] to filter promoters with no fraud suspicions"
+          },
+          {
+            "name": "sorting[amount]",
+            "value": "",
+            "type": "query",
+            "description": "The sort by amount direction"
+          },
+          {
+            "name": "sorting[period_start]",
+            "value": "",
+            "type": "query",
+            "description": "Period start"
+          },
+          {
+            "name": "sorting[period_end]",
+            "value": "",
+            "type": "query",
+            "description": "Period end"
+          }
+        ]
+      },
+      "docs": "With this endpoint you can list all payouts. \n <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/payouts`</Tip>"
+    },
+    {
+      "info": {
+        "name": "Get payout stats",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.firstpromoter.com/api/v2/company/payouts/stats",
+        "headers": [
+          {
+            "name": "Account-ID",
+            "value": ""
+          }
+        ],
+        "params": [
+          {
+            "name": "stats_by[paid_period]",
+            "value": "",
+            "type": "query",
+            "description": "Shows the stats by payout period only for paid payouts"
+          },
+          {
+            "name": "stats_by[status]",
+            "value": "",
+            "type": "query",
+            "description": "Shows the stats by status (pending, failed, processing, completed)"
+          },
+          {
+            "name": "stats_by[payout_method]",
+            "value": "",
+            "type": "query",
+            "description": "Shows the stats by payout method"
+          },
+          {
+            "name": "filters[status]",
+            "value": "",
+            "type": "query",
+            "description": "Filter by status"
+          },
+          {
+            "name": "filters[campaign_id]",
+            "value": "",
+            "type": "query",
+            "description": "Campaign ids. Can be Integer or Array of Integers"
+          }
+        ]
+      },
+      "docs": "This endpoint returns statistics about payouts. \n <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/payouts/stats`</Tip>"
+    },
+    {
+      "info": {
+        "name": "Get due payout stats",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.firstpromoter.com/api/v2/company/payouts/due_stats",
+        "headers": [
+          {
+            "name": "Account-ID",
+            "value": ""
+          }
+        ],
+        "params": [
+          {
+            "name": "q",
+            "value": "",
+            "type": "query",
+            "description": "Search params. Searches by 'promoter.profile.first_name`, `promoter.profile.last_name`, `promoter.user.email`"
+          },
+          {
+            "name": "filters[status]",
+            "value": "",
+            "type": "query",
+            "description": "Filter by status"
+          },
+          {
+            "name": "filters[campaign_id]",
+            "value": "",
+            "type": "query",
+            "description": "Campaign ids. Can be Integer or Array of Integers"
+          }
+        ]
+      },
+      "docs": "This endpoint returns statistics about due payouts. \n <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/payouts/due_stats`</Tip>"
+    },
+    {
+      "info": {
+        "name": "Get all payouts grouped by promoters",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.firstpromoter.com/api/v2/company/payouts/group_by_promoters",
+        "headers": [
+          {
+            "name": "Account-ID",
+            "value": ""
+          }
+        ],
+        "params": [
+          {
+            "name": "q",
+            "value": "",
+            "type": "query",
+            "description": "Search params. Searches by 'promoter.profile.first_name`, `promoter.profile.last_name`, `promoter.user.email`"
+          },
+          {
+            "name": "filters[status]",
+            "value": "",
+            "type": "query",
+            "description": "Filter by status"
+          },
+          {
+            "name": "filters[campaign_id]",
+            "value": "",
+            "type": "query",
+            "description": "Campaign ids. Can be Integer or Array of Integers"
+          },
+          {
+            "name": "include_payout_method_details",
+            "value": "",
+            "type": "query",
+            "description": "Set it true to include the payout_method_details"
+          },
+          {
+            "name": "filters[min_payment]",
+            "value": "",
+            "type": "query",
+            "description": "Filters payouts by the minimum payment amount possible"
+          },
+          {
+            "name": "filters[invoiceable]",
+            "value": "",
+            "type": "query",
+            "description": "Filters payouts by invoiceable"
+          }
+        ]
+      },
+      "docs": "This endpoint returns all payouts but grouped by promoters. \n <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/payouts/group_by_promoters`</Tip>"
+    },
+    {
+      "info": {
+        "name": "Create payments batch",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "https://api.firstpromoter.com/api/v2/company/payouts/create_payments_batch",
+        "headers": [
+          {
+            "name": "Account-ID",
+            "value": ""
+          }
+        ],
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "This endpoint creates a new payments batch. \n <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/company/payouts/create_payments_batch`</Tip>"
+    },
+    {
+      "info": {
+        "name": "Mark payouts as paid",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "https://api.firstpromoter.com/api/v2/company/payouts/mark_as_paid",
+        "headers": [
+          {
+            "name": "Account-ID",
+            "value": ""
+          }
+        ],
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "Marks selected payouts as paid \n <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/company/payouts/mark_as_paid`</Tip>"
+    },
+    {
+      "info": {
+        "name": "Mark payouts as unpaid",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "https://api.firstpromoter.com/api/v2/company/payouts/mark_as_unpaid",
+        "headers": [
+          {
+            "name": "Account-ID",
+            "value": ""
+          }
+        ],
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "Marks selected payouts as unpaid \n <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/company/payouts/mark_as_unpaid`</Tip>"
+    },
+    {
+      "info": {
+        "name": "Delete payouts",
+        "type": "http"
+      },
+      "http": {
+        "method": "DELETE",
+        "url": "https://api.firstpromoter.com/api/v2/company/payouts/destroy",
+        "headers": [
+          {
+            "name": "Account-ID",
+            "value": ""
+          }
+        ],
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "Deletes selected payouts \n <Tip>**HTTP Request** <br/>`DELETE https://api.firstpromoter.com/api/v2/company/payouts/destroy`</Tip>"
+    }
+  ],
+  "bundled": true
+}

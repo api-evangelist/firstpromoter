@@ -1,0 +1,88 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "FirstPromoter Contract Documents API",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Contract Documents",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get all current version contract documents",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.firstpromoter.com/api/v2/company/contract_documents",
+            "headers": [
+              {
+                "name": "Account-ID",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Search params. Searches by promoter name and email"
+              },
+              {
+                "name": "filters",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "sorting",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": " Get all current version contract documents \n <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/contract_documents`</Tip>"
+        },
+        {
+          "info": {
+            "name": "Get contract documents by id and return it in the selected format (html/pdf)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.firstpromoter.com/api/v2/company/contract_documents/:id",
+            "headers": [
+              {
+                "name": "Account-ID",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "content_type",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get contract documents by id(html/pdf) \n <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/contract_documents/{id}`</Tip>"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

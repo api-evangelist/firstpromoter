@@ -1,0 +1,194 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "FirstPromoter API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Commissions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get all commissions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.firstpromoter.com/api/v2/affiliate/commissions",
+            "headers": [
+              {
+                "name": "Account-ID",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Search params. Searches by initial_tier_event.transaction_id, lead.email, lead.uid"
+              },
+              {
+                "name": "filters[status]",
+                "value": "",
+                "type": "query",
+                "description": "Status filter"
+              },
+              {
+                "name": "filters[paid]",
+                "value": "",
+                "type": "query",
+                "description": "Paid filter"
+              },
+              {
+                "name": "filters[sale_amount][from]",
+                "value": "",
+                "type": "query",
+                "description": "Sale amount from"
+              },
+              {
+                "name": "filters[sale_amount][to]",
+                "value": "",
+                "type": "query",
+                "description": "Sale amount to"
+              },
+              {
+                "name": "filters[amount][from]",
+                "value": "",
+                "type": "query",
+                "description": "Amount from"
+              },
+              {
+                "name": "filters[amount][to]",
+                "value": "",
+                "type": "query",
+                "description": "Amount to"
+              },
+              {
+                "name": "filters[created_at][from]",
+                "value": "",
+                "type": "query",
+                "description": "Created at start date"
+              },
+              {
+                "name": "filters[created_at][to]",
+                "value": "",
+                "type": "query",
+                "description": "Created at end date"
+              },
+              {
+                "name": "filters[campaign_id]",
+                "value": "",
+                "type": "query",
+                "description": "Campaign ids"
+              },
+              {
+                "name": "filters[payout_id]",
+                "value": "",
+                "type": "query",
+                "description": "Payout ids"
+              },
+              {
+                "name": "filters[due_period]",
+                "value": "",
+                "type": "query",
+                "description": "Due period filter"
+              },
+              {
+                "name": "filters[promoter_id]",
+                "value": "",
+                "type": "query",
+                "description": "Promoter id"
+              },
+              {
+                "name": "filters[first_commission]",
+                "value": "",
+                "type": "query",
+                "description": "First commission"
+              },
+              {
+                "name": "filters[refunded]",
+                "value": "",
+                "type": "query",
+                "description": "Refunded reward"
+              },
+              {
+                "name": "filters[fraud_check]",
+                "value": "",
+                "type": "query",
+                "description": "Referral fraud check (suspicion)"
+              },
+              {
+                "name": "filters[plan_id]",
+                "value": "",
+                "type": "query",
+                "description": "Plan id"
+              },
+              {
+                "name": "sorting[sale_amount]",
+                "value": "",
+                "type": "query",
+                "description": "Sort by sale amount"
+              },
+              {
+                "name": "sorting[amount]",
+                "value": "",
+                "type": "query",
+                "description": "Sort by amount"
+              },
+              {
+                "name": "sorting[created_at]",
+                "value": "",
+                "type": "query",
+                "description": "Sort by created_at"
+              },
+              {
+                "name": "sorting[referral]",
+                "value": "",
+                "type": "query",
+                "description": "Sort by referral"
+              }
+            ]
+          },
+          "docs": "Return all commissions \n <Tip>**HTTP Request** <br/>` GET  https://api.firstpromoter.com/api/v2/affiliate/commissions`</Tip>"
+        },
+        {
+          "info": {
+            "name": "Export all commissions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.firstpromoter.com/api/v2/affiliate/commissions/export",
+            "headers": [
+              {
+                "name": "Account-ID",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "filters",
+                "value": "",
+                "type": "query",
+                "description": "Filter parameters"
+              }
+            ]
+          },
+          "docs": "Export all commissions \n <Tip>**HTTP Request** <br/>` GET  https://api.firstpromoter.com/api/v2/affiliate/commissions/export`</Tip>"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

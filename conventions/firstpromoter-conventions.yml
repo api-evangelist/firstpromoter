@@ -1,0 +1,147 @@
+generated: '2026-08-13'
+method: searched
+source: >-
+  https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction,
+  https://docs.firstpromoter.com/api-reference-v2/api-admin/authentication,
+  https://docs.firstpromoter.com/webhooks-v2/payload,
+  openapi/firstpromoter-*-openapi.yml
+name: FirstPromoter API conventions
+description: >-
+  Cross-cutting runtime semantics for the FirstPromoter v2 API - how requests authenticate, how
+  collections page, how errors arrive, how bulk actions go asynchronous, and what is NOT provided.
+authentication:
+  style: Bearer token plus a required account header
+  headers:
+    - name: Authorization
+      value: Bearer {api_key}
+      required: true
+    - name: ACCOUNT-ID
+      value: '{account_id}'
+      required: true
+  schemes_in_spec:
+    - name: BearerAuth
+      type: http
+      scheme: bearer
+    - name: accountId
+      type: apiKey
+      in: header
+      name_header: ACCOUNT-ID
+  oauth:
+    present: true
+    scope: >-
+      OAuth 2.1 (authorization code + PKCE S256, dynamic client registration) is served on
+      api.firstpromoter.com and mcp.firstpromoter.com and is used by the MCP server and connector
+      flow. It is not the documented path for direct REST integration, which uses the API key.
+  detail: authentication/firstpromoter-authentication.yml
+idempotency:
+  supported: false
+  header: null
+  detail: >-
+    No Idempotency-Key header, no idempotency scope and no replay window appears anywhere in the 37
+    published OpenAPI documents or in the API documentation. The closest thing is the Tracking API's
+    required event_id field on POST /sale and POST /refund, which is the caller's own unique id for
+    the charge and is the only duplicate-charge protection in the product. Webhook consumers get a
+    matching event_id in the delivery envelope for deduplication on the inbound side.
+  caller_supplied_key:
+    field: event_id
+    operations:
+      - POST /api/v2/track/sale
+      - POST /api/v2/track/refund
+    note: >-
+      Required by the spec. Reuse the same event_id when retrying a failed call; never reuse it
+      across different charges.
+pagination:
+  style: page-number
+  params:
+    page: Page number
+    per_page: Records per page
+  default_page_size: 20
+  max_page_size: 100
+  response_fields: not documented
+  note: >-
+    page and per_page are declared on only 2 of 179 published operations even though the API
+    introduction documents pagination as applying to list endpoints generally. Treat the parameters
+    as available on collections regardless of whether the spec declares them.
+filtering:
+  style: bracketed filter map
+  examples:
+    - 'filters[status]'
+    - 'filters[campaign_id]'
+    - 'filters[promoter_id]'
+    - 'filters[created_at][from]'
+    - 'filters[created_at][to]'
+    - 'filters[state]'
+  search_param: q
+  sorting_param: sorting
+  date_range_params:
+    - start_date
+    - end_date
+    - period_from
+    - period_to
+  column_selection: columns
+  grouping: group_by
+  alternate_key_lookup:
+    param: find_by
+    note: >-
+      On referrals and promoters, {id} may be a referral/promoter id, email, uid or username when
+      find_by names which one you are passing.
+bulk_operations:
+  style: ids array on a POST action path
+  synchronous_threshold: 5
+  detail: >-
+    Bulk admin actions (accept, reject, block, archive, restore, move_to_campaign,
+    add_to_campaign, approve, deny, delete) take an ids array. With more than 5 ids the action is
+    processed ASYNCHRONOUSLY and the response reports a batch whose status is typically
+    in_progress. A 2xx does not mean the state changed.
+  batch_statuses: [pending, in_progress, completed, failed]
+  polling_operations:
+    - GET /company/batch_processes
+    - GET /company/batch_processes/{id}
+    - GET /company/batch_processes/progress
+expansion:
+  supported: false
+  note: No expand/include or sparse-fieldset parameter is documented.
+metadata:
+  supported: partial
+  note: >-
+    Promoters support custom fields via the admin surface; there is no generic metadata bag on
+    other resources.
+request_id_tracing:
+  supported: false
+  request_header: null
+  response_header: null
+  note: >-
+    An x-request-id response header was observed on the MCP host during probing, but no request-id
+    or trace correlation header is documented for the REST API.
+versioning:
+  style: URI path
+  current: v2
+  bases:
+    - https://api.firstpromoter.com/api/v2/company
+    - https://api.firstpromoter.com/api/v2/affiliate
+    - https://api.firstpromoter.com/api/v2/track
+    - https://api.firstpromoter.com/api/admin/v1
+  note: >-
+    One published spec (custom referral statuses) still serves from /api/admin/v1 while everything
+    else is on /api/v2 - an inconsistency in the provider's own contracts, not a separate API.
+  detail: lifecycle/firstpromoter-lifecycle.yml
+errors:
+  envelope: '{ "message": string, "code": string }'
+  validation_envelope: '{ "message": string, "code": string, "errors": { field: [string] } }'
+  media_type: application/json
+  rfc9457: false
+  detail: errors/firstpromoter-problem-types.yml
+rate_limits:
+  limit: 400 requests per minute
+  scope: account
+  exhaustion_status: 429
+  response_headers: not documented
+  detail: rate-limits/firstpromoter-rate-limits.yml
+webhooks:
+  dedup_key: event_id
+  headers: [X-Event-Id, X-Event-Type]
+  signature: none
+  detail: asyncapi/firstpromoter-webhooks.yml
+money:
+  representation: minor units (cents)
+  note: Payout and commission amounts are documented in cents.

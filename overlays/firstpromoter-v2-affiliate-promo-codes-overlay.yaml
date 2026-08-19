@@ -1,0 +1,59 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist overlay for FirstPromoter API
+  version: 1.0.0
+extends: firstpromoter-v2-affiliate-promo-codes-openapi.yml
+x-provenance:
+  generated: '2026-08-13'
+  method: generated
+  source: openapi/firstpromoter-v2-affiliate-promo-codes-openapi.yml + FirstPromoter documentation
+  note: Additive only. The original published specification is never mutated.
+actions:
+- target: $.info
+  description: Add the contact and terms of service the published spec omits.
+  update:
+    contact:
+      name: FirstPromoter Support
+      url: https://help.firstpromoter.com/en/
+    termsOfService: https://firstpromoter.com/terms
+- target: $
+  description: Attach external documentation and the provider profile.
+  update:
+    externalDocs:
+      description: FirstPromoter API reference
+      url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
+    x-apis-io:
+      provider: firstpromoter
+      profile: https://apis.io/providers/firstpromoter/
+      source: https://docs.firstpromoter.com/llms.txt
+- target: $.info
+  description: Record the runtime semantics documented outside the spec.
+  update:
+    x-authentication:
+      headers:
+      - 'Authorization: Bearer {api_key}'
+      - 'ACCOUNT-ID: {account_id}'
+      docs: https://docs.firstpromoter.com/api-reference-v2/api-admin/authentication
+    x-rate-limit:
+      requests: 400
+      window: 1 minute
+      scope: account
+      status_on_exhaustion: 429
+      headers_published: false
+      docs: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
+    x-error-envelope:
+      media_type: application/json
+      fields:
+      - message
+      - code
+      rfc9457: false
+      detail: errors/firstpromoter-problem-types.yml
+    x-idempotency:
+      supported: false
+      note: No Idempotency-Key header. The Tracking API event_id field is the only replay protection.
+    x-pagination:
+      params:
+      - page
+      - per_page
+      default_page_size: 20
+      max_page_size: 100

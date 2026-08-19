@@ -1,0 +1,199 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "FirstPromoter API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Get available referrals",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.firstpromoter.com/api/v2/affiliate/referrals",
+        "headers": [
+          {
+            "name": "Account-ID",
+            "value": ""
+          }
+        ],
+        "params": [
+          {
+            "name": "q",
+            "value": "",
+            "type": "query",
+            "description": "Search params. Searches by email, uid, username, website"
+          },
+          {
+            "name": "filters[type]",
+            "value": "",
+            "type": "query",
+            "description": "Type (lead or customer)"
+          },
+          {
+            "name": "filters[state]",
+            "value": "",
+            "type": "query",
+            "description": "State"
+          },
+          {
+            "name": "filters[created_at][from]",
+            "value": "",
+            "type": "query",
+            "description": "created_at start date"
+          },
+          {
+            "name": "filters[created_at][to]",
+            "value": "",
+            "type": "query",
+            "description": "created_at end date"
+          },
+          {
+            "name": "filters[customer_since][from]",
+            "value": "",
+            "type": "query",
+            "description": "customer_since start date"
+          },
+          {
+            "name": "filters[customer_since][to]",
+            "value": "",
+            "type": "query",
+            "description": "customer_since end date"
+          },
+          {
+            "name": "filters[campaign_id]",
+            "value": "",
+            "type": "query",
+            "description": "Campaign ids. Can be Integer or an Array of Integers"
+          },
+          {
+            "name": "sorting[state]",
+            "value": "",
+            "type": "query",
+            "description": "Sort by state direction"
+          },
+          {
+            "name": "sorting[email]",
+            "value": "",
+            "type": "query",
+            "description": "Sort by email direction"
+          }
+        ]
+      },
+      "docs": "Get available referrals"
+    },
+    {
+      "info": {
+        "name": "Create referral",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "https://api.firstpromoter.com/api/v2/affiliate/referrals",
+        "headers": [
+          {
+            "name": "Account-ID",
+            "value": ""
+          }
+        ],
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "Create referral"
+    },
+    {
+      "info": {
+        "name": "Update referral",
+        "type": "http"
+      },
+      "http": {
+        "method": "PUT",
+        "url": "https://api.firstpromoter.com/api/v2/affiliate/referrals/:id",
+        "headers": [
+          {
+            "name": "Account-ID",
+            "value": ""
+          }
+        ],
+        "params": [
+          {
+            "name": "id",
+            "value": "",
+            "type": "path"
+          }
+        ],
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "Update referral"
+    },
+    {
+      "info": {
+        "name": "Delete referral",
+        "type": "http"
+      },
+      "http": {
+        "method": "DELETE",
+        "url": "https://api.firstpromoter.com/api/v2/affiliate/referrals/:id",
+        "headers": [
+          {
+            "name": "Account-ID",
+            "value": ""
+          }
+        ],
+        "params": [
+          {
+            "name": "id",
+            "value": "",
+            "type": "path"
+          }
+        ]
+      },
+      "docs": "Delete referral"
+    },
+    {
+      "info": {
+        "name": "Export referrals",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.firstpromoter.com/api/v2/affiliate/referrals/export",
+        "headers": [
+          {
+            "name": "Account-ID",
+            "value": ""
+          }
+        ],
+        "params": [
+          {
+            "name": "filters[type]",
+            "value": "",
+            "type": "query",
+            "description": "Type (lead or customer)"
+          },
+          {
+            "name": "filters[state]",
+            "value": "",
+            "type": "query",
+            "description": "State"
+          }
+        ]
+      },
+      "docs": "Export referrals"
+    }
+  ],
+  "bundled": true
+}

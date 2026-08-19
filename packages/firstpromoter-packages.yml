@@ -1,0 +1,107 @@
+generated: '2026-08-13'
+method: searched
+source: >-
+  registry.npmjs.org, pypi.org, rubygems.org, packagist.org, api.wordpress.org,
+  api.github.com/orgs/firstpromoter, https://docs.firstpromoter.com/script-docs/fpr-js-docs
+name: FirstPromoter packages and client libraries
+description: >-
+  FirstPromoter publishes no conventional server-side SDK in any language registry. Its first-party
+  distribution is a browser tracking script served from its own CDN, a WordPress plugin, and an n8n
+  community node. Everything else on npm or Packagist that wraps the FirstPromoter API is
+  third-party and unmaintained.
+packages:
+  - name: fpr.js
+    registry: cdn
+    official: true
+    language: JavaScript
+    url: https://cdn.firstpromoter.com/fpr.js
+    docs: https://docs.firstpromoter.com/script-docs/fpr-js-docs
+    version: null
+    published: null
+    note: >-
+      The main browser tracking library, loaded by script tag from an unpinned CDN URL. There is no
+      registry entry and no version in the URL, so a consumer cannot tell which build they are
+      getting; the S3 object's Last-Modified was 2022-02-07 when probed on 2026-08-13 (HTTP 200,
+      4842 bytes). Recorded as version null because the distribution is unpinned, not because the
+      library is absent.
+  - name: '@firstpromoter/n8n-nodes-firstpromoter'
+    registry: npm
+    official: true
+    language: TypeScript
+    url: https://www.npmjs.com/package/@firstpromoter/n8n-nodes-firstpromoter
+    repository: https://github.com/firstpromoter/n8n-app
+    docs: https://docs.firstpromoter.com/automation/n8n-node
+    version: 0.1.3
+    published: '2026-06-11'
+    versions_published: 4
+    note: >-
+      First-party n8n community node published under the @firstpromoter npm scope. It automates the
+      v2 API inside n8n workflows; it is not a general-purpose SDK.
+  - name: firstpromoter
+    registry: wordpress.org
+    official: true
+    language: PHP
+    url: https://wordpress.org/plugins/firstpromoter/
+    docs: https://docs.firstpromoter.com/integrations/tracking/platform/wordpress
+    version: 0.3.7
+    published: '2026-07-29'
+    note: >-
+      First-party WordPress plugin, author profile maxwellfp (FirstPromoter). Added 2025-11-19,
+      40 active installs, tested to WordPress 7.0.4. Injects the tracking script; it does not wrap
+      the admin API.
+  - name: firstpromoter-api-node
+    registry: npm
+    official: false
+    language: JavaScript
+    url: https://www.npmjs.com/package/firstpromoter-api-node
+    version: 1.0.0
+    published: '2019-11-12'
+    note: >-
+      Third-party Node client for the v1 API. Last published 2019 - seven years before the v2 API
+      this repository profiles. Abandoned.
+  - name: firstpromoter-node-api
+    registry: npm
+    official: false
+    language: TypeScript
+    url: https://www.npmjs.com/package/firstpromoter-node-api
+    version: 0.0.2
+    published: '2019-06-22'
+    note: Third-party Node/TypeScript wrapper for the v1 API. Abandoned.
+  - name: messerli90/first_promoter
+    registry: packagist
+    official: false
+    language: PHP
+    url: https://packagist.org/packages/messerli90/first_promoter
+    repository: https://github.com/messerli90/first_promoter
+    version: null
+    published: null
+    note: >-
+      Third-party Laravel facade/wrapper, 478 downloads. The Packagist search API returns no
+      version or release date for it and no first-party relationship is claimed.
+registries_checked:
+  - registry: npm
+    result: 1 first-party package (@firstpromoter scope), 2 abandoned third-party wrappers
+  - registry: PyPI
+    result: no package named firstpromoter (404)
+  - registry: RubyGems
+    result: no gem named firstpromoter (404)
+  - registry: Packagist
+    result: 1 third-party Laravel wrapper
+  - registry: Maven Central
+    result: not checked - FirstPromoter documents no JVM client
+  - registry: NuGet
+    result: not checked - FirstPromoter documents no .NET client
+  - registry: crates.io
+    result: not checked - FirstPromoter documents no Rust client
+  - registry: pkg.go.dev
+    result: not checked - FirstPromoter documents no Go client
+findings:
+  - >-
+    179 published REST operations across 37 OpenAPI documents, and not one first-party server-side
+    SDK in any language registry. Every integration path FirstPromoter documents is either the
+    browser script, a no-code connector (n8n, Zapier, Make, Albato), or a raw HTTP call.
+  - >-
+    The only first-party artifact with a real, dated release is the n8n node (0.1.3, 2026-06-11).
+    The tracking script that carries the entire client-side product is distributed unpinned.
+official_sdk_count: 3
+third_party_count: 3

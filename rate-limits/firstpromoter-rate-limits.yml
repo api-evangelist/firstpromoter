@@ -1,26 +1,56 @@
+generated: '2026-08-13'
+method: searched
+source: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
+checked: '2026-08-13'
 name: FirstPromoter API Rate Limits
 description: Rate limiting policies for the FirstPromoter REST API v2.
 specificationVersion: '0.1'
 url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
 limits:
-  - name: Global Request Limit
-    description: Maximum number of API requests allowed per account per minute across
-      all endpoints.
-    requests: 400
-    window: 60
-    windowUnit: seconds
-    scope: account
-    enforcement:
-      statusCode: 429
-      message: Too Many Requests
-      retryAfter: true
+- name: Global Request Limit
+  description: Maximum number of API requests allowed per account per minute across all endpoints.
+  requests: 400
+  window: 60
+  windowUnit: seconds
+  scope: account
+  enforcement:
+    statusCode: 429
+    message: Too Many Requests
+    retryAfter: false
+    retryAfterNote: 'Corrected 2026-08-13: an earlier round recorded a Retry-After header. The API introduction
+      documents only the 400 requests/minute limit and the 429 status; no Retry-After header is published.'
+  source: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
 pagination:
   defaultPageSize: 20
   maxPageSize: 100
   pageParameter: page
   perPageParameter: per_page
+  source: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
 notes:
-  - Rate limits apply per account, not per API key.
-  - Exceeding the rate limit returns HTTP 429 Too Many Requests.
-  - Implement exponential backoff when handling 429 responses.
-  - Pagination is available on list endpoints with page and per_page parameters.
+- Rate limits apply per account, not per API key.
+- Exceeding the rate limit returns HTTP 429 Too Many Requests.
+- Implement exponential backoff when handling 429 responses.
+- Pagination is available on list endpoints with page and per_page parameters.
+limit_count: 1
+response_headers:
+  published: false
+  checked:
+  - RateLimit-Limit
+  - RateLimit-Remaining
+  - RateLimit-Reset
+  - X-RateLimit-Limit
+  - X-RateLimit-Remaining
+  - X-RateLimit-Reset
+  - Retry-After
+  note: FirstPromoter documents the 400/minute account limit and the 429 status in prose only. No rate-limit response
+    header is documented anywhere in the API reference, and 429 does not appear in any of the 179 operations across
+    the 37 published OpenAPI documents - so a client cannot read remaining budget or a reset time, and generated
+    code will not handle the exhaustion case at all.
+observed:
+  probed: false
+  note: 'Not observed on a live response: every FirstPromoter API endpoint requires both an API key and an account
+    id, so there is no unauthenticated response to read headers from.'
+exhaustion:
+  status: 429
+  reason_phrase: Too Many Requests
+  retry_after_documented: false

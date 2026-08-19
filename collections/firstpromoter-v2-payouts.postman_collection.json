@@ -1,0 +1,2815 @@
+{
+  "item": [
+    {
+      "id": "9c463678-e9e3-4d75-a2b4-c2960d254038",
+      "name": "Get all payouts",
+      "request": {
+        "name": "Get all payouts",
+        "description": {
+          "content": "With this endpoint you can list all payouts. \n <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/payouts`</Tip>",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "payouts"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "disabled": false,
+              "key": "q",
+              "value": "<string>",
+              "description": "Search params. Searches by 'promoter.profile.first_name`, `promoter.profile.last_name`, `promoter.user.email`"
+            },
+            {
+              "disabled": false,
+              "key": "ids[]",
+              "value": "<integer>",
+              "description": "Array of payout ids to get"
+            },
+            {
+              "disabled": false,
+              "key": "ids[]",
+              "value": "<integer>",
+              "description": "Array of payout ids to get"
+            },
+            {
+              "disabled": false,
+              "key": "filters[status]",
+              "value": "<string>",
+              "description": "Filter by status"
+            },
+            {
+              "disabled": false,
+              "key": "filters[campaign_id]",
+              "value": "<integer>",
+              "description": "Campaign ids. Can be Integer or Array of Integers"
+            },
+            {
+              "disabled": false,
+              "key": "filters[payments_batch_id]",
+              "value": "<integer>",
+              "description": "Payment batches ids. Can be Integer or Array of Integers"
+            },
+            {
+              "disabled": false,
+              "key": "filters[due_period]",
+              "value": "<string>",
+              "description": "Due period"
+            },
+            {
+              "disabled": false,
+              "key": "filters[period_start][from]",
+              "value": "<date>",
+              "description": "period_start starting from date"
+            },
+            {
+              "disabled": false,
+              "key": "filters[period_start][to]",
+              "value": "<date>",
+              "description": "period_start end at date"
+            },
+            {
+              "disabled": false,
+              "key": "filters[period_end][from]",
+              "value": "<date>",
+              "description": "period_end starting from date"
+            },
+            {
+              "disabled": false,
+              "key": "filters[period_end][to]",
+              "value": "<date>",
+              "description": "period_end end at date"
+            },
+            {
+              "disabled": false,
+              "key": "filters[payout_method]",
+              "value": "<string>",
+              "description": "Payout method"
+            },
+            {
+              "disabled": false,
+              "key": "filters[promoter_id]",
+              "value": "<integer>",
+              "description": "Promoter id"
+            },
+            {
+              "disabled": false,
+              "key": "filters[only_payable]",
+              "value": "<boolean>",
+              "description": "Only payable payouts"
+            },
+            {
+              "disabled": false,
+              "key": "filters[group_ref]",
+              "value": "<string>",
+              "description": "Group reference"
+            },
+            {
+              "disabled": false,
+              "key": "filters[fraud_suspicions]",
+              "value": "<string>",
+              "description": "Fraud suspicions. Multiple values can be passed as an array. Send ['no_suspicion'] to filter promoters with no fraud suspicions"
+            },
+            {
+              "disabled": false,
+              "key": "filters[fraud_suspicions]",
+              "value": "<string>",
+              "description": "Fraud suspicions. Multiple values can be passed as an array. Send ['no_suspicion'] to filter promoters with no fraud suspicions"
+            },
+            {
+              "disabled": false,
+              "key": "sorting[amount]",
+              "value": "<string>",
+              "description": "The sort by amount direction"
+            },
+            {
+              "disabled": false,
+              "key": "sorting[period_start]",
+              "value": "<string>",
+              "description": "Period start"
+            },
+            {
+              "disabled": false,
+              "key": "sorting[period_end]",
+              "value": "<string>",
+              "description": "Period end"
+            }
+          ],
+          "variable": []
+        },
+        "header": [
+          {
+            "disabled": false,
+            "description": "(Required) Account identifier that specifies which account is making the request",
+            "key": "Account-ID",
+            "value": "<string>"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "18e3f960-753e-4e4b-b752-5e2abd35073b",
+          "name": "Successful response",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "payouts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "q",
+                  "value": "<string>"
+                },
+                {
+                  "key": "ids[]",
+                  "value": "<integer>"
+                },
+                {
+                  "key": "ids[]",
+                  "value": "<integer>"
+                },
+                {
+                  "key": "filters[status]",
+                  "value": "<string>"
+                },
+                {
+                  "key": "filters[campaign_id]",
+                  "value": "<integer>"
+                },
+                {
+                  "key": "filters[payments_batch_id]",
+                  "value": "<integer>"
+                },
+                {
+                  "key": "filters[due_period]",
+                  "value": "<string>"
+                },
+                {
+                  "key": "filters[period_start][from]",
+                  "value": "<date>"
+                },
+                {
+                  "key": "filters[period_start][to]",
+                  "value": "<date>"
+                },
+                {
+                  "key": "filters[period_end][from]",
+                  "value": "<date>"
+                },
+                {
+                  "key": "filters[period_end][to]",
+                  "value": "<date>"
+                },
+                {
+                  "key": "filters[payout_method]",
+                  "value": "<string>"
+                },
+                {
+                  "key": "filters[promoter_id]",
+                  "value": "<integer>"
+                },
+                {
+                  "key": "filters[only_payable]",
+                  "value": "<boolean>"
+                },
+                {
+                  "key": "filters[group_ref]",
+                  "value": "<string>"
+                },
+                {
+                  "key": "filters[fraud_suspicions]",
+                  "value": "<string>"
+                },
+                {
+                  "key": "filters[fraud_suspicions]",
+                  "value": "<string>"
+                },
+                {
+                  "key": "sorting[amount]",
+                  "value": "<string>"
+                },
+                {
+                  "key": "sorting[period_start]",
+                  "value": "<string>"
+                },
+                {
+                  "key": "sorting[period_end]",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: bearer",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "Bearer <token>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Account identifier that specifies which account is making the request",
+                "key": "Account-ID",
+                "value": "acc_123456"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "[\n  {\n    \"id\": 977,\n    \"status\": \"cancelled\",\n    \"amount\": 7230.294638859449,\n    \"payments_batch_id\": 7463,\n    \"tax_rate\": 1598.1383602817723,\n    \"unit\": \"string\",\n    \"period_start\": \"2016-02-04T13:37:25.983Z\",\n    \"period_end\": \"1967-08-01T19:22:23.121Z\",\n    \"paid_at\": \"1968-08-29T08:40:49.649Z\",\n    \"processing_started_at\": \"1947-03-24T15:21:32.766Z\",\n    \"failed_at\": \"1980-07-28T00:34:19.898Z\",\n    \"error\": \"string\",\n    \"total_incl_tax\": 3298.7930463492808,\n    \"created_at\": \"1987-03-29T00:32:35.281Z\",\n    \"payout_method\": {\n      \"id\": 7364,\n      \"method\": \"string\",\n      \"date_added\": \"2022-10-09T23:30:59.707Z\",\n      \"is_disabled\": true,\n      \"meta\": {},\n      \"is_selected\": false,\n      \"details\": {},\n      \"managed_payouts\": true\n    },\n    \"promoter\": {\n      \"id\": 905,\n      \"email\": \"string\",\n      \"name\": \"string\"\n    },\n    \"campaign\": {\n      \"id\": 5215,\n      \"name\": \"string\",\n      \"color\": \"string\"\n    }\n  },\n  {\n    \"id\": 2948,\n    \"status\": \"completed\",\n    \"amount\": 5636.686871608657,\n    \"payments_batch_id\": 5852,\n    \"tax_rate\": 1058.4222726391968,\n    \"unit\": \"string\",\n    \"period_start\": \"1998-12-06T05:44:41.841Z\",\n    \"period_end\": \"1960-03-10T05:43:57.404Z\",\n    \"paid_at\": \"2009-09-13T10:52:47.414Z\",\n    \"processing_started_at\": \"1947-02-22T11:42:04.736Z\",\n    \"failed_at\": \"1996-02-01T08:50:56.984Z\",\n    \"error\": \"string\",\n    \"total_incl_tax\": 8295.913287134668,\n    \"created_at\": \"2011-09-02T11:00:00.232Z\",\n    \"payout_method\": {\n      \"id\": 2515,\n      \"method\": \"string\",\n      \"date_added\": \"1987-08-06T06:53:46.609Z\",\n      \"is_disabled\": false,\n      \"meta\": {},\n      \"is_selected\": false,\n      \"details\": {},\n      \"managed_payouts\": false\n    },\n    \"promoter\": {\n      \"id\": 5981,\n      \"email\": \"string\",\n      \"name\": \"string\"\n    },\n    \"campaign\": {\n      \"id\": 6698,\n      \"name\": \"string\",\n      \"color\": \"string\"\n    }\n  }\n]",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "da46809d-867a-4817-9159-5415d031b286",
+          "name": "Unauthorized",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "payouts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "q",
+                  "value": "<string>"
+                },
+                {
+                  "key": "ids[]",
+                  "value": "<integer>"
+                },
+                {
+                  "key": "ids[]",
+                  "value": "<integer>"
+                },
+                {
+                  "key": "filters[status]",
+                  "value": "<string>"
+                },
+                {
+                  "key": "filters[campaign_id]",
+                  "value": "<integer>"
+                },
+                {
+                  "key": "filters[payments_batch_id]",
+                  "value": "<integer>"
+                },
+                {
+                  "key": "filters[due_period]",
+                  "value": "<string>"
+                },
+                {
+                  "key": "filters[period_start][from]",
+                  "value": "<date>"
+                },
+                {
+                  "key": "filters[period_start][to]",
+                  "value": "<date>"
+                },
+                {
+                  "key": "filters[period_end][from]",
+                  "value": "<date>"
+                },
+                {
+                  "key": "filters[period_end][to]",
+                  "value": "<date>"
+                },
+                {
+                  "key": "filters[payout_method]",
+                  "value": "<string>"
+                },
+                {
+                  "key": "filters[promoter_id]",
+                  "value": "<integer>"
+                },
+                {
+                  "key": "filters[only_payable]",
+                  "value": "<boolean>"
+                },
+                {
+                  "key": "filters[group_ref]",
+                  "value": "<string>"
+                },
+                {
+                  "key": "filters[fraud_suspicions]",
+                  "value": "<string>"
+                },
+                {
+                  "key": "filters[fraud_suspicions]",
+                  "value": "<string>"
+                },
+                {
+                  "key": "sorting[amount]",
+                  "value": "<string>"
+                },
+                {
+                  "key": "sorting[period_start]",
+                  "value": "<string>"
+                },
+                {
+                  "key": "sorting[period_end]",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: bearer",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "Bearer <token>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Account identifier that specifies which account is making the request",
+                "key": "Account-ID",
+                "value": "acc_123456"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "Unauthorized",
+          "code": 401,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "bfdaab24-3360-430d-b796-1ea9ca62329c",
+          "name": "Forbidden",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "payouts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "q",
+                  "value": "<string>"
+                },
+                {
+                  "key": "ids[]",
+                  "value": "<integer>"
+                },
+                {
+                  "key": "ids[]",
+                  "value": "<integer>"
+                },
+                {
+                  "key": "filters[status]",
+                  "value": "<string>"
+                },
+                {
+                  "key": "filters[campaign_id]",
+                  "value": "<integer>"
+                },
+                {
+                  "key": "filters[payments_batch_id]",
+                  "value": "<integer>"
+                },
+                {
+                  "key": "filters[due_period]",
+                  "value": "<string>"
+                },
+                {
+                  "key": "filters[period_start][from]",
+                  "value": "<date>"
+                },
+                {
+                  "key": "filters[period_start][to]",
+                  "value": "<date>"
+                },
+                {
+                  "key": "filters[period_end][from]",
+                  "value": "<date>"
+                },
+                {
+                  "key": "filters[period_end][to]",
+                  "value": "<date>"
+                },
+                {
+                  "key": "filters[payout_method]",
+                  "value": "<string>"
+                },
+                {
+                  "key": "filters[promoter_id]",
+                  "value": "<integer>"
+                },
+                {
+                  "key": "filters[only_payable]",
+                  "value": "<boolean>"
+                },
+                {
+                  "key": "filters[group_ref]",
+                  "value": "<string>"
+                },
+                {
+                  "key": "filters[fraud_suspicions]",
+                  "value": "<string>"
+                },
+                {
+                  "key": "filters[fraud_suspicions]",
+                  "value": "<string>"
+                },
+                {
+                  "key": "sorting[amount]",
+                  "value": "<string>"
+                },
+                {
+                  "key": "sorting[period_start]",
+                  "value": "<string>"
+                },
+                {
+                  "key": "sorting[period_end]",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: bearer",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "Bearer <token>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Account identifier that specifies which account is making the request",
+                "key": "Account-ID",
+                "value": "acc_123456"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "Forbidden",
+          "code": 403,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "1b95990c-3aef-472e-a3aa-ee290b4b1eef",
+      "name": "Get payout stats",
+      "request": {
+        "name": "Get payout stats",
+        "description": {
+          "content": "This endpoint returns statistics about payouts. \n <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/payouts/stats`</Tip>",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "payouts",
+            "stats"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "disabled": false,
+              "key": "stats_by[paid_period]",
+              "value": "<boolean>",
+              "description": "Shows the stats by payout period only for paid payouts"
+            },
+            {
+              "disabled": false,
+              "key": "stats_by[status]",
+              "value": "<boolean>",
+              "description": "Shows the stats by status (pending, failed, processing, completed)"
+            },
+            {
+              "disabled": false,
+              "key": "stats_by[payout_method]",
+              "value": "<boolean>",
+              "description": "Shows the stats by payout method"
+            },
+            {
+              "disabled": false,
+              "key": "filters[status]",
+              "value": "<string>",
+              "description": "Filter by status"
+            },
+            {
+              "disabled": false,
+              "key": "filters[campaign_id]",
+              "value": "<integer>",
+              "description": "Campaign ids. Can be Integer or Array of Integers"
+            }
+          ],
+          "variable": []
+        },
+        "header": [
+          {
+            "disabled": false,
+            "description": "(Required) Account identifier that specifies which account is making the request",
+            "key": "Account-ID",
+            "value": "<string>"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "337c13c6-798b-4a33-9a3b-8464eef5c482",
+          "name": "Successful response",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "payouts",
+                "stats"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "stats_by[paid_period]",
+                  "value": "<boolean>"
+                },
+                {
+                  "key": "stats_by[status]",
+                  "value": "<boolean>"
+                },
+                {
+                  "key": "stats_by[payout_method]",
+                  "value": "<boolean>"
+                },
+                {
+                  "key": "filters[status]",
+                  "value": "<string>"
+                },
+                {
+                  "key": "filters[campaign_id]",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: bearer",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "Bearer <token>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Account identifier that specifies which account is making the request",
+                "key": "Account-ID",
+                "value": "acc_123456"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"meta\": {\n    \"net_payout_days\": 7994,\n    \"payout_cycle\": \"string\",\n    \"min_payment\": 1556,\n    \"min_paying_customers\": 2413,\n    \"terms_description\": \"string\",\n    \"selected_payout_methods\": [\n      \"string\",\n      \"string\"\n    ],\n    \"payout_method_options\": {},\n    \"managed_payouts\": false\n  },\n  \"data\": {\n    \"by_paid_period\": [\n      {\n        \"period_start\": \"1957-10-08T03:32:32.271Z\",\n        \"period_end\": \"1988-04-02T13:06:44.919Z\",\n        \"promoters_count\": 2820,\n        \"amounts\": {\n          \"key_0\": 5830.699893060523\n        },\n        \"total_incl_tax\": 7851.2062296819695\n      },\n      {\n        \"period_start\": \"2024-08-21T23:48:18.743Z\",\n        \"period_end\": \"1973-08-11T12:02:10.560Z\",\n        \"promoters_count\": 9707,\n        \"amounts\": {\n          \"key_0\": 2683.3996509669546\n        },\n        \"total_incl_tax\": 8570.183375715955\n      }\n    ],\n    \"by_status\": {\n      \"key_0\": {\n        \"amounts\": {\n          \"key_0\": 2095.8464150656832,\n          \"key_1\": 3842.4027258243254\n        },\n        \"total_incl_tax\": 398.0876422095492,\n        \"promoters_count\": 5713\n      },\n      \"key_1\": {\n        \"amounts\": {\n          \"key_0\": 2994.2984395246995\n        },\n        \"total_incl_tax\": 7520.766201721324,\n        \"promoters_count\": 4660\n      },\n      \"key_2\": {\n        \"amounts\": {\n          \"key_0\": 4584.151352307579\n        },\n        \"total_incl_tax\": 9284.46432095102,\n        \"promoters_count\": 8224\n      }\n    },\n    \"by_payout_method\": {\n      \"key_0\": {\n        \"amounts\": {\n          \"key_0\": 1263.088738840523,\n          \"key_1\": 325.3512882810672\n        },\n        \"total_incl_tax\": 4150.66711922235,\n        \"promoters_count\": 521\n      },\n      \"key_1\": {\n        \"amounts\": {\n          \"key_0\": 7018.549230282699,\n          \"key_1\": 2631.4290271292084,\n          \"key_2\": 3918.2668905926353,\n          \"key_3\": 7178.428241781459\n        },\n        \"total_incl_tax\": 3853.6007059045974,\n        \"promoters_count\": 1780\n      },\n      \"key_2\": {\n        \"amounts\": {\n          \"key_0\": 8352.777089812611\n        },\n        \"total_incl_tax\": 7401.640629170107,\n        \"promoters_count\": 720\n      }\n    }\n  }\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "b09b8f65-fa67-400a-bdad-3e422f6b1dca",
+          "name": "Unauthorized",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "payouts",
+                "stats"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "stats_by[paid_period]",
+                  "value": "<boolean>"
+                },
+                {
+                  "key": "stats_by[status]",
+                  "value": "<boolean>"
+                },
+                {
+                  "key": "stats_by[payout_method]",
+                  "value": "<boolean>"
+                },
+                {
+                  "key": "filters[status]",
+                  "value": "<string>"
+                },
+                {
+                  "key": "filters[campaign_id]",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: bearer",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "Bearer <token>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Account identifier that specifies which account is making the request",
+                "key": "Account-ID",
+                "value": "acc_123456"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "Unauthorized",
+          "code": 401,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "c3ebb265-f5c4-4152-a8f7-0ce0afc3f935",
+          "name": "Forbidden",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "payouts",
+                "stats"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "stats_by[paid_period]",
+                  "value": "<boolean>"
+                },
+                {
+                  "key": "stats_by[status]",
+                  "value": "<boolean>"
+                },
+                {
+                  "key": "stats_by[payout_method]",
+                  "value": "<boolean>"
+                },
+                {
+                  "key": "filters[status]",
+                  "value": "<string>"
+                },
+                {
+                  "key": "filters[campaign_id]",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: bearer",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "Bearer <token>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Account identifier that specifies which account is making the request",
+                "key": "Account-ID",
+                "value": "acc_123456"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "Forbidden",
+          "code": 403,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "fbd05f25-8da2-41e1-b48c-6b8848e06dbe",
+          "name": "Unprocessable Entity",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "payouts",
+                "stats"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "stats_by[paid_period]",
+                  "value": "<boolean>"
+                },
+                {
+                  "key": "stats_by[status]",
+                  "value": "<boolean>"
+                },
+                {
+                  "key": "stats_by[payout_method]",
+                  "value": "<boolean>"
+                },
+                {
+                  "key": "filters[status]",
+                  "value": "<string>"
+                },
+                {
+                  "key": "filters[campaign_id]",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: bearer",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "Bearer <token>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Account identifier that specifies which account is making the request",
+                "key": "Account-ID",
+                "value": "acc_123456"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+          "code": 422,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "a5a1eeee-24ce-4728-864d-9ded960c9764",
+      "name": "Get due payout stats",
+      "request": {
+        "name": "Get due payout stats",
+        "description": {
+          "content": "This endpoint returns statistics about due payouts. \n <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/payouts/due_stats`</Tip>",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "payouts",
+            "due_stats"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "disabled": false,
+              "key": "q",
+              "value": "<string>",
+              "description": "Search params. Searches by 'promoter.profile.first_name`, `promoter.profile.last_name`, `promoter.user.email`"
+            },
+            {
+              "disabled": false,
+              "key": "filters[status]",
+              "value": "<string>",
+              "description": "Filter by status"
+            },
+            {
+              "disabled": false,
+              "key": "filters[campaign_id]",
+              "value": "<integer>",
+              "description": "Campaign ids. Can be Integer or Array of Integers"
+            }
+          ],
+          "variable": []
+        },
+        "header": [
+          {
+            "disabled": false,
+            "description": "(Required) Account identifier that specifies which account is making the request",
+            "key": "Account-ID",
+            "value": "<string>"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "6d0d7694-a6dc-4e3e-b855-bf004ff25fcc",
+          "name": "Successful response",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "payouts",
+                "due_stats"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "q",
+                  "value": "<string>"
+                },
+                {
+                  "key": "filters[status]",
+                  "value": "<string>"
+                },
+                {
+                  "key": "filters[campaign_id]",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: bearer",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "Bearer <token>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Account identifier that specifies which account is making the request",
+                "key": "Account-ID",
+                "value": "acc_123456"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"meta\": {\n    \"net_payout_days\": 1968,\n    \"payout_cycle\": \"string\",\n    \"min_payment\": 8441,\n    \"min_paying_customers\": 1636,\n    \"terms_description\": \"string\",\n    \"selected_payout_methods\": [\n      \"string\",\n      \"string\"\n    ],\n    \"payout_method_options\": {},\n    \"managed_payouts\": false\n  },\n  \"data\": {\n    \"next\": {\n      \"promoters_count\": 2456,\n      \"amounts\": {\n        \"key_0\": 9759.675061552793,\n        \"key_1\": 5221.846218183929,\n        \"key_2\": 1804.1755373595447\n      },\n      \"total_incl_tax\": 2412.472455187541,\n      \"due_date\": \"1952-03-23\",\n      \"period_end\": \"1976-11-19\"\n    },\n    \"overdue\": {\n      \"promoters_count\": 1892,\n      \"amounts\": {\n        \"key_0\": 5771.431907956531,\n        \"key_1\": 2758.985107717372,\n        \"key_2\": 8701.957279891518\n      },\n      \"total_incl_tax\": 3084.391984283834,\n      \"due_date\": \"2011-01-05\",\n      \"period_end\": \"2004-04-20\"\n    },\n    \"custom\": {\n      \"promoters_count\": 3334,\n      \"amounts\": {\n        \"key_0\": 6986.157597313062,\n        \"key_1\": 9129.13390306773,\n        \"key_2\": 4167.956555121209\n      },\n      \"total_incl_tax\": 3713.701521349052\n    }\n  }\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "711876ee-8345-42c7-a698-638b88a11563",
+          "name": "Unauthorized",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "payouts",
+                "due_stats"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "q",
+                  "value": "<string>"
+                },
+                {
+                  "key": "filters[status]",
+                  "value": "<string>"
+                },
+                {
+                  "key": "filters[campaign_id]",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: bearer",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "Bearer <token>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Account identifier that specifies which account is making the request",
+                "key": "Account-ID",
+                "value": "acc_123456"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "Unauthorized",
+          "code": 401,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "0f8918b0-2ae7-49a4-beee-3632342b2cc3",
+          "name": "Forbidden",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "payouts",
+                "due_stats"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "q",
+                  "value": "<string>"
+                },
+                {
+                  "key": "filters[status]",
+                  "value": "<string>"
+                },
+                {
+                  "key": "filters[campaign_id]",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: bearer",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "Bearer <token>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Account identifier that specifies which account is making the request",
+                "key": "Account-ID",
+                "value": "acc_123456"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "Forbidden",
+          "code": 403,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "30cb1289-302a-4dd4-875d-dce18dbcdc6a",
+      "name": "Get all payouts grouped by promoters",
+      "request": {
+        "name": "Get all payouts grouped by promoters",
+        "description": {
+          "content": "This endpoint returns all payouts but grouped by promoters. \n <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/payouts/group_by_promoters`</Tip>",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "payouts",
+            "group_by_promoters"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "disabled": false,
+              "key": "q",
+              "value": "<string>",
+              "description": "Search params. Searches by 'promoter.profile.first_name`, `promoter.profile.last_name`, `promoter.user.email`"
+            },
+            {
+              "disabled": false,
+              "key": "filters[status]",
+              "value": "<string>",
+              "description": "Filter by status"
+            },
+            {
+              "disabled": false,
+              "key": "filters[campaign_id]",
+              "value": "<integer>",
+              "description": "Campaign ids. Can be Integer or Array of Integers"
+            },
+            {
+              "disabled": false,
+              "key": "include_payout_method_details",
+              "value": "<boolean>",
+              "description": "Set it true to include the payout_method_details"
+            },
+            {
+              "disabled": false,
+              "key": "filters[min_payment]",
+              "value": "<integer>",
+              "description": "Filters payouts by the minimum payment amount possible"
+            },
+            {
+              "disabled": false,
+              "key": "filters[invoiceable]",
+              "value": "<string>",
+              "description": "Filters payouts by invoiceable"
+            }
+          ],
+          "variable": []
+        },
+        "header": [
+          {
+            "disabled": false,
+            "description": "(Required) Account identifier that specifies which account is making the request",
+            "key": "Account-ID",
+            "value": "<string>"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "2bbf9c02-4a4e-4cf4-b59f-de33349614ff",
+          "name": "Successful response",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "payouts",
+                "group_by_promoters"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "q",
+                  "value": "<string>"
+                },
+                {
+                  "key": "filters[status]",
+                  "value": "<string>"
+                },
+                {
+                  "key": "filters[campaign_id]",
+                  "value": "<integer>"
+                },
+                {
+                  "key": "include_payout_method_details",
+                  "value": "<boolean>"
+                },
+                {
+                  "key": "filters[min_payment]",
+                  "value": "<integer>"
+                },
+                {
+                  "key": "filters[invoiceable]",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: bearer",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "Bearer <token>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Account identifier that specifies which account is making the request",
+                "key": "Account-ID",
+                "value": "acc_123456"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"data\": [\n    {\n      \"promoter\": {\n        \"id\": 6814,\n        \"email\": \"string\",\n        \"name\": \"string\",\n        \"invoice_details_status\": \"string\",\n        \"fraud_suspicions\": [\n          \"string\",\n          \"string\"\n        ],\n        \"profile\": {\n          \"invoice_details_validation_errors\": {}\n        }\n      },\n      \"payout_method\": {\n        \"id\": 4,\n        \"method\": \"string\",\n        \"date_added\": \"2016-09-03T22:21:12.144Z\",\n        \"is_disabled\": true,\n        \"meta\": {},\n        \"is_selected\": false,\n        \"details\": {},\n        \"managed_payouts\": true\n      },\n      \"payouts\": [\n        {\n          \"id\": 3052,\n          \"status\": \"failed\",\n          \"amount\": 3541.2361787971627,\n          \"payments_batch_id\": 2955,\n          \"tax_rate\": 3259.381398078146,\n          \"unit\": \"string\",\n          \"period_start\": \"1990-05-06T11:10:28.281Z\",\n          \"period_end\": \"2004-02-04T01:24:45.878Z\",\n          \"paid_at\": \"1948-11-21T10:24:34.319Z\",\n          \"processing_started_at\": \"1990-10-23T02:16:51.211Z\",\n          \"failed_at\": \"2011-08-08T15:54:16.649Z\",\n          \"error\": \"string\",\n          \"total_incl_tax\": 7823.139341311702,\n          \"created_at\": \"1972-05-07T13:06:09.959Z\",\n          \"payout_method\": {\n            \"id\": 2713,\n            \"method\": \"string\",\n            \"date_added\": \"1951-11-22T03:34:00.201Z\",\n            \"is_disabled\": false,\n            \"meta\": {},\n            \"is_selected\": true,\n            \"details\": {},\n            \"managed_payouts\": false\n          },\n          \"promoter\": {\n            \"id\": 7505,\n            \"email\": \"string\",\n            \"name\": \"string\"\n          },\n          \"campaign\": {\n            \"id\": 6608,\n            \"name\": \"string\",\n            \"color\": \"string\"\n          }\n        },\n        {\n          \"id\": 1634,\n          \"status\": \"cancelled\",\n          \"amount\": 211.67379650576467,\n          \"payments_batch_id\": 2752,\n          \"tax_rate\": 1738.8202145710618,\n          \"unit\": \"string\",\n          \"period_start\": \"2026-02-26T03:51:22.780Z\",\n          \"period_end\": \"2009-03-16T22:26:49.955Z\",\n          \"paid_at\": \"1955-05-22T11:26:38.183Z\",\n          \"processing_started_at\": \"1972-02-01T08:57:51.746Z\",\n          \"failed_at\": \"1963-02-01T05:36:20.874Z\",\n          \"error\": \"string\",\n          \"total_incl_tax\": 2014.2753947958347,\n          \"created_at\": \"1989-11-09T18:26:10.402Z\",\n          \"payout_method\": {\n            \"id\": 6019,\n            \"method\": \"string\",\n            \"date_added\": \"2004-08-18T03:17:22.960Z\",\n            \"is_disabled\": true,\n            \"meta\": {},\n            \"is_selected\": true,\n            \"details\": {},\n            \"managed_payouts\": true\n          },\n          \"promoter\": {\n            \"id\": 113,\n            \"email\": \"string\",\n            \"name\": \"string\"\n          },\n          \"campaign\": {\n            \"id\": 6625,\n            \"name\": \"string\",\n            \"color\": \"string\"\n          }\n        }\n      ],\n      \"is_amount_payable\": false,\n      \"payout_ids\": [\n        8496,\n        7449\n      ],\n      \"amount\": 4774.2464407174075,\n      \"total_incl_tax\": 1418.9691946643957\n    },\n    {\n      \"promoter\": {\n        \"id\": 3427,\n        \"email\": \"string\",\n        \"name\": \"string\",\n        \"invoice_details_status\": \"string\",\n        \"fraud_suspicions\": [\n          \"string\",\n          \"string\"\n        ],\n        \"profile\": {\n          \"invoice_details_validation_errors\": {}\n        }\n      },\n      \"payout_method\": {\n        \"id\": 2904,\n        \"method\": \"string\",\n        \"date_added\": \"1972-09-07T17:50:23.883Z\",\n        \"is_disabled\": false,\n        \"meta\": {},\n        \"is_selected\": false,\n        \"details\": {},\n        \"managed_payouts\": false\n      },\n      \"payouts\": [\n        {\n          \"id\": 3964,\n          \"status\": \"processing\",\n          \"amount\": 1391.5672452461847,\n          \"payments_batch_id\": 9304,\n          \"tax_rate\": 1875.4150035503458,\n          \"unit\": \"string\",\n          \"period_start\": \"1955-03-20T03:23:14.569Z\",\n          \"period_end\": \"1989-10-31T06:48:34.242Z\",\n          \"paid_at\": \"2002-07-13T00:31:21.015Z\",\n          \"processing_started_at\": \"2002-01-27T07:44:18.263Z\",\n          \"failed_at\": \"1974-12-05T15:27:01.793Z\",\n          \"error\": \"string\",\n          \"total_incl_tax\": 3868.0897689521707,\n          \"created_at\": \"1947-06-18T20:37:15.868Z\",\n          \"payout_method\": {\n            \"id\": 30,\n            \"method\": \"string\",\n            \"date_added\": \"2024-03-25T23:04:03.714Z\",\n            \"is_disabled\": false,\n            \"meta\": {},\n            \"is_selected\": true,\n            \"details\": {},\n            \"managed_payouts\": true\n          },\n          \"promoter\": {\n            \"id\": 2190,\n            \"email\": \"string\",\n            \"name\": \"string\"\n          },\n          \"campaign\": {\n            \"id\": 3685,\n            \"name\": \"string\",\n            \"color\": \"string\"\n          }\n        },\n        {\n          \"id\": 2287,\n          \"status\": \"failed\",\n          \"amount\": 8599.314207367226,\n          \"payments_batch_id\": 2140,\n          \"tax_rate\": 8535.922754138162,\n          \"unit\": \"string\",\n          \"period_start\": \"2014-12-05T20:37:23.544Z\",\n          \"period_end\": \"2014-09-29T07:27:28.724Z\",\n          \"paid_at\": \"1970-12-29T04:24:07.106Z\",\n          \"processing_started_at\": \"1954-07-21T10:23:21.342Z\",\n          \"failed_at\": \"1978-04-09T04:52:48.736Z\",\n          \"error\": \"string\",\n          \"total_incl_tax\": 5669.576418665163,\n          \"created_at\": \"1976-12-04T20:24:53.746Z\",\n          \"payout_method\": {\n            \"id\": 6820,\n            \"method\": \"string\",\n            \"date_added\": \"1994-11-20T14:59:38.006Z\",\n            \"is_disabled\": false,\n            \"meta\": {},\n            \"is_selected\": true,\n            \"details\": {},\n            \"managed_payouts\": true\n          },\n          \"promoter\": {\n            \"id\": 9332,\n            \"email\": \"string\",\n            \"name\": \"string\"\n          },\n          \"campaign\": {\n            \"id\": 1495,\n            \"name\": \"string\",\n            \"color\": \"string\"\n          }\n        }\n      ],\n      \"is_amount_payable\": true,\n      \"payout_ids\": [\n        7166,\n        7978\n      ],\n      \"amount\": 2678.6645398427468,\n      \"total_incl_tax\": 2830.1310440767625\n    }\n  ],\n  \"meta\": {\n    \"total\": 9758.65444644536,\n    \"promoters_count\": 5508,\n    \"total_incl_tax\": 8555.178990288647,\n    \"due_date\": \"2012-08-04\",\n    \"period_end\": \"1949-09-12\"\n  }\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "69bcaf78-c77e-4f14-86c3-40da9ac22adf",
+          "name": "Unauthorized",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "payouts",
+                "group_by_promoters"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "q",
+                  "value": "<string>"
+                },
+                {
+                  "key": "filters[status]",
+                  "value": "<string>"
+                },
+                {
+                  "key": "filters[campaign_id]",
+                  "value": "<integer>"
+                },
+                {
+                  "key": "include_payout_method_details",
+                  "value": "<boolean>"
+                },
+                {
+                  "key": "filters[min_payment]",
+                  "value": "<integer>"
+                },
+                {
+                  "key": "filters[invoiceable]",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: bearer",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "Bearer <token>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Account identifier that specifies which account is making the request",
+                "key": "Account-ID",
+                "value": "acc_123456"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "Unauthorized",
+          "code": 401,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "bd2cb7e0-568a-4a16-9843-bd407a134070",
+          "name": "Forbidden",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "payouts",
+                "group_by_promoters"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "q",
+                  "value": "<string>"
+                },
+                {
+                  "key": "filters[status]",
+                  "value": "<string>"
+                },
+                {
+                  "key": "filters[campaign_id]",
+                  "value": "<integer>"
+                },
+                {
+                  "key": "include_payout_method_details",
+                  "value": "<boolean>"
+                },
+                {
+                  "key": "filters[min_payment]",
+                  "value": "<integer>"
+                },
+                {
+                  "key": "filters[invoiceable]",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: bearer",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "Bearer <token>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Account identifier that specifies which account is making the request",
+                "key": "Account-ID",
+                "value": "acc_123456"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "Forbidden",
+          "code": 403,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "332d5168-d5e7-4f73-b80e-2cfd9aea74ba",
+      "name": "Create payments batch",
+      "request": {
+        "name": "Create payments batch",
+        "description": {
+          "content": "This endpoint creates a new payments batch. \n <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/company/payouts/create_payments_batch`</Tip>",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "payouts",
+            "create_payments_batch"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": []
+        },
+        "header": [
+          {
+            "disabled": false,
+            "description": "(Required) Account identifier that specifies which account is making the request",
+            "key": "Account-ID",
+            "value": "<string>"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "POST",
+        "auth": null,
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"method\": \"<string>\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [
+        {
+          "id": "29e45ca9-0820-4c2b-8d97-4119bbf254a4",
+          "name": "Created",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "payouts",
+                "create_payments_batch"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: bearer",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "Bearer <token>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Account identifier that specifies which account is making the request",
+                "key": "Account-ID",
+                "value": "acc_123456"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"method\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Created",
+          "code": 201,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"data\": {\n    \"id\": 7778,\n    \"status\": \"awaiting_confirmation\",\n    \"ext_reference\": \"string\",\n    \"ext_id\": \"string\",\n    \"scheduled_at\": \"1997-03-26T13:31:55.209Z\",\n    \"processing_started_at\": \"1988-04-13T10:52:21.448Z\",\n    \"completed_at\": \"1957-03-20T05:51:37.611Z\",\n    \"is_payable\": true,\n    \"is_retriable\": true,\n    \"is_payment_otp_required\": false,\n    \"total\": 9812.935221691912,\n    \"promoters_count\": 8822,\n    \"error\": \"string\"\n  },\n  \"meta\": {}\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "63eb9eb0-3596-4bdc-88cc-460b0fcb722c",
+          "name": "Unauthorized",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "payouts",
+                "create_payments_batch"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: bearer",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "Bearer <token>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Account identifier that specifies which account is making the request",
+                "key": "Account-ID",
+                "value": "acc_123456"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"method\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Unauthorized",
+          "code": 401,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "ceacd738-e8db-47a0-aebe-12834d1e8478",
+          "name": "Forbidden",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "payouts",
+                "create_payments_batch"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: bearer",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "Bearer <token>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Account identifier that specifies which account is making the request",
+                "key": "Account-ID",
+                "value": "acc_123456"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"method\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Forbidden",
+          "code": 403,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "8add6062-1aa2-44d8-8251-f8fed63e7136",
+          "name": "Unprocessable Entity",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "payouts",
+                "create_payments_batch"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: bearer",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "Bearer <token>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Account identifier that specifies which account is making the request",
+                "key": "Account-ID",
+                "value": "acc_123456"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"method\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+          "code": 422,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "9f87031e-591d-4b45-8712-cd5cd17061a7",
+      "name": "Mark payouts as paid",
+      "request": {
+        "name": "Mark payouts as paid",
+        "description": {
+          "content": "Marks selected payouts as paid \n <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/company/payouts/mark_as_paid`</Tip>",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "payouts",
+            "mark_as_paid"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": []
+        },
+        "header": [
+          {
+            "disabled": false,
+            "description": "(Required) Account identifier that specifies which account is making the request",
+            "key": "Account-ID",
+            "value": "<string>"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "POST",
+        "auth": null,
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [
+        {
+          "id": "55cec87c-cda7-4634-ac34-864d60de1fff",
+          "name": "Success",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "payouts",
+                "mark_as_paid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: bearer",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "Bearer <token>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Account identifier that specifies which account is making the request",
+                "key": "Account-ID",
+                "value": "acc_123456"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"data\": {\n    \"id\": 9260,\n    \"status\": \"pending\",\n    \"total\": 7797,\n    \"selected_total\": 798,\n    \"processed_count\": 8172,\n    \"failed_count\": 1911,\n    \"action_label\": \"string\",\n    \"created_at\": \"1974-04-09T00:17:07.694Z\",\n    \"updated_at\": \"1982-09-10T21:30:18.261Z\",\n    \"meta\": {},\n    \"progress\": 117\n  },\n  \"meta\": {\n    \"total\": 673.7760240152868,\n    \"promoters_count\": 8149,\n    \"total_incl_tax\": 5125.516376370558,\n    \"all_promoters_count\": 8740\n  }\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "6735f10a-1e69-4a12-b282-7f9aab194d72",
+          "name": "Accepted (Processing in background)",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "payouts",
+                "mark_as_paid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: bearer",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "Bearer <token>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Account identifier that specifies which account is making the request",
+                "key": "Account-ID",
+                "value": "acc_123456"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Accepted",
+          "code": 202,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"data\": {\n    \"id\": 7645,\n    \"status\": \"pending\",\n    \"total\": 7183,\n    \"selected_total\": 2439,\n    \"processed_count\": 9794,\n    \"failed_count\": 2739,\n    \"action_label\": \"string\",\n    \"created_at\": \"1982-09-08T23:28:15.713Z\",\n    \"updated_at\": \"1952-08-25T02:56:31.001Z\",\n    \"meta\": {},\n    \"progress\": 4361\n  },\n  \"meta\": {\n    \"total\": 5460.043891918853,\n    \"promoters_count\": 5938,\n    \"total_incl_tax\": 2562.3683912832894,\n    \"all_promoters_count\": 5370\n  }\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "423e4338-1d3a-41cd-bae2-eb8a0ebb6a5c",
+          "name": "Unauthorized",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "payouts",
+                "mark_as_paid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: bearer",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "Bearer <token>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Account identifier that specifies which account is making the request",
+                "key": "Account-ID",
+                "value": "acc_123456"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Unauthorized",
+          "code": 401,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "0af0e175-850e-4877-87db-80fb02160ae8",
+          "name": "Forbidden",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "payouts",
+                "mark_as_paid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: bearer",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "Bearer <token>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Account identifier that specifies which account is making the request",
+                "key": "Account-ID",
+                "value": "acc_123456"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Forbidden",
+          "code": 403,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "0772ec33-b0d2-448d-bb22-3148d78d3608",
+          "name": "Unprocessable Entity",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "payouts",
+                "mark_as_paid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: bearer",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "Bearer <token>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Account identifier that specifies which account is making the request",
+                "key": "Account-ID",
+                "value": "acc_123456"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+          "code": 422,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "77e9d16e-690d-47e8-870d-eb70b1dbc10c",
+      "name": "Mark payouts as unpaid",
+      "request": {
+        "name": "Mark payouts as unpaid",
+        "description": {
+          "content": "Marks selected payouts as unpaid \n <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/company/payouts/mark_as_unpaid`</Tip>",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "payouts",
+            "mark_as_unpaid"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": []
+        },
+        "header": [
+          {
+            "disabled": false,
+            "description": "(Required) Account identifier that specifies which account is making the request",
+            "key": "Account-ID",
+            "value": "<string>"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "POST",
+        "auth": null,
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [
+        {
+          "id": "343a8506-aaa2-4de8-9597-0d522df56bfc",
+          "name": "Success",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "payouts",
+                "mark_as_unpaid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: bearer",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "Bearer <token>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Account identifier that specifies which account is making the request",
+                "key": "Account-ID",
+                "value": "acc_123456"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"data\": {\n    \"id\": 7645,\n    \"status\": \"pending\",\n    \"total\": 7183,\n    \"selected_total\": 2439,\n    \"processed_count\": 9794,\n    \"failed_count\": 2739,\n    \"action_label\": \"string\",\n    \"created_at\": \"1982-09-08T23:28:15.713Z\",\n    \"updated_at\": \"1952-08-25T02:56:31.001Z\",\n    \"meta\": {},\n    \"progress\": 4361\n  },\n  \"meta\": {\n    \"total\": 5460.043891918853,\n    \"promoters_count\": 5938,\n    \"total_incl_tax\": 2562.3683912832894,\n    \"all_promoters_count\": 5370\n  }\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "1614becf-853c-42f0-bafc-c60910e61f3b",
+          "name": "Accepted (Processing in background)",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "payouts",
+                "mark_as_unpaid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: bearer",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "Bearer <token>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Account identifier that specifies which account is making the request",
+                "key": "Account-ID",
+                "value": "acc_123456"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Accepted",
+          "code": 202,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"data\": {\n    \"id\": 7645,\n    \"status\": \"pending\",\n    \"total\": 7183,\n    \"selected_total\": 2439,\n    \"processed_count\": 9794,\n    \"failed_count\": 2739,\n    \"action_label\": \"string\",\n    \"created_at\": \"1982-09-08T23:28:15.713Z\",\n    \"updated_at\": \"1952-08-25T02:56:31.001Z\",\n    \"meta\": {},\n    \"progress\": 4361\n  },\n  \"meta\": {\n    \"total\": 5460.043891918853,\n    \"promoters_count\": 5938,\n    \"total_incl_tax\": 2562.3683912832894,\n    \"all_promoters_count\": 5370\n  }\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "120602d8-6459-4d20-96f2-8c3a1835f44d",
+          "name": "Unauthorized",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "payouts",
+                "mark_as_unpaid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: bearer",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "Bearer <token>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Account identifier that specifies which account is making the request",
+                "key": "Account-ID",
+                "value": "acc_123456"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Unauthorized",
+          "code": 401,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "87338c7c-d019-4906-9c94-d032a355bd66",
+          "name": "Forbidden",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "payouts",
+                "mark_as_unpaid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: bearer",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "Bearer <token>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Account identifier that specifies which account is making the request",
+                "key": "Account-ID",
+                "value": "acc_123456"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Forbidden",
+          "code": 403,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "b8e65c97-daff-4ed2-99da-81455a179131",
+          "name": "Unprocessable Entity",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "payouts",
+                "mark_as_unpaid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: bearer",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "Bearer <token>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Account identifier that specifies which account is making the request",
+                "key": "Account-ID",
+                "value": "acc_123456"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+          "code": 422,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "1900dd9b-f772-446f-8258-4b042d957b74",
+      "name": "Delete payouts",
+      "request": {
+        "name": "Delete payouts",
+        "description": {
+          "content": "Deletes selected payouts \n <Tip>**HTTP Request** <br/>`DELETE https://api.firstpromoter.com/api/v2/company/payouts/destroy`</Tip>",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "payouts",
+            "destroy"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": []
+        },
+        "header": [
+          {
+            "disabled": false,
+            "description": "(Required) Account identifier that specifies which account is making the request",
+            "key": "Account-ID",
+            "value": "<string>"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "DELETE",
+        "auth": null,
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [
+        {
+          "id": "8363a32e-1fbe-4a46-9e7e-b28ac825c4d1",
+          "name": "Success",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "payouts",
+                "destroy"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: bearer",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "Bearer <token>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Account identifier that specifies which account is making the request",
+                "key": "Account-ID",
+                "value": "acc_123456"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"data\": {\n    \"id\": 7645,\n    \"status\": \"pending\",\n    \"total\": 7183,\n    \"selected_total\": 2439,\n    \"processed_count\": 9794,\n    \"failed_count\": 2739,\n    \"action_label\": \"string\",\n    \"created_at\": \"1982-09-08T23:28:15.713Z\",\n    \"updated_at\": \"1952-08-25T02:56:31.001Z\",\n    \"meta\": {},\n    \"progress\": 4361\n  },\n  \"meta\": {\n    \"total\": 5460.043891918853,\n    \"promoters_count\": 5938,\n    \"total_incl_tax\": 2562.3683912832894,\n    \"all_promoters_count\": 5370\n  }\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "0fe0098a-3d80-4c08-860b-da3842867663",
+          "name": "Accepted (Processing in background)",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "payouts",
+                "destroy"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: bearer",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "Bearer <token>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Account identifier that specifies which account is making the request",
+                "key": "Account-ID",
+                "value": "acc_123456"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Accepted",
+          "code": 202,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"data\": {\n    \"id\": 7645,\n    \"status\": \"pending\",\n    \"total\": 7183,\n    \"selected_total\": 2439,\n    \"processed_count\": 9794,\n    \"failed_count\": 2739,\n    \"action_label\": \"string\",\n    \"created_at\": \"1982-09-08T23:28:15.713Z\",\n    \"updated_at\": \"1952-08-25T02:56:31.001Z\",\n    \"meta\": {},\n    \"progress\": 4361\n  },\n  \"meta\": {\n    \"total\": 5460.043891918853,\n    \"promoters_count\": 5938,\n    \"total_incl_tax\": 2562.3683912832894,\n    \"all_promoters_count\": 5370\n  }\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "7d991c7f-508b-4c91-aa79-2ae131f73c51",
+          "name": "Unauthorized",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "payouts",
+                "destroy"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: bearer",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "Bearer <token>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Account identifier that specifies which account is making the request",
+                "key": "Account-ID",
+                "value": "acc_123456"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Unauthorized",
+          "code": 401,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "81f06203-48b2-4d9e-8cba-e977aa4a1914",
+          "name": "Forbidden",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "payouts",
+                "destroy"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: bearer",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "Bearer <token>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Account identifier that specifies which account is making the request",
+                "key": "Account-ID",
+                "value": "acc_123456"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Forbidden",
+          "code": 403,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "2b050d0f-5741-44aa-abe0-f857397d6db9",
+          "name": "Unprocessable Entity",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "payouts",
+                "destroy"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: bearer",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "Bearer <token>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Account identifier that specifies which account is making the request",
+                "key": "Account-ID",
+                "value": "acc_123456"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"ids\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+          "code": 422,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.firstpromoter.com/api/v2/company",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "9def1c31-998b-451a-ba6e-aa4ea12d0ccf",
+    "name": "FirstPromoter Admin Payouts API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API documentation for admin payouts endpoints",
+      "type": "text/plain"
+    }
+  }
+}

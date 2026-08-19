@@ -1,0 +1,1329 @@
+{
+  "item": [
+    {
+      "id": "7fd8d7d6-a186-4441-8cc3-83a801b80a97",
+      "name": "Campaigns",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9a056cd8-7db6-4205-95fa-557f3b637a25",
+          "name": "Get all campaigns",
+          "request": {
+            "name": "Get all campaigns",
+            "description": {
+              "content": "With this endpoint you can list all campaigns. \n <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/campaigns`</Tip>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "campaigns"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Account identifier that specifies which account is making the request",
+                "key": "Account-ID",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8b9012ab-d0c5-4232-84ca-e5d14e9888a3",
+              "name": "List of campaigns retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "campaigns"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account identifier that specifies which account is making the request",
+                    "key": "Account-ID",
+                    "value": "acc_123456"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": 7507,\n    \"name\": \"string\",\n    \"color\": \"string\",\n    \"stats\": {\n      \"referrals_count\": 6234,\n      \"sales_count\": 6702,\n      \"customers_count\": 3198,\n      \"promoters_count\": 3849,\n      \"revenue_amount\": 3184\n    },\n    \"landing_url\": \"string\",\n    \"visitor_cookie_life\": 6753,\n    \"ref_token_param\": \"string\",\n    \"auto_approve_leads\": false,\n    \"track_ad_traffic\": \"allow\",\n    \"auto_approve_promoters\": true,\n    \"is_private\": true,\n    \"is_default\": true,\n    \"upgrade_details\": {\n      \"campaign_id\": 9300,\n      \"amount\": 2828,\n      \"metric\": \"active_customers\",\n      \"move_referrals_on_level_change\": true\n    },\n    \"signup_url\": \"string\",\n    \"links\": [\n      {\n        \"id\": 5249,\n        \"name\": \"string\",\n        \"url\": \"string\"\n      },\n      {\n        \"id\": 9202,\n        \"name\": \"string\",\n        \"url\": \"string\"\n      }\n    ],\n    \"rewards_for_promoters\": [\n      {\n        \"apply_on\": \"one_time\",\n        \"product_ids\": [\n          3528,\n          1316\n        ],\n        \"reward_id\": 5927,\n        \"reward\": {\n          \"name\": \"string\",\n          \"promoter_reward_type\": \"string\",\n          \"hide_reward\": false,\n          \"tier_level\": 6147,\n          \"coupon\": \"string\"\n        },\n        \"products\": [\n          {\n            \"id\": 56,\n            \"name\": \"string\"\n          },\n          {\n            \"id\": 2048,\n            \"name\": \"string\"\n          }\n        ]\n      },\n      {\n        \"apply_on\": \"monthly\",\n        \"product_ids\": [\n          3846,\n          547\n        ],\n        \"reward_id\": 9087,\n        \"reward\": {\n          \"name\": \"string\",\n          \"promoter_reward_type\": \"string\",\n          \"hide_reward\": true,\n          \"tier_level\": 9114,\n          \"coupon\": \"string\"\n        },\n        \"products\": [\n          {\n            \"id\": 5756,\n            \"name\": \"string\"\n          },\n          {\n            \"id\": 273,\n            \"name\": \"string\"\n          }\n        ]\n      }\n    ],\n    \"rewards_for_referrals\": [\n      {\n        \"apply_on\": \"one_time\",\n        \"product_ids\": [\n          9251,\n          9196\n        ],\n        \"reward_id\": 9215,\n        \"reward\": {\n          \"name\": \"string\",\n          \"promoter_reward_type\": \"string\",\n          \"hide_reward\": true,\n          \"tier_level\": 8689,\n          \"coupon\": \"string\"\n        },\n        \"products\": [\n          {\n            \"id\": 1219,\n            \"name\": \"string\"\n          },\n          {\n            \"id\": 6890,\n            \"name\": \"string\"\n          }\n        ]\n      },\n      {\n        \"apply_on\": \"monthly\",\n        \"product_ids\": [\n          2978,\n          2779\n        ],\n        \"reward_id\": 3401,\n        \"reward\": {\n          \"name\": \"string\",\n          \"promoter_reward_type\": \"string\",\n          \"hide_reward\": true,\n          \"tier_level\": 4034,\n          \"coupon\": \"string\"\n        },\n        \"products\": [\n          {\n            \"id\": 2639,\n            \"name\": \"string\"\n          },\n          {\n            \"id\": 742,\n            \"name\": \"string\"\n          }\n        ]\n      }\n    ]\n  },\n  {\n    \"id\": 9700,\n    \"name\": \"string\",\n    \"color\": \"string\",\n    \"stats\": {\n      \"referrals_count\": 6783,\n      \"sales_count\": 1719,\n      \"customers_count\": 5308,\n      \"promoters_count\": 7164,\n      \"revenue_amount\": 2346\n    },\n    \"landing_url\": \"string\",\n    \"visitor_cookie_life\": 5090,\n    \"ref_token_param\": \"string\",\n    \"auto_approve_leads\": false,\n    \"track_ad_traffic\": \"block\",\n    \"auto_approve_promoters\": true,\n    \"is_private\": false,\n    \"is_default\": false,\n    \"upgrade_details\": {\n      \"campaign_id\": 9155,\n      \"amount\": 7548,\n      \"metric\": \"customers\",\n      \"move_referrals_on_level_change\": true\n    },\n    \"signup_url\": \"string\",\n    \"links\": [\n      {\n        \"id\": 718,\n        \"name\": \"string\",\n        \"url\": \"string\"\n      },\n      {\n        \"id\": 2844,\n        \"name\": \"string\",\n        \"url\": \"string\"\n      }\n    ],\n    \"rewards_for_promoters\": [\n      {\n        \"apply_on\": \"specific\",\n        \"product_ids\": [\n          2778,\n          6059\n        ],\n        \"reward_id\": 8202,\n        \"reward\": {\n          \"name\": \"string\",\n          \"promoter_reward_type\": \"string\",\n          \"hide_reward\": true,\n          \"tier_level\": 2445,\n          \"coupon\": \"string\"\n        },\n        \"products\": [\n          {\n            \"id\": 6518,\n            \"name\": \"string\"\n          },\n          {\n            \"id\": 8604,\n            \"name\": \"string\"\n          }\n        ]\n      },\n      {\n        \"apply_on\": \"monthly\",\n        \"product_ids\": [\n          364,\n          3336\n        ],\n        \"reward_id\": 3488,\n        \"reward\": {\n          \"name\": \"string\",\n          \"promoter_reward_type\": \"string\",\n          \"hide_reward\": false,\n          \"tier_level\": 2801,\n          \"coupon\": \"string\"\n        },\n        \"products\": [\n          {\n            \"id\": 8229,\n            \"name\": \"string\"\n          },\n          {\n            \"id\": 257,\n            \"name\": \"string\"\n          }\n        ]\n      }\n    ],\n    \"rewards_for_referrals\": [\n      {\n        \"apply_on\": \"all\",\n        \"product_ids\": [\n          1707,\n          592\n        ],\n        \"reward_id\": 6226,\n        \"reward\": {\n          \"name\": \"string\",\n          \"promoter_reward_type\": \"string\",\n          \"hide_reward\": true,\n          \"tier_level\": 3784,\n          \"coupon\": \"string\"\n        },\n        \"products\": [\n          {\n            \"id\": 8360,\n            \"name\": \"string\"\n          },\n          {\n            \"id\": 9355,\n            \"name\": \"string\"\n          }\n        ]\n      },\n      {\n        \"apply_on\": \"yearly\",\n        \"product_ids\": [\n          1115,\n          3206\n        ],\n        \"reward_id\": 4544,\n        \"reward\": {\n          \"name\": \"string\",\n          \"promoter_reward_type\": \"string\",\n          \"hide_reward\": false,\n          \"tier_level\": 3110,\n          \"coupon\": \"string\"\n        },\n        \"products\": [\n          {\n            \"id\": 3049,\n            \"name\": \"string\"\n          },\n          {\n            \"id\": 2777,\n            \"name\": \"string\"\n          }\n        ]\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a99259b0-956f-43af-9637-08e1f72ecc4c",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "campaigns"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account identifier that specifies which account is making the request",
+                    "key": "Account-ID",
+                    "value": "acc_123456"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3597dff4-6f1b-4072-bbb2-5104588715f9",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "campaigns"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account identifier that specifies which account is making the request",
+                    "key": "Account-ID",
+                    "value": "acc_123456"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "66597a34-164a-4326-b91d-77e8c1404f14",
+          "name": "Create a campaign",
+          "request": {
+            "name": "Create a campaign",
+            "description": {
+              "content": "With this endpoint you can create a campaign. \n <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/company/campaigns`</Tip>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "campaigns"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Account identifier that specifies which account is making the request",
+                "key": "Account-ID",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"landing_url\": \"<string>\",\n  \"ref_token_param\": \"<string>\",\n  \"visitor_cookie_life\": \"<integer>\",\n  \"color\": \"<string>\",\n  \"auto_approve_promoters\": \"<boolean>\",\n  \"is_private\": \"<boolean>\",\n  \"track_ad_traffic\": \"<string>\",\n  \"links\": [\n    {\n      \"name\": \"<string>\",\n      \"url\": \"<string>\",\n      \"id\": \"<integer>\",\n      \"_destroy\": \"<boolean>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"url\": \"<string>\",\n      \"id\": \"<integer>\",\n      \"_destroy\": \"<boolean>\"\n    }\n  ],\n  \"upgrade_details\": {\n    \"campaign_id\": \"<integer>\",\n    \"amount\": \"<integer>\",\n    \"metric\": \"<string>\"\n  },\n  \"rewards_for_promoters\": [\n    {\n      \"apply_on\": \"<string>\",\n      \"product_ids\": [],\n      \"reward_id\": \"<integer>\"\n    },\n    {\n      \"apply_on\": \"<string>\",\n      \"product_ids\": [],\n      \"reward_id\": \"<integer>\"\n    }\n  ],\n  \"rewards_for_referrals\": [\n    {\n      \"apply_on\": \"<string>\",\n      \"product_ids\": [],\n      \"reward_id\": \"<integer>\"\n    },\n    {\n      \"apply_on\": \"<string>\",\n      \"product_ids\": [],\n      \"reward_id\": \"<integer>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8d9704c8-eda2-4ac5-9bc9-412645d9d6c8",
+              "name": "Campaign created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "campaigns"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account identifier that specifies which account is making the request",
+                    "key": "Account-ID",
+                    "value": "acc_123456"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"landing_url\": \"<string>\",\n  \"ref_token_param\": \"<string>\",\n  \"visitor_cookie_life\": \"<integer>\",\n  \"color\": \"<string>\",\n  \"auto_approve_promoters\": \"<boolean>\",\n  \"is_private\": \"<boolean>\",\n  \"track_ad_traffic\": \"<string>\",\n  \"links\": [\n    {\n      \"name\": \"<string>\",\n      \"url\": \"<string>\",\n      \"id\": \"<integer>\",\n      \"_destroy\": \"<boolean>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"url\": \"<string>\",\n      \"id\": \"<integer>\",\n      \"_destroy\": \"<boolean>\"\n    }\n  ],\n  \"upgrade_details\": {\n    \"campaign_id\": \"<integer>\",\n    \"amount\": \"<integer>\",\n    \"metric\": \"<string>\"\n  },\n  \"rewards_for_promoters\": [\n    {\n      \"apply_on\": \"<string>\",\n      \"product_ids\": [],\n      \"reward_id\": \"<integer>\"\n    },\n    {\n      \"apply_on\": \"<string>\",\n      \"product_ids\": [],\n      \"reward_id\": \"<integer>\"\n    }\n  ],\n  \"rewards_for_referrals\": [\n    {\n      \"apply_on\": \"<string>\",\n      \"product_ids\": [],\n      \"reward_id\": \"<integer>\"\n    },\n    {\n      \"apply_on\": \"<string>\",\n      \"product_ids\": [],\n      \"reward_id\": \"<integer>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 307,\n  \"name\": \"string\",\n  \"color\": \"string\",\n  \"stats\": {\n    \"referrals_count\": 5631,\n    \"sales_count\": 5434,\n    \"customers_count\": 2585,\n    \"promoters_count\": 7134,\n    \"revenue_amount\": 5459\n  },\n  \"landing_url\": \"string\",\n  \"visitor_cookie_life\": 6305,\n  \"ref_token_param\": \"string\",\n  \"auto_approve_leads\": false,\n  \"track_ad_traffic\": \"allow\",\n  \"auto_approve_promoters\": true,\n  \"is_private\": true,\n  \"is_default\": true,\n  \"upgrade_details\": {\n    \"campaign_id\": 5279,\n    \"amount\": 1737,\n    \"metric\": \"active_customers\",\n    \"move_referrals_on_level_change\": false\n  },\n  \"signup_url\": \"string\",\n  \"links\": [\n    {\n      \"id\": 1503,\n      \"name\": \"string\",\n      \"url\": \"string\"\n    },\n    {\n      \"id\": 8436,\n      \"name\": \"string\",\n      \"url\": \"string\"\n    }\n  ],\n  \"rewards_for_promoters\": [\n    {\n      \"apply_on\": \"monthly\",\n      \"product_ids\": [\n        7550,\n        7618\n      ],\n      \"reward_id\": 2731,\n      \"reward\": {\n        \"name\": \"string\",\n        \"promoter_reward_type\": \"string\",\n        \"hide_reward\": true,\n        \"tier_level\": 411,\n        \"coupon\": \"string\"\n      },\n      \"products\": [\n        {\n          \"id\": 1965,\n          \"name\": \"string\"\n        },\n        {\n          \"id\": 3474,\n          \"name\": \"string\"\n        }\n      ]\n    },\n    {\n      \"apply_on\": \"monthly\",\n      \"product_ids\": [\n        435,\n        1371\n      ],\n      \"reward_id\": 4861,\n      \"reward\": {\n        \"name\": \"string\",\n        \"promoter_reward_type\": \"string\",\n        \"hide_reward\": true,\n        \"tier_level\": 1454,\n        \"coupon\": \"string\"\n      },\n      \"products\": [\n        {\n          \"id\": 3074,\n          \"name\": \"string\"\n        },\n        {\n          \"id\": 3714,\n          \"name\": \"string\"\n        }\n      ]\n    }\n  ],\n  \"rewards_for_referrals\": [\n    {\n      \"apply_on\": \"specific\",\n      \"product_ids\": [\n        9081,\n        4031\n      ],\n      \"reward_id\": 6271,\n      \"reward\": {\n        \"name\": \"string\",\n        \"promoter_reward_type\": \"string\",\n        \"hide_reward\": true,\n        \"tier_level\": 5737,\n        \"coupon\": \"string\"\n      },\n      \"products\": [\n        {\n          \"id\": 6420,\n          \"name\": \"string\"\n        },\n        {\n          \"id\": 2201,\n          \"name\": \"string\"\n        }\n      ]\n    },\n    {\n      \"apply_on\": \"yearly\",\n      \"product_ids\": [\n        5928,\n        6713\n      ],\n      \"reward_id\": 8187,\n      \"reward\": {\n        \"name\": \"string\",\n        \"promoter_reward_type\": \"string\",\n        \"hide_reward\": false,\n        \"tier_level\": 2631,\n        \"coupon\": \"string\"\n      },\n      \"products\": [\n        {\n          \"id\": 5786,\n          \"name\": \"string\"\n        },\n        {\n          \"id\": 4563,\n          \"name\": \"string\"\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bbb46ea6-e2b9-451b-8f30-6dc0da03c1cd",
+              "name": "Invalid parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "campaigns"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account identifier that specifies which account is making the request",
+                    "key": "Account-ID",
+                    "value": "acc_123456"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"landing_url\": \"<string>\",\n  \"ref_token_param\": \"<string>\",\n  \"visitor_cookie_life\": \"<integer>\",\n  \"color\": \"<string>\",\n  \"auto_approve_promoters\": \"<boolean>\",\n  \"is_private\": \"<boolean>\",\n  \"track_ad_traffic\": \"<string>\",\n  \"links\": [\n    {\n      \"name\": \"<string>\",\n      \"url\": \"<string>\",\n      \"id\": \"<integer>\",\n      \"_destroy\": \"<boolean>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"url\": \"<string>\",\n      \"id\": \"<integer>\",\n      \"_destroy\": \"<boolean>\"\n    }\n  ],\n  \"upgrade_details\": {\n    \"campaign_id\": \"<integer>\",\n    \"amount\": \"<integer>\",\n    \"metric\": \"<string>\"\n  },\n  \"rewards_for_promoters\": [\n    {\n      \"apply_on\": \"<string>\",\n      \"product_ids\": [],\n      \"reward_id\": \"<integer>\"\n    },\n    {\n      \"apply_on\": \"<string>\",\n      \"product_ids\": [],\n      \"reward_id\": \"<integer>\"\n    }\n  ],\n  \"rewards_for_referrals\": [\n    {\n      \"apply_on\": \"<string>\",\n      \"product_ids\": [],\n      \"reward_id\": \"<integer>\"\n    },\n    {\n      \"apply_on\": \"<string>\",\n      \"product_ids\": [],\n      \"reward_id\": \"<integer>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"errors\": {},\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bd1d8764-d8ee-4b97-a46a-8298aa063d05",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "campaigns"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account identifier that specifies which account is making the request",
+                    "key": "Account-ID",
+                    "value": "acc_123456"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"landing_url\": \"<string>\",\n  \"ref_token_param\": \"<string>\",\n  \"visitor_cookie_life\": \"<integer>\",\n  \"color\": \"<string>\",\n  \"auto_approve_promoters\": \"<boolean>\",\n  \"is_private\": \"<boolean>\",\n  \"track_ad_traffic\": \"<string>\",\n  \"links\": [\n    {\n      \"name\": \"<string>\",\n      \"url\": \"<string>\",\n      \"id\": \"<integer>\",\n      \"_destroy\": \"<boolean>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"url\": \"<string>\",\n      \"id\": \"<integer>\",\n      \"_destroy\": \"<boolean>\"\n    }\n  ],\n  \"upgrade_details\": {\n    \"campaign_id\": \"<integer>\",\n    \"amount\": \"<integer>\",\n    \"metric\": \"<string>\"\n  },\n  \"rewards_for_promoters\": [\n    {\n      \"apply_on\": \"<string>\",\n      \"product_ids\": [],\n      \"reward_id\": \"<integer>\"\n    },\n    {\n      \"apply_on\": \"<string>\",\n      \"product_ids\": [],\n      \"reward_id\": \"<integer>\"\n    }\n  ],\n  \"rewards_for_referrals\": [\n    {\n      \"apply_on\": \"<string>\",\n      \"product_ids\": [],\n      \"reward_id\": \"<integer>\"\n    },\n    {\n      \"apply_on\": \"<string>\",\n      \"product_ids\": [],\n      \"reward_id\": \"<integer>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6894a454-4f67-4f6d-8d5f-495764b7b518",
+          "name": "Get a campaign",
+          "request": {
+            "name": "Get a campaign",
+            "description": {
+              "content": "With this endpoint you can get a campaign.<Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/campaigns/{id}`</Tip>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "campaigns",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Account identifier that specifies which account is making the request",
+                "key": "Account-ID",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cd61d157-ff59-488b-a02c-8d5ce5d11beb",
+              "name": "Campaign retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "campaigns",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account identifier that specifies which account is making the request",
+                    "key": "Account-ID",
+                    "value": "acc_123456"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 307,\n  \"name\": \"string\",\n  \"color\": \"string\",\n  \"stats\": {\n    \"referrals_count\": 5631,\n    \"sales_count\": 5434,\n    \"customers_count\": 2585,\n    \"promoters_count\": 7134,\n    \"revenue_amount\": 5459\n  },\n  \"landing_url\": \"string\",\n  \"visitor_cookie_life\": 6305,\n  \"ref_token_param\": \"string\",\n  \"auto_approve_leads\": false,\n  \"track_ad_traffic\": \"allow\",\n  \"auto_approve_promoters\": true,\n  \"is_private\": true,\n  \"is_default\": true,\n  \"upgrade_details\": {\n    \"campaign_id\": 5279,\n    \"amount\": 1737,\n    \"metric\": \"active_customers\",\n    \"move_referrals_on_level_change\": false\n  },\n  \"signup_url\": \"string\",\n  \"links\": [\n    {\n      \"id\": 1503,\n      \"name\": \"string\",\n      \"url\": \"string\"\n    },\n    {\n      \"id\": 8436,\n      \"name\": \"string\",\n      \"url\": \"string\"\n    }\n  ],\n  \"rewards_for_promoters\": [\n    {\n      \"apply_on\": \"monthly\",\n      \"product_ids\": [\n        7550,\n        7618\n      ],\n      \"reward_id\": 2731,\n      \"reward\": {\n        \"name\": \"string\",\n        \"promoter_reward_type\": \"string\",\n        \"hide_reward\": true,\n        \"tier_level\": 411,\n        \"coupon\": \"string\"\n      },\n      \"products\": [\n        {\n          \"id\": 1965,\n          \"name\": \"string\"\n        },\n        {\n          \"id\": 3474,\n          \"name\": \"string\"\n        }\n      ]\n    },\n    {\n      \"apply_on\": \"monthly\",\n      \"product_ids\": [\n        435,\n        1371\n      ],\n      \"reward_id\": 4861,\n      \"reward\": {\n        \"name\": \"string\",\n        \"promoter_reward_type\": \"string\",\n        \"hide_reward\": true,\n        \"tier_level\": 1454,\n        \"coupon\": \"string\"\n      },\n      \"products\": [\n        {\n          \"id\": 3074,\n          \"name\": \"string\"\n        },\n        {\n          \"id\": 3714,\n          \"name\": \"string\"\n        }\n      ]\n    }\n  ],\n  \"rewards_for_referrals\": [\n    {\n      \"apply_on\": \"specific\",\n      \"product_ids\": [\n        9081,\n        4031\n      ],\n      \"reward_id\": 6271,\n      \"reward\": {\n        \"name\": \"string\",\n        \"promoter_reward_type\": \"string\",\n        \"hide_reward\": true,\n        \"tier_level\": 5737,\n        \"coupon\": \"string\"\n      },\n      \"products\": [\n        {\n          \"id\": 6420,\n          \"name\": \"string\"\n        },\n        {\n          \"id\": 2201,\n          \"name\": \"string\"\n        }\n      ]\n    },\n    {\n      \"apply_on\": \"yearly\",\n      \"product_ids\": [\n        5928,\n        6713\n      ],\n      \"reward_id\": 8187,\n      \"reward\": {\n        \"name\": \"string\",\n        \"promoter_reward_type\": \"string\",\n        \"hide_reward\": false,\n        \"tier_level\": 2631,\n        \"coupon\": \"string\"\n      },\n      \"products\": [\n        {\n          \"id\": 5786,\n          \"name\": \"string\"\n        },\n        {\n          \"id\": 4563,\n          \"name\": \"string\"\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "101da001-6c9d-436b-9dde-955df08a6ca9",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "campaigns",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account identifier that specifies which account is making the request",
+                    "key": "Account-ID",
+                    "value": "acc_123456"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ac69c337-b7c4-42e8-af60-e394e7098e2a",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "campaigns",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account identifier that specifies which account is making the request",
+                    "key": "Account-ID",
+                    "value": "acc_123456"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c7f3e5b5-add5-4a8a-a001-26c62ba75617",
+              "name": "Campaign not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "campaigns",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account identifier that specifies which account is making the request",
+                    "key": "Account-ID",
+                    "value": "acc_123456"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e91b8519-4599-4610-89c1-4337b870bb9c",
+          "name": "Update a campaign",
+          "request": {
+            "name": "Update a campaign",
+            "description": {
+              "content": "With this endpoint you can update a campaign. \n <Tip>**HTTP Request** <br/>`PUT https://api.firstpromoter.com/api/v2/company/campaigns/{id}`</Tip>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "campaigns",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Account identifier that specifies which account is making the request",
+                "key": "Account-ID",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"landing_url\": \"<string>\",\n  \"ref_token_param\": \"<string>\",\n  \"color\": \"<string>\",\n  \"visitor_cookie_life\": \"<integer>\",\n  \"auto_approve_promoters\": \"<boolean>\",\n  \"is_private\": \"<boolean>\",\n  \"track_ad_traffic\": \"<string>\",\n  \"links\": [\n    {\n      \"name\": \"<string>\",\n      \"url\": \"<string>\",\n      \"id\": \"<integer>\",\n      \"_destroy\": \"<boolean>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"url\": \"<string>\",\n      \"id\": \"<integer>\",\n      \"_destroy\": \"<boolean>\"\n    }\n  ],\n  \"upgrade_details\": {\n    \"campaign_id\": \"<integer>\",\n    \"amount\": \"<integer>\",\n    \"metric\": \"<string>\"\n  },\n  \"rewards_for_promoters\": [\n    {\n      \"apply_on\": \"<string>\",\n      \"product_ids\": [],\n      \"reward_id\": \"<integer>\"\n    },\n    {\n      \"apply_on\": \"<string>\",\n      \"product_ids\": [],\n      \"reward_id\": \"<integer>\"\n    }\n  ],\n  \"rewards_for_referrals\": [\n    {\n      \"apply_on\": \"<string>\",\n      \"product_ids\": [],\n      \"reward_id\": \"<integer>\"\n    },\n    {\n      \"apply_on\": \"<string>\",\n      \"product_ids\": [],\n      \"reward_id\": \"<integer>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f1442e6d-9d86-43b3-8bd6-ebf871a0f976",
+              "name": "Campaign updated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "campaigns",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account identifier that specifies which account is making the request",
+                    "key": "Account-ID",
+                    "value": "acc_123456"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"landing_url\": \"<string>\",\n  \"ref_token_param\": \"<string>\",\n  \"color\": \"<string>\",\n  \"visitor_cookie_life\": \"<integer>\",\n  \"auto_approve_promoters\": \"<boolean>\",\n  \"is_private\": \"<boolean>\",\n  \"track_ad_traffic\": \"<string>\",\n  \"links\": [\n    {\n      \"name\": \"<string>\",\n      \"url\": \"<string>\",\n      \"id\": \"<integer>\",\n      \"_destroy\": \"<boolean>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"url\": \"<string>\",\n      \"id\": \"<integer>\",\n      \"_destroy\": \"<boolean>\"\n    }\n  ],\n  \"upgrade_details\": {\n    \"campaign_id\": \"<integer>\",\n    \"amount\": \"<integer>\",\n    \"metric\": \"<string>\"\n  },\n  \"rewards_for_promoters\": [\n    {\n      \"apply_on\": \"<string>\",\n      \"product_ids\": [],\n      \"reward_id\": \"<integer>\"\n    },\n    {\n      \"apply_on\": \"<string>\",\n      \"product_ids\": [],\n      \"reward_id\": \"<integer>\"\n    }\n  ],\n  \"rewards_for_referrals\": [\n    {\n      \"apply_on\": \"<string>\",\n      \"product_ids\": [],\n      \"reward_id\": \"<integer>\"\n    },\n    {\n      \"apply_on\": \"<string>\",\n      \"product_ids\": [],\n      \"reward_id\": \"<integer>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 307,\n  \"name\": \"string\",\n  \"color\": \"string\",\n  \"stats\": {\n    \"referrals_count\": 5631,\n    \"sales_count\": 5434,\n    \"customers_count\": 2585,\n    \"promoters_count\": 7134,\n    \"revenue_amount\": 5459\n  },\n  \"landing_url\": \"string\",\n  \"visitor_cookie_life\": 6305,\n  \"ref_token_param\": \"string\",\n  \"auto_approve_leads\": false,\n  \"track_ad_traffic\": \"allow\",\n  \"auto_approve_promoters\": true,\n  \"is_private\": true,\n  \"is_default\": true,\n  \"upgrade_details\": {\n    \"campaign_id\": 5279,\n    \"amount\": 1737,\n    \"metric\": \"active_customers\",\n    \"move_referrals_on_level_change\": false\n  },\n  \"signup_url\": \"string\",\n  \"links\": [\n    {\n      \"id\": 1503,\n      \"name\": \"string\",\n      \"url\": \"string\"\n    },\n    {\n      \"id\": 8436,\n      \"name\": \"string\",\n      \"url\": \"string\"\n    }\n  ],\n  \"rewards_for_promoters\": [\n    {\n      \"apply_on\": \"monthly\",\n      \"product_ids\": [\n        7550,\n        7618\n      ],\n      \"reward_id\": 2731,\n      \"reward\": {\n        \"name\": \"string\",\n        \"promoter_reward_type\": \"string\",\n        \"hide_reward\": true,\n        \"tier_level\": 411,\n        \"coupon\": \"string\"\n      },\n      \"products\": [\n        {\n          \"id\": 1965,\n          \"name\": \"string\"\n        },\n        {\n          \"id\": 3474,\n          \"name\": \"string\"\n        }\n      ]\n    },\n    {\n      \"apply_on\": \"monthly\",\n      \"product_ids\": [\n        435,\n        1371\n      ],\n      \"reward_id\": 4861,\n      \"reward\": {\n        \"name\": \"string\",\n        \"promoter_reward_type\": \"string\",\n        \"hide_reward\": true,\n        \"tier_level\": 1454,\n        \"coupon\": \"string\"\n      },\n      \"products\": [\n        {\n          \"id\": 3074,\n          \"name\": \"string\"\n        },\n        {\n          \"id\": 3714,\n          \"name\": \"string\"\n        }\n      ]\n    }\n  ],\n  \"rewards_for_referrals\": [\n    {\n      \"apply_on\": \"specific\",\n      \"product_ids\": [\n        9081,\n        4031\n      ],\n      \"reward_id\": 6271,\n      \"reward\": {\n        \"name\": \"string\",\n        \"promoter_reward_type\": \"string\",\n        \"hide_reward\": true,\n        \"tier_level\": 5737,\n        \"coupon\": \"string\"\n      },\n      \"products\": [\n        {\n          \"id\": 6420,\n          \"name\": \"string\"\n        },\n        {\n          \"id\": 2201,\n          \"name\": \"string\"\n        }\n      ]\n    },\n    {\n      \"apply_on\": \"yearly\",\n      \"product_ids\": [\n        5928,\n        6713\n      ],\n      \"reward_id\": 8187,\n      \"reward\": {\n        \"name\": \"string\",\n        \"promoter_reward_type\": \"string\",\n        \"hide_reward\": false,\n        \"tier_level\": 2631,\n        \"coupon\": \"string\"\n      },\n      \"products\": [\n        {\n          \"id\": 5786,\n          \"name\": \"string\"\n        },\n        {\n          \"id\": 4563,\n          \"name\": \"string\"\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8f911f61-93ec-474f-9d10-c6edaddc73d4",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "campaigns",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account identifier that specifies which account is making the request",
+                    "key": "Account-ID",
+                    "value": "acc_123456"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"landing_url\": \"<string>\",\n  \"ref_token_param\": \"<string>\",\n  \"color\": \"<string>\",\n  \"visitor_cookie_life\": \"<integer>\",\n  \"auto_approve_promoters\": \"<boolean>\",\n  \"is_private\": \"<boolean>\",\n  \"track_ad_traffic\": \"<string>\",\n  \"links\": [\n    {\n      \"name\": \"<string>\",\n      \"url\": \"<string>\",\n      \"id\": \"<integer>\",\n      \"_destroy\": \"<boolean>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"url\": \"<string>\",\n      \"id\": \"<integer>\",\n      \"_destroy\": \"<boolean>\"\n    }\n  ],\n  \"upgrade_details\": {\n    \"campaign_id\": \"<integer>\",\n    \"amount\": \"<integer>\",\n    \"metric\": \"<string>\"\n  },\n  \"rewards_for_promoters\": [\n    {\n      \"apply_on\": \"<string>\",\n      \"product_ids\": [],\n      \"reward_id\": \"<integer>\"\n    },\n    {\n      \"apply_on\": \"<string>\",\n      \"product_ids\": [],\n      \"reward_id\": \"<integer>\"\n    }\n  ],\n  \"rewards_for_referrals\": [\n    {\n      \"apply_on\": \"<string>\",\n      \"product_ids\": [],\n      \"reward_id\": \"<integer>\"\n    },\n    {\n      \"apply_on\": \"<string>\",\n      \"product_ids\": [],\n      \"reward_id\": \"<integer>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1c180e8d-a1f2-4b7d-b078-968b28649db8",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "campaigns",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account identifier that specifies which account is making the request",
+                    "key": "Account-ID",
+                    "value": "acc_123456"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"landing_url\": \"<string>\",\n  \"ref_token_param\": \"<string>\",\n  \"color\": \"<string>\",\n  \"visitor_cookie_life\": \"<integer>\",\n  \"auto_approve_promoters\": \"<boolean>\",\n  \"is_private\": \"<boolean>\",\n  \"track_ad_traffic\": \"<string>\",\n  \"links\": [\n    {\n      \"name\": \"<string>\",\n      \"url\": \"<string>\",\n      \"id\": \"<integer>\",\n      \"_destroy\": \"<boolean>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"url\": \"<string>\",\n      \"id\": \"<integer>\",\n      \"_destroy\": \"<boolean>\"\n    }\n  ],\n  \"upgrade_details\": {\n    \"campaign_id\": \"<integer>\",\n    \"amount\": \"<integer>\",\n    \"metric\": \"<string>\"\n  },\n  \"rewards_for_promoters\": [\n    {\n      \"apply_on\": \"<string>\",\n      \"product_ids\": [],\n      \"reward_id\": \"<integer>\"\n    },\n    {\n      \"apply_on\": \"<string>\",\n      \"product_ids\": [],\n      \"reward_id\": \"<integer>\"\n    }\n  ],\n  \"rewards_for_referrals\": [\n    {\n      \"apply_on\": \"<string>\",\n      \"product_ids\": [],\n      \"reward_id\": \"<integer>\"\n    },\n    {\n      \"apply_on\": \"<string>\",\n      \"product_ids\": [],\n      \"reward_id\": \"<integer>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a38fd99c-58bf-48fe-929c-5b22b3051633",
+              "name": "Campaign not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "campaigns",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account identifier that specifies which account is making the request",
+                    "key": "Account-ID",
+                    "value": "acc_123456"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"landing_url\": \"<string>\",\n  \"ref_token_param\": \"<string>\",\n  \"color\": \"<string>\",\n  \"visitor_cookie_life\": \"<integer>\",\n  \"auto_approve_promoters\": \"<boolean>\",\n  \"is_private\": \"<boolean>\",\n  \"track_ad_traffic\": \"<string>\",\n  \"links\": [\n    {\n      \"name\": \"<string>\",\n      \"url\": \"<string>\",\n      \"id\": \"<integer>\",\n      \"_destroy\": \"<boolean>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"url\": \"<string>\",\n      \"id\": \"<integer>\",\n      \"_destroy\": \"<boolean>\"\n    }\n  ],\n  \"upgrade_details\": {\n    \"campaign_id\": \"<integer>\",\n    \"amount\": \"<integer>\",\n    \"metric\": \"<string>\"\n  },\n  \"rewards_for_promoters\": [\n    {\n      \"apply_on\": \"<string>\",\n      \"product_ids\": [],\n      \"reward_id\": \"<integer>\"\n    },\n    {\n      \"apply_on\": \"<string>\",\n      \"product_ids\": [],\n      \"reward_id\": \"<integer>\"\n    }\n  ],\n  \"rewards_for_referrals\": [\n    {\n      \"apply_on\": \"<string>\",\n      \"product_ids\": [],\n      \"reward_id\": \"<integer>\"\n    },\n    {\n      \"apply_on\": \"<string>\",\n      \"product_ids\": [],\n      \"reward_id\": \"<integer>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "14b0e3b1-0241-4023-83cd-79a43c8f63aa",
+          "name": "Delete a campaign",
+          "request": {
+            "name": "Delete a campaign",
+            "description": {
+              "content": "With this endpoint you can delete a campaign. \n <Tip>**HTTP Request** <br/>`DELETE https://api.firstpromoter.com/api/v2/company/campaigns/{id}`</Tip>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "campaigns",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Account identifier that specifies which account is making the request",
+                "key": "Account-ID",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "02a54c70-baed-4344-a549-aa2ccf9d033c",
+              "name": "Campaign deleted successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "campaigns",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account identifier that specifies which account is making the request",
+                    "key": "Account-ID",
+                    "value": "acc_123456"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 307,\n  \"name\": \"string\",\n  \"color\": \"string\",\n  \"stats\": {\n    \"referrals_count\": 5631,\n    \"sales_count\": 5434,\n    \"customers_count\": 2585,\n    \"promoters_count\": 7134,\n    \"revenue_amount\": 5459\n  },\n  \"landing_url\": \"string\",\n  \"visitor_cookie_life\": 6305,\n  \"ref_token_param\": \"string\",\n  \"auto_approve_leads\": false,\n  \"track_ad_traffic\": \"allow\",\n  \"auto_approve_promoters\": true,\n  \"is_private\": true,\n  \"is_default\": true,\n  \"upgrade_details\": {\n    \"campaign_id\": 5279,\n    \"amount\": 1737,\n    \"metric\": \"active_customers\",\n    \"move_referrals_on_level_change\": false\n  },\n  \"signup_url\": \"string\",\n  \"links\": [\n    {\n      \"id\": 1503,\n      \"name\": \"string\",\n      \"url\": \"string\"\n    },\n    {\n      \"id\": 8436,\n      \"name\": \"string\",\n      \"url\": \"string\"\n    }\n  ],\n  \"rewards_for_promoters\": [\n    {\n      \"apply_on\": \"monthly\",\n      \"product_ids\": [\n        7550,\n        7618\n      ],\n      \"reward_id\": 2731,\n      \"reward\": {\n        \"name\": \"string\",\n        \"promoter_reward_type\": \"string\",\n        \"hide_reward\": true,\n        \"tier_level\": 411,\n        \"coupon\": \"string\"\n      },\n      \"products\": [\n        {\n          \"id\": 1965,\n          \"name\": \"string\"\n        },\n        {\n          \"id\": 3474,\n          \"name\": \"string\"\n        }\n      ]\n    },\n    {\n      \"apply_on\": \"monthly\",\n      \"product_ids\": [\n        435,\n        1371\n      ],\n      \"reward_id\": 4861,\n      \"reward\": {\n        \"name\": \"string\",\n        \"promoter_reward_type\": \"string\",\n        \"hide_reward\": true,\n        \"tier_level\": 1454,\n        \"coupon\": \"string\"\n      },\n      \"products\": [\n        {\n          \"id\": 3074,\n          \"name\": \"string\"\n        },\n        {\n          \"id\": 3714,\n          \"name\": \"string\"\n        }\n      ]\n    }\n  ],\n  \"rewards_for_referrals\": [\n    {\n      \"apply_on\": \"specific\",\n      \"product_ids\": [\n        9081,\n        4031\n      ],\n      \"reward_id\": 6271,\n      \"reward\": {\n        \"name\": \"string\",\n        \"promoter_reward_type\": \"string\",\n        \"hide_reward\": true,\n        \"tier_level\": 5737,\n        \"coupon\": \"string\"\n      },\n      \"products\": [\n        {\n          \"id\": 6420,\n          \"name\": \"string\"\n        },\n        {\n          \"id\": 2201,\n          \"name\": \"string\"\n        }\n      ]\n    },\n    {\n      \"apply_on\": \"yearly\",\n      \"product_ids\": [\n        5928,\n        6713\n      ],\n      \"reward_id\": 8187,\n      \"reward\": {\n        \"name\": \"string\",\n        \"promoter_reward_type\": \"string\",\n        \"hide_reward\": false,\n        \"tier_level\": 2631,\n        \"coupon\": \"string\"\n      },\n      \"products\": [\n        {\n          \"id\": 5786,\n          \"name\": \"string\"\n        },\n        {\n          \"id\": 4563,\n          \"name\": \"string\"\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "63183e65-a3f6-44ec-a99b-7bbb651eecde",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "campaigns",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account identifier that specifies which account is making the request",
+                    "key": "Account-ID",
+                    "value": "acc_123456"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0bd94304-9eca-40b4-a023-d382a94bd9b3",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "campaigns",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account identifier that specifies which account is making the request",
+                    "key": "Account-ID",
+                    "value": "acc_123456"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "97167290-314e-473a-afbd-5e9ac6d9d68d",
+              "name": "Campaign not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "campaigns",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account identifier that specifies which account is making the request",
+                    "key": "Account-ID",
+                    "value": "acc_123456"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.firstpromoter.com/api/v2/company",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "72dc633d-19f8-42d5-81cb-e7e008c02bec",
+    "name": "FirstPromoter Campaigns API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for managing campaigns in FirstPromoter",
+      "type": "text/plain"
+    }
+  }
+}

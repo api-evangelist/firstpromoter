@@ -1,0 +1,749 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "FirstPromoter Invoices API",
+    "version": "1.0.0",
+    "description": "API for managing invoices in FirstPromoter"
+  },
+  "servers": [
+    {
+      "url": "https://api.firstpromoter.com/api/v2/company"
+    }
+  ],
+  "security": [
+    {
+      "BearerAuth": []
+    }
+  ],
+  "paths": {
+    "/invoices": {
+      "get": {
+        "summary": "Get invoices",
+        "description": "Returns all invoices. \n <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/invoices`</Tip>",
+        "tags": ["Invoices"],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/AccountId"
+          },
+          {
+            "in": "query",
+            "name": "filters[promoter_id]",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "Filter by promoter ID"
+          },
+          {
+            "in": "query",
+            "name": "filters[status]",
+            "schema": {
+              "type": "string",
+              "enum": ["draft", "open", "paid", "voided"]
+            },
+            "description": "Filter by status"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Invoice preview",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "html": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        }
+      }
+    },
+    "/invoices/{id}": {
+      "get": {
+        "summary": "Get invoice by id",
+        "description": "Returns single invoice \n <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/invoices/{id}`</Tip>",
+        "tags": ["Invoices"],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/AccountId"
+          },
+          {
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "Invoice ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Invoice details with HTML content",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "allOf": [
+                    {
+                      "$ref": "#/components/schemas/Invoice"
+                    },
+                    {
+                      "type": "object",
+                      "properties": {
+                        "html": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/invoices/void": {
+      "post": {
+        "summary": "Void invoices",
+        "description": "Marks invoices as void \n <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/company/invoices/void`</Tip>",
+        "tags": ["Invoices"],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/AccountId"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BatchRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Void operation completed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BatchResponse"
+                }
+              }
+            }
+          },
+          "202": {
+            "description": "Void operation accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BatchResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "422": {
+            "description": "Invalid parameters",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/invoices/finalize": {
+      "post": {
+        "summary": "Finalize invoices",
+        "description": "Marks invoices as finalized \n <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/company/invoices/finalize`</Tip>",
+        "tags": ["Invoices"],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/AccountId"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BatchRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Finalize operation completed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BatchResponse"
+                }
+              }
+            }
+          },
+          "202": {
+            "description": "Finalize operation accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BatchResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "422": {
+            "description": "Invalid parameters",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/invoices/destroy": {
+      "delete": {
+        "summary": "Destroy invoices",
+        "description": "Deletes invoices \n <Tip>**HTTP Request** <br/>`DELETE https://api.firstpromoter.com/api/v2/company/invoices/destroy`</Tip>",
+        "tags": ["Invoices"],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/AccountId"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BatchRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Delete operation completed",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BatchResponse"
+                }
+              }
+            }
+          },
+          "202": {
+            "description": "Delete operation accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BatchResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "422": {
+            "description": "Invalid parameters"
+          }
+        }
+      }
+    },
+    "/invoices/export": {
+      "get": {
+        "summary": "Export invoices as csv",
+        "description": "Exports invoices as csv \n <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/invoices/export`</Tip>",
+        "tags": ["Invoices"],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/AccountId"
+          },
+          {
+            "in": "query",
+            "name": "filters[promoter_id]",
+            "schema": {
+              "type": "integer"
+            },
+            "description": "Filter by promoter ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "CSV file containing invoice data",
+            "content": {
+              "text/csv": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        }
+      }
+    },
+    "/invoices/export_zip": {
+      "get": {
+        "summary": "Export all invoices PDF in a single zip",
+        "description": "Exports invoices PDF in a single zip \n <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/invoices/export_zip`</Tip>",
+        "tags": ["Invoices"],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/AccountId"
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "Export request accepted",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        }
+      }
+    },
+    "/invoices/template": {
+      "get": {
+        "summary": "Show invoice template",
+        "description": "<Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/invoices/template`</Tip>",
+        "tags": ["Invoice Templates"],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/AccountId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Invoice template",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "html": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        }
+      }
+    },
+    "/invoices/preview_template": {
+      "post": {
+        "summary": "Show invoice template preview",
+        "description": "<Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/company/invoices/preview_template`</Tip>",
+        "tags": ["Invoice Templates"],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/AccountId"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "html": {
+                    "type": "string",
+                    "description": "The invoice template html to preview"
+                  },
+                  "vat_invoice": {
+                    "type": "boolean",
+                    "description": "According to this value, the invoice will contain VAT info or not"
+                  }
+                },
+                "required": ["html"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Template preview",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "html": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        }
+      }
+    },
+    "/invoices/custom_template": {
+      "put": {
+        "summary": "Update invoice template",
+        "description": "<Tip>**HTTP Request** <br/>`PUT https://api.firstpromoter.com/api/v2/company/invoices/custom_template`</Tip>",
+        "tags": ["Invoice Templates"],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/AccountId"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "html": {
+                    "type": "string",
+                    "description": "The new invoice template html"
+                  }
+                },
+                "required": ["html"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Updated template",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "html": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        }
+      }
+    },
+    "/invoices/preview": {
+      "get": {
+        "summary": "Show invoice preview",
+        "description": "<Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/invoices/preview`</Tip>",
+        "tags": ["Invoices"],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/AccountId"
+          },
+          {
+            "in": "query",
+            "name": "promoter_id",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            },
+            "description": "The promoter id"
+          },
+          {
+            "in": "query",
+            "name": "payout_ids",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "integer"
+              }
+            },
+            "description": "Payout ids"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Invoice preview",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "html": {
+                          "type": "string"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "parameters": {
+      "AccountId": {
+        "name": "Account-ID",
+        "in": "header",
+        "required": true,
+        "description": "Account identifier that specifies which account is making the request",
+        "schema": {
+          "type": "string",
+          "example": "acc_123456"
+        }
+      }
+    },
+    "schemas": {
+      "Invoice": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "number": {
+            "type": "string"
+          },
+          "date": {
+            "type": "string",
+            "format": "date"
+          },
+          "total": {
+            "type": "number"
+          },
+          "total_incl_tax": {
+            "type": "number"
+          },
+          "tax_rate": {
+            "type": "number"
+          },
+          "pdf_url": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string",
+            "enum": ["draft", "open", "paid", "voided"]
+          },
+          "promoter": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "integer"
+              },
+              "email": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              }
+            }
+          },
+          "payouts": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          }
+        }
+      },
+      "Error": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string"
+          },
+          "code": {
+            "type": "string"
+          }
+        }
+      },
+      "BatchRequest": {
+        "type": "object",
+        "properties": {
+          "ids": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "description": "Array of invoice ids."
+            }
+          }
+        }
+      },
+      "BatchResponse": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "status": {
+            "type": "string",
+            "enum": ["pending", "completed", "failed"]
+          },
+          "total": {
+            "type": "integer"
+          },
+          "selected_total": {
+            "type": "integer"
+          },
+          "processed_count": {
+            "type": "integer"
+          },
+          "failed_count": {
+            "type": "integer"
+          },
+          "action_label": {
+            "type": "string"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "meta": {
+            "type": "object"
+          },
+          "progress": {
+            "type": "integer"
+          },
+          "processing_errors": {
+            "type": "array",
+            "items": {
+              "type": "object"
+            }
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "description": "Access token passed as a Bearer token in the Authorization header"
+      },
+      "accountId": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "ACCOUNT-ID",
+        "description": "Account ID required with bearer token"
+      }
+    }
+  }
+}

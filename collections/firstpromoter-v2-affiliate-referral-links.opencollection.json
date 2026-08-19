@@ -1,0 +1,116 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "FirstPromoter API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Get current promoter referral links",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.firstpromoter.com/api/v2/affiliate/referral_links",
+        "headers": [
+          {
+            "name": "Account-ID",
+            "value": ""
+          }
+        ],
+        "params": [
+          {
+            "name": "promoter_campaign_id",
+            "value": "",
+            "type": "query",
+            "description": "If provided, it returns only the links related to the given campaign"
+          }
+        ]
+      },
+      "docs": "Get current promoter referral links"
+    },
+    {
+      "info": {
+        "name": "Creates a referral link",
+        "type": "http"
+      },
+      "http": {
+        "method": "POST",
+        "url": "https://api.firstpromoter.com/api/v2/affiliate/referral_links",
+        "headers": [
+          {
+            "name": "Account-ID",
+            "value": ""
+          }
+        ],
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "Creates a referral link"
+    },
+    {
+      "info": {
+        "name": "Updates a referral link",
+        "type": "http"
+      },
+      "http": {
+        "method": "PUT",
+        "url": "https://api.firstpromoter.com/api/v2/affiliate/referral_links/:id",
+        "headers": [
+          {
+            "name": "Account-ID",
+            "value": ""
+          }
+        ],
+        "params": [
+          {
+            "name": "id",
+            "value": "",
+            "type": "path",
+            "description": "ID of the referral link to update"
+          }
+        ],
+        "body": {
+          "type": "json",
+          "data": "{}"
+        }
+      },
+      "docs": "Updates a referral link"
+    },
+    {
+      "info": {
+        "name": "Destroys a referral link",
+        "type": "http"
+      },
+      "http": {
+        "method": "DELETE",
+        "url": "https://api.firstpromoter.com/api/v2/affiliate/referral_links/:id",
+        "headers": [
+          {
+            "name": "Account-ID",
+            "value": ""
+          }
+        ],
+        "params": [
+          {
+            "name": "id",
+            "value": "",
+            "type": "path",
+            "description": "The id of the referral_link to be destroyed"
+          }
+        ]
+      },
+      "docs": "Destroys a referral link"
+    }
+  ],
+  "bundled": true
+}

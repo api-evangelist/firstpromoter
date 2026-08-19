@@ -1,0 +1,50 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "FirstPromoter Asset Categories API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Asset Categories",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get available asset categories",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.firstpromoter.com/api/v2/company/assets/categories"
+          },
+          "docs": "Get all available asset categories \n <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/assets/categories`</Tip>"
+        },
+        {
+          "info": {
+            "name": "Update asset categories",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.firstpromoter.com/api/v2/company/assets/categories",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update asset categories. \n <Tip>**HTTP Request** <br/>`PUT https://api.firstpromoter.com/api/v2/company/assets/categories`</Tip>"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

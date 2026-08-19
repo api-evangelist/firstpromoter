@@ -1,0 +1,124 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "FirstPromoter Admin API - Rewards",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Rewards",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get available rewards",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.firstpromoter.com/api/v2/company/rewards",
+            "headers": [
+              {
+                "name": "Account-ID",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "scope",
+                "value": "",
+                "type": "query",
+                "description": "Scope of the rewards"
+              }
+            ]
+          },
+          "docs": "Get available rewards for current company \n <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/rewards`</Tip>"
+        },
+        {
+          "info": {
+            "name": "Create reward",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.firstpromoter.com/api/v2/company/rewards",
+            "headers": [
+              {
+                "name": "Account-ID",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create rewards for current company \n <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/company/rewards`</Tip>"
+        },
+        {
+          "info": {
+            "name": "Update reward",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.firstpromoter.com/api/v2/company/rewards/:id",
+            "headers": [
+              {
+                "name": "Account-ID",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the reward to update"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update reward for current company \n <Tip>**HTTP Request** <br/>`PUT https://api.firstpromoter.com/api/v2/company/rewards/{id}`</Tip>"
+        },
+        {
+          "info": {
+            "name": "Hide reward",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.firstpromoter.com/api/v2/company/rewards/:id/hide",
+            "headers": [
+              {
+                "name": "Account-ID",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the reward to hide"
+              }
+            ]
+          },
+          "docs": "Hide reward for current company \n <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/company/rewards/{id}/hide`</Tip>"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

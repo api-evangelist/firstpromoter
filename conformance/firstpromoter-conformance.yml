@@ -1,0 +1,146 @@
+generated: '2026-08-13'
+method: derived
+source: >-
+  openapi/firstpromoter-*-openapi.yml, well-known/firstpromoter-well-known.yml,
+  mcp/firstpromoter-mcp.yml, a2a/firstpromoter-a2a.yml,
+  https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
+name: FirstPromoter standards conformance
+description: >-
+  What FirstPromoter actually conforms to, asserted from its own published contracts and from live
+  probes of its discovery endpoints. Every entry carries the evidence it was judged on. A false
+  here is a measured absence, not a criticism.
+standards:
+  - id: openapi
+    name: OpenAPI Specification
+    conforms: true
+    versions:
+      - 3.0.0
+      - 3.0.1
+      - 3.0.3
+    evidence: >-
+      37 first-party OpenAPI documents published from docs.firstpromoter.com and indexed in
+      llms.txt, covering 179 operations. All parse; one (referrals) is served with a trailing comma
+      that breaks strict JSON parsing.
+  - id: oauth2
+    name: OAuth 2.0 / 2.1
+    conforms: true
+    evidence: >-
+      Authorization code + refresh token grants with mandatory PKCE S256 and no token endpoint
+      client authentication (public clients), advertised at
+      https://api.firstpromoter.com/.well-known/oauth-authorization-server and
+      https://mcp.firstpromoter.com/.well-known/oauth-authorization-server (both HTTP 200).
+  - id: rfc8414
+    name: OAuth 2.0 Authorization Server Metadata
+    conforms: true
+    evidence: /.well-known/oauth-authorization-server returns 200 with a complete metadata document on two hosts.
+  - id: rfc7591
+    name: OAuth 2.0 Dynamic Client Registration
+    conforms: true
+    evidence: registration_endpoint published at /oauth/register on both authorization servers.
+  - id: rfc9728
+    name: OAuth 2.0 Protected Resource Metadata
+    conforms: true
+    evidence: >-
+      https://mcp.firstpromoter.com/.well-known/oauth-protected-resource returns 200, and the MCP
+      endpoint's 401 carries WWW-Authenticate Bearer resource_metadata pointing at it.
+  - id: rfc7636
+    name: PKCE
+    conforms: true
+    evidence: code_challenge_methods_supported [S256] on both authorization servers.
+  - id: oidc
+    name: OpenID Connect Discovery
+    conforms: false
+    evidence: /.well-known/openid-configuration returns 404 on all four hosts probed.
+  - id: mcp
+    name: Model Context Protocol
+    conforms: true
+    evidence: >-
+      Remote HTTP MCP server at https://mcp.firstpromoter.com, 53 documented tools, correct OAuth
+      challenge on unauthenticated tools/list (401 + resource_metadata). Provider labels it
+      experimental.
+  - id: a2a
+    name: Agent2Agent
+    conforms: partial
+    evidence: >-
+      An agent card is served at https://docs.firstpromoter.com/.well-known/agent-card.json
+      (HTTP 200) declaring protocolVersion 0.3, not the released 1.0.0. It passes every hard
+      structural check. Graded conformant-with-deviations in a2a/firstpromoter-a2a.yml.
+  - id: agent-skills
+    name: Agent Skills discovery
+    conforms: true
+    evidence: >-
+      /.well-known/agent-skills/index.json returns 200 against
+      schemas.agentskills.io/discovery/0.2.0 with a sha256 digest, and the referenced skill.md
+      resolves 200.
+  - id: llmstxt
+    name: llms.txt
+    conforms: true
+    evidence: >-
+      https://docs.firstpromoter.com/llms.txt returns 200 and indexes the docs plus 43 OpenAPI
+      specs. Six of the 43 listed spec URLs (the v1 set) return 404, so the index is stale.
+  - id: rfc9457
+    name: Problem Details for HTTP APIs
+    conforms: false
+    evidence: >-
+      Zero application/problem+json responses across 421 documented 4xx/5xx responses. Errors use a
+      bespoke {message, code} JSON object.
+  - id: idempotency
+    name: Idempotent request keys
+    conforms: false
+    evidence: >-
+      No Idempotency-Key header anywhere in the 37 specs or the docs. The Tracking API's required
+      event_id on POST /sale and POST /refund is the only replay protection.
+  - id: pagination
+    name: Documented pagination
+    conforms: partial
+    evidence: >-
+      page / per_page documented in the API introduction (default 20, max 100) but declared on only
+      2 of 179 published operations.
+  - id: rfc8594
+    name: Sunset HTTP Header
+    conforms: false
+    evidence: No Sunset or Deprecation header is documented; no operation is marked deprecated.
+  - id: rfc9110-ratelimit
+    name: RateLimit response header fields
+    conforms: false
+    evidence: >-
+      A 400 requests/minute account limit is documented in prose with a 429 on exhaustion, but no
+      RateLimit-* / X-RateLimit-* / Retry-After header is documented and 429 appears in zero spec
+      responses.
+  - id: securitytxt
+    name: RFC 9116 security.txt
+    conforms: false
+    evidence: /.well-known/security.txt returns 404 on all four hosts probed.
+  - id: asyncapi
+    name: AsyncAPI
+    conforms: false
+    evidence: >-
+      No AsyncAPI document is published. The event surface is a documented HTTP webhook system with
+      44 event types, captured in asyncapi/firstpromoter-webhooks.yml.
+  - id: graphql
+    name: GraphQL
+    conforms: false
+    evidence: No GraphQL endpoint is documented or discoverable.
+  - id: webhook-signatures
+    name: Signed webhook payloads
+    conforms: false
+    evidence: >-
+      No HMAC or signature header is documented for webhooks v2; sender authentication is delegated
+      to consumer-configured custom headers.
+compliance_programs:
+  soc2: not published
+  iso27001: not published
+  pci_dss: not published
+  hipaa: not published
+  gdpr:
+    published: true
+    url: https://firstpromoter.com/gdpr
+    http_status: 200
+    note: >-
+      A GDPR page is served from the marketing site, and the privacy policy is hosted with iubenda.
+      No audited certification (SOC 2, ISO 27001) is claimed anywhere on the public site, and no
+      trust center exists.
+summary:
+  conforms: 9
+  partial: 2
+  does_not_conform: 9

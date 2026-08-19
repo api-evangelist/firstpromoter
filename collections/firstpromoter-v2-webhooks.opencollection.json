@@ -1,0 +1,300 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "FirstPromoter Admin API — Webhooks",
+    "version": "2.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Webhooks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List webhook subscriptions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.firstpromoter.com/api/v2/company/webhooks",
+            "headers": [
+              {
+                "name": "Account-ID",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query",
+                "description": "Number of results per page."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number."
+              }
+            ]
+          },
+          "docs": "Returns a paginated list of all webhook subscriptions for your account, ordered by creation date descending. \n <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/webhooks`</Tip>"
+        },
+        {
+          "info": {
+            "name": "Create a webhook subscription",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.firstpromoter.com/api/v2/company/webhooks",
+            "headers": [
+              {
+                "name": "Account-ID",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new webhook subscription. The `secret_key` is auto-generated and returned only in this response — store it immediately. \n <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/company/webhooks`</Tip>"
+        },
+        {
+          "info": {
+            "name": "List supported event types",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.firstpromoter.com/api/v2/company/webhooks/event_types",
+            "headers": [
+              {
+                "name": "Account-ID",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Returns a sorted list of all event type strings that can be subscribed to. Use these values in the `event_types` array when creating or updating a subscription. \n <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/webhooks/event_types`</Tip>"
+        },
+        {
+          "info": {
+            "name": "Send a test webhook delivery",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.firstpromoter.com/api/v2/company/webhooks/test",
+            "headers": [
+              {
+                "name": "Account-ID",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Sends a sample payload for the given event type to the specified URL immediately. Useful for verifying that your endpoint is reachable and processing payloads correctly before creating a subscription. \n\n The signature in the test request is generated with a random secret (not a saved subscription's secret), so signature verification will fail — this is expected during testing. \n\n Returns the HTTP status and body received from your endpoint. \n <Tip>**HTTP Request** <br/>`POST https://api.firstpro"
+        },
+        {
+          "info": {
+            "name": "Get a webhook subscription",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.firstpromoter.com/api/v2/company/webhooks/:id",
+            "headers": [
+              {
+                "name": "Account-ID",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the webhook subscription."
+              }
+            ]
+          },
+          "docs": "Returns the details of a single webhook subscription. \n <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/webhooks/{id}`</Tip>"
+        },
+        {
+          "info": {
+            "name": "Update a webhook subscription",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.firstpromoter.com/api/v2/company/webhooks/:id",
+            "headers": [
+              {
+                "name": "Account-ID",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the webhook subscription."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates an existing webhook subscription. Only fields you include in the request body are changed. \n <Tip>**HTTP Request** <br/>`PUT https://api.firstpromoter.com/api/v2/company/webhooks/{id}`</Tip>"
+        },
+        {
+          "info": {
+            "name": "Delete a webhook subscription",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.firstpromoter.com/api/v2/company/webhooks/:id",
+            "headers": [
+              {
+                "name": "Account-ID",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the webhook subscription."
+              }
+            ]
+          },
+          "docs": "Permanently deletes a webhook subscription and all its delivery records. \n <Tip>**HTTP Request** <br/>`DELETE https://api.firstpromoter.com/api/v2/company/webhooks/{id}`</Tip>"
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Webhook Deliveries",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List deliveries for a subscription",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.firstpromoter.com/api/v2/company/webhooks/:webhook_id/webhook_deliveries",
+            "headers": [
+              {
+                "name": "Account-ID",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "webhook_id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the webhook subscription."
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query",
+                "description": "Number of results per page."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number."
+              }
+            ]
+          },
+          "docs": "Returns a paginated list of delivery attempts for the given subscription, ordered most-recent first. \n <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/webhooks/{webhook_id}/webhook_deliveries`</Tip>"
+        },
+        {
+          "info": {
+            "name": "Get a delivery",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.firstpromoter.com/api/v2/company/webhooks/:webhook_id/webhook_deliveries/:id",
+            "headers": [
+              {
+                "name": "Account-ID",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "webhook_id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the webhook subscription."
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the delivery."
+              }
+            ]
+          },
+          "docs": "Returns the full details of a single delivery attempt, including the complete payload that was sent and the response received from your endpoint. \n <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/webhooks/{webhook_id}/webhook_deliveries/{id}`</Tip>"
+        },
+        {
+          "info": {
+            "name": "Retry a failed delivery",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.firstpromoter.com/api/v2/company/webhooks/:webhook_id/webhook_deliveries/:id/retry_delivery",
+            "headers": [
+              {
+                "name": "Account-ID",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "webhook_id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the webhook subscription."
+              },
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the delivery to retry."
+              }
+            ]
+          },
+          "docs": "Re-queues a failed delivery for immediate retry. The delivery's `status` is reset to `pending` and `attempts` is reset to `0`. \n\n Returns `422` if the subscription's `max_retries` limit has already been reached. \n <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/company/webhooks/{webhook_id}/webhook_deliveries/{id}/retry_delivery`</Tip>"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,1113 @@
+{
+  "item": [
+    {
+      "id": "03666540-9ce2-4bff-a87d-1c4ddaa16842",
+      "name": "Rewards",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0a6a6c57-ca5d-4ad6-8006-2981b0474af5",
+          "name": "Get available rewards",
+          "request": {
+            "name": "Get available rewards",
+            "description": {
+              "content": "Get available rewards for current company \n <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/rewards`</Tip>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rewards"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "scope",
+                  "value": "<string>",
+                  "description": "Scope of the rewards"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Account identifier that specifies which account is making the request",
+                "key": "Account-ID",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7997ad7e-b889-4e55-b8f8-7d36eb1188c8",
+              "name": "List of rewards",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rewards"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "scope",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account identifier that specifies which account is making the request",
+                    "key": "Account-ID",
+                    "value": "acc_123456"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": 7320,\n    \"name\": \"string\",\n    \"is_promoter_reward\": false,\n    \"promoter_reward_type\": \"target\",\n    \"coupon\": \"string\",\n    \"editable\": false,\n    \"hide_reward\": false,\n    \"provider_coupon_id\": \"string\",\n    \"duration\": \"forever\",\n    \"duration_in_months\": 819,\n    \"max_redemptions\": 106,\n    \"new_customers_only\": true,\n    \"created_at\": \"2016-01-16T14:20:37.176Z\",\n    \"updated_at\": \"1956-02-11T02:46:38.283Z\",\n    \"provider\": \"string\",\n    \"tier_reward_mode\": null,\n    \"tier_level\": 1746,\n    \"schemas\": [\n      {\n        \"unit\": \"credits\",\n        \"amount\": 8116.586708061726,\n        \"flat_amount\": true,\n        \"rules\": [\n          {\n            \"type\": \"customer_age_in_months\",\n            \"condition\": \"greater than or equal to\",\n            \"filter_by\": \"string\",\n            \"value\": 9461.493047176773,\n            \"operator\": \"or\"\n          },\n          {\n            \"type\": \"customer_age_in_months\",\n            \"condition\": \"less than\",\n            \"filter_by\": \"string\",\n            \"value\": 5409.785127793114,\n            \"operator\": \"and\"\n          }\n        ]\n      },\n      {\n        \"unit\": \"credits\",\n        \"amount\": 9068.033825942777,\n        \"flat_amount\": false,\n        \"rules\": [\n          {\n            \"type\": \"promoter_campaign_revenue\",\n            \"condition\": \"greater than\",\n            \"filter_by\": \"string\",\n            \"value\": 7173.921063424263,\n            \"operator\": \"and\"\n          },\n          {\n            \"type\": \"customer_age_in_months\",\n            \"condition\": \"equal to\",\n            \"filter_by\": \"string\",\n            \"value\": 7858.235953007921,\n            \"operator\": \"and\"\n          }\n        ]\n      }\n    ]\n  },\n  {\n    \"id\": 677,\n    \"name\": \"string\",\n    \"is_promoter_reward\": false,\n    \"promoter_reward_type\": \"tier\",\n    \"coupon\": \"string\",\n    \"editable\": false,\n    \"hide_reward\": false,\n    \"provider_coupon_id\": \"string\",\n    \"duration\": null,\n    \"duration_in_months\": 1936,\n    \"max_redemptions\": 2434,\n    \"new_customers_only\": false,\n    \"created_at\": \"1984-06-06T00:45:02.178Z\",\n    \"updated_at\": \"1982-02-13T12:02:41.359Z\",\n    \"provider\": \"string\",\n    \"tier_reward_mode\": null,\n    \"tier_level\": 5495,\n    \"schemas\": [\n      {\n        \"unit\": \"points\",\n        \"amount\": 4744.866616997667,\n        \"flat_amount\": true,\n        \"rules\": [\n          {\n            \"type\": \"promoter_campaign_revenue\",\n            \"condition\": \"greater than\",\n            \"filter_by\": \"string\",\n            \"value\": 8021.944079979817,\n            \"operator\": \"and\"\n          },\n          {\n            \"type\": \"promoter_campaign_customers_count\",\n            \"condition\": \"greater than or equal to\",\n            \"filter_by\": \"string\",\n            \"value\": 1779.7810827522896,\n            \"operator\": \"and\"\n          }\n        ]\n      },\n      {\n        \"unit\": \"free_months\",\n        \"amount\": 3171.0125634383267,\n        \"flat_amount\": true,\n        \"rules\": [\n          {\n            \"type\": \"promoter_campaign_customers_count\",\n            \"condition\": \"greater than or equal to\",\n            \"filter_by\": \"string\",\n            \"value\": 4093.30489881908,\n            \"operator\": \"or\"\n          },\n          {\n            \"type\": \"customer_sales_count\",\n            \"condition\": \"multiple of\",\n            \"filter_by\": \"string\",\n            \"value\": 2762.7670456211263,\n            \"operator\": \"or\"\n          }\n        ]\n      }\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "35a6b510-1cda-44c7-8fa9-a3b55d5cbe2e",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rewards"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "scope",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account identifier that specifies which account is making the request",
+                    "key": "Account-ID",
+                    "value": "acc_123456"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e70fe19e-d6fd-404b-8757-0c5608929489",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rewards"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "scope",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account identifier that specifies which account is making the request",
+                    "key": "Account-ID",
+                    "value": "acc_123456"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"forbidden\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a3d5e634-586f-4aba-82a8-9ce07efc493c",
+              "name": "Invalid params",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rewards"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "scope",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account identifier that specifies which account is making the request",
+                    "key": "Account-ID",
+                    "value": "acc_123456"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"forbidden\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "83ed9f92-fe70-4240-9bfa-d497755009ca",
+          "name": "Create reward",
+          "request": {
+            "name": "Create reward",
+            "description": {
+              "content": "Create rewards for current company \n <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/company/rewards`</Tip>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rewards"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Account identifier that specifies which account is making the request",
+                "key": "Account-ID",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"is_promoter_reward\": \"<boolean>\",\n  \"schemas\": [\n    {\n      \"unit\": \"<string>\",\n      \"amount\": \"<number>\",\n      \"flat_amount\": \"<boolean>\",\n      \"rules\": [\n        {\n          \"type\": \"<string>\",\n          \"condition\": \"<string>\",\n          \"value\": \"<number>\",\n          \"operator\": \"<string>\",\n          \"filter_by\": \"<string>\"\n        },\n        {\n          \"type\": \"<string>\",\n          \"condition\": \"<string>\",\n          \"value\": \"<number>\",\n          \"operator\": \"<string>\",\n          \"filter_by\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"unit\": \"<string>\",\n      \"amount\": \"<number>\",\n      \"flat_amount\": \"<boolean>\",\n      \"rules\": [\n        {\n          \"type\": \"<string>\",\n          \"condition\": \"<string>\",\n          \"value\": \"<number>\",\n          \"operator\": \"<string>\",\n          \"filter_by\": \"<string>\"\n        },\n        {\n          \"type\": \"<string>\",\n          \"condition\": \"<string>\",\n          \"value\": \"<number>\",\n          \"operator\": \"<string>\",\n          \"filter_by\": \"<string>\"\n        }\n      ]\n    }\n  ],\n  \"promoter_reward_type\": \"<string>\",\n  \"tier_reward_mode\": \"<string>\",\n  \"tier_level\": \"<integer>\",\n  \"coupon\": \"<string>\",\n  \"hide_reward\": \"<boolean>\",\n  \"duration\": \"<string>\",\n  \"duration_in_months\": \"<integer>\",\n  \"max_redemptions\": \"<integer>\",\n  \"should_create_provider_coupon\": \"<boolean>\",\n  \"new_customers_only\": \"<boolean>\",\n  \"provider_coupon_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6786df33-afe2-47c6-a31f-e6d7942d56ec",
+              "name": "Reward created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rewards"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account identifier that specifies which account is making the request",
+                    "key": "Account-ID",
+                    "value": "acc_123456"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"is_promoter_reward\": \"<boolean>\",\n  \"schemas\": [\n    {\n      \"unit\": \"<string>\",\n      \"amount\": \"<number>\",\n      \"flat_amount\": \"<boolean>\",\n      \"rules\": [\n        {\n          \"type\": \"<string>\",\n          \"condition\": \"<string>\",\n          \"value\": \"<number>\",\n          \"operator\": \"<string>\",\n          \"filter_by\": \"<string>\"\n        },\n        {\n          \"type\": \"<string>\",\n          \"condition\": \"<string>\",\n          \"value\": \"<number>\",\n          \"operator\": \"<string>\",\n          \"filter_by\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"unit\": \"<string>\",\n      \"amount\": \"<number>\",\n      \"flat_amount\": \"<boolean>\",\n      \"rules\": [\n        {\n          \"type\": \"<string>\",\n          \"condition\": \"<string>\",\n          \"value\": \"<number>\",\n          \"operator\": \"<string>\",\n          \"filter_by\": \"<string>\"\n        },\n        {\n          \"type\": \"<string>\",\n          \"condition\": \"<string>\",\n          \"value\": \"<number>\",\n          \"operator\": \"<string>\",\n          \"filter_by\": \"<string>\"\n        }\n      ]\n    }\n  ],\n  \"promoter_reward_type\": \"<string>\",\n  \"tier_reward_mode\": \"<string>\",\n  \"tier_level\": \"<integer>\",\n  \"coupon\": \"<string>\",\n  \"hide_reward\": \"<boolean>\",\n  \"duration\": \"<string>\",\n  \"duration_in_months\": \"<integer>\",\n  \"max_redemptions\": \"<integer>\",\n  \"should_create_provider_coupon\": \"<boolean>\",\n  \"new_customers_only\": \"<boolean>\",\n  \"provider_coupon_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 2143,\n  \"name\": \"string\",\n  \"is_promoter_reward\": false,\n  \"promoter_reward_type\": \"target\",\n  \"coupon\": \"string\",\n  \"editable\": false,\n  \"hide_reward\": false,\n  \"provider_coupon_id\": \"string\",\n  \"duration\": \"once\",\n  \"duration_in_months\": 1990,\n  \"max_redemptions\": 1962,\n  \"new_customers_only\": false,\n  \"created_at\": \"1957-05-26T01:22:02.686Z\",\n  \"updated_at\": \"2001-10-09T22:40:51.555Z\",\n  \"provider\": \"string\",\n  \"tier_reward_mode\": \"tier_net_override_mode\",\n  \"tier_level\": 7118,\n  \"schemas\": [\n    {\n      \"unit\": \"free_months\",\n      \"amount\": 1351.8799995640761,\n      \"flat_amount\": true,\n      \"rules\": [\n        {\n          \"type\": \"customer_sales_count\",\n          \"condition\": \"greater than or equal to\",\n          \"filter_by\": \"string\",\n          \"value\": 3504.424043914599,\n          \"operator\": \"and\"\n        },\n        {\n          \"type\": \"promoter_campaign_customers_count\",\n          \"condition\": \"greater than\",\n          \"filter_by\": \"string\",\n          \"value\": 9959.891025329092,\n          \"operator\": \"and\"\n        }\n      ]\n    },\n    {\n      \"unit\": \"mon_discount\",\n      \"amount\": 998.9518162815159,\n      \"flat_amount\": true,\n      \"rules\": [\n        {\n          \"type\": \"customer_sales_count\",\n          \"condition\": \"less than or equal to\",\n          \"filter_by\": \"string\",\n          \"value\": 6394.435101997667,\n          \"operator\": \"and\"\n        },\n        {\n          \"type\": \"customer_age_in_months\",\n          \"condition\": \"multiple of\",\n          \"filter_by\": \"string\",\n          \"value\": 2846.1530542618916,\n          \"operator\": \"or\"\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d19d340f-5966-44a6-b03a-03d0f9dc7966",
+              "name": "Validation failed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rewards"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account identifier that specifies which account is making the request",
+                    "key": "Account-ID",
+                    "value": "acc_123456"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"is_promoter_reward\": \"<boolean>\",\n  \"schemas\": [\n    {\n      \"unit\": \"<string>\",\n      \"amount\": \"<number>\",\n      \"flat_amount\": \"<boolean>\",\n      \"rules\": [\n        {\n          \"type\": \"<string>\",\n          \"condition\": \"<string>\",\n          \"value\": \"<number>\",\n          \"operator\": \"<string>\",\n          \"filter_by\": \"<string>\"\n        },\n        {\n          \"type\": \"<string>\",\n          \"condition\": \"<string>\",\n          \"value\": \"<number>\",\n          \"operator\": \"<string>\",\n          \"filter_by\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"unit\": \"<string>\",\n      \"amount\": \"<number>\",\n      \"flat_amount\": \"<boolean>\",\n      \"rules\": [\n        {\n          \"type\": \"<string>\",\n          \"condition\": \"<string>\",\n          \"value\": \"<number>\",\n          \"operator\": \"<string>\",\n          \"filter_by\": \"<string>\"\n        },\n        {\n          \"type\": \"<string>\",\n          \"condition\": \"<string>\",\n          \"value\": \"<number>\",\n          \"operator\": \"<string>\",\n          \"filter_by\": \"<string>\"\n        }\n      ]\n    }\n  ],\n  \"promoter_reward_type\": \"<string>\",\n  \"tier_reward_mode\": \"<string>\",\n  \"tier_level\": \"<integer>\",\n  \"coupon\": \"<string>\",\n  \"hide_reward\": \"<boolean>\",\n  \"duration\": \"<string>\",\n  \"duration_in_months\": \"<integer>\",\n  \"max_redemptions\": \"<integer>\",\n  \"should_create_provider_coupon\": \"<boolean>\",\n  \"new_customers_only\": \"<boolean>\",\n  \"provider_coupon_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"errors\": {\n    \"key_0\": [\n      \"string\",\n      \"string\"\n    ],\n    \"key_1\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  \"code\": \"invalid_record\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "49dba010-0f93-4021-b669-273e0d45c2d6",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rewards"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account identifier that specifies which account is making the request",
+                    "key": "Account-ID",
+                    "value": "acc_123456"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"is_promoter_reward\": \"<boolean>\",\n  \"schemas\": [\n    {\n      \"unit\": \"<string>\",\n      \"amount\": \"<number>\",\n      \"flat_amount\": \"<boolean>\",\n      \"rules\": [\n        {\n          \"type\": \"<string>\",\n          \"condition\": \"<string>\",\n          \"value\": \"<number>\",\n          \"operator\": \"<string>\",\n          \"filter_by\": \"<string>\"\n        },\n        {\n          \"type\": \"<string>\",\n          \"condition\": \"<string>\",\n          \"value\": \"<number>\",\n          \"operator\": \"<string>\",\n          \"filter_by\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"unit\": \"<string>\",\n      \"amount\": \"<number>\",\n      \"flat_amount\": \"<boolean>\",\n      \"rules\": [\n        {\n          \"type\": \"<string>\",\n          \"condition\": \"<string>\",\n          \"value\": \"<number>\",\n          \"operator\": \"<string>\",\n          \"filter_by\": \"<string>\"\n        },\n        {\n          \"type\": \"<string>\",\n          \"condition\": \"<string>\",\n          \"value\": \"<number>\",\n          \"operator\": \"<string>\",\n          \"filter_by\": \"<string>\"\n        }\n      ]\n    }\n  ],\n  \"promoter_reward_type\": \"<string>\",\n  \"tier_reward_mode\": \"<string>\",\n  \"tier_level\": \"<integer>\",\n  \"coupon\": \"<string>\",\n  \"hide_reward\": \"<boolean>\",\n  \"duration\": \"<string>\",\n  \"duration_in_months\": \"<integer>\",\n  \"max_redemptions\": \"<integer>\",\n  \"should_create_provider_coupon\": \"<boolean>\",\n  \"new_customers_only\": \"<boolean>\",\n  \"provider_coupon_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "80cf8009-3998-47da-b055-2e465ac2bb32",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rewards"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account identifier that specifies which account is making the request",
+                    "key": "Account-ID",
+                    "value": "acc_123456"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"is_promoter_reward\": \"<boolean>\",\n  \"schemas\": [\n    {\n      \"unit\": \"<string>\",\n      \"amount\": \"<number>\",\n      \"flat_amount\": \"<boolean>\",\n      \"rules\": [\n        {\n          \"type\": \"<string>\",\n          \"condition\": \"<string>\",\n          \"value\": \"<number>\",\n          \"operator\": \"<string>\",\n          \"filter_by\": \"<string>\"\n        },\n        {\n          \"type\": \"<string>\",\n          \"condition\": \"<string>\",\n          \"value\": \"<number>\",\n          \"operator\": \"<string>\",\n          \"filter_by\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"unit\": \"<string>\",\n      \"amount\": \"<number>\",\n      \"flat_amount\": \"<boolean>\",\n      \"rules\": [\n        {\n          \"type\": \"<string>\",\n          \"condition\": \"<string>\",\n          \"value\": \"<number>\",\n          \"operator\": \"<string>\",\n          \"filter_by\": \"<string>\"\n        },\n        {\n          \"type\": \"<string>\",\n          \"condition\": \"<string>\",\n          \"value\": \"<number>\",\n          \"operator\": \"<string>\",\n          \"filter_by\": \"<string>\"\n        }\n      ]\n    }\n  ],\n  \"promoter_reward_type\": \"<string>\",\n  \"tier_reward_mode\": \"<string>\",\n  \"tier_level\": \"<integer>\",\n  \"coupon\": \"<string>\",\n  \"hide_reward\": \"<boolean>\",\n  \"duration\": \"<string>\",\n  \"duration_in_months\": \"<integer>\",\n  \"max_redemptions\": \"<integer>\",\n  \"should_create_provider_coupon\": \"<boolean>\",\n  \"new_customers_only\": \"<boolean>\",\n  \"provider_coupon_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"forbidden\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8f20f13d-72bb-412b-b660-0ffb3c4d6186",
+              "name": "Invalid parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rewards"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account identifier that specifies which account is making the request",
+                    "key": "Account-ID",
+                    "value": "acc_123456"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"is_promoter_reward\": \"<boolean>\",\n  \"schemas\": [\n    {\n      \"unit\": \"<string>\",\n      \"amount\": \"<number>\",\n      \"flat_amount\": \"<boolean>\",\n      \"rules\": [\n        {\n          \"type\": \"<string>\",\n          \"condition\": \"<string>\",\n          \"value\": \"<number>\",\n          \"operator\": \"<string>\",\n          \"filter_by\": \"<string>\"\n        },\n        {\n          \"type\": \"<string>\",\n          \"condition\": \"<string>\",\n          \"value\": \"<number>\",\n          \"operator\": \"<string>\",\n          \"filter_by\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"unit\": \"<string>\",\n      \"amount\": \"<number>\",\n      \"flat_amount\": \"<boolean>\",\n      \"rules\": [\n        {\n          \"type\": \"<string>\",\n          \"condition\": \"<string>\",\n          \"value\": \"<number>\",\n          \"operator\": \"<string>\",\n          \"filter_by\": \"<string>\"\n        },\n        {\n          \"type\": \"<string>\",\n          \"condition\": \"<string>\",\n          \"value\": \"<number>\",\n          \"operator\": \"<string>\",\n          \"filter_by\": \"<string>\"\n        }\n      ]\n    }\n  ],\n  \"promoter_reward_type\": \"<string>\",\n  \"tier_reward_mode\": \"<string>\",\n  \"tier_level\": \"<integer>\",\n  \"coupon\": \"<string>\",\n  \"hide_reward\": \"<boolean>\",\n  \"duration\": \"<string>\",\n  \"duration_in_months\": \"<integer>\",\n  \"max_redemptions\": \"<integer>\",\n  \"should_create_provider_coupon\": \"<boolean>\",\n  \"new_customers_only\": \"<boolean>\",\n  \"provider_coupon_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"forbidden\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "57b9a5ef-2ac9-4929-890a-1e98cc9884c5",
+          "name": "Update reward",
+          "request": {
+            "name": "Update reward",
+            "description": {
+              "content": "Update reward for current company \n <Tip>**HTTP Request** <br/>`PUT https://api.firstpromoter.com/api/v2/company/rewards/{id}`</Tip>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rewards",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) ID of the reward to update"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Account identifier that specifies which account is making the request",
+                "key": "Account-ID",
+                "value": "<string>"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"is_promoter_reward\": \"<boolean>\",\n  \"promoter_reward_type\": \"<string>\",\n  \"tier_reward_mode\": \"<string>\",\n  \"tier_level\": \"<integer>\",\n  \"coupon\": \"<string>\",\n  \"hide_reward\": \"<boolean>\",\n  \"duration\": \"<string>\",\n  \"duration_in_months\": \"<integer>\",\n  \"max_redemptions\": \"<integer>\",\n  \"should_create_provider_coupon\": \"<boolean>\",\n  \"new_customers_only\": \"<boolean>\",\n  \"provider_coupon_id\": \"<string>\",\n  \"schemas\": [\n    {\n      \"unit\": \"<string>\",\n      \"amount\": \"<number>\",\n      \"flat_amount\": \"<boolean>\",\n      \"rules\": [\n        {\n          \"type\": \"<string>\",\n          \"condition\": \"<string>\",\n          \"filter_by\": \"<string>\",\n          \"value\": \"<number>\",\n          \"operator\": \"<string>\"\n        },\n        {\n          \"type\": \"<string>\",\n          \"condition\": \"<string>\",\n          \"filter_by\": \"<string>\",\n          \"value\": \"<number>\",\n          \"operator\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"unit\": \"<string>\",\n      \"amount\": \"<number>\",\n      \"flat_amount\": \"<boolean>\",\n      \"rules\": [\n        {\n          \"type\": \"<string>\",\n          \"condition\": \"<string>\",\n          \"filter_by\": \"<string>\",\n          \"value\": \"<number>\",\n          \"operator\": \"<string>\"\n        },\n        {\n          \"type\": \"<string>\",\n          \"condition\": \"<string>\",\n          \"filter_by\": \"<string>\",\n          \"value\": \"<number>\",\n          \"operator\": \"<string>\"\n        }\n      ]\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b5f9853e-2cf9-48d8-9846-cda103084f1f",
+              "name": "Reward updated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rewards",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) ID of the reward to update"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account identifier that specifies which account is making the request",
+                    "key": "Account-ID",
+                    "value": "acc_123456"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"is_promoter_reward\": \"<boolean>\",\n  \"promoter_reward_type\": \"<string>\",\n  \"tier_reward_mode\": \"<string>\",\n  \"tier_level\": \"<integer>\",\n  \"coupon\": \"<string>\",\n  \"hide_reward\": \"<boolean>\",\n  \"duration\": \"<string>\",\n  \"duration_in_months\": \"<integer>\",\n  \"max_redemptions\": \"<integer>\",\n  \"should_create_provider_coupon\": \"<boolean>\",\n  \"new_customers_only\": \"<boolean>\",\n  \"provider_coupon_id\": \"<string>\",\n  \"schemas\": [\n    {\n      \"unit\": \"<string>\",\n      \"amount\": \"<number>\",\n      \"flat_amount\": \"<boolean>\",\n      \"rules\": [\n        {\n          \"type\": \"<string>\",\n          \"condition\": \"<string>\",\n          \"filter_by\": \"<string>\",\n          \"value\": \"<number>\",\n          \"operator\": \"<string>\"\n        },\n        {\n          \"type\": \"<string>\",\n          \"condition\": \"<string>\",\n          \"filter_by\": \"<string>\",\n          \"value\": \"<number>\",\n          \"operator\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"unit\": \"<string>\",\n      \"amount\": \"<number>\",\n      \"flat_amount\": \"<boolean>\",\n      \"rules\": [\n        {\n          \"type\": \"<string>\",\n          \"condition\": \"<string>\",\n          \"filter_by\": \"<string>\",\n          \"value\": \"<number>\",\n          \"operator\": \"<string>\"\n        },\n        {\n          \"type\": \"<string>\",\n          \"condition\": \"<string>\",\n          \"filter_by\": \"<string>\",\n          \"value\": \"<number>\",\n          \"operator\": \"<string>\"\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": 2143,\n  \"name\": \"string\",\n  \"is_promoter_reward\": false,\n  \"promoter_reward_type\": \"target\",\n  \"coupon\": \"string\",\n  \"editable\": false,\n  \"hide_reward\": false,\n  \"provider_coupon_id\": \"string\",\n  \"duration\": \"once\",\n  \"duration_in_months\": 1990,\n  \"max_redemptions\": 1962,\n  \"new_customers_only\": false,\n  \"created_at\": \"1957-05-26T01:22:02.686Z\",\n  \"updated_at\": \"2001-10-09T22:40:51.555Z\",\n  \"provider\": \"string\",\n  \"tier_reward_mode\": \"tier_net_override_mode\",\n  \"tier_level\": 7118,\n  \"schemas\": [\n    {\n      \"unit\": \"free_months\",\n      \"amount\": 1351.8799995640761,\n      \"flat_amount\": true,\n      \"rules\": [\n        {\n          \"type\": \"customer_sales_count\",\n          \"condition\": \"greater than or equal to\",\n          \"filter_by\": \"string\",\n          \"value\": 3504.424043914599,\n          \"operator\": \"and\"\n        },\n        {\n          \"type\": \"promoter_campaign_customers_count\",\n          \"condition\": \"greater than\",\n          \"filter_by\": \"string\",\n          \"value\": 9959.891025329092,\n          \"operator\": \"and\"\n        }\n      ]\n    },\n    {\n      \"unit\": \"mon_discount\",\n      \"amount\": 998.9518162815159,\n      \"flat_amount\": true,\n      \"rules\": [\n        {\n          \"type\": \"customer_sales_count\",\n          \"condition\": \"less than or equal to\",\n          \"filter_by\": \"string\",\n          \"value\": 6394.435101997667,\n          \"operator\": \"and\"\n        },\n        {\n          \"type\": \"customer_age_in_months\",\n          \"condition\": \"multiple of\",\n          \"filter_by\": \"string\",\n          \"value\": 2846.1530542618916,\n          \"operator\": \"or\"\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a0b79e28-9cb8-4aa0-8ae9-8b01a0ac7d03",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rewards",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) ID of the reward to update"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account identifier that specifies which account is making the request",
+                    "key": "Account-ID",
+                    "value": "acc_123456"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"is_promoter_reward\": \"<boolean>\",\n  \"promoter_reward_type\": \"<string>\",\n  \"tier_reward_mode\": \"<string>\",\n  \"tier_level\": \"<integer>\",\n  \"coupon\": \"<string>\",\n  \"hide_reward\": \"<boolean>\",\n  \"duration\": \"<string>\",\n  \"duration_in_months\": \"<integer>\",\n  \"max_redemptions\": \"<integer>\",\n  \"should_create_provider_coupon\": \"<boolean>\",\n  \"new_customers_only\": \"<boolean>\",\n  \"provider_coupon_id\": \"<string>\",\n  \"schemas\": [\n    {\n      \"unit\": \"<string>\",\n      \"amount\": \"<number>\",\n      \"flat_amount\": \"<boolean>\",\n      \"rules\": [\n        {\n          \"type\": \"<string>\",\n          \"condition\": \"<string>\",\n          \"filter_by\": \"<string>\",\n          \"value\": \"<number>\",\n          \"operator\": \"<string>\"\n        },\n        {\n          \"type\": \"<string>\",\n          \"condition\": \"<string>\",\n          \"filter_by\": \"<string>\",\n          \"value\": \"<number>\",\n          \"operator\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"unit\": \"<string>\",\n      \"amount\": \"<number>\",\n      \"flat_amount\": \"<boolean>\",\n      \"rules\": [\n        {\n          \"type\": \"<string>\",\n          \"condition\": \"<string>\",\n          \"filter_by\": \"<string>\",\n          \"value\": \"<number>\",\n          \"operator\": \"<string>\"\n        },\n        {\n          \"type\": \"<string>\",\n          \"condition\": \"<string>\",\n          \"filter_by\": \"<string>\",\n          \"value\": \"<number>\",\n          \"operator\": \"<string>\"\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "9f42dc76-868e-4b4a-b41c-9c7be975c507",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rewards",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) ID of the reward to update"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account identifier that specifies which account is making the request",
+                    "key": "Account-ID",
+                    "value": "acc_123456"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"is_promoter_reward\": \"<boolean>\",\n  \"promoter_reward_type\": \"<string>\",\n  \"tier_reward_mode\": \"<string>\",\n  \"tier_level\": \"<integer>\",\n  \"coupon\": \"<string>\",\n  \"hide_reward\": \"<boolean>\",\n  \"duration\": \"<string>\",\n  \"duration_in_months\": \"<integer>\",\n  \"max_redemptions\": \"<integer>\",\n  \"should_create_provider_coupon\": \"<boolean>\",\n  \"new_customers_only\": \"<boolean>\",\n  \"provider_coupon_id\": \"<string>\",\n  \"schemas\": [\n    {\n      \"unit\": \"<string>\",\n      \"amount\": \"<number>\",\n      \"flat_amount\": \"<boolean>\",\n      \"rules\": [\n        {\n          \"type\": \"<string>\",\n          \"condition\": \"<string>\",\n          \"filter_by\": \"<string>\",\n          \"value\": \"<number>\",\n          \"operator\": \"<string>\"\n        },\n        {\n          \"type\": \"<string>\",\n          \"condition\": \"<string>\",\n          \"filter_by\": \"<string>\",\n          \"value\": \"<number>\",\n          \"operator\": \"<string>\"\n        }\n      ]\n    },\n    {\n      \"unit\": \"<string>\",\n      \"amount\": \"<number>\",\n      \"flat_amount\": \"<boolean>\",\n      \"rules\": [\n        {\n          \"type\": \"<string>\",\n          \"condition\": \"<string>\",\n          \"filter_by\": \"<string>\",\n          \"value\": \"<number>\",\n          \"operator\": \"<string>\"\n        },\n        {\n          \"type\": \"<string>\",\n          \"condition\": \"<string>\",\n          \"filter_by\": \"<string>\",\n          \"value\": \"<number>\",\n          \"operator\": \"<string>\"\n        }\n      ]\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"forbidden\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c80dab0e-1148-43b5-8461-b54a72601daa",
+          "name": "Hide reward",
+          "request": {
+            "name": "Hide reward",
+            "description": {
+              "content": "Hide reward for current company \n <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/company/rewards/{id}/hide`</Tip>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "rewards",
+                ":id",
+                "hide"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) ID of the reward to hide"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Account identifier that specifies which account is making the request",
+                "key": "Account-ID",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "22e6c2e2-7d94-44a0-8962-e4431cecae60",
+              "name": "Reward hidden successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rewards",
+                    ":id",
+                    "hide"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) ID of the reward to hide"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account identifier that specifies which account is making the request",
+                    "key": "Account-ID",
+                    "value": "acc_123456"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "138db4e2-1bda-45f4-bedc-5d7a2dba030f",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rewards",
+                    ":id",
+                    "hide"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) ID of the reward to hide"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account identifier that specifies which account is making the request",
+                    "key": "Account-ID",
+                    "value": "acc_123456"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1729065c-d073-4d6c-a9ea-a5943e4b4ff3",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "rewards",
+                    ":id",
+                    "hide"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<integer>",
+                      "key": "id",
+                      "description": "(Required) ID of the reward to hide"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account identifier that specifies which account is making the request",
+                    "key": "Account-ID",
+                    "value": "acc_123456"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"forbidden\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.firstpromoter.com/api/v2/company",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "54a952fb-6b08-4fda-8518-b2064b96b0ee",
+    "name": "FirstPromoter Admin API - Rewards",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Admin API endpoints for managing rewards in FirstPromoter",
+      "type": "text/plain"
+    }
+  }
+}

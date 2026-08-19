@@ -1,0 +1,246 @@
+generated: '2026-08-13'
+method: derived
+source: >-
+  openapi/firstpromoter-*-openapi.yml (74 component schemas across 37 published specs) plus
+  https://docs.firstpromoter.com/script-docs/concepts
+name: FirstPromoter data model
+description: >-
+  Entity-relationship graph for the FirstPromoter v2 API, derived from $ref links and id-reference
+  fields in the provider's own published OpenAPI documents. The spine is
+  Campaign - Promoter - PromoterCampaign - Referral - Commission - Payout: a promoter's membership
+  of a campaign is itself a first-class entity, and almost every attribution and reward decision
+  hangs off it rather than off the promoter.
+entities:
+  - name: Campaign
+    description: An affiliate program configuration - landing URL, cookie life, referral param, rewards.
+    key: id
+    spec: openapi/firstpromoter-v2-campaigns-openapi.yml
+  - name: Promoter
+    description: An affiliate. Carries balances, a profile, and membership in one or more campaigns.
+    key: id
+    alternate_keys: [email, uid, username]
+    spec: openapi/firstpromoter-v2-promoters-openapi.yml
+  - name: PromoterProfile
+    description: Name, address, country, tax and social details for a promoter.
+    key: id
+  - name: PromoterCampaign
+    description: >-
+      The join entity between a promoter and a campaign. Holds per-campaign state (accepted,
+      pending, rejected, blocked, inactive), ref token, coupon, direct URL and reward overrides.
+      Acceptance and rejection act on this entity, not on the Promoter.
+    key: id
+    spec: openapi/firstpromoter-v2-promoter-campaigns-openapi.yml
+  - name: Referral
+    description: A tracked lead or customer attributed to a promoter campaign.
+    key: id
+    alternate_keys: [email, uid]
+    spec: openapi/firstpromoter-v2-referrals-openapi.yml
+  - name: Lead
+    description: The tracking-time view of a referral before conversion.
+  - name: Commission
+    description: A reward earned on a referral. Monetary or non-monetary; approved, pending or denied.
+    key: id
+    spec: openapi/firstpromoter-v2-commissions-openapi.yml
+  - name: Reward
+    description: A commission or discount rule, with schemas, tier level and optional coupon.
+    key: id
+    spec: openapi/firstpromoter-v2-rewards-openapi.yml
+  - name: Payout
+    description: A cash payment to a promoter, amounts in cents.
+    key: id
+    spec: openapi/firstpromoter-v2-payouts-openapi.yml
+  - name: PaymentsBatch
+    description: A batch of payouts executed together.
+    key: id
+    spec: openapi/firstpromoter-v2-payent-batches-openapi.yml
+  - name: PayoutMethod
+    description: How a promoter is paid - PayPal, Wise, bank or crypto details.
+    key: id
+    spec: openapi/firstpromoter-v2-advanced-payout-methods-openapi.yml
+  - name: Invoice
+    description: Self-billing invoice generated for a promoter's earnings.
+    key: id
+    spec: openapi/firstpromoter-v2-invoices-openapi.yml
+  - name: PromoCode
+    description: A coupon code attached to a reward, optionally scoped to a promoter campaign.
+    key: id
+    spec: openapi/firstpromoter-v2-promocodes-openapi.yml
+  - name: ReferralLink
+    description: A promoter's trackable link, optionally carrying a sub id.
+    key: id
+    spec: openapi/firstpromoter-v2-affiliate-referral-links-openapi.yml
+  - name: Product
+    description: A SKU that product-specific commission rules can attach to.
+    key: id
+    spec: openapi/firstpromoter-v2-advanced-products-openapi.yml
+  - name: Asset
+    description: A marketing asset (banner, swipe copy, image) promoters can download.
+    key: id
+    spec: openapi/firstpromoter-v2-assets-openapi.yml
+  - name: AssetCategory
+    description: Grouping for assets.
+    key: id
+  - name: Contract
+    description: A program agreement (terms, NDA) promoters sign.
+    key: id
+    spec: openapi/firstpromoter-v2-contracts-openapi.yml
+  - name: ContractVersion
+    description: A specific version of a contract's text.
+    key: id
+  - name: ContractDocument
+    description: One promoter's signature against one contract version.
+    key: id
+  - name: WebhookSubscription
+    description: An event subscription with url, event types, campaign filter and retry policy.
+    key: id
+    spec: openapi/firstpromoter-v2-webhooks-openapi.yml
+  - name: WebhookDelivery
+    description: One delivery attempt record with status, event id and response detail.
+    key: id
+  - name: BatchProcess
+    description: An asynchronous bulk action, created when a bulk request carries more than 5 ids.
+    key: id
+    spec: openapi/firstpromoter-v2-batches-openapi.yml
+  - name: CustomReferralStatus
+    description: A customer-defined referral state.
+    key: id
+  - name: EmailSettings
+    description: Transactional email configuration and triggers.
+    key: id
+  - name: SubAffiliate
+    description: A promoter nested under a parent promoter in a multi-tier hierarchy.
+relationships:
+  - from: Campaign
+    to: PromoterCampaign
+    type: has_many
+    via: campaign_id
+  - from: Promoter
+    to: PromoterCampaign
+    type: has_many
+    via: promoter_campaigns ($ref)
+  - from: PromoterCampaign
+    to: Campaign
+    type: belongs_to
+    via: campaign ($ref)
+  - from: PromoterCampaign
+    to: Promoter
+    type: belongs_to
+    via: promoter ($ref)
+  - from: Promoter
+    to: PromoterProfile
+    type: has_one
+    via: profile ($ref)
+  - from: Promoter
+    to: Promoter
+    type: belongs_to
+    via: parent_promoter_id
+    note: Self-referencing hierarchy for sub-affiliates and multi-tier commissions.
+  - from: Referral
+    to: PromoterCampaign
+    type: belongs_to
+    via: promoter_campaign ($ref)
+  - from: Commission
+    to: Referral
+    type: belongs_to
+    via: referral ($ref)
+  - from: Commission
+    to: PromoterCampaign
+    type: belongs_to
+    via: promoter_campaign ($ref)
+  - from: Commission
+    to: Reward
+    type: belongs_to
+    via: reward ($ref)
+  - from: Commission
+    to: Payout
+    type: belongs_to
+    via: payout_id (CommissionFilters)
+  - from: Payout
+    to: PaymentsBatch
+    type: belongs_to
+    via: payments_batch_id
+  - from: PayoutMethod
+    to: Promoter
+    type: belongs_to
+    via: promoter_id
+  - from: PayoutMethod
+    to: PayoutMethodDetails
+    type: has_one
+    via: details ($ref - PaypalDetails, WiseDetails, BankDetails or CryptoDetails)
+  - from: Campaign
+    to: Reward
+    type: has_many
+    via: rewards_for_promoters / rewards_for_referrals ($ref)
+  - from: PromoterCampaign
+    to: Reward
+    type: has_many
+    via: rewards_for_promoters / rewards_for_referrals ($ref)
+    note: Per-membership reward override, shadowing the campaign default.
+  - from: Reward
+    to: Product
+    type: has_many
+    via: product_ids
+  - from: PromoCode
+    to: Reward
+    type: belongs_to
+    via: reward_id
+  - from: PromoCode
+    to: PromoterCampaign
+    type: belongs_to
+    via: promoter_campaign_id
+  - from: ReferralLink
+    to: Campaign
+    type: belongs_to
+    via: campaign ($ref)
+  - from: ContractDocument
+    to: Contract
+    type: belongs_to
+    via: contract ($ref)
+  - from: ContractDocument
+    to: ContractVersion
+    type: belongs_to
+    via: contract_version ($ref)
+  - from: ContractDocument
+    to: Promoter
+    type: belongs_to
+    via: promoter ($ref)
+  - from: Asset
+    to: Campaign
+    type: has_many
+    via: allowed_campaign_ids
+  - from: WebhookSubscription
+    to: Campaign
+    type: has_many
+    via: campaign_ids
+  - from: WebhookDelivery
+    to: WebhookSubscription
+    type: belongs_to
+    via: webhook_id (path parameter)
+external_ids:
+  - field: cust_id
+    on: Promoter
+    meaning: The customer's own identifier for the promoter in their billing system.
+  - field: uid
+    on: Referral
+    meaning: The customer's own identifier for the referred user, used when email can change.
+  - field: ext_id
+    on: PromoCode, Product
+    meaning: The billing provider's identifier (Stripe coupon, product SKU).
+  - field: event_id
+    on: Commission, WebhookDelivery, Tracking API sale/refund
+    meaning: >-
+      The caller's unique id for a charge on the way in, and the deduplication key for events on
+      the way out. The nearest thing FirstPromoter has to an idempotency key.
+  - field: tid
+    meaning: Visitor tracking id from the _fprom_tid cookie, the attribution key.
+  - field: ref_id
+    meaning: A promoter's default referral id; promoters can change it, so tid is the safer key.
+id_style: integer database ids
+schema_count: 74
+notes:
+  - >-
+    PromoterCampaign is the pivot of the whole model. Accept, reject, block, coupon, ref token and
+    reward overrides are all per-campaign, so an integration keyed on promoter id alone will read
+    the wrong state.
+  - >-
+    Money is represented in minor units (cents) on payouts and commissions.

@@ -1,0 +1,390 @@
+{
+  "item": [
+    {
+      "id": "eeeb4cf7-dde2-45ba-b5f7-2d2905141bd8",
+      "name": "Get available assets",
+      "request": {
+        "name": "Get available assets",
+        "description": {
+          "content": "Returns all assets \n <Tip>**HTTP Request** <br/>` GET  https://api.firstpromoter.com/api/v2/affiliate/assets`</Tip>",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "assets"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": []
+        },
+        "header": [
+          {
+            "disabled": false,
+            "description": "(Required) Account identifier that specifies which account is making the request",
+            "key": "Account-ID",
+            "value": "<string>"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "1ced61d8-425a-4a0e-b85e-59c9e5438171",
+          "name": "Successful operation",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "assets"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: bearer",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "Bearer <token>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Account identifier that specifies which account is making the request",
+                "key": "Account-ID",
+                "value": "acc_123456"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "[\n  {\n    \"id\": 4777,\n    \"name\": \"string\",\n    \"allowed_campaign_ids\": [\n      603,\n      8977\n    ],\n    \"details\": {\n      \"file_format\": \"string\",\n      \"file_size\": 5955,\n      \"image_size\": {\n        \"width\": 6475,\n        \"height\": 9930\n      }\n    },\n    \"content\": \"string\",\n    \"landing_page_url\": \"string\",\n    \"asset_type\": \"string\",\n    \"url\": \"string\",\n    \"thumbnail_url\": \"string\",\n    \"uploading\": false,\n    \"category\": \"string\",\n    \"allowed_campaigns\": [\n      {\n        \"id\": 9374,\n        \"name\": \"string\",\n        \"color\": \"string\"\n      },\n      {\n        \"id\": 1904,\n        \"name\": \"string\",\n        \"color\": \"string\"\n      }\n    ]\n  },\n  {\n    \"id\": 6919,\n    \"name\": \"string\",\n    \"allowed_campaign_ids\": [\n      6112,\n      5942\n    ],\n    \"details\": {\n      \"file_format\": \"string\",\n      \"file_size\": 5560,\n      \"image_size\": {\n        \"width\": 4893,\n        \"height\": 533\n      }\n    },\n    \"content\": \"string\",\n    \"landing_page_url\": \"string\",\n    \"asset_type\": \"string\",\n    \"url\": \"string\",\n    \"thumbnail_url\": \"string\",\n    \"uploading\": true,\n    \"category\": \"string\",\n    \"allowed_campaigns\": [\n      {\n        \"id\": 9597,\n        \"name\": \"string\",\n        \"color\": \"string\"\n      },\n      {\n        \"id\": 2112,\n        \"name\": \"string\",\n        \"color\": \"string\"\n      }\n    ]\n  }\n]",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "cf320d25-1647-4089-a71a-d7936799245c",
+          "name": "Unauthorized",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "assets"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: bearer",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "Bearer <token>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Account identifier that specifies which account is making the request",
+                "key": "Account-ID",
+                "value": "acc_123456"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "Unauthorized",
+          "code": 401,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        },
+        {
+          "id": "c2182488-8335-45ca-8f73-803619bef085",
+          "name": "Forbidden",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "assets"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: bearer",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "Bearer <token>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Account identifier that specifies which account is making the request",
+                "key": "Account-ID",
+                "value": "acc_123456"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "Forbidden",
+          "code": 403,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "1e3a2eaf-7fe0-4d12-b451-5d05e4005264",
+          "name": "Record not found",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "assets"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: bearer",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "Bearer <token>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Account identifier that specifies which account is making the request",
+                "key": "Account-ID",
+                "value": "acc_123456"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "Not Found",
+          "code": 404,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "3ecc3792-519e-4660-9738-4207c707e429",
+      "name": "Get available asset categories",
+      "request": {
+        "name": "Get available asset categories",
+        "description": {
+          "content": "Returns all asset categories \n <Tip>**HTTP Request** <br/>` GET  https://api.firstpromoter.com/api/v2/affiliate/asset_categories`</Tip>",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "asset_categories"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": []
+        },
+        "header": [
+          {
+            "disabled": false,
+            "description": "(Required) Account identifier that specifies which account is making the request",
+            "key": "Account-ID",
+            "value": "<string>"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "1b6497f5-b288-4de9-b299-538e6d9757ec",
+          "name": "Successful operation",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "asset_categories"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: bearer",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "Bearer <token>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Account identifier that specifies which account is making the request",
+                "key": "Account-ID",
+                "value": "acc_123456"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        },
+        {
+          "id": "22be51bb-21e9-405a-ba56-1749c2c438ac",
+          "name": "Unauthorized",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "asset_categories"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: bearer",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "Bearer <token>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Account identifier that specifies which account is making the request",
+                "key": "Account-ID",
+                "value": "acc_123456"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "Unauthorized",
+          "code": 401,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.firstpromoter.com/api/v2/affiliate",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "2d471d5b-b40e-4bb7-b3af-e05ed3d1b926",
+    "name": "FirstPromoter Assets",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Get available assets ",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,324 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "FirstPromoter Batch Processes API",
+    "version": "1.0.0",
+    "description": "API for managing batch processes"
+  },
+  "servers": [
+    {
+      "url": "https://api.firstpromoter.com/api/v2/company",
+      "description": "Production server"
+    }
+  ],
+  "security": [
+    {
+      "BearerAuth": []
+    }
+  ],
+  "paths": {
+    "/batch_processes": {
+      "get": {
+        "summary": "List in progress batch processes.",
+        "description": "List batch processes that are in progress \n <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/batch_processes`</Tip>",
+        "operationId": "listBatchProcesses",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/AccountId"
+          },
+          {
+            "in": "query",
+            "name": "filters[status]",
+            "schema": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "enum": [
+                    "pending",
+                    "in_progress",
+                    "completed",
+                    "failed",
+                    "stopped"
+                  ]
+                },
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "enum": [
+                      "pending",
+                      "in_progress",
+                      "completed",
+                      "failed",
+                      "stopped"
+                    ]
+                  }
+                }
+              ]
+            },
+            "description": "Filter by status (array or string)",
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully retrieved batch processes",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/BatchProcess"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthenticated or missing bearer token"
+          },
+          "403": {
+            "description": "Forbidden - invalid user type or insufficient permissions",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/batch_processes/{id}": {
+      "get": {
+        "summary": "Show batch process",
+        "description": "Show details of a specific batch process \n <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/batch_processes/{id}`</Tip>",
+        "operationId": "getBatchProcess",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/AccountId"
+          },
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "integer"
+            },
+            "required": true,
+            "description": "Batch process id"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully retrieved batch process",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BatchProcess"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthenticated or missing bearer token"
+          },
+          "403": {
+            "description": "Forbidden - invalid user type or insufficient permissions",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/batch_processes/progress": {
+      "get": {
+        "summary": "Show progress",
+        "description": "Show progress of batch process. \n <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/batch_processes/progress`</Tip>",
+        "operationId": "getBatchProcessProgress",
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/AccountId"
+          },
+          {
+            "in": "query",
+            "name": "filters[status]",
+            "schema": {
+              "oneOf": [
+                {
+                  "type": "string",
+                  "enum": [
+                    "pending",
+                    "in_progress",
+                    "completed",
+                    "failed",
+                    "stopped"
+                  ]
+                },
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "enum": [
+                      "pending",
+                      "in_progress",
+                      "completed",
+                      "failed",
+                      "stopped"
+                    ]
+                  }
+                }
+              ]
+            },
+            "description": "Filter by status (array or string)",
+            "required": false
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully retrieved batch process progress",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "integer"
+                  },
+                  "example": {
+                    "32": 0,
+                    "31": 0,
+                    "30": 0
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthenticated or missing bearer token"
+          },
+          "403": {
+            "description": "Forbidden - invalid user type or insufficient permissions",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "parameters": {
+      "AccountId": {
+        "name": "Account-ID",
+        "in": "header",
+        "required": true,
+        "description": "Account ID. You can find your Account ID on Your FirstPromoter Dashboard. Navigate to Settings → Integrations",
+        "schema": {
+          "type": "string"
+        }
+      }
+    },
+    "schemas": {
+      "BatchProcess": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "example": 8
+          },
+          "status": {
+            "type": "string",
+            "enum": [
+              "pending",
+              "in_progress",
+              "completed",
+              "failed",
+              "stopped"
+            ],
+            "example": "stopped"
+          },
+          "total": {
+            "type": "integer",
+            "example": 5
+          },
+          "selected_total": {
+            "type": "integer",
+            "example": 5
+          },
+          "processed_count": {
+            "type": "integer",
+            "example": 0
+          },
+          "failed_count": {
+            "type": "integer",
+            "example": 0
+          },
+          "action_label": {
+            "type": "string",
+            "example": "referral/delete"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2025-03-26T15:15:34.908Z"
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "example": "2025-03-26T15:15:34.908Z"
+          },
+          "meta": {
+            "type": "object",
+            "nullable": true
+          },
+          "progress": {
+            "type": "integer",
+            "example": 0
+          },
+          "processing_errors": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "example": []
+          }
+        }
+      },
+      "Error": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "example": "Invalid user type"
+          },
+          "code": {
+            "type": "string",
+            "example": "forbidden"
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "description": "API key passed as a Bearer token in the Authorization header. You can find your API Key on Your FirstPromoter Dashboard. Navigate to Settings → Integrations section → Manage API Keys"
+      },
+      "accountId": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "ACCOUNT-ID",
+        "description": "Account ID required with bearer token"
+      }
+    }
+  }
+}

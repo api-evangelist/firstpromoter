@@ -1,0 +1,74 @@
+generated: '2026-08-13'
+method: searched
+source: >-
+  https://docs.firstpromoter.com/script-docs/fpr-js-docs,
+  https://docs.firstpromoter.com/advanced/embed-dashboard-login,
+  https://docs.firstpromoter.com/advanced/embed-dashboard-logout,
+  https://docs.firstpromoter.com/guides/tracking-with-fprjs
+name: FirstPromoter client-side and embeddable components
+description: >-
+  FirstPromoter's client-side surface is a single browser tracking library plus a fully hosted,
+  embeddable promoter dashboard. There is no component library, no web components and no element
+  primitives - the embed is an iframe of FirstPromoter's own UI, signed in with a short-lived token
+  your backend mints.
+families:
+  - name: Tracking script
+    kind: browser library
+    components:
+      - name: fpr.js
+        loader: '<script src="https://cdn.firstpromoter.com/fpr.js" async></script>'
+        bootstrap: 'fpr("init", {cid: "<company_id>"}); fpr("click");'
+        docs: https://docs.firstpromoter.com/script-docs/fpr-js-docs
+        placement: HEAD of every marketing/public page, loaded async
+        methods:
+          - name: fpr("init", options, callback?)
+            description: >-
+              Initializes tracking. Options - cid (required company id), ref_id, tid, url, domain,
+              referrer. Unknown keys are ignored.
+          - name: fpr("click", payload?, callback?)
+            description: Records the referred click; payload overrides stored values first.
+        cookies:
+          - name: _fprom_tid
+            purpose: Visitor tracking id, the attribution key passed to the Tracking API as tid.
+          - name: _fprom_ref
+            purpose: Referral id of the promoter.
+          - name: _fprom_track
+            purpose: Legacy tracking cookie for accounts created before April 2021.
+        note: >-
+          Distribution is unpinned - the CDN URL carries no version. See
+          packages/firstpromoter-packages.yml.
+  - name: Embedded promoter dashboard
+    kind: hosted iframe
+    components:
+      - name: Embedded dashboard with auto-login
+        docs: https://docs.firstpromoter.com/advanced/embed-dashboard-login
+        mechanism: >-
+          Your backend POSTs the promoter's promoter_id or cust_id to the iframe login endpoint and
+          receives a short-lived bearer token scoped to that promoter and account. The token is
+          passed as the tk query parameter on the iframe src, and the dashboard loads signed in.
+        endpoint: POST https://v2.firstpromoter.com/api/v2/promoters/iframe_login
+        auth: Server-side only - Authorization Bearer API key plus ACCOUNT-ID. Never call from the browser.
+        requirements:
+          - A custom domain configured on the FirstPromoter account
+          - Business plan or higher
+          - Server-side API access
+      - name: Embedded dashboard logout
+        docs: https://docs.firstpromoter.com/advanced/embed-dashboard-logout
+        mechanism: End a promoter's embedded session from your backend, or from inside the iframe.
+  - name: Hosted promoter portal
+    kind: hosted surface
+    components:
+      - name: Affiliate portal / promoter dashboard
+        description: >-
+          Brandable hosted dashboard with custom domains, custom CSS and JavaScript, custom signup
+          fields and removable FirstPromoter branding (plan-dependent).
+        docs: https://firstpromoter.com/pricing
+findings:
+  - >-
+    The iframe login endpoint is served from https://v2.firstpromoter.com - a fourth API host that
+    appears in NO published OpenAPI document and is not the api.firstpromoter.com base every spec
+    declares. An integrator following only the specs will never find it.
+  - >-
+    There is no npm-distributed component package. Everything client-side is a script tag or an
+    iframe.
+component_count: 6

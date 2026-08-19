@@ -1,0 +1,1040 @@
+{
+  "item": [
+    {
+      "id": "48bcb3c1-9a00-42b7-a6eb-72c46575ebe1",
+      "name": "Capture a lead when they sign-up or fill an optin form. This endpoint is used to track leads and sign-ups. It's not for tracking the actual sales and commissions. <br/>  <br/> Sign-ups are tracked as leads in FirstPromoter so when a person referred by the promoter/affiliate signs up, a new referral should be added inside FirstPromoter **(you can see them inside the `Referrals` section as `Leads`)**. <br/><br/><Tip>The recommended way to do this is to grab the `_fprom_tid` **(_fprom_track for accounts created prior to April 2021)** cookie value(which keeps the tracking id and referral identification) on your server and send it along with the sign-up data through the tid parameter. <br/><br/> **Alternative:** In some special cases, you can refer sign ups directly to a promoter, by passing the referral id through ref_id parameter. Be careful when using this because the referral id can be modified by the promoter by default, however you can disable that from the campaign configuration page.</Tip><Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/track/signup`</Tip>",
+      "request": {
+        "name": "Capture a lead when they sign-up or fill an optin form. This endpoint is used to track leads and sign-ups. It's not for tracking the actual sales and commissions. <br/>  <br/> Sign-ups are tracked as leads in FirstPromoter so when a person referred by the promoter/affiliate signs up, a new referral should be added inside FirstPromoter **(you can see them inside the `Referrals` section as `Leads`)**. <br/><br/><Tip>The recommended way to do this is to grab the `_fprom_tid` **(_fprom_track for accounts created prior to April 2021)** cookie value(which keeps the tracking id and referral identification) on your server and send it along with the sign-up data through the tid parameter. <br/><br/> **Alternative:** In some special cases, you can refer sign ups directly to a promoter, by passing the referral id through ref_id parameter. Be careful when using this because the referral id can be modified by the promoter by default, however you can disable that from the campaign configuration page.</Tip><Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/track/signup`</Tip>",
+        "description": {
+          "content": "Capture a lead when they sign-up or fill an optin form. This endpoint is used to track leads and sign-ups. It's not for tracking the actual sales and commissions. <br/>  <br/> Sign-ups are tracked as leads in FirstPromoter so when a person referred by the promoter/affiliate signs up, a new referral should be added inside FirstPromoter **(you can see them inside the `Referrals` section as `Leads`)**. <br/><br/><Tip>The recommended way to do this is to grab the `_fprom_tid` **(_fprom_track for accounts created prior to April 2021)** cookie value(which keeps the tracking id and referral identification) on your server and send it along with the sign-up data through the tid parameter. <br/><br/> **Alternative:** In some special cases, you can refer sign ups directly to a promoter, by passing the referral id through ref_id parameter. Be careful when using this because the referral id can be modified by the promoter by default, however you can disable that from the campaign configuration page.</Tip><Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/track/signup`</Tip>",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "signup"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": []
+        },
+        "header": [
+          {
+            "disabled": false,
+            "description": "(Required) Account id. You can find your Account ID on Your FirstPromoter Dashboard. Navigate to Settings → Integrations",
+            "key": "Account-ID",
+            "value": "<string>"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "POST",
+        "auth": null,
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [
+        {
+          "id": "32198a22-584b-44c2-af65-833de1cae412",
+          "name": "Successful signup response",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "signup"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: bearer",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "Bearer <token>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Account id. You can find your Account ID on Your FirstPromoter Dashboard. Navigate to Settings → Integrations",
+                "key": "Account-ID",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"id\": 45831611,\n  \"etype\": \"signup\",\n  \"sale_amount\": null,\n  \"original_sale_amount\": null,\n  \"original_sale_currency\": null,\n  \"event_id\": null,\n  \"plan_id\": null,\n  \"billing_period\": null,\n  \"created_at\": \"2025-04-25T09:29:51.973Z\",\n  \"referral\": {\n    \"id\": 29203686,\n    \"email\": \"testme@test1.com\",\n    \"uid\": null\n  }\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "4d31f043-af5a-440b-9138-04af1bdd9b95",
+          "name": "Bad Request",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "signup"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: bearer",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "Bearer <token>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Account id. You can find your Account ID on Your FirstPromoter Dashboard. Navigate to Settings → Integrations",
+                "key": "Account-ID",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"message\": \"Error. Email and uid can not be blank!\"\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "0af03e83-b2f4-4a1d-a7f3-bbcebc6adabe",
+          "name": "Not Found",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "signup"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: bearer",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "Bearer <token>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Account id. You can find your Account ID on Your FirstPromoter Dashboard. Navigate to Settings → Integrations",
+                "key": "Account-ID",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Not Found",
+          "code": 404,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"message\": \"Visitor  invalid, not found or you are trying to use the signup tracking test via API which doesn't work on API calls.\"\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "36cb7d2c-5375-439a-bbf0-ec1241cc18d2",
+          "name": "Unprocessable Entity",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "signup"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: bearer",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "Bearer <token>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Account id. You can find your Account ID on Your FirstPromoter Dashboard. Navigate to Settings → Integrations",
+                "key": "Account-ID",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+          "code": 422,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"transaction_id\": \"there is already a signup event registered on this lead\"\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "42754df2-3653-4575-a3ad-f44c7ff4a650",
+      "name": "Assign sales and commissions to your promoters. To track sales and generate commissions correctly, you need to use this API call each time a non-zero amount sale is processed in your system, even if it comes from a recurring charge or one-time charge. <Note>To avoid fraudulent sales, we don't use JS conversion pixels to track sales, which are very unreliable and can be easily faked. Instead, we use server-side tracking for all sales to ensure that a sale is tracked only when you actually receive money in your billing account.  <br/><br/>To maintain the same standards with the API, we recommend making the sale API call (this call) only when you receive confirmation of the sale from your billing provider, such as from a webhook, an IPN, or a success response from an API charge call.<br/><br/>You just need to pass the sale amount (before taxes) and we'll take care of the rest. The commissions/rewards will be calculated based on that amount and the plan ID, in case you use the plan-level rewards feature.</Note> Using email or UID parameters, we identify the lead/customer who generated the sale, which also helps us determine the promoter who owns the reward/commission. <br/><br/>The lead is added to our system either by the client signup tracking script when the user signs up or by calling the signup API endpoint. There is also the option to bypass the signup tracking by using TID or ref_id parameters, which will create the lead and assign the sale in one go.<br/><br/>**If we don't find the lead in our system, then it means that the sale is not a referral sale, you'll get a 404 response. Also, if the promoter is banned, you'll get a 404 response. You don't have to identify which sale is from referrals and which is not; we'll take care of that.** <Tip>**For zero-decimal** currencies like `JPY`, `amount` and `mrr` parameters should be sent as **whole values**. <br/><br/>**For other currencies**, `amount` and `mrr` parameter values should be in cents, i.e., you will need to **multiply the value by 100** before sending the request.</Tip><Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/track/sale`</Tip>",
+      "request": {
+        "name": "Assign sales and commissions to your promoters. To track sales and generate commissions correctly, you need to use this API call each time a non-zero amount sale is processed in your system, even if it comes from a recurring charge or one-time charge. <Note>To avoid fraudulent sales, we don't use JS conversion pixels to track sales, which are very unreliable and can be easily faked. Instead, we use server-side tracking for all sales to ensure that a sale is tracked only when you actually receive money in your billing account.  <br/><br/>To maintain the same standards with the API, we recommend making the sale API call (this call) only when you receive confirmation of the sale from your billing provider, such as from a webhook, an IPN, or a success response from an API charge call.<br/><br/>You just need to pass the sale amount (before taxes) and we'll take care of the rest. The commissions/rewards will be calculated based on that amount and the plan ID, in case you use the plan-level rewards feature.</Note> Using email or UID parameters, we identify the lead/customer who generated the sale, which also helps us determine the promoter who owns the reward/commission. <br/><br/>The lead is added to our system either by the client signup tracking script when the user signs up or by calling the signup API endpoint. There is also the option to bypass the signup tracking by using TID or ref_id parameters, which will create the lead and assign the sale in one go.<br/><br/>**If we don't find the lead in our system, then it means that the sale is not a referral sale, you'll get a 404 response. Also, if the promoter is banned, you'll get a 404 response. You don't have to identify which sale is from referrals and which is not; we'll take care of that.** <Tip>**For zero-decimal** currencies like `JPY`, `amount` and `mrr` parameters should be sent as **whole values**. <br/><br/>**For other currencies**, `amount` and `mrr` parameter values should be in cents, i.e., you will need to **multiply the value by 100** before sending the request.</Tip><Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/track/sale`</Tip>",
+        "description": {
+          "content": "Assign sales and commissions to your promoters. To track sales and generate commissions correctly, you need to use this API call each time a non-zero amount sale is processed in your system, even if it comes from a recurring charge or one-time charge. <Note>To avoid fraudulent sales, we don't use JS conversion pixels to track sales, which are very unreliable and can be easily faked. Instead, we use server-side tracking for all sales to ensure that a sale is tracked only when you actually receive money in your billing account.  <br/><br/>To maintain the same standards with the API, we recommend making the sale API call (this call) only when you receive confirmation of the sale from your billing provider, such as from a webhook, an IPN, or a success response from an API charge call.<br/><br/>You just need to pass the sale amount (before taxes) and we'll take care of the rest. The commissions/rewards will be calculated based on that amount and the plan ID, in case you use the plan-level rewards feature.</Note> Using email or UID parameters, we identify the lead/customer who generated the sale, which also helps us determine the promoter who owns the reward/commission. <br/><br/>The lead is added to our system either by the client signup tracking script when the user signs up or by calling the signup API endpoint. There is also the option to bypass the signup tracking by using TID or ref_id parameters, which will create the lead and assign the sale in one go.<br/><br/>**If we don't find the lead in our system, then it means that the sale is not a referral sale, you'll get a 404 response. Also, if the promoter is banned, you'll get a 404 response. You don't have to identify which sale is from referrals and which is not; we'll take care of that.** <Tip>**For zero-decimal** currencies like `JPY`, `amount` and `mrr` parameters should be sent as **whole values**. <br/><br/>**For other currencies**, `amount` and `mrr` parameter values should be in cents, i.e., you will need to **multiply the value by 100** before sending the request.</Tip><Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/track/sale`</Tip>",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "sale"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": []
+        },
+        "header": [
+          {
+            "disabled": false,
+            "description": "(Required) Account id. You can find your Account ID on Your FirstPromoter Dashboard. Navigate to Settings → Integrations",
+            "key": "Account-ID",
+            "value": "<string>"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "POST",
+        "auth": null,
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [
+        {
+          "id": "6cc9268b-2883-4bb9-b92b-7bb74d4367a1",
+          "name": "Sale tracked successfully",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "sale"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: bearer",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "Bearer <token>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Account id. You can find your Account ID on Your FirstPromoter Dashboard. Navigate to Settings → Integrations",
+                "key": "Account-ID",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"id\": 45831949,\n  \"etype\": \"sale\",\n  \"sale_amount\": 2000,\n  \"original_sale_amount\": 2000,\n  \"original_sale_currency\": null,\n  \"event_id\": null,\n  \"plan_id\": null,\n  \"billing_period\": null,\n  \"created_at\": \"2025-04-25T09:39:42.289Z\",\n  \"referral\": {\n    \"id\": 29203686,\n    \"email\": \"testme@test1.com\",\n    \"uid\": null\n  },\n  \"commissions\": [\n    {\n      \"id\": 13533003,\n      \"status\": \"approved\",\n      \"metadata\": {},\n      \"is_self_referral\": false,\n      \"commission_type\": \"sale\",\n      \"created_by_user_email\": null,\n      \"created_by_user_at\": null,\n      \"sale_amount\": 2000,\n      \"original_sale_amount\": 2000,\n      \"original_sale_currency\": null,\n      \"event_id\": null,\n      \"plan_id\": null,\n      \"tier\": 1,\n      \"internal_note\": null,\n      \"external_note\": null,\n      \"unit\": \"cash\",\n      \"fraud_check\": \"no_suspicion\",\n      \"amount\": 400,\n      \"is_paid\": false,\n      \"is_split\": false,\n      \"created_at\": \"2025-04-25T09:39:42Z\",\n      \"status_updated_at\": null,\n      \"promoter_campaign\": {\n        \"id\": 14850130,\n        \"campaign_id\": 28004,\n        \"promoter_id\": 8262622,\n        \"created_at\": \"2025-01-16T18:16:41Z\",\n        \"promoter\": {\n          \"id\": 8262622,\n          \"email\": \"test@promoter.com\",\n          \"name\": \"Test Promoter\"\n        },\n        \"campaign\": {\n          \"id\": 28004,\n          \"name\": \"Quinn Ramirez\",\n          \"color\": \"#EC4899\"\n        }\n      },\n      \"referral\": {\n        \"id\": 29203686,\n        \"email\": \"testme@test1.com\",\n        \"uid\": null\n      },\n      \"reward\": {\n        \"id\": 157427,\n        \"name\": \"20% recurring commission\"\n      }\n    },\n    {\n      \"id\": 13533003,\n      \"status\": \"approved\",\n      \"metadata\": {},\n      \"is_self_referral\": false,\n      \"commission_type\": \"sale\",\n      \"created_by_user_email\": null,\n      \"created_by_user_at\": null,\n      \"sale_amount\": 2000,\n      \"original_sale_amount\": 2000,\n      \"original_sale_currency\": null,\n      \"event_id\": null,\n      \"plan_id\": null,\n      \"tier\": 1,\n      \"internal_note\": null,\n      \"external_note\": null,\n      \"unit\": \"cash\",\n      \"fraud_check\": \"no_suspicion\",\n      \"amount\": 400,\n      \"is_paid\": false,\n      \"is_split\": false,\n      \"created_at\": \"2025-04-25T09:39:42Z\",\n      \"status_updated_at\": null,\n      \"promoter_campaign\": {\n        \"id\": 14850130,\n        \"campaign_id\": 28004,\n        \"promoter_id\": 8262622,\n        \"created_at\": \"2025-01-16T18:16:41Z\",\n        \"promoter\": {\n          \"id\": 8262622,\n          \"email\": \"test@promoter.com\",\n          \"name\": \"Test Promoter\"\n        },\n        \"campaign\": {\n          \"id\": 28004,\n          \"name\": \"Quinn Ramirez\",\n          \"color\": \"#EC4899\"\n        }\n      },\n      \"referral\": {\n        \"id\": 29203686,\n        \"email\": \"testme@test1.com\",\n        \"uid\": null\n      },\n      \"reward\": {\n        \"id\": 157427,\n        \"name\": \"20% recurring commission\"\n      }\n    }\n  ]\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "20a68f7f-4b6c-4720-b4b1-d1aa0bea4d2b",
+          "name": "Bad Request",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "sale"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: bearer",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "Bearer <token>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Account id. You can find your Account ID on Your FirstPromoter Dashboard. Navigate to Settings → Integrations",
+                "key": "Account-ID",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"message\": \"Error. Amount blank or invalid.\"\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "14f0f454-825d-4ec0-a22c-e2a1878aa91c",
+          "name": "Not Found",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "sale"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: bearer",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "Bearer <token>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Account id. You can find your Account ID on Your FirstPromoter Dashboard. Navigate to Settings → Integrations",
+                "key": "Account-ID",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Not Found",
+          "code": 404,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"message\": \"Referral corresponding to email or uid parameter not found or promoter is banned.\",\n  \"code\": \"not_found\"\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "e2f7c960-c98e-42b6-b411-b64776ac83f6",
+          "name": "Conflict",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "sale"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: bearer",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "Bearer <token>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Account id. You can find your Account ID on Your FirstPromoter Dashboard. Navigate to Settings → Integrations",
+                "key": "Account-ID",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Conflict",
+          "code": 409,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"message\": \"The 'sale' event with the id 'test_sale_12340987' already exists.\"\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "5696bbdb-9b31-427e-a43a-44cf198fab0c",
+      "name": "The refund call is similar to the sale call. It works the same way, except that it generates negative commissions. <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/track/refund`</Tip>",
+      "request": {
+        "name": "The refund call is similar to the sale call. It works the same way, except that it generates negative commissions. <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/track/refund`</Tip>",
+        "description": {
+          "content": "The refund call is similar to the sale call. It works the same way, except that it generates negative commissions. <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/track/refund`</Tip>",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "refund"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": []
+        },
+        "header": [
+          {
+            "disabled": false,
+            "description": "(Required) Account id. You can find your Account ID on Your FirstPromoter Dashboard. Navigate to Settings → Integrations",
+            "key": "Account-ID",
+            "value": "<string>"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "POST",
+        "auth": null,
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [
+        {
+          "id": "6970d91c-4dc2-4cdc-94a8-7e08a8fd6e3f",
+          "name": "Success response",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "refund"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: bearer",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "Bearer <token>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Account id. You can find your Account ID on Your FirstPromoter Dashboard. Navigate to Settings → Integrations",
+                "key": "Account-ID",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"id\": 33847726,\n  \"type\": \"refund\",\n  \"amount_cents\": -1000,\n  \"reward\": {\n    \"id\": 10940148,\n    \"status\": \"approved\",\n    \"amount\": -200,\n    \"unit\": \"cash\",\n    \"created_at\": \"2024-09-11T14:36:01.016Z\",\n    \"lead\": {\n      \"id\": 20738339,\n      \"state\": \"cancelled\",\n      \"email\": \"hello@testmintli.com\",\n      \"uid\": null,\n      \"customer_since\": \"2024-09-11T14:22:12.160Z\",\n      \"cancelled_at\": \"2024-09-11T15:07:46.174Z\",\n      \"plan_name\": null,\n      \"suspicion\": \"no_suspicion\",\n      \"username\": null,\n      \"website\": null,\n      \"created_at\": \"2024-09-09T16:22:44.168Z\",\n      \"split_promotion_id\": null,\n      \"custom_fields\": null,\n      \"split_percentage_value\": null,\n      \"visitor_sub_id\": null\n    },\n    \"event_id\": \"test_sale_12340987_refund\",\n    \"conversion_amount\": -1000,\n    \"tier_level\": 1,\n    \"split_type\": null\n  },\n  \"lead\": {\n    \"id\": 20738339,\n    \"state\": \"cancelled\",\n    \"email\": \"hello@testmintli.com\",\n    \"uid\": null,\n    \"customer_since\": \"2024-09-11T14:22:12.160Z\",\n    \"cancelled_at\": \"2024-09-11T15:07:46.174Z\",\n    \"plan_name\": null,\n    \"suspicion\": \"no_suspicion\",\n    \"username\": null,\n    \"website\": null,\n    \"created_at\": \"2024-09-09T16:22:44.168Z\",\n    \"split_promotion_id\": null,\n    \"custom_fields\": null,\n    \"split_percentage_value\": null,\n    \"visitor_sub_id\": null\n  },\n  \"promoter\": {\n    \"id\": 3920164,\n    \"status\": \"active\",\n    \"cust_id\": \"\",\n    \"email\": \"peluwydo@mailinator.com\",\n    \"created_at\": \"2022-04-26T15:28:24.800Z\",\n    \"temp_password\": \"xxxxxxxxxx\",\n    \"default_promotion_id\": 4210919,\n    \"pref\": \"db1znwe\",\n    \"default_ref_id\": \"8yi2epelut\",\n    \"note\": \"This is a note\",\n    \"w8_form_url\": null,\n    \"w9_form_url\": null,\n    \"parent_promoter_id\": 577918,\n    \"earnings_balance\": {\n      \"cash\": 50744\n    },\n    \"current_balance\": {\n      \"cash\": 20044\n    },\n    \"paid_balance\": {\n      \"cash\": 30700\n    },\n    \"auth_token\": \"xxxxxxxxxxxxxx\"\n  }\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "a4621c8b-2b38-4467-8b00-147671814ef8",
+          "name": "No Content",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "refund"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: bearer",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "Bearer <token>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Account id. You can find your Account ID on Your FirstPromoter Dashboard. Navigate to Settings → Integrations",
+                "key": "Account-ID",
+                "value": "<string>"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "No Content",
+          "code": 204,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        },
+        {
+          "id": "2c452ebc-1571-4304-a5a0-c242291b1c32",
+          "name": "Bad Request",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "refund"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: bearer",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "Bearer <token>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Account id. You can find your Account ID on Your FirstPromoter Dashboard. Navigate to Settings → Integrations",
+                "key": "Account-ID",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"message\": \"Error. Amount blank or invalid.\"\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "2fafa35f-7321-4a9b-87a2-4675b9c1eeca",
+          "name": "Conflict",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "refund"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: bearer",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "Bearer <token>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Account id. You can find your Account ID on Your FirstPromoter Dashboard. Navigate to Settings → Integrations",
+                "key": "Account-ID",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Conflict",
+          "code": 409,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"message\": \"The 'refund' event with the id 'test_sale_12340987_refund' already exists.\"\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "a95451cc-2cf3-4f68-bcec-135a12173634",
+      "name": "This call will mark the customer as cancelled and will decrease the MRR generated by them. <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/track/cancellation`</Tip>",
+      "request": {
+        "name": "This call will mark the customer as cancelled and will decrease the MRR generated by them. <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/track/cancellation`</Tip>",
+        "description": {
+          "content": "This call will mark the customer as cancelled and will decrease the MRR generated by them. <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/track/cancellation`</Tip>",
+          "type": "text/plain"
+        },
+        "url": {
+          "path": [
+            "cancellation"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": []
+        },
+        "header": [
+          {
+            "disabled": false,
+            "description": "(Required) Account id. You can find your Account ID on Your FirstPromoter Dashboard. Navigate to Settings → Integrations",
+            "key": "Account-ID",
+            "value": "<string>"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "POST",
+        "auth": null,
+        "body": {
+          "mode": "raw",
+          "raw": "{}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [
+        {
+          "id": "625b9c42-f070-4852-a5b0-a638e8bbd50e",
+          "name": "Success response",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "cancellation"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: bearer",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "Bearer <token>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Account id. You can find your Account ID on Your FirstPromoter Dashboard. Navigate to Settings → Integrations",
+                "key": "Account-ID",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"id\": 33848911,\n  \"type\": \"cancellation\",\n  \"amount_cents\": null,\n  \"reward\": null,\n  \"lead\": {\n    \"id\": 20738339,\n    \"state\": \"cancelled\",\n    \"email\": \"hello@testmintli.com\",\n    \"uid\": null,\n    \"customer_since\": \"2024-09-11T14:22:12.160Z\",\n    \"cancelled_at\": \"2024-09-11T15:07:46.174Z\",\n    \"plan_name\": null,\n    \"suspicion\": \"no_suspicion\",\n    \"username\": null,\n    \"website\": null,\n    \"created_at\": \"2024-09-09T16:22:44.168Z\",\n    \"split_promotion_id\": null,\n    \"custom_fields\": null,\n    \"split_percentage_value\": null,\n    \"visitor_sub_id\": null\n  },\n  \"promoter\": {\n    \"id\": 3920164,\n    \"status\": \"active\",\n    \"cust_id\": \"\",\n    \"email\": \"peluwydo@mailinator.com\",\n    \"created_at\": \"2022-04-26T15:28:24.800Z\",\n    \"temp_password\": \"xxxxxxxxxx\",\n    \"default_promotion_id\": 4210919,\n    \"pref\": \"db1znwe\",\n    \"default_ref_id\": \"8yi2epelut\",\n    \"note\": \"This is a note\",\n    \"w8_form_url\": null,\n    \"w9_form_url\": null,\n    \"parent_promoter_id\": 577918,\n    \"earnings_balance\": {\n      \"cash\": 50744\n    },\n    \"current_balance\": {\n      \"cash\": 20044\n    },\n    \"paid_balance\": {\n      \"cash\": 30700\n    },\n    \"auth_token\": \"xxxxxxxxxxxxxx\"\n  }\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "ff615a9c-5a3e-45cb-91b3-b31f3a60b0e1",
+          "name": "Bad Request",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "cancellation"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: bearer",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "Bearer <token>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Account id. You can find your Account ID on Your FirstPromoter Dashboard. Navigate to Settings → Integrations",
+                "key": "Account-ID",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Bad Request",
+          "code": 400,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"message\": \"Error. Email and uid can not be blank!\"\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.firstpromoter.com/api/v2/track",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "91d14a06-148a-4f6f-81ed-576bf68471c7",
+    "name": "FirstPromoter Tracking API V2",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Our tracking API allows companies to track any type of signups, sales, cancellations and refunds for any billing provider, you are not limited to our built-in integrations with Stripe, Chargebee, Recurly and Braintree.",
+      "type": "text/plain"
+    }
+  }
+}

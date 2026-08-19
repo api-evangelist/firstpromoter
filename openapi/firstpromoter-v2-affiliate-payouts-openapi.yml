@@ -1,0 +1,382 @@
+openapi: 3.0.1
+info:
+  title: FirstPromoter Affiliate Payouts API
+  version: '1.0'
+  description: API for managing affiliate payouts
+servers:
+- url: https://api.firstpromoter.com/api/v2/affiliate
+security:
+- BearerAuth: []
+paths:
+  /payouts:
+    get:
+      summary: Get all payouts
+      tags:
+      - Payouts
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      - name: q
+        in: query
+        description: Search params. Searches by 'promoter.profile.first_name`, `promoter.profile.last_name`, `promoter.user.email`
+        schema:
+          type: string
+      - name: filters[status]
+        in: query
+        description: Status filter
+        schema:
+          type: string
+          enum:
+          - pending
+          - completed
+          - failed
+          - processing
+          - cancelled
+      - name: filters[campaign_id]
+        in: query
+        description: Campaign ids filter
+        schema:
+          oneOf:
+          - type: integer
+          - type: array
+            items:
+              type: integer
+      - name: filters[payments_batch_id]
+        in: query
+        description: Payment batches ids filter
+        schema:
+          oneOf:
+          - type: integer
+          - type: array
+            items:
+              type: integer
+      - name: filters[due_period]
+        in: query
+        description: Due period filter
+        schema:
+          type: string
+          enum:
+          - next
+          - overdue
+          - custom
+      - name: filters[period_start]
+        in: query
+        description: Period start filter. Send "not_set" for returning the ones with period_start == null
+        schema:
+          type: string
+          format: date
+      - name: filters[period_end]
+        in: query
+        description: Period end filter. Send "not_set" for returning the ones with period_end == null
+        schema:
+          type: string
+          format: date
+      - name: filters[payout_method]
+        in: query
+        description: Payout method filter
+        schema:
+          type: string
+          enum:
+          - paypal
+          - bank
+          - wise
+          - crypto
+          - custom
+          - dots
+          - not_set
+      - name: filters[group_ref]
+        in: query
+        description: Group ref filter
+        schema:
+          type: string
+      responses:
+        '200':
+          description: List of payouts
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Payout'
+                  meta:
+                    $ref: '#/components/schemas/PayoutMeta'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+  /payouts/due_stats:
+    get:
+      summary: Get due payout stats
+      tags:
+      - Payouts
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      responses:
+        '200':
+          description: Payout stats
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  meta:
+                    $ref: '#/components/schemas/PayoutMeta'
+                  data:
+                    type: object
+                    properties:
+                      next:
+                        $ref: '#/components/schemas/PayoutStats'
+                      overdue:
+                        $ref: '#/components/schemas/PayoutStats'
+                      custom:
+                        $ref: '#/components/schemas/PayoutStats'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+  /payouts/export:
+    get:
+      summary: Export payouts
+      tags:
+      - Payouts
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      - name: q
+        in: query
+        description: Search params
+        schema:
+          type: string
+      - $ref: '#/components/parameters/filters'
+      responses:
+        '200':
+          description: Payouts exported successfully
+          content:
+            text/csv:
+              schema:
+                type: string
+        '202':
+          description: Export is being processed
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+components:
+  schemas:
+    Payout:
+      type: object
+      properties:
+        id:
+          type: integer
+        status:
+          type: string
+          enum:
+          - pending
+          - completed
+          - failed
+          - processing
+          - cancelled
+        amount:
+          type: number
+          format: float
+        payments_batch_id:
+          type: integer
+        tax_rate:
+          type: number
+          format: float
+        unit:
+          type: string
+        period_start:
+          type: string
+          format: date
+        period_end:
+          type: string
+          format: date
+        paid_at:
+          type: string
+          format: date-time
+        processing_started_at:
+          type: string
+          format: date-time
+        failed_at:
+          type: string
+          format: date-time
+        error:
+          type: string
+        total_incl_tax:
+          type: number
+          format: float
+        created_at:
+          type: string
+          format: date-time
+        payout_method:
+          type: object
+        promoter:
+          type: object
+          properties:
+            id:
+              type: integer
+            email:
+              type: string
+            name:
+              type: string
+        campaign:
+          type: object
+          properties:
+            id:
+              type: integer
+            name:
+              type: string
+            color:
+              type: string
+    PayoutMeta:
+      type: object
+      properties:
+        net_payout_days:
+          type: integer
+        payout_cycle:
+          type: string
+        min_payment:
+          type: number
+          format: float
+        min_paying_customers:
+          type: integer
+        terms_description:
+          type: string
+        selected_payout_methods:
+          type: array
+          items:
+            type: string
+        payout_method_options:
+          type: object
+        managed_payouts:
+          type: boolean
+    PayoutStats:
+      type: object
+      properties:
+        promoters_count:
+          type: integer
+        amounts:
+          type: object
+          additionalProperties:
+            type: number
+        total_incl_tax:
+          type: number
+        due_date:
+          type: string
+          format: date
+        period_end:
+          type: string
+          format: date
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: string
+        errors:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string
+  parameters:
+    AccountId:
+      name: Account-ID
+      in: header
+      required: true
+      description: Account identifier that specifies which account is making the request
+      schema:
+        type: string
+        example: acc_123456
+    filters:
+      name: filters
+      in: query
+      description: Filter parameters
+      schema:
+        type: object
+        properties:
+          status:
+            type: string
+            enum:
+            - pending
+            - completed
+            - failed
+            - processing
+            - cancelled
+          campaign_id:
+            oneOf:
+            - type: integer
+            - type: array
+              items:
+                type: integer
+          payments_batch_id:
+            oneOf:
+            - type: integer
+            - type: array
+              items:
+                type: integer
+          due_period:
+            type: string
+            enum:
+            - next
+            - overdue
+            - custom
+          period_start:
+            type: string
+            format: date
+          period_end:
+            type: string
+            format: date
+          payout_method:
+            type: string
+            enum:
+            - paypal
+            - bank
+            - wise
+            - crypto
+            - custom
+            - dots
+            - not_set
+          group_ref:
+            type: string
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: Access token passed as a Bearer token in the Authorization header
+    accountId:
+      type: apiKey
+      in: header
+      name: ACCOUNT-ID
+      description: Account ID required with bearer token
+  responses:
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Forbidden:
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    UnprocessableEntity:
+      description: Unprocessable Entity
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'

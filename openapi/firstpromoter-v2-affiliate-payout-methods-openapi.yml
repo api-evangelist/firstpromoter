@@ -1,0 +1,420 @@
+openapi: 3.0.1
+info:
+  title: FirstPromoter API
+  version: '1.0'
+  description: API for managing affiliate payout methods
+servers:
+- url: https://api.firstpromoter.com/api/v2/affiliate
+security:
+- BearerAuth: []
+paths:
+  /payout_methods:
+    get:
+      summary: Get all payout methods
+      tags:
+      - Payout Methods
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      responses:
+        '200':
+          description: List of payout methods
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/PayoutMethod'
+                  meta:
+                    type: object
+                    properties:
+                      selected_payout_methods:
+                        type: array
+                        items:
+                          type: string
+                      payout_method_options:
+                        type: object
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+    post:
+      summary: Create a payout method
+      tags:
+      - Payout Methods
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PayoutMethodCreate'
+      responses:
+        '200':
+          description: Created payout method
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PayoutMethod'
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+  /payout_methods/{id}:
+    get:
+      summary: Get a payout method
+      tags:
+      - Payout Methods
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+        description: Payout method ID
+      responses:
+        '200':
+          description: Payout method details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PayoutMethod'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    put:
+      summary: Update a payout method
+      tags:
+      - Payout Methods
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+        description: Payout method ID
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PayoutMethodUpdate'
+      responses:
+        '200':
+          description: Updated payout method
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PayoutMethod'
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '422':
+          $ref: '#/components/responses/UnprocessableEntity'
+    delete:
+      summary: Delete a payout method
+      tags:
+      - Payout Methods
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+        description: Payout method ID
+      responses:
+        '200':
+          description: Payout method deleted successfully
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+components:
+  parameters:
+    AccountId:
+      name: Account-ID
+      in: header
+      required: true
+      description: Account identifier that specifies which account is making the request
+      schema:
+        type: string
+        example: acc_123456
+  schemas:
+    PayoutMethod:
+      type: object
+      properties:
+        id:
+          type: integer
+        method:
+          type: string
+          enum:
+          - paypal
+          - bank
+          - wise
+          - crypto
+          - custom
+          - dots
+        date_added:
+          type: string
+          format: date-time
+        is_disabled:
+          type: boolean
+        meta:
+          type: object
+        is_selected:
+          type: boolean
+        details:
+          $ref: '#/components/schemas/PayoutMethodDetails'
+        managed_payouts:
+          type: boolean
+    PayoutMethodDetails:
+      type: object
+      properties:
+        paypal_email:
+          type: string
+        wise_email:
+          type: string
+        wallet_address:
+          type: string
+        crypto_currency:
+          type: string
+        bank_country:
+          type: string
+          enum:
+          - AD
+          - AE
+          - AL
+          - AT
+          - AU
+          - AZ
+          - BA
+          - BE
+          - BG
+          - BH
+          - BR
+          - BY
+          - CA
+          - CH
+          - CI
+          - CR
+          - CV
+          - CY
+          - CZ
+          - DE
+          - DK
+          - DO
+          - EE
+          - EG
+          - ES
+          - FI
+          - FO
+          - FR
+          - GA
+          - GB
+          - GE
+          - GI
+          - GL
+          - GR
+          - HR
+          - HU
+          - IE
+          - IL
+          - IQ
+          - IS
+          - IT
+          - JO
+          - KW
+          - KZ
+          - LB
+          - LI
+          - LT
+          - LU
+          - LV
+          - MC
+          - MD
+          - ME
+          - MG
+          - MK
+          - MR
+          - MT
+          - MU
+          - NL
+          - 'NO'
+          - PK
+          - PL
+          - PS
+          - PT
+          - QA
+          - RO
+          - RS
+          - SA
+          - SC
+          - SE
+          - SI
+          - SK
+          - SM
+          - SV
+          - TN
+          - TR
+          - UA
+          - US
+          - VA
+          - VG
+          - XK
+        account_holder_name:
+          type: string
+        account_number:
+          type: string
+        routing_aba_number:
+          type: string
+        country:
+          type: string
+        state:
+          type: string
+        postal_code:
+          type: string
+        address:
+          type: string
+        city:
+          type: string
+        transit_number:
+          type: string
+        institution_number:
+          type: string
+        bsb_code:
+          type: string
+        sort_code:
+          type: string
+        iban:
+          type: string
+        swift_bic_code:
+          type: string
+        bank_name:
+          type: string
+        bank_city:
+          type: string
+        bank_address:
+          type: string
+    PayoutMethodCreate:
+      type: object
+      required:
+      - method
+      - details
+      properties:
+        method:
+          type: string
+          enum:
+          - paypal
+          - bank
+          - wise
+          - crypto
+          - custom
+          - dots
+        is_disabled:
+          type: boolean
+        is_selected:
+          type: boolean
+        details:
+          $ref: '#/components/schemas/PayoutMethodDetails'
+    PayoutMethodUpdate:
+      type: object
+      required:
+      - details
+      properties:
+        method:
+          type: string
+          enum:
+          - paypal
+          - bank
+          - wise
+          - crypto
+          - custom
+          - dots
+        is_disabled:
+          type: boolean
+        is_selected:
+          type: boolean
+        details:
+          $ref: '#/components/schemas/PayoutMethodDetails'
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: string
+        errors:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string
+  responses:
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Forbidden:
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: Record not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    ValidationError:
+      description: Validation error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    UnprocessableEntity:
+      description: Unprocessable Entity
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Conflict:
+      description: Conflict
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: Access token passed as a Bearer token in the Authorization header
+    accountId:
+      type: apiKey
+      in: header
+      name: ACCOUNT-ID
+      description: Account ID required with bearer token

@@ -1,0 +1,1421 @@
+{
+  "item": [
+    {
+      "id": "fd1f93d5-3164-46c8-9d1b-541dcb923bbc",
+      "name": "Get available referrals",
+      "request": {
+        "name": "Get available referrals",
+        "description": {},
+        "url": {
+          "path": [
+            "referrals"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "disabled": false,
+              "key": "q",
+              "value": "<string>",
+              "description": "Search params. Searches by email, uid, username, website"
+            },
+            {
+              "disabled": false,
+              "key": "filters[type]",
+              "value": "<string>",
+              "description": "Type (lead or customer)"
+            },
+            {
+              "disabled": false,
+              "key": "filters[state]",
+              "value": "<string>",
+              "description": "State"
+            },
+            {
+              "disabled": false,
+              "key": "filters[created_at][from]",
+              "value": "<date>",
+              "description": "created_at start date"
+            },
+            {
+              "disabled": false,
+              "key": "filters[created_at][to]",
+              "value": "<date>",
+              "description": "created_at end date"
+            },
+            {
+              "disabled": false,
+              "key": "filters[customer_since][from]",
+              "value": "<date>",
+              "description": "customer_since start date"
+            },
+            {
+              "disabled": false,
+              "key": "filters[customer_since][to]",
+              "value": "<date>",
+              "description": "customer_since end date"
+            },
+            {
+              "disabled": false,
+              "key": "filters[campaign_id]",
+              "value": "<integer>",
+              "description": "Campaign ids. Can be Integer or an Array of Integers"
+            },
+            {
+              "disabled": false,
+              "key": "sorting[state]",
+              "value": "<string>",
+              "description": "Sort by state direction"
+            },
+            {
+              "disabled": false,
+              "key": "sorting[email]",
+              "value": "<string>",
+              "description": "Sort by email direction"
+            }
+          ],
+          "variable": []
+        },
+        "header": [
+          {
+            "disabled": false,
+            "description": "(Required) Account identifier that specifies which account is making the request",
+            "key": "Account-ID",
+            "value": "<string>"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "d52903d0-4380-4c2d-854d-ebb879b93550",
+          "name": "Successful response",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "referrals"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "q",
+                  "value": "<string>"
+                },
+                {
+                  "key": "filters[type]",
+                  "value": "<string>"
+                },
+                {
+                  "key": "filters[state]",
+                  "value": "<string>"
+                },
+                {
+                  "key": "filters[created_at][from]",
+                  "value": "<date>"
+                },
+                {
+                  "key": "filters[created_at][to]",
+                  "value": "<date>"
+                },
+                {
+                  "key": "filters[customer_since][from]",
+                  "value": "<date>"
+                },
+                {
+                  "key": "filters[customer_since][to]",
+                  "value": "<date>"
+                },
+                {
+                  "key": "filters[campaign_id]",
+                  "value": "<integer>"
+                },
+                {
+                  "key": "sorting[state]",
+                  "value": "<string>"
+                },
+                {
+                  "key": "sorting[email]",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: bearer",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "Bearer <token>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Account identifier that specifies which account is making the request",
+                "key": "Account-ID",
+                "value": "acc_123456"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "[\n  {\n    \"id\": 5646,\n    \"uid\": \"string\",\n    \"state\": \"subscribed\",\n    \"metadata\": {},\n    \"created_at\": \"2018-10-02T05:37:37.439Z\",\n    \"customer_since\": \"1947-10-14T13:18:46.455Z\",\n    \"email\": \"vYBsvJqCnuc@DvKCOmJGLcGuJryVgHWlULpnBRfl.pd\",\n    \"promoter_campaign\": {\n      \"id\": 7765,\n      \"campaign_id\": 345,\n      \"created_at\": \"2010-07-14T13:18:40.960Z\",\n      \"campaign\": {\n        \"id\": 3906,\n        \"name\": \"string\",\n        \"color\": \"string\"\n      }\n    }\n  },\n  {\n    \"id\": 136,\n    \"uid\": \"string\",\n    \"state\": \"refunded\",\n    \"metadata\": {},\n    \"created_at\": \"1987-02-07T10:22:14.224Z\",\n    \"customer_since\": \"1984-04-19T23:49:30.524Z\",\n    \"email\": \"Uf8SzaX4Xbk5@CYFyFIhJTJDvm.gegi\",\n    \"promoter_campaign\": {\n      \"id\": 3548,\n      \"campaign_id\": 5808,\n      \"created_at\": \"1959-08-16T10:00:44.783Z\",\n      \"campaign\": {\n        \"id\": 6705,\n        \"name\": \"string\",\n        \"color\": \"string\"\n      }\n    }\n  }\n]",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "4a77e99e-5cca-4868-b280-02eb29e4e6a1",
+          "name": "Unauthorized",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "referrals"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "q",
+                  "value": "<string>"
+                },
+                {
+                  "key": "filters[type]",
+                  "value": "<string>"
+                },
+                {
+                  "key": "filters[state]",
+                  "value": "<string>"
+                },
+                {
+                  "key": "filters[created_at][from]",
+                  "value": "<date>"
+                },
+                {
+                  "key": "filters[created_at][to]",
+                  "value": "<date>"
+                },
+                {
+                  "key": "filters[customer_since][from]",
+                  "value": "<date>"
+                },
+                {
+                  "key": "filters[customer_since][to]",
+                  "value": "<date>"
+                },
+                {
+                  "key": "filters[campaign_id]",
+                  "value": "<integer>"
+                },
+                {
+                  "key": "sorting[state]",
+                  "value": "<string>"
+                },
+                {
+                  "key": "sorting[email]",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: bearer",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "Bearer <token>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Account identifier that specifies which account is making the request",
+                "key": "Account-ID",
+                "value": "acc_123456"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "Unauthorized",
+          "code": 401,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        },
+        {
+          "id": "201bc9be-e14e-42cb-9e60-a39e63fc3c64",
+          "name": "Forbidden",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "referrals"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "q",
+                  "value": "<string>"
+                },
+                {
+                  "key": "filters[type]",
+                  "value": "<string>"
+                },
+                {
+                  "key": "filters[state]",
+                  "value": "<string>"
+                },
+                {
+                  "key": "filters[created_at][from]",
+                  "value": "<date>"
+                },
+                {
+                  "key": "filters[created_at][to]",
+                  "value": "<date>"
+                },
+                {
+                  "key": "filters[customer_since][from]",
+                  "value": "<date>"
+                },
+                {
+                  "key": "filters[customer_since][to]",
+                  "value": "<date>"
+                },
+                {
+                  "key": "filters[campaign_id]",
+                  "value": "<integer>"
+                },
+                {
+                  "key": "sorting[state]",
+                  "value": "<string>"
+                },
+                {
+                  "key": "sorting[email]",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: bearer",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "Bearer <token>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Account identifier that specifies which account is making the request",
+                "key": "Account-ID",
+                "value": "acc_123456"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "Forbidden",
+          "code": 403,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\",\n  \"errors\": {\n    \"key_0\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "08fe383e-95ff-403e-89d6-576768de6baf",
+      "name": "Create referral",
+      "request": {
+        "name": "Create referral",
+        "description": {},
+        "url": {
+          "path": [
+            "referrals"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": []
+        },
+        "header": [
+          {
+            "disabled": false,
+            "description": "(Required) Account identifier that specifies which account is making the request",
+            "key": "Account-ID",
+            "value": "<string>"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "POST",
+        "auth": null,
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"<email>\",\n  \"promoter_campaign_id\": \"<integer>\",\n  \"uid\": \"<string>\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [
+        {
+          "id": "fcb56768-4475-48c9-b438-304a8505ce1a",
+          "name": "Successful response",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "referrals"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: bearer",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "Bearer <token>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Account identifier that specifies which account is making the request",
+                "key": "Account-ID",
+                "value": "acc_123456"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"<email>\",\n  \"promoter_campaign_id\": \"<integer>\",\n  \"uid\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"id\": 3733,\n  \"uid\": \"string\",\n  \"state\": \"refunded\",\n  \"metadata\": {},\n  \"created_at\": \"1999-07-09T17:18:54.211Z\",\n  \"customer_since\": \"1979-05-10T17:27:36.839Z\",\n  \"email\": \"4ApqJ@jxreswFpHwLhOWWJJQoHUgyqZqPjveW.pq\",\n  \"promoter_campaign\": {\n    \"id\": 8625,\n    \"campaign_id\": 4604,\n    \"created_at\": \"2019-06-02T15:48:47.130Z\",\n    \"campaign\": {\n      \"id\": 6965,\n      \"name\": \"string\",\n      \"color\": \"string\"\n    }\n  }\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "db3696f0-669b-4e53-9c41-d8be54011cd8",
+          "name": "Unauthorized",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "referrals"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: bearer",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "Bearer <token>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Account identifier that specifies which account is making the request",
+                "key": "Account-ID",
+                "value": "acc_123456"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"<email>\",\n  \"promoter_campaign_id\": \"<integer>\",\n  \"uid\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Unauthorized",
+          "code": 401,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        },
+        {
+          "id": "1994c3f7-42b4-4038-bfa4-3a9e7939ddc2",
+          "name": "Forbidden",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "referrals"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: bearer",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "Bearer <token>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Account identifier that specifies which account is making the request",
+                "key": "Account-ID",
+                "value": "acc_123456"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"<email>\",\n  \"promoter_campaign_id\": \"<integer>\",\n  \"uid\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Forbidden",
+          "code": 403,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\",\n  \"errors\": {\n    \"key_0\": [\n      \"string\",\n      \"string\"\n    ],\n    \"key_1\": [\n      \"string\",\n      \"string\"\n    ],\n    \"key_2\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "31bb3193-46b4-42f6-b749-f7e67d4a3ee7",
+          "name": "Validation Error",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "referrals"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: bearer",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "Bearer <token>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Account identifier that specifies which account is making the request",
+                "key": "Account-ID",
+                "value": "acc_123456"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"<email>\",\n  \"promoter_campaign_id\": \"<integer>\",\n  \"uid\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+          "code": 422,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\",\n  \"errors\": {\n    \"key_0\": [\n      \"string\",\n      \"string\"\n    ],\n    \"key_1\": [\n      \"string\",\n      \"string\"\n    ],\n    \"key_2\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "3ed9f74a-272e-4e63-a683-5ab7e7f56664",
+      "name": "Update referral",
+      "request": {
+        "name": "Update referral",
+        "description": {},
+        "url": {
+          "path": [
+            "referrals",
+            ":id"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<integer>",
+              "key": "id",
+              "description": "(Required) "
+            }
+          ]
+        },
+        "header": [
+          {
+            "disabled": false,
+            "description": "(Required) Account identifier that specifies which account is making the request",
+            "key": "Account-ID",
+            "value": "<string>"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "PUT",
+        "auth": null,
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"email\": \"<email>\",\n  \"uid\": \"<string>\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      },
+      "response": [
+        {
+          "id": "20012e14-59fc-453d-a879-065832c099f1",
+          "name": "Successful response",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "referrals",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: bearer",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "Bearer <token>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Account identifier that specifies which account is making the request",
+                "key": "Account-ID",
+                "value": "acc_123456"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"<email>\",\n  \"uid\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"id\": 3733,\n  \"uid\": \"string\",\n  \"state\": \"refunded\",\n  \"metadata\": {},\n  \"created_at\": \"1999-07-09T17:18:54.211Z\",\n  \"customer_since\": \"1979-05-10T17:27:36.839Z\",\n  \"email\": \"4ApqJ@jxreswFpHwLhOWWJJQoHUgyqZqPjveW.pq\",\n  \"promoter_campaign\": {\n    \"id\": 8625,\n    \"campaign_id\": 4604,\n    \"created_at\": \"2019-06-02T15:48:47.130Z\",\n    \"campaign\": {\n      \"id\": 6965,\n      \"name\": \"string\",\n      \"color\": \"string\"\n    }\n  }\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "9be4e487-8fa0-4360-982b-99a0de3601ea",
+          "name": "Unauthorized",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "referrals",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: bearer",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "Bearer <token>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Account identifier that specifies which account is making the request",
+                "key": "Account-ID",
+                "value": "acc_123456"
+              }
+            ],
+            "method": "PUT",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"<email>\",\n  \"uid\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Unauthorized",
+          "code": 401,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        },
+        {
+          "id": "98a29ae7-58ad-41dd-9df5-bf634addfb56",
+          "name": "Forbidden",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "referrals",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: bearer",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "Bearer <token>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Account identifier that specifies which account is making the request",
+                "key": "Account-ID",
+                "value": "acc_123456"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"<email>\",\n  \"uid\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "status": "Forbidden",
+          "code": 403,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\",\n  \"errors\": {\n    \"key_0\": [\n      \"string\",\n      \"string\"\n    ],\n    \"key_1\": [\n      \"string\",\n      \"string\"\n    ],\n    \"key_2\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "043695d0-0614-4b35-b1d2-b844d00ea700",
+      "name": "Delete referral",
+      "request": {
+        "name": "Delete referral",
+        "description": {},
+        "url": {
+          "path": [
+            "referrals",
+            ":id"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [],
+          "variable": [
+            {
+              "disabled": false,
+              "type": "any",
+              "value": "<integer>",
+              "key": "id",
+              "description": "(Required) "
+            }
+          ]
+        },
+        "header": [
+          {
+            "disabled": false,
+            "description": "(Required) Account identifier that specifies which account is making the request",
+            "key": "Account-ID",
+            "value": "<string>"
+          },
+          {
+            "key": "Accept",
+            "value": "application/json"
+          }
+        ],
+        "method": "DELETE",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "2d64f933-03cc-487d-82cc-ca02927ca701",
+          "name": "Successfully deleted",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "referrals",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: bearer",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "Bearer <token>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Account identifier that specifies which account is making the request",
+                "key": "Account-ID",
+                "value": "acc_123456"
+              }
+            ],
+            "method": "DELETE",
+            "body": {}
+          },
+          "status": "No Content",
+          "code": 204,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        },
+        {
+          "id": "35061914-679c-4bc0-bec0-4e92875c6f31",
+          "name": "Unauthorized",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "referrals",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: bearer",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "Bearer <token>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Account identifier that specifies which account is making the request",
+                "key": "Account-ID",
+                "value": "acc_123456"
+              }
+            ],
+            "method": "DELETE",
+            "body": {}
+          },
+          "status": "Unauthorized",
+          "code": 401,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        },
+        {
+          "id": "03fe7fa1-9ffc-45c6-bf3d-9a775c343c12",
+          "name": "Forbidden",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "referrals",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<integer>",
+                  "key": "id",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: bearer",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "Bearer <token>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Account identifier that specifies which account is making the request",
+                "key": "Account-ID",
+                "value": "acc_123456"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "body": {}
+          },
+          "status": "Forbidden",
+          "code": 403,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\",\n  \"errors\": {\n    \"key_0\": [\n      \"string\",\n      \"string\"\n    ],\n    \"key_1\": [\n      \"string\",\n      \"string\"\n    ],\n    \"key_2\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    },
+    {
+      "id": "6e275d9c-e631-4dce-9791-74a2039fefb8",
+      "name": "Export referrals",
+      "request": {
+        "name": "Export referrals",
+        "description": {},
+        "url": {
+          "path": [
+            "referrals",
+            "export"
+          ],
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "disabled": false,
+              "key": "filters[type]",
+              "value": "<string>",
+              "description": "Type (lead or customer)"
+            },
+            {
+              "disabled": false,
+              "key": "filters[state]",
+              "value": "<string>",
+              "description": "State"
+            }
+          ],
+          "variable": []
+        },
+        "header": [
+          {
+            "disabled": false,
+            "description": "(Required) Account identifier that specifies which account is making the request",
+            "key": "Account-ID",
+            "value": "<string>"
+          },
+          {
+            "key": "Accept",
+            "value": "text/csv"
+          }
+        ],
+        "method": "GET",
+        "auth": null
+      },
+      "response": [
+        {
+          "id": "b91a3e40-e313-4035-93a8-a1227ed1a5e7",
+          "name": "Successful response",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "referrals",
+                "export"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "filters[type]",
+                  "value": "<string>"
+                },
+                {
+                  "key": "filters[state]",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: bearer",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "Bearer <token>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Account identifier that specifies which account is making the request",
+                "key": "Account-ID",
+                "value": "acc_123456"
+              },
+              {
+                "key": "Accept",
+                "value": "text/csv"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "OK",
+          "code": 200,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/csv"
+            }
+          ],
+          "body": "string",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        },
+        {
+          "id": "5d093168-135b-494d-b3f5-d90af8603d29",
+          "name": "Export is being processed",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "referrals",
+                "export"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "filters[type]",
+                  "value": "<string>"
+                },
+                {
+                  "key": "filters[state]",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: bearer",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "Bearer <token>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Account identifier that specifies which account is making the request",
+                "key": "Account-ID",
+                "value": "acc_123456"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "Accepted",
+          "code": 202,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"message\": \"string\"\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        },
+        {
+          "id": "a1f873de-2caa-4e4e-be21-719dc8556341",
+          "name": "Unauthorized",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "referrals",
+                "export"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "filters[type]",
+                  "value": "<string>"
+                },
+                {
+                  "key": "filters[state]",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: bearer",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "Bearer <token>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Account identifier that specifies which account is making the request",
+                "key": "Account-ID",
+                "value": "acc_123456"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "Unauthorized",
+          "code": 401,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "text/plain"
+            }
+          ],
+          "body": "",
+          "cookie": [],
+          "_postman_previewlanguage": "text"
+        },
+        {
+          "id": "21662516-2e26-4917-a842-ebf449e514f8",
+          "name": "Forbidden",
+          "originalRequest": {
+            "url": {
+              "path": [
+                "referrals",
+                "export"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "key": "filters[type]",
+                  "value": "<string>"
+                },
+                {
+                  "key": "filters[state]",
+                  "value": "<string>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "description": {
+                  "content": "Added as a part of security scheme: bearer",
+                  "type": "text/plain"
+                },
+                "key": "Authorization",
+                "value": "Bearer <token>"
+              },
+              {
+                "disabled": false,
+                "description": "(Required) Account identifier that specifies which account is making the request",
+                "key": "Account-ID",
+                "value": "acc_123456"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "body": {}
+          },
+          "status": "Forbidden",
+          "code": 403,
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\",\n  \"errors\": {\n    \"key_0\": [\n      \"string\",\n      \"string\"\n    ],\n    \"key_1\": [\n      \"string\",\n      \"string\"\n    ],\n    \"key_2\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n}",
+          "cookie": [],
+          "_postman_previewlanguage": "json"
+        }
+      ],
+      "event": [],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      }
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.firstpromoter.com/api/v2/affiliate",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "577fa0c0-7396-4bc2-b6d1-27b886791fc8",
+    "name": "FirstPromoter API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API documentation for FirstPromoter affiliate referrals",
+      "type": "text/plain"
+    }
+  }
+}

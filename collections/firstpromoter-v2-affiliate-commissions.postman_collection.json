@@ -1,0 +1,916 @@
+{
+  "item": [
+    {
+      "id": "51c4636c-6a38-40c2-ae33-323e04f4704f",
+      "name": "Commissions",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b338f497-3991-4646-b3aa-0c6fcb968205",
+          "name": "Get all commissions",
+          "request": {
+            "name": "Get all commissions",
+            "description": {
+              "content": "Return all commissions \n <Tip>**HTTP Request** <br/>` GET  https://api.firstpromoter.com/api/v2/affiliate/commissions`</Tip>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "commissions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "Search params. Searches by initial_tier_event.transaction_id, lead.email, lead.uid"
+                },
+                {
+                  "disabled": false,
+                  "key": "filters[status]",
+                  "value": "<string>",
+                  "description": "Status filter"
+                },
+                {
+                  "disabled": false,
+                  "key": "filters[paid]",
+                  "value": "<string>",
+                  "description": "Paid filter"
+                },
+                {
+                  "disabled": false,
+                  "key": "filters[sale_amount][from]",
+                  "value": "<integer>",
+                  "description": "Sale amount from"
+                },
+                {
+                  "disabled": false,
+                  "key": "filters[sale_amount][to]",
+                  "value": "<integer>",
+                  "description": "Sale amount to"
+                },
+                {
+                  "disabled": false,
+                  "key": "filters[amount][from]",
+                  "value": "<integer>",
+                  "description": "Amount from"
+                },
+                {
+                  "disabled": false,
+                  "key": "filters[amount][to]",
+                  "value": "<integer>",
+                  "description": "Amount to"
+                },
+                {
+                  "disabled": false,
+                  "key": "filters[created_at][from]",
+                  "value": "<date>",
+                  "description": "Created at start date"
+                },
+                {
+                  "disabled": false,
+                  "key": "filters[created_at][to]",
+                  "value": "<date>",
+                  "description": "Created at end date"
+                },
+                {
+                  "disabled": false,
+                  "key": "filters[campaign_id]",
+                  "value": "<integer>",
+                  "description": "Campaign ids"
+                },
+                {
+                  "disabled": false,
+                  "key": "filters[payout_id]",
+                  "value": "<integer>",
+                  "description": "Payout ids"
+                },
+                {
+                  "disabled": false,
+                  "key": "filters[due_period]",
+                  "value": "<string>",
+                  "description": "Due period filter"
+                },
+                {
+                  "disabled": false,
+                  "key": "filters[promoter_id]",
+                  "value": "<integer>",
+                  "description": "Promoter id"
+                },
+                {
+                  "disabled": false,
+                  "key": "filters[first_commission]",
+                  "value": "<string>",
+                  "description": "First commission"
+                },
+                {
+                  "disabled": false,
+                  "key": "filters[refunded]",
+                  "value": "<string>",
+                  "description": "Refunded reward"
+                },
+                {
+                  "disabled": false,
+                  "key": "filters[fraud_check]",
+                  "value": "<string>",
+                  "description": "Referral fraud check (suspicion)"
+                },
+                {
+                  "disabled": false,
+                  "key": "filters[fraud_check]",
+                  "value": "<string>",
+                  "description": "Referral fraud check (suspicion)"
+                },
+                {
+                  "disabled": false,
+                  "key": "filters[plan_id]",
+                  "value": "<integer>",
+                  "description": "Plan id"
+                },
+                {
+                  "disabled": false,
+                  "key": "sorting[sale_amount]",
+                  "value": "<string>",
+                  "description": "Sort by sale amount"
+                },
+                {
+                  "disabled": false,
+                  "key": "sorting[amount]",
+                  "value": "<string>",
+                  "description": "Sort by amount"
+                },
+                {
+                  "disabled": false,
+                  "key": "sorting[created_at]",
+                  "value": "<string>",
+                  "description": "Sort by created_at"
+                },
+                {
+                  "disabled": false,
+                  "key": "sorting[referral]",
+                  "value": "<string>",
+                  "description": "Sort by referral"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Account identifier that specifies which account is making the request",
+                "key": "Account-ID",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "260fc372-6291-445b-b4e5-37c9fe421a69",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "commissions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filters[status]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filters[paid]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filters[sale_amount][from]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "filters[sale_amount][to]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "filters[amount][from]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "filters[amount][to]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "filters[created_at][from]",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "filters[created_at][to]",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "filters[campaign_id]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "filters[payout_id]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "filters[due_period]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filters[promoter_id]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "filters[first_commission]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filters[refunded]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filters[fraud_check]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filters[fraud_check]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filters[plan_id]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "sorting[sale_amount]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sorting[amount]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sorting[created_at]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sorting[referral]",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account identifier that specifies which account is making the request",
+                    "key": "Account-ID",
+                    "value": "acc_123456"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": 5524,\n    \"status\": \"approved\",\n    \"external_note\": \"string\",\n    \"created_at\": \"1952-05-01T20:48:39.199Z\",\n    \"status_updated_at\": \"2004-11-24T06:49:52.511Z\",\n    \"promoter_campaign\": {\n      \"id\": 7329,\n      \"campaign_id\": 4744,\n      \"created_at\": \"2000-03-06T08:32:50.600Z\",\n      \"campaign\": {\n        \"id\": 5360,\n        \"name\": \"string\",\n        \"color\": \"string\"\n      }\n    },\n    \"referral\": {\n      \"id\": 1399,\n      \"uid\": \"string\",\n      \"email\": \"string\"\n    },\n    \"reward\": {\n      \"id\": 8979,\n      \"name\": \"string\"\n    },\n    \"commission_type\": \"custom\",\n    \"sale_amount\": 125.3887977113155,\n    \"original_sale_amount\": 395.716097818376,\n    \"original_sale_currency\": \"string\",\n    \"plan_id\": \"string\",\n    \"tier\": 1886,\n    \"unit\": \"string\",\n    \"amount\": 563.0351080154128,\n    \"is_paid\": true\n  },\n  {\n    \"id\": 9797,\n    \"status\": \"denied\",\n    \"external_note\": \"string\",\n    \"created_at\": \"2007-03-12T20:54:59.932Z\",\n    \"status_updated_at\": \"2005-05-29T13:06:12.965Z\",\n    \"promoter_campaign\": {\n      \"id\": 8736,\n      \"campaign_id\": 2233,\n      \"created_at\": \"1972-04-15T09:08:48.544Z\",\n      \"campaign\": {\n        \"id\": 155,\n        \"name\": \"string\",\n        \"color\": \"string\"\n      }\n    },\n    \"referral\": {\n      \"id\": 9045,\n      \"uid\": \"string\",\n      \"email\": \"string\"\n    },\n    \"reward\": {\n      \"id\": 5946,\n      \"name\": \"string\"\n    },\n    \"commission_type\": \"custom\",\n    \"sale_amount\": 5120.01281036917,\n    \"original_sale_amount\": 5894.600548087603,\n    \"original_sale_currency\": \"string\",\n    \"plan_id\": \"string\",\n    \"tier\": 8610,\n    \"unit\": \"string\",\n    \"amount\": 2470.866421841026,\n    \"is_paid\": false\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "16e53b40-9b97-4ae0-9c1b-48523a41d077",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "commissions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filters[status]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filters[paid]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filters[sale_amount][from]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "filters[sale_amount][to]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "filters[amount][from]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "filters[amount][to]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "filters[created_at][from]",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "filters[created_at][to]",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "filters[campaign_id]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "filters[payout_id]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "filters[due_period]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filters[promoter_id]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "filters[first_commission]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filters[refunded]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filters[fraud_check]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filters[fraud_check]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filters[plan_id]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "sorting[sale_amount]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sorting[amount]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sorting[created_at]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sorting[referral]",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account identifier that specifies which account is making the request",
+                    "key": "Account-ID",
+                    "value": "acc_123456"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8f4a80e0-3cd4-4fae-a157-cfa9974dbb7b",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "commissions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filters[status]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filters[paid]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filters[sale_amount][from]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "filters[sale_amount][to]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "filters[amount][from]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "filters[amount][to]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "filters[created_at][from]",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "filters[created_at][to]",
+                      "value": "<date>"
+                    },
+                    {
+                      "key": "filters[campaign_id]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "filters[payout_id]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "filters[due_period]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filters[promoter_id]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "filters[first_commission]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filters[refunded]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filters[fraud_check]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filters[fraud_check]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filters[plan_id]",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "sorting[sale_amount]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sorting[amount]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sorting[created_at]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "sorting[referral]",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account identifier that specifies which account is making the request",
+                    "key": "Account-ID",
+                    "value": "acc_123456"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e9125f2e-c4d1-4c78-b399-0ca393509f14",
+          "name": "Export all commissions",
+          "request": {
+            "name": "Export all commissions",
+            "description": {
+              "content": "Export all commissions \n <Tip>**HTTP Request** <br/>` GET  https://api.firstpromoter.com/api/v2/affiliate/commissions/export`</Tip>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "commissions",
+                "export"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "status",
+                  "value": "<string>",
+                  "description": "Filter parameters"
+                },
+                {
+                  "disabled": false,
+                  "key": "paid",
+                  "value": "<string>",
+                  "description": "Filter parameters"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "(Required) Account identifier that specifies which account is making the request",
+                "key": "Account-ID",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "text/csv"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b2407562-1b89-4293-a49a-6f53330592ea",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "commissions",
+                    "export"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "paid",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account identifier that specifies which account is making the request",
+                    "key": "Account-ID",
+                    "value": "acc_123456"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "text/csv"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/csv"
+                }
+              ],
+              "body": "string",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "69e4c995-2b98-4d3c-b7e3-1e6fdaf07f1a",
+              "name": "Processing request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "commissions",
+                    "export"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "paid",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account identifier that specifies which account is making the request",
+                    "key": "Account-ID",
+                    "value": "acc_123456"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"We are processing your request. You will receive an email shortly.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "36137168-e198-4379-bb81-99e42763b2b2",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "commissions",
+                    "export"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "paid",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account identifier that specifies which account is making the request",
+                    "key": "Account-ID",
+                    "value": "acc_123456"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "6af1f1f9-2f31-4b48-a1e5-8e51d2d0581d",
+              "name": "Forbidden",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "commissions",
+                    "export"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "status",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "paid",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "(Required) Account identifier that specifies which account is making the request",
+                    "key": "Account-ID",
+                    "value": "acc_123456"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.firstpromoter.com/api/v2/affiliate",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "509c0161-ba36-4f6e-af93-465fe972e655",
+    "name": "FirstPromoter API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for managing affiliate commissions",
+      "type": "text/plain"
+    }
+  }
+}

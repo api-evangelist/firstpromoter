@@ -1,0 +1,310 @@
+{
+  "item": [
+    {
+      "id": "e16ce471-5508-4e21-9e71-56087efac7e5",
+      "name": "Asset Categories",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ff48eef9-9c60-4a89-9d6f-cea191713263",
+          "name": "Get available asset categories",
+          "request": {
+            "name": "Get available asset categories",
+            "description": {
+              "content": "Get all available asset categories \n <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/assets/categories`</Tip>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "assets",
+                "categories"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "37004fc7-6af2-4e62-9f2d-6418f5ea09dc",
+              "name": "Successfully retrieved asset categories",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "assets",
+                    "categories"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"name\": \"string\",\n    \"position\": 473,\n    \"id\": 8033,\n    \"created_at\": \"1975-08-03T05:07:57.542Z\",\n    \"updated_at\": \"2005-04-02T00:46:50.800Z\"\n  },\n  {\n    \"name\": \"string\",\n    \"position\": 2100,\n    \"id\": 7822,\n    \"created_at\": \"1958-08-29T16:47:49.020Z\",\n    \"updated_at\": \"2015-10-19T15:14:03.371Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f90cd0e6-2c80-4714-8eb2-9308d3eed573",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "assets",
+                    "categories"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1ca7ed0c-dafe-4410-8d5f-c943e5da698f",
+          "name": "Update asset categories",
+          "request": {
+            "name": "Update asset categories",
+            "description": {
+              "content": "Update asset categories. \n <Tip>**HTTP Request** <br/>`PUT https://api.firstpromoter.com/api/v2/company/assets/categories`</Tip>",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "assets",
+                "categories"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"asset_categories\": [\n    {\n      \"name\": \"<string>\",\n      \"position\": \"<integer>\",\n      \"id\": \"<integer>\",\n      \"_destroy\": \"<boolean>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"position\": \"<integer>\",\n      \"id\": \"<integer>\",\n      \"_destroy\": \"<boolean>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e380c1c1-b397-400c-aca3-5e93fe50f616",
+              "name": "Successfully updated asset categories",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "assets",
+                    "categories"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"asset_categories\": [\n    {\n      \"name\": \"<string>\",\n      \"position\": \"<integer>\",\n      \"id\": \"<integer>\",\n      \"_destroy\": \"<boolean>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"position\": \"<integer>\",\n      \"id\": \"<integer>\",\n      \"_destroy\": \"<boolean>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"name\": \"string\",\n    \"position\": 473,\n    \"id\": 8033,\n    \"created_at\": \"1975-08-03T05:07:57.542Z\",\n    \"updated_at\": \"2005-04-02T00:46:50.800Z\"\n  },\n  {\n    \"name\": \"string\",\n    \"position\": 2100,\n    \"id\": 7822,\n    \"created_at\": \"1958-08-29T16:47:49.020Z\",\n    \"updated_at\": \"2015-10-19T15:14:03.371Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fb68a882-4536-431c-b861-3b709f3841b8",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "assets",
+                    "categories"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"asset_categories\": [\n    {\n      \"name\": \"<string>\",\n      \"position\": \"<integer>\",\n      \"id\": \"<integer>\",\n      \"_destroy\": \"<boolean>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"position\": \"<integer>\",\n      \"id\": \"<integer>\",\n      \"_destroy\": \"<boolean>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.firstpromoter.com/api/v2/company",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "0f86d8be-394f-4f4a-9d68-60f14dbb46fb",
+    "name": "FirstPromoter Asset Categories API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for managing asset categories in FirstPromoter",
+      "type": "text/plain"
+    }
+  }
+}

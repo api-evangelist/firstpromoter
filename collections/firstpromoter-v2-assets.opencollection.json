@@ -1,0 +1,196 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "FirstPromoter Assets API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Assets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get available assets",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.firstpromoter.com/api/v2/company/assets",
+            "headers": [
+              {
+                "name": "Account-ID",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Search params. Search by name or url"
+              },
+              {
+                "name": "filters[asset_type]",
+                "value": "",
+                "type": "query",
+                "description": "Asset type"
+              },
+              {
+                "name": "filters[category_id]",
+                "value": "",
+                "type": "query",
+                "description": "Category ids. Can be Integer or Array of Integers. If params are \"not_set\" will retrieve the assets that have category_id: null."
+              },
+              {
+                "name": "filters[campaign_id]",
+                "value": "",
+                "type": "query",
+                "description": "Campaign ids. Can be Integer or Array of Integers"
+              },
+              {
+                "name": "filters[created_at][from]",
+                "value": "",
+                "type": "query",
+                "description": "created_at start date"
+              },
+              {
+                "name": "filters[created_at][to]",
+                "value": "",
+                "type": "query",
+                "description": "created_at end date"
+              }
+            ]
+          },
+          "docs": "Get all available assets \n <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/assets`</Tip>"
+        },
+        {
+          "info": {
+            "name": "Create assets",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.firstpromoter.com/api/v2/company/assets",
+            "headers": [
+              {
+                "name": "Account-ID",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create assets \n <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/company/assets`</Tip>"
+        },
+        {
+          "info": {
+            "name": "Get asset",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.firstpromoter.com/api/v2/company/assets/:id",
+            "headers": [
+              {
+                "name": "Account-ID",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the asset"
+              }
+            ]
+          },
+          "docs": "Get asset details \n <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/assets/{id}`</Tip>"
+        },
+        {
+          "info": {
+            "name": "Update asset",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.firstpromoter.com/api/v2/company/assets/:id",
+            "headers": [
+              {
+                "name": "Account-ID",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "ID of the asset to be updated"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": " Update an asset \n <Tip>**HTTP Request** <br/>`PUT https://api.firstpromoter.com/api/v2/company/assets/{id}`</Tip>"
+        },
+        {
+          "info": {
+            "name": "Update category of an asset",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.firstpromoter.com/api/v2/company/assets/update_category",
+            "headers": [
+              {
+                "name": "Account-ID",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update category of an asset \n <Tip>**HTTP Request** <br/>`PUT https://api.firstpromoter.com/api/v2/company/assets/update_category`</Tip>"
+        },
+        {
+          "info": {
+            "name": "Delete assets",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.firstpromoter.com/api/v2/company/assets/destroy",
+            "headers": [
+              {
+                "name": "Account-ID",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Delete assets \n <Tip>**HTTP Request** <br/>`DELETE https://api.firstpromoter.com/api/v2/company/assets/destroy`</Tip>"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

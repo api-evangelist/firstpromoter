@@ -1,0 +1,533 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "FirstPromoter API",
+    "version": "1.0",
+    "description": "FirstPromoter API documentation"
+  },
+  "servers": [
+    {
+      "url": "https://api.firstpromoter.com/api/v2/affiliate"
+    }
+  ],
+  "security": [
+    {
+      "BearerAuth": []
+    }
+  ],
+  "paths": {
+    "/promoters/current": {
+      "get": {
+        "summary": "Get current promoter",
+        "tags": ["Promoters"],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/AccountId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Promoter"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string"
+                    },
+                    "code": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/promoters/sub_affiliates": {
+      "get": {
+        "summary": "Get current promoter sub affiliates",
+        "tags": ["Promoters"],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/AccountId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/SubAffiliate"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          }
+        }
+      }
+    },
+    "/promoters/chart_data": {
+      "get": {
+        "summary": "Get chart data",
+        "tags": ["Promoters"],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/AccountId"
+          },
+          {
+            "name": "promoter_campaign_id",
+            "in": "query",
+            "description": "If provided, the given promoter campaign will be used in chart. Otherwise all the current_promoter campaigns will be used.",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "period_from",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date"
+            }
+          },
+          {
+            "name": "period_to",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date"
+            }
+          },
+          {
+            "name": "selection",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "revenue",
+                "commissions",
+                "clicks",
+                "referrals",
+                "customers",
+                "cancellations"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/promoters/email_from_encrypted_id": {
+      "get": {
+        "summary": "Get the promoter email",
+        "tags": ["Promoters"],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/AccountId"
+          },
+          {
+            "name": "id",
+            "in": "query",
+            "required": true,
+            "description": "The encrypted id",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "email": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity"
+          }
+        }
+      }
+    },
+    "/promoters/set_password": {
+      "put": {
+        "summary": "Set the user password",
+        "tags": ["Promoters"],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/AccountId"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["id", "user"],
+                "properties": {
+                  "id": {
+                    "type": "string",
+                    "description": "The encrypted id"
+                  },
+                  "user": {
+                    "type": "object",
+                    "required": ["new_password", "new_password_confirmation"],
+                    "properties": {
+                      "new_password": {
+                        "type": "string"
+                      },
+                      "new_password_confirmation": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Promoter"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Unprocessable Entity"
+          }
+        }
+      }
+    },
+    "/promoters/archive": {
+      "post": {
+        "summary": "Archives current promoter",
+        "tags": ["Promoters"],
+        "parameters": [
+          {
+            "$ref": "#/components/parameters/AccountId"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "422": {
+            "description": "Unprocessable Entity"
+          }
+        }
+      }
+    }
+  },
+   "components": {
+    "parameters": {
+      "AccountId": {
+        "name": "Account-ID",
+        "in": "header",
+        "required": true,
+        "description": "Account identifier that specifies which account is making the request",
+        "schema": {
+          "type": "string",
+          "example": "acc_123456"
+        }
+      }
+    },
+    "schemas": {
+      "Promoter": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "email": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "stats": {
+            "type": "object",
+            "properties": {
+              "clicks_count": {
+                "type": "integer"
+              },
+              "referrals_count": {
+                "type": "integer"
+              },
+              "sales_count": {
+                "type": "integer"
+              },
+              "customers_count": {
+                "type": "integer"
+              },
+              "revenue_amount": {
+                "type": "number"
+              },
+              "active_customers_count": {
+                "type": "integer"
+              }
+            }
+          },
+          "balances": {
+            "type": "object"
+          },
+          "custom_fields": {
+            "type": "object"
+          },
+          "first_event_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "invoice_details_status": {
+            "type": "string"
+          },
+          "joined_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "selected_payout_method": {
+            "type": "string"
+          },
+          "pending_contract_documents": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "profile": {
+            "$ref": "#/components/schemas/PromoterProfile"
+          },
+          "promoter_campaigns": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PromoterCampaign"
+            }
+          },
+          "is_confirmed": {
+            "type": "boolean"
+          }
+        }
+      },
+      "PromoterProfile": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "first_name": {
+            "type": "string"
+          },
+          "last_name": {
+            "type": "string"
+          },
+          "website": {
+            "type": "string"
+          },
+          "company_name": {
+            "type": "string"
+          },
+          "phone_number": {
+            "type": "string"
+          },
+          "vat_id": {
+            "type": "string"
+          },
+          "country": {
+            "type": "string"
+          },
+          "address": {
+            "type": "string"
+          },
+          "avatar": {
+            "type": "string"
+          },
+          "instagram_url": {
+            "type": "string"
+          },
+          "youtube_url": {
+            "type": "string"
+          },
+          "linkedin_url": {
+            "type": "string"
+          },
+          "facebook_url": {
+            "type": "string"
+          },
+          "twitter_url": {
+            "type": "string"
+          },
+          "twitch_url": {
+            "type": "string"
+          },
+          "tiktok_url": {
+            "type": "string"
+          }
+        }
+      },
+      "PromoterCampaign": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "campaign_id": {
+            "type": "integer"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "campaign": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "integer"
+              },
+              "name": {
+                "type": "string"
+              },
+              "color": {
+                "type": "string"
+              }
+            }
+          },
+          "state": {
+            "type": "string"
+          },
+          "promoter_id": {
+            "type": "integer"
+          },
+          "stats": {
+            "type": "object",
+            "properties": {
+              "clicks_count": {
+                "type": "integer"
+              },
+              "referrals_count": {
+                "type": "integer"
+              },
+              "sales_count": {
+                "type": "integer"
+              },
+              "customers_count": {
+                "type": "integer"
+              },
+              "revenue_amount": {
+                "type": "number"
+              }
+            }
+          },
+          "ref_token": {
+            "type": "string"
+          },
+          "ref_link": {
+            "type": "string"
+          },
+          "has_monetary_rewards": {
+            "type": "boolean"
+          }
+        }
+      },
+      "SubAffiliate": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "stats": {
+            "type": "object",
+            "properties": {
+              "clicks_count": {
+                "type": "integer"
+              },
+              "referrals_count": {
+                "type": "integer"
+              },
+              "sales_count": {
+                "type": "integer"
+              },
+              "customers_count": {
+                "type": "integer"
+              },
+              "revenue_amount": {
+                "type": "number"
+              },
+              "active_customers_count": {
+                "type": "integer"
+              }
+            }
+          },
+          "joined_at": {
+            "type": "string",
+            "format": "date-time"
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "BearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "description": "Access token passed as a Bearer token in the Authorization header"
+      },
+      "accountId": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "ACCOUNT-ID",
+        "description": "Account ID required with bearer token"
+      }
+    }
+  }
+}

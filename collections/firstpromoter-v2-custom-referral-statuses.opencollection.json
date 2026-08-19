@@ -1,0 +1,62 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "FirstPromoter Custom Referral Statuses API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Custom Referral Statuses",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List custom referral statuses",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.firstpromoter.com/api/admin/v1/custom_referral_statuses",
+            "headers": [
+              {
+                "name": "Account-ID",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Returns all custom referral statuses for your account, ordered by the `order` field ascending.\n\n <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/admin/v1/custom_referral_statuses`</Tip>"
+        },
+        {
+          "info": {
+            "name": "Create, update, or delete custom referral statuses",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.firstpromoter.com/api/admin/v1/custom_referral_statuses/update",
+            "headers": [
+              {
+                "name": "Account-ID",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Batch operation to create, update, and/or delete custom referral statuses in a single request. Pass an array of status objects under the `custom_referral_statuses` key.\n\n- **Create**: omit `id`\n- **Update**: include the existing `id`\n- **Delete**: include `id` and set `_destroy` to `true`\n\n <Note>Both `name` and `order` must be unique within your account. Leading and trailing whitespace is stripped from `name`.</Note>\n\n <Tip>**HTTP Request** <br/>`PUT https://api.firstpromoter.com/api/admin/v1/c"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

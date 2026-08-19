@@ -1,0 +1,114 @@
+generated: '2026-08-13'
+method: derived
+source: >-
+  openapi/firstpromoter-*-openapi.yml (37 published specs, 421 documented 4xx/5xx responses) plus
+  https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
+name: FirstPromoter error catalog
+description: >-
+  Derived from every 4xx/5xx response in FirstPromoter's own published OpenAPI documents.
+  FirstPromoter does not use RFC 9457 problem+json - every error is a plain application/json object
+  with message and code, and validation failures add a field-keyed errors map.
+format: custom-json
+rfc9457: false
+media_types:
+  - application/json
+envelopes:
+  - name: Error
+    used_by: 116 responses
+    fields:
+      message: string
+      code: string
+  - name: ErrorResponse
+    used_by: 30 responses
+    fields:
+      message: string (Error message)
+      code: string (Error code)
+  - name: ValidationError
+    used_by: 4 responses
+    fields:
+      message: string (Error message)
+      code: string (Error code)
+      errors: object - field name to array of validation messages
+  - name: inline {code, message}
+    used_by: 30 responses
+  - name: inline {message}
+    used_by: 7 responses
+  - name: none
+    used_by: 232 responses
+    note: >-
+      232 of the 421 documented error responses - 55% - declare a description but no response
+      schema at all. A generated client cannot type those failures.
+status_codes:
+  - code: 401
+    title: Unauthorized
+    count: 170
+    meaning: >-
+      Missing or invalid bearer token. FirstPromoter requires BOTH an Authorization: Bearer header
+      and an ACCOUNT-ID header; omitting the account header is a common cause.
+    remediation: >-
+      Re-check the API key from Settings - Integrations - Manage API Keys, and confirm the
+      ACCOUNT-ID header carries the account id from the same panel.
+    retryable: false
+  - code: 403
+    title: Forbidden
+    count: 139
+    meaning: >-
+      Authenticated but not permitted - wrong user type (admin key against an affiliate-scope
+      endpoint or vice versa), insufficient permissions, or an invalid OTP on the operations that
+      require one.
+    remediation: >-
+      Confirm the key's scope matches the API base you are calling: /api/v2/company for admin,
+      /api/v2/affiliate for promoter-facing.
+    retryable: false
+  - code: 404
+    title: Not Found
+    count: 35
+    meaning: >-
+      The addressed record does not exist. Documented variants include Record not found, Product
+      not found, Campaign not found, Promoter not found.
+    remediation: Re-resolve the id; on referrals and promoters, check whether find_by was intended.
+    retryable: false
+  - code: 422
+    title: Unprocessable Entity
+    count: 56
+    meaning: >-
+      Validation failure. Documented variants include Invalid parameters, Validation error and
+      "duplicate name or order". The ValidationError envelope carries a per-field errors map.
+    remediation: Read errors[field] for the per-field messages before retrying.
+    retryable: false
+  - code: 400
+    title: Bad Request
+    count: 17
+    meaning: Malformed request. Documented variants include Invalid request and Invalid IP format.
+    remediation: Check body shape and content type.
+    retryable: false
+  - code: 409
+    title: Conflict
+    count: 4
+    meaning: The requested change conflicts with current state.
+    remediation: Re-read the resource and reconcile before retrying.
+    retryable: false
+  - code: 429
+    title: Too Many Requests
+    count: 0
+    meaning: >-
+      Account-wide rate limit exceeded - 400 requests per minute. NOT declared in any of the 37
+      published OpenAPI documents; documented only in the API introduction page prose.
+    remediation: Back off exponentially and retry. See rate-limits/firstpromoter-rate-limits.yml.
+    retryable: true
+    source: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
+findings:
+  - >-
+    No 5xx response is documented anywhere in the 37 published specs. A client has no contract for
+    server-side failure.
+  - >-
+    429 is real - the docs publish a 400 requests/minute account limit - but it appears in zero
+    OpenAPI responses, so code generated from the specs will not handle the one error that is
+    guaranteed to occur at scale.
+  - >-
+    Three different error envelopes (Error, ErrorResponse, ValidationError) plus two inline shapes
+    describe the same failure across specs, and 55% of error responses declare no schema at all.
+totals:
+  documented_error_responses: 421
+  distinct_status_codes: 6
+  specs_analyzed: 37

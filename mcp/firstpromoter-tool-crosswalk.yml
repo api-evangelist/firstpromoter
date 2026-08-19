@@ -1,0 +1,429 @@
+generated: '2026-08-13'
+method: derived
+source: mcp/firstpromoter-mcp.yml + openapi/firstpromoter-*-openapi.yml
+name: FirstPromoter MCP tool to REST operation crosswalk
+description: >-
+  Binds every tool published by the FirstPromoter MCP server to the REST operation(s) in the
+  provider's own OpenAPI documents that back it. The live MCP tools/list is OAuth-gated, so tools
+  are mapped by documented name and semantics rather than by an observed inputSchema; confidence
+  is recorded per row. Where an operation carries no operationId in the published spec - the
+  common case here - the binding is written as "METHOD path" against the spec's server base.
+surfaces:
+  openapi:
+    files: openapi/firstpromoter-*-openapi.yml
+    count: 37
+    operations: 179
+    bases:
+      - https://api.firstpromoter.com/api/v2/company
+      - https://api.firstpromoter.com/api/v2/affiliate
+      - https://api.firstpromoter.com/api/v2/track
+      - https://api.firstpromoter.com/api/admin/v1
+    gated: false
+  graphql:
+    endpoint: null
+    note: FirstPromoter publishes no GraphQL surface.
+  mcp:
+    url: https://mcp.firstpromoter.com
+    gated: true
+    note: 401 + WWW-Authenticate resource_metadata; tool schemas require an authenticated tools/list.
+crosswalk:
+  - tool: get_company_context
+    category: Reports & analytics
+    rest:
+      - GET /campaigns (openapi/firstpromoter-v2-campaigns-openapi.yml)
+      - GET /promoters (getPromoters)
+    binding: composite
+    confidence: medium
+    note: Aggregates campaign list plus promoter status counts; no single REST operation returns this shape.
+  - tool: get_dashboard_stats
+    category: Reports & analytics
+    rest:
+      - GET /dashboards/stats (openapi/firstpromoter-v2-dashboard-openapi.yml)
+    binding: direct
+    confidence: high
+  - tool: get_dashboard_trending
+    category: Reports & analytics
+    rest:
+      - GET /dashboards/trendings (openapi/firstpromoter-v2-dashboard-openapi.yml)
+    binding: direct
+    confidence: high
+  - tool: get_overview_report
+    category: Reports & analytics
+    rest:
+      - GET /reports/overview (openapi/firstpromoter-v2-reports-openapi.yml)
+    binding: direct
+    confidence: high
+  - tool: get_promoters_report
+    category: Reports & analytics
+    rest:
+      - GET /reports/promoters (openapi/firstpromoter-v2-reports-openapi.yml)
+    binding: direct
+    confidence: high
+  - tool: get_campaigns_report
+    category: Reports & analytics
+    rest:
+      - GET /reports/campaigns (openapi/firstpromoter-v2-reports-openapi.yml)
+    binding: direct
+    confidence: high
+  - tool: get_urls_report
+    category: Reports & analytics
+    rest:
+      - GET /reports/urls (openapi/firstpromoter-v2-reports-openapi.yml)
+    binding: direct
+    confidence: high
+  - tool: get_traffic_sources_report
+    category: Reports & analytics
+    rest:
+      - GET /reports/traffic_sources (openapi/firstpromoter-v2-reports-openapi.yml)
+    binding: direct
+    confidence: high
+  - tool: list_campaigns
+    category: Campaigns
+    rest:
+      - GET /campaigns (openapi/firstpromoter-v2-campaigns-openapi.yml)
+    binding: direct
+    confidence: high
+  - tool: get_campaign
+    category: Campaigns
+    rest:
+      - GET /campaigns/{id} (openapi/firstpromoter-v2-campaigns-openapi.yml)
+    binding: direct
+    confidence: high
+  - tool: create_campaign
+    category: Campaigns
+    rest:
+      - POST /campaigns (openapi/firstpromoter-v2-campaigns-openapi.yml)
+    binding: direct
+    confidence: high
+  - tool: update_campaign
+    category: Campaigns
+    rest:
+      - PUT /campaigns/{id} (openapi/firstpromoter-v2-campaigns-openapi.yml)
+    binding: direct
+    confidence: high
+  - tool: list_promoters
+    category: Promoters
+    rest:
+      - getPromoters
+    binding: direct
+    confidence: high
+    note: The documented fuzzy-search q parameter matches the spec's q query parameter.
+  - tool: get_promoter
+    category: Promoters
+    rest:
+      - getPromoter
+    binding: direct
+    confidence: high
+  - tool: create_promoter
+    category: Promoters
+    rest:
+      - createPromoter
+    binding: direct
+    confidence: high
+  - tool: update_promoter
+    category: Promoters
+    rest:
+      - updatePromoter
+    binding: direct
+    confidence: high
+  - tool: accept_promoter
+    category: Promoters
+    rest:
+      - acceptPromoters
+    binding: direct
+    confidence: high
+    note: >-
+      REST takes an ids[] batch; the tool is scoped to a single promoter on a single campaign and
+      the provider documents a post-write verification step the REST call does not perform.
+  - tool: reject_promoter
+    category: Promoters
+    rest:
+      - rejectPromoters
+    binding: direct
+    confidence: high
+  - tool: block_promoter
+    category: Promoters
+    rest:
+      - blockPromoters
+    binding: direct
+    confidence: high
+  - tool: add_promoter_to_campaign
+    category: Promoters
+    rest:
+      - addPromotersToCampaign
+    binding: direct
+    confidence: high
+  - tool: move_promoter_to_campaign
+    category: Promoters
+    rest:
+      - movePromotersToCampaign
+    binding: direct
+    confidence: high
+  - tool: assign_parent_promoter
+    category: Promoters
+    rest:
+      - POST /promoters/assign_parent (openapi/firstpromoter-v2-promoters-openapi.yml)
+    binding: direct
+    confidence: high
+    note: >-
+      The published spec gives this operation the operationId acceptPromoters, duplicating
+      POST /promoters/accept, so the path is used as the binding key instead.
+  - tool: restore_promoter
+    category: Promoters
+    rest:
+      - restorePromoters
+    binding: direct
+    confidence: high
+  - tool: update_promoter_campaign
+    category: Promoters
+    rest:
+      - updatePromoterCampaign
+    binding: direct
+    confidence: high
+  - tool: list_referrals
+    category: Referrals
+    rest:
+      - GET /referrals (openapi/firstpromoter-v2-referrals-openapi.yml)
+    binding: direct
+    confidence: high
+  - tool: get_referral
+    category: Referrals
+    rest:
+      - GET /referrals/{id} (openapi/firstpromoter-v2-referrals-openapi.yml)
+    binding: direct
+    confidence: high
+  - tool: list_commissions
+    category: Commissions & payouts
+    rest:
+      - GET /commissions (openapi/firstpromoter-v2-commissions-openapi.yml)
+    binding: direct
+    confidence: high
+  - tool: list_payouts
+    category: Commissions & payouts
+    rest:
+      - getAdminPayouts
+    binding: direct
+    confidence: high
+  - tool: mark_commission_fulfilled
+    category: Commissions & payouts
+    rest:
+      - POST /commissions/mark_fulfilled (openapi/firstpromoter-v2-commissions-openapi.yml)
+    binding: direct
+    confidence: high
+  - tool: mark_commission_unfulfilled
+    category: Commissions & payouts
+    rest:
+      - POST /commissions/mark_unfulfilled (openapi/firstpromoter-v2-commissions-openapi.yml)
+    binding: direct
+    confidence: high
+  - tool: list_rewards
+    category: Rewards
+    rest:
+      - GET /rewards (openapi/firstpromoter-v2-rewards-openapi.yml)
+    binding: direct
+    confidence: high
+  - tool: get_reward
+    category: Rewards
+    rest:
+      - GET /rewards (openapi/firstpromoter-v2-rewards-openapi.yml)
+    binding: partial
+    confidence: low
+    note: The published rewards spec exposes no GET /rewards/{id}; single-reward detail is filtered from the list.
+  - tool: create_reward
+    category: Rewards
+    rest:
+      - POST /rewards (openapi/firstpromoter-v2-rewards-openapi.yml)
+    binding: direct
+    confidence: high
+  - tool: update_reward
+    category: Rewards
+    rest:
+      - PUT /rewards/{id} (openapi/firstpromoter-v2-rewards-openapi.yml)
+    binding: direct
+    confidence: high
+  - tool: hide_reward
+    category: Rewards
+    rest:
+      - POST /rewards/{id}/hide (openapi/firstpromoter-v2-rewards-openapi.yml)
+    binding: direct
+    confidence: high
+  - tool: list_promo_codes
+    category: Promo codes
+    rest:
+      - getPromoCodes
+    binding: direct
+    confidence: high
+  - tool: get_promo_code
+    category: Promo codes
+    rest:
+      - getPromoCode
+    binding: direct
+    confidence: high
+  - tool: create_promo_code
+    category: Promo codes
+    rest:
+      - createPromoCode
+    binding: direct
+    confidence: high
+  - tool: update_promo_code
+    category: Promo codes
+    rest:
+      - updatePromoCode
+    binding: direct
+    confidence: high
+  - tool: archive_promo_code
+    category: Promo codes
+    rest:
+      - archivePromoCode
+    binding: direct
+    confidence: high
+  - tool: list_products
+    category: Products
+    rest:
+      - GET /products (openapi/firstpromoter-v2-advanced-products-openapi.yml)
+    binding: direct
+    confidence: high
+  - tool: get_product
+    category: Products
+    rest:
+      - GET /products/{id} (openapi/firstpromoter-v2-advanced-products-openapi.yml)
+    binding: direct
+    confidence: high
+  - tool: create_product
+    category: Products
+    rest:
+      - POST /products (openapi/firstpromoter-v2-advanced-products-openapi.yml)
+    binding: direct
+    confidence: high
+  - tool: update_product
+    category: Products
+    rest:
+      - PUT /products/{id} (openapi/firstpromoter-v2-advanced-products-openapi.yml)
+    binding: direct
+    confidence: high
+  - tool: delete_product
+    category: Products
+    rest:
+      - DELETE /products/{id} (openapi/firstpromoter-v2-advanced-products-openapi.yml)
+    binding: direct
+    confidence: high
+  - tool: list_assets
+    category: Assets
+    rest:
+      - GET /assets (openapi/firstpromoter-v2-assets-openapi.yml)
+    binding: direct
+    confidence: high
+  - tool: get_asset
+    category: Assets
+    rest:
+      - GET /assets/{id} (openapi/firstpromoter-v2-assets-openapi.yml)
+    binding: direct
+    confidence: high
+  - tool: list_contracts
+    category: Contracts
+    rest:
+      - GET /contracts (openapi/firstpromoter-v2-contracts-openapi.yml)
+    binding: direct
+    confidence: high
+  - tool: get_contract
+    category: Contracts
+    rest:
+      - GET /contracts/{id} (openapi/firstpromoter-v2-contracts-openapi.yml)
+    binding: direct
+    confidence: high
+  - tool: list_emails
+    category: Emails
+    rest:
+      - GET /emails (openapi/firstpromoter-v2-emails-openapi.yml)
+    binding: direct
+    confidence: high
+  - tool: get_email
+    category: Emails
+    rest:
+      - GET /emails/{id} (openapi/firstpromoter-v2-emails-openapi.yml)
+    binding: direct
+    confidence: high
+  - tool: create_email
+    category: Emails
+    rest:
+      - POST /emails (openapi/firstpromoter-v2-emails-openapi.yml)
+    binding: direct
+    confidence: high
+    note: The tool forces draft status with the trigger disabled; the REST operation does not.
+  - tool: update_email
+    category: Emails
+    rest:
+      - PUT /emails/{id} (openapi/firstpromoter-v2-emails-openapi.yml)
+    binding: direct
+    confidence: high
+    note: The tool refuses sent emails and refuses to promote a draft to scheduled; REST does not.
+mcp_only: []
+rest_only:
+  - group: Money movement (deliberately withheld from MCP)
+    operations:
+      - POST /commissions (create commission)
+      - generatePayouts (POST /commissions/generate_payouts)
+      - createPaymentsBatch
+      - markPayoutsAsPaid
+      - markPayoutsAsUnpaid
+      - deletePayouts
+      - POST /payments_batches/{id}/pay
+      - DELETE /payments_batches/{id}
+      - GET /invoices and the 10 other invoice operations
+    reason: >-
+      FirstPromoter states money-movement operations remain dashboard-only and are intentionally
+      not exposed as MCP tools.
+  - group: Email sending
+    operations:
+      - POST /emails/{id}/send_now
+      - POST /emails/{id}/send_test
+      - POST /emails/{id}/copy
+      - GET /emails/template
+      - PATCH /emails/custom_template
+      - POST /emails/test_custom_template
+    reason: Broadcast emails and send-now actions are dashboard-only per the MCP tools reference.
+  - group: Server-side tracking
+    operations:
+      - POST /signup
+      - POST /sale
+      - POST /refund
+      - POST /cancellation
+    reason: >-
+      The Tracking API writes revenue events from the customer's own billing system. No MCP tool
+      maps to it.
+  - group: Webhook administration
+    operations:
+      - GET /webhooks
+      - POST /webhooks
+      - GET /webhooks/event_types
+      - POST /webhooks/test
+      - GET /webhooks/{id}
+      - PUT /webhooks/{id}
+      - DELETE /webhooks/{id}
+      - GET /webhooks/{webhook_id}/webhook_deliveries
+      - GET /webhooks/{webhook_id}/webhook_deliveries/{id}
+      - POST /webhooks/{webhook_id}/webhook_deliveries/{id}/retry_delivery
+    reason: No MCP tool exposes webhook subscription or delivery management.
+  - group: Affiliate-facing API (api/v2/affiliate)
+    operations:
+      - 46 operations across 13 affiliate-scope specs
+    reason: >-
+      The MCP server is scoped to the admin/company surface. The affiliate-facing API, which a
+      promoter's own session calls, has no MCP tools.
+  - group: Batch process tracking
+    operations:
+      - listBatchProcesses
+      - getBatchProcess
+      - getBatchProcessProgress
+    reason: >-
+      Bulk admin actions on more than 5 ids run asynchronously and return a batch id. No MCP tool
+      polls batch progress, so an agent using the mutation tools cannot confirm async completion.
+coverage:
+  mcp_tools: 53
+  tools_mapped: 53
+  tools_mapped_high_confidence: 51
+  tools_unmapped: 0
+  rest_operations: 179
+  rest_operations_bound: 53
+  rest_operations_unbound: 126
+  rest_coverage_percent: 30

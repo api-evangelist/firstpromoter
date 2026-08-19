@@ -1,0 +1,33 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "FirstPromoter Affiliate Campaigns API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Get all campaigns",
+        "type": "http"
+      },
+      "http": {
+        "method": "GET",
+        "url": "https://api.firstpromoter.com/api/v2/affiliate/campaigns",
+        "headers": [
+          {
+            "name": "Account-ID",
+            "value": ""
+          }
+        ]
+      },
+      "docs": "Returns all campaigns  \n <Tip>**HTTP Request** <br/>` GET  https://api.firstpromoter.com/api/v2/affiliate/campaigns`</Tip>"
+    }
+  ],
+  "bundled": true
+}
