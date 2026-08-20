@@ -28,6 +28,19 @@ specificationVersion: '0.23'
 tags:
 - Affiliate Marketing
 - Referral Tracking
+- Software-as-a-Service
+- Commission Management
+- Reward Distribution
+- Promoters
+- Partner Marketing
+- Influencer Marketing
+- Payouts
+- Attribution
+- Webhook
+- MCP
+tags_raw:
+- Affiliate Marketing
+- Referral Tracking
 - SaaS
 - Commission Management
 - Reward Distribution
@@ -63,6 +76,8 @@ apis:
   humanURL: https://docs.firstpromoter.com/api-reference-v2/api-advanced/products-api
   baseURL: https://api.firstpromoter.com/api/v2/company
   tags:
+  - Product
+  tags_raw:
   - Products
   properties:
   - type: OpenAPI
@@ -658,6 +673,8 @@ apis:
   humanURL: https://docs.firstpromoter.com/api-reference-v2/api-admin/webhooks
   baseURL: https://api.firstpromoter.com/api/v2/company
   tags:
+  - Webhook
+  tags_raw:
   - Webhooks
   properties:
   - type: OpenAPI
