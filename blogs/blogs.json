@@ -2,14 +2,21 @@
   "repo": "firstpromoter",
   "feeds": [
     {
+      "source": "https://help.firstpromoter.com/en/feed.xml",
+      "feed_url": "https://help.firstpromoter.com/en/feed.xml",
+      "title": "",
+      "saved": 0,
+      "method": "feed"
+    },
+    {
       "source": "https://help.firstpromoter.com/en/",
       "feed_url": "https://help.firstpromoter.com/en/feed.xml",
       "title": "",
-      "saved": 4,
+      "saved": 0,
       "method": "discovered"
     }
   ],
-  "post_count": 9,
-  "fetched": "2026-08-15T12:22:01Z",
+  "post_count": 30,
+  "fetched": "2026-08-22T20:20:02Z",
   "agent_pulled": "2026-06-27"
 }
