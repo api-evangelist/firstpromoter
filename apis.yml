@@ -52,642 +52,2662 @@ tags_raw:
 - Webhooks
 - MCP
 apis:
-- aid: firstpromoter:firstpromoter-v2-advanced-payout-methods
-  name: FirstPromoter Admin Payout Methods API
-  description: FirstPromoter Admin Payout Methods API - 5 operation(s) on the admin (api/v2/company) surface, from
-    FirstPromoter's own published OpenAPI definition (3.0.1) indexed in https://docs.firstpromoter.com/llms.txt.
+- aid: firstpromoter:firstpromoter-asset-categories-api
+  name: FirstPromoter Asset Categories API
+  description: The Asset Categories API from FirstPromoter — 2 operation(s) for asset categories.
+  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-advanced/payout-methods-api
+  baseURL: https://api.firstpromoter.com/api/v2/company
+  tags:
+  - Asset Categories
+  properties:
+  - type: OpenAPI
+    url: openapi/firstpromoter-asset-categories-api-openapi.yml
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/payout-methods-api
+  - type: APIReference
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/products-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/assets
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/campaigns
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/commissions
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/contract-documents
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/email-settings
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/payout-methods
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/payouts
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/promo-codes
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/promoter-campaigns
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/promoters
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/referral-links
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/referrals
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/reports
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/asset-categories-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/assets
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/batches
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/campaigns-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/commissions
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/contract-documents-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/contracts-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/custom-referral-statuses
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/dashboard-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/invoices
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/payments-batches
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/payouts
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/promo-codes
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/promoter-campaigns
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/promoters
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/referrals
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/reports
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/rewards
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/tracking-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/webhooks
+  - type: Webhooks
+    url: asyncapi/firstpromoter-webhooks.yml
+- aid: firstpromoter:firstpromoter-assets-api
+  name: FirstPromoter Assets API
+  description: The Assets API from FirstPromoter — 4 operation(s) for assets.
+  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-advanced/payout-methods-api
+  baseURL: https://api.firstpromoter.com/api/v2/company
+  tags:
+  - Assets
+  properties:
+  - type: OpenAPI
+    url: openapi/firstpromoter-assets-api-openapi.yml
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/payout-methods-api
+  - type: APIReference
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/products-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/assets
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/campaigns
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/commissions
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/contract-documents
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/email-settings
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/payout-methods
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/payouts
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/promo-codes
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/promoter-campaigns
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/promoters
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/referral-links
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/referrals
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/reports
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/asset-categories-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/assets
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/batches
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/campaigns-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/commissions
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/contract-documents-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/contracts-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/custom-referral-statuses
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/dashboard-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/invoices
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/payments-batches
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/payouts
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/promo-codes
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/promoter-campaigns
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/promoters
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/referrals
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/reports
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/rewards
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/tracking-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/webhooks
+  - type: Webhooks
+    url: asyncapi/firstpromoter-webhooks.yml
+- aid: firstpromoter:firstpromoter-batch-processes-api
+  name: FirstPromoter Batch Processes API
+  description: The Batch Processes API from FirstPromoter — 3 operation(s) for batch processes.
+  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-advanced/payout-methods-api
+  baseURL: https://api.firstpromoter.com/api/v2/company
+  tags:
+  - Batch Processes
+  properties:
+  - type: OpenAPI
+    url: openapi/firstpromoter-batch-processes-api-openapi.yml
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/payout-methods-api
+  - type: APIReference
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/products-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/assets
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/campaigns
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/commissions
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/contract-documents
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/email-settings
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/payout-methods
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/payouts
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/promo-codes
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/promoter-campaigns
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/promoters
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/referral-links
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/referrals
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/reports
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/asset-categories-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/assets
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/batches
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/campaigns-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/commissions
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/contract-documents-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/contracts-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/custom-referral-statuses
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/dashboard-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/invoices
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/payments-batches
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/payouts
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/promo-codes
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/promoter-campaigns
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/promoters
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/referrals
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/reports
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/rewards
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/tracking-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/webhooks
+  - type: Webhooks
+    url: asyncapi/firstpromoter-webhooks.yml
+- aid: firstpromoter:firstpromoter-campaigns-api
+  name: FirstPromoter Campaigns API
+  description: The Campaigns API from FirstPromoter — 2 operation(s) for campaigns.
+  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-advanced/payout-methods-api
+  baseURL: https://api.firstpromoter.com/api/v2/company
+  tags:
+  - Campaigns
+  properties:
+  - type: OpenAPI
+    url: openapi/firstpromoter-campaigns-api-openapi.yml
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/payout-methods-api
+  - type: APIReference
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/products-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/assets
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/campaigns
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/commissions
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/contract-documents
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/email-settings
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/payout-methods
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/payouts
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/promo-codes
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/promoter-campaigns
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/promoters
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/referral-links
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/referrals
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/reports
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/asset-categories-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/assets
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/batches
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/campaigns-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/commissions
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/contract-documents-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/contracts-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/custom-referral-statuses
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/dashboard-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/invoices
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/payments-batches
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/payouts
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/promo-codes
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/promoter-campaigns
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/promoters
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/referrals
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/reports
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/rewards
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/tracking-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/webhooks
+  - type: Webhooks
+    url: asyncapi/firstpromoter-webhooks.yml
+- aid: firstpromoter:firstpromoter-cancellation-api
+  name: FirstPromoter Cancellation API
+  description: The Cancellation API from FirstPromoter — 1 operation(s) for cancellation.
+  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-advanced/payout-methods-api
+  baseURL: https://api.firstpromoter.com/api/v2/company
+  tags:
+  - Cancellation
+  properties:
+  - type: OpenAPI
+    url: openapi/firstpromoter-cancellation-api-openapi.yml
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/payout-methods-api
+  - type: APIReference
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/products-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/assets
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/campaigns
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/commissions
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/contract-documents
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/email-settings
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/payout-methods
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/payouts
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/promo-codes
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/promoter-campaigns
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/promoters
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/referral-links
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/referrals
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/reports
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/asset-categories-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/assets
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/batches
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/campaigns-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/commissions
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/contract-documents-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/contracts-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/custom-referral-statuses
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/dashboard-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/invoices
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/payments-batches
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/payouts
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/promo-codes
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/promoter-campaigns
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/promoters
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/referrals
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/reports
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/rewards
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/tracking-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/webhooks
+  - type: Webhooks
+    url: asyncapi/firstpromoter-webhooks.yml
+- aid: firstpromoter:firstpromoter-commissions-api
+  name: FirstPromoter Commissions API
+  description: The Commissions API from FirstPromoter — 9 operation(s) for commissions.
+  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-advanced/payout-methods-api
+  baseURL: https://api.firstpromoter.com/api/v2/company
+  tags:
+  - Commissions
+  properties:
+  - type: OpenAPI
+    url: openapi/firstpromoter-commissions-api-openapi.yml
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/payout-methods-api
+  - type: APIReference
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/products-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/assets
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/campaigns
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/commissions
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/contract-documents
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/email-settings
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/payout-methods
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/payouts
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/promo-codes
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/promoter-campaigns
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/promoters
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/referral-links
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/referrals
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/reports
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/asset-categories-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/assets
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/batches
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/campaigns-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/commissions
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/contract-documents-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/contracts-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/custom-referral-statuses
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/dashboard-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/invoices
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/payments-batches
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/payouts
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/promo-codes
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/promoter-campaigns
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/promoters
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/referrals
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/reports
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/rewards
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/tracking-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/webhooks
+  - type: Webhooks
+    url: asyncapi/firstpromoter-webhooks.yml
+- aid: firstpromoter:firstpromoter-contract-documents-api
+  name: FirstPromoter Contract Documents API
+  description: The Contract Documents API from FirstPromoter — 4 operation(s) for contract documents.
+  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-advanced/payout-methods-api
+  baseURL: https://api.firstpromoter.com/api/v2/company
+  tags:
+  - Contract Documents
+  properties:
+  - type: OpenAPI
+    url: openapi/firstpromoter-contract-documents-api-openapi.yml
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/payout-methods-api
+  - type: APIReference
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/products-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/assets
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/campaigns
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/commissions
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/contract-documents
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/email-settings
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/payout-methods
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/payouts
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/promo-codes
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/promoter-campaigns
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/promoters
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/referral-links
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/referrals
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/reports
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/asset-categories-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/assets
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/batches
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/campaigns-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/commissions
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/contract-documents-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/contracts-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/custom-referral-statuses
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/dashboard-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/invoices
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/payments-batches
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/payouts
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/promo-codes
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/promoter-campaigns
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/promoters
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/referrals
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/reports
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/rewards
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/tracking-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/webhooks
+  - type: Webhooks
+    url: asyncapi/firstpromoter-webhooks.yml
+- aid: firstpromoter:firstpromoter-contracts-api
+  name: FirstPromoter Contracts API
+  description: The Contracts API from FirstPromoter — 2 operation(s) for contracts.
+  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-advanced/payout-methods-api
+  baseURL: https://api.firstpromoter.com/api/v2/company
+  tags:
+  - Contracts
+  properties:
+  - type: OpenAPI
+    url: openapi/firstpromoter-contracts-api-openapi.yml
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/payout-methods-api
+  - type: APIReference
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/products-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/assets
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/campaigns
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/commissions
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/contract-documents
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/email-settings
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/payout-methods
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/payouts
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/promo-codes
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/promoter-campaigns
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/promoters
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/referral-links
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/referrals
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/reports
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/asset-categories-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/assets
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/batches
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/campaigns-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/commissions
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/contract-documents-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/contracts-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/custom-referral-statuses
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/dashboard-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/invoices
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/payments-batches
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/payouts
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/promo-codes
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/promoter-campaigns
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/promoters
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/referrals
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/reports
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/rewards
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/tracking-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/webhooks
+  - type: Webhooks
+    url: asyncapi/firstpromoter-webhooks.yml
+- aid: firstpromoter:firstpromoter-custom-referral-statuses-api
+  name: FirstPromoter Custom Referral Statuses API
+  description: >-
+    The Custom Referral Statuses API from FirstPromoter — 3 operation(s) for custom referral statuses.
+  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-advanced/payout-methods-api
+  baseURL: https://api.firstpromoter.com/api/v2/company
+  tags:
+  - Custom Referral Statuses
+  properties:
+  - type: OpenAPI
+    url: openapi/firstpromoter-custom-referral-statuses-api-openapi.yml
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/payout-methods-api
+  - type: APIReference
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/products-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/assets
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/campaigns
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/commissions
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/contract-documents
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/email-settings
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/payout-methods
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/payouts
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/promo-codes
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/promoter-campaigns
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/promoters
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/referral-links
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/referrals
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/reports
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/asset-categories-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/assets
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/batches
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/campaigns-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/commissions
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/contract-documents-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/contracts-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/custom-referral-statuses
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/dashboard-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/invoices
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/payments-batches
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/payouts
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/promo-codes
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/promoter-campaigns
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/promoters
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/referrals
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/reports
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/rewards
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/tracking-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/webhooks
+  - type: Webhooks
+    url: asyncapi/firstpromoter-webhooks.yml
+- aid: firstpromoter:firstpromoter-dashboards-api
+  name: FirstPromoter Dashboards API
+  description: The Dashboards API from FirstPromoter — 4 operation(s) for dashboards.
+  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-advanced/payout-methods-api
+  baseURL: https://api.firstpromoter.com/api/v2/company
+  tags:
+  - Dashboards
+  properties:
+  - type: OpenAPI
+    url: openapi/firstpromoter-dashboards-api-openapi.yml
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/payout-methods-api
+  - type: APIReference
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/products-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/assets
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/campaigns
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/commissions
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/contract-documents
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/email-settings
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/payout-methods
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/payouts
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/promo-codes
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/promoter-campaigns
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/promoters
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/referral-links
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/referrals
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/reports
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/asset-categories-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/assets
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/batches
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/campaigns-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/commissions
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/contract-documents-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/contracts-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/custom-referral-statuses
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/dashboard-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/invoices
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/payments-batches
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/payouts
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/promo-codes
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/promoter-campaigns
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/promoters
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/referrals
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/reports
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/rewards
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/tracking-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/webhooks
+  - type: Webhooks
+    url: asyncapi/firstpromoter-webhooks.yml
+- aid: firstpromoter:firstpromoter-email-settings-api
+  name: FirstPromoter Email Settings API
+  description: The Email Settings API from FirstPromoter — 2 operation(s) for email settings.
+  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-advanced/payout-methods-api
+  baseURL: https://api.firstpromoter.com/api/v2/company
+  tags:
+  - Email Settings
+  properties:
+  - type: OpenAPI
+    url: openapi/firstpromoter-email-settings-api-openapi.yml
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/payout-methods-api
+  - type: APIReference
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/products-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/assets
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/campaigns
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/commissions
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/contract-documents
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/email-settings
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/payout-methods
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/payouts
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/promo-codes
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/promoter-campaigns
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/promoters
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/referral-links
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/referrals
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/reports
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/asset-categories-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/assets
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/batches
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/campaigns-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/commissions
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/contract-documents-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/contracts-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/custom-referral-statuses
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/dashboard-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/invoices
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/payments-batches
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/payouts
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/promo-codes
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/promoter-campaigns
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/promoters
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/referrals
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/reports
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/rewards
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/tracking-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/webhooks
+  - type: Webhooks
+    url: asyncapi/firstpromoter-webhooks.yml
+- aid: firstpromoter:firstpromoter-emails-api
+  name: FirstPromoter Emails API
+  description: The Emails API from FirstPromoter — 8 operation(s) for emails.
+  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-advanced/payout-methods-api
+  baseURL: https://api.firstpromoter.com/api/v2/company
+  tags:
+  - Emails
+  properties:
+  - type: OpenAPI
+    url: openapi/firstpromoter-emails-api-openapi.yml
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/payout-methods-api
+  - type: APIReference
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/products-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/assets
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/campaigns
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/commissions
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/contract-documents
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/email-settings
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/payout-methods
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/payouts
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/promo-codes
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/promoter-campaigns
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/promoters
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/referral-links
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/referrals
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/reports
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/asset-categories-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/assets
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/batches
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/campaigns-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/commissions
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/contract-documents-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/contracts-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/custom-referral-statuses
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/dashboard-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/invoices
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/payments-batches
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/payouts
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/promo-codes
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/promoter-campaigns
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/promoters
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/referrals
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/reports
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/rewards
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/tracking-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/webhooks
+  - type: Webhooks
+    url: asyncapi/firstpromoter-webhooks.yml
+- aid: firstpromoter:firstpromoter-invoice-templates-api
+  name: FirstPromoter Invoice Templates API
+  description: The Invoice Templates API from FirstPromoter — 3 operation(s) for invoice templates.
+  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-advanced/payout-methods-api
+  baseURL: https://api.firstpromoter.com/api/v2/company
+  tags:
+  - Invoice Templates
+  properties:
+  - type: OpenAPI
+    url: openapi/firstpromoter-invoice-templates-api-openapi.yml
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/payout-methods-api
+  - type: APIReference
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/products-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/assets
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/campaigns
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/commissions
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/contract-documents
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/email-settings
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/payout-methods
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/payouts
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/promo-codes
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/promoter-campaigns
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/promoters
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/referral-links
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/referrals
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/reports
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/asset-categories-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/assets
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/batches
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/campaigns-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/commissions
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/contract-documents-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/contracts-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/custom-referral-statuses
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/dashboard-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/invoices
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/payments-batches
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/payouts
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/promo-codes
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/promoter-campaigns
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/promoters
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/referrals
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/reports
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/rewards
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/tracking-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/webhooks
+  - type: Webhooks
+    url: asyncapi/firstpromoter-webhooks.yml
+- aid: firstpromoter:firstpromoter-invoices-api
+  name: FirstPromoter Invoices API
+  description: The Invoices API from FirstPromoter — 8 operation(s) for invoices.
+  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-advanced/payout-methods-api
+  baseURL: https://api.firstpromoter.com/api/v2/company
+  tags:
+  - Invoices
+  properties:
+  - type: OpenAPI
+    url: openapi/firstpromoter-invoices-api-openapi.yml
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/payout-methods-api
+  - type: APIReference
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/products-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/assets
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/campaigns
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/commissions
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/contract-documents
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/email-settings
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/payout-methods
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/payouts
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/promo-codes
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/promoter-campaigns
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/promoters
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/referral-links
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/referrals
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/reports
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/asset-categories-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/assets
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/batches
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/campaigns-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/commissions
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/contract-documents-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/contracts-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/custom-referral-statuses
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/dashboard-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/invoices
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/payments-batches
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/payouts
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/promo-codes
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/promoter-campaigns
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/promoters
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/referrals
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/reports
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/rewards
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/tracking-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/webhooks
+  - type: Webhooks
+    url: asyncapi/firstpromoter-webhooks.yml
+- aid: firstpromoter:firstpromoter-payments-batches-api
+  name: FirstPromoter Payments Batches API
+  description: The Payments Batches API from FirstPromoter — 2 operation(s) for payments batches.
+  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-advanced/payout-methods-api
+  baseURL: https://api.firstpromoter.com/api/v2/company
+  tags:
+  - Payments Batches
+  properties:
+  - type: OpenAPI
+    url: openapi/firstpromoter-payments-batches-api-openapi.yml
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/payout-methods-api
+  - type: APIReference
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/products-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/assets
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/campaigns
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/commissions
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/contract-documents
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/email-settings
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/payout-methods
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/payouts
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/promo-codes
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/promoter-campaigns
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/promoters
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/referral-links
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/referrals
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/reports
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/asset-categories-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/assets
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/batches
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/campaigns-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/commissions
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/contract-documents-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/contracts-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/custom-referral-statuses
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/dashboard-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/invoices
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/payments-batches
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/payouts
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/promo-codes
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/promoter-campaigns
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/promoters
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/referrals
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/reports
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/rewards
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/tracking-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/webhooks
+  - type: Webhooks
+    url: asyncapi/firstpromoter-webhooks.yml
+- aid: firstpromoter:firstpromoter-payout-methods-api
+  name: FirstPromoter Payout Methods API
+  description: The Payout Methods API from FirstPromoter — 2 operation(s) for payout methods.
   humanURL: https://docs.firstpromoter.com/api-reference-v2/api-advanced/payout-methods-api
   baseURL: https://api.firstpromoter.com/api/v2/company
   tags:
   - Payout Methods
   properties:
   - type: OpenAPI
-    url: openapi/firstpromoter-v2-advanced-payout-methods-openapi.yml
-  - type: Overlay
-    url: overlays/firstpromoter-v2-advanced-payout-methods-overlay.yaml
+    url: openapi/firstpromoter-payout-methods-api-openapi.yml
   - type: Documentation
     url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/payout-methods-api
   - type: APIReference
     url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
-- aid: firstpromoter:firstpromoter-v2-advanced-products
-  name: FirstPromoter Products API
-  description: FirstPromoter Products API - 5 operation(s) on the admin (api/v2/company) surface, from FirstPromoter's
-    own published OpenAPI definition (3.0.0) indexed in https://docs.firstpromoter.com/llms.txt.
-  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-advanced/products-api
-  baseURL: https://api.firstpromoter.com/api/v2/company
-  tags:
-  - Product
-  tags_raw:
-  - Products
-  properties:
-  - type: OpenAPI
-    url: openapi/firstpromoter-v2-advanced-products-openapi.yml
-  - type: Overlay
-    url: overlays/firstpromoter-v2-advanced-products-overlay.yaml
   - type: Documentation
     url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/products-api
-  - type: APIReference
-    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
-- aid: firstpromoter:firstpromoter-v2-affiliate-assets
-  name: FirstPromoter Affiliate Assets API
-  description: FirstPromoter Affiliate Assets API - 2 operation(s) on the promoter-facing (api/v2/affiliate) surface,
-    from FirstPromoter's own published OpenAPI definition (3.0.1) indexed in https://docs.firstpromoter.com/llms.txt.
-  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/assets
-  baseURL: https://api.firstpromoter.com/api/v2/affiliate
-  tags:
-  - Assets
-  properties:
-  - type: OpenAPI
-    url: openapi/firstpromoter-v2-affiliate-assets-openapi.yml
-  - type: Overlay
-    url: overlays/firstpromoter-v2-affiliate-assets-overlay.yaml
   - type: Documentation
     url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/assets
-  - type: APIReference
-    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
-- aid: firstpromoter:firstpromoter-v2-affiliate-campaigns
-  name: FirstPromoter Affiliate Campaigns API
-  description: FirstPromoter Affiliate Campaigns API - 1 operation(s) on the promoter-facing (api/v2/affiliate)
-    surface, from FirstPromoter's own published OpenAPI definition (3.0.1) indexed in https://docs.firstpromoter.com/llms.txt.
-  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/campaigns
-  baseURL: https://api.firstpromoter.com/api/v2/affiliate
-  tags:
-  - Campaigns
-  properties:
-  - type: OpenAPI
-    url: openapi/firstpromoter-v2-affiliate-campaigns-openapi.yml
-  - type: Overlay
-    url: overlays/firstpromoter-v2-affiliate-campaigns-overlay.yaml
   - type: Documentation
     url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/campaigns
-  - type: APIReference
-    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
-- aid: firstpromoter:firstpromoter-v2-affiliate-commissions
-  name: FirstPromoter Affiliate Commissions API
-  description: FirstPromoter Affiliate Commissions API - 2 operation(s) on the promoter-facing (api/v2/affiliate)
-    surface, from FirstPromoter's own published OpenAPI definition (3.0.1) indexed in https://docs.firstpromoter.com/llms.txt.
-  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/commissions
-  baseURL: https://api.firstpromoter.com/api/v2/affiliate
-  tags:
-  - Commissions
-  properties:
-  - type: OpenAPI
-    url: openapi/firstpromoter-v2-affiliate-commissions-openapi.yml
-  - type: Overlay
-    url: overlays/firstpromoter-v2-affiliate-commissions-overlay.yaml
   - type: Documentation
     url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/commissions
-  - type: APIReference
-    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
-- aid: firstpromoter:firstpromoter-v2-affiliate-contract-documents
-  name: FirstPromoter Affiliate Contract Documents API
-  description: FirstPromoter Affiliate Contract Documents API - 4 operation(s) on the promoter-facing (api/v2/affiliate)
-    surface, from FirstPromoter's own published OpenAPI definition (3.0.1) indexed in https://docs.firstpromoter.com/llms.txt.
-  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/contract-documents
-  baseURL: https://api.firstpromoter.com/api/v2/affiliate
-  tags:
-  - Contract Documents
-  properties:
-  - type: OpenAPI
-    url: openapi/firstpromoter-v2-affiliate-contract-documents-openapi.yml
-  - type: Overlay
-    url: overlays/firstpromoter-v2-affiliate-contract-documents-overlay.yaml
   - type: Documentation
     url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/contract-documents
-  - type: APIReference
-    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
-- aid: firstpromoter:firstpromoter-v2-affiliate-email-settings
-  name: FirstPromoter Affiliate Email Settings API
-  description: FirstPromoter Affiliate Email Settings API - 2 operation(s) on the promoter-facing (api/v2/affiliate)
-    surface, from FirstPromoter's own published OpenAPI definition (3.0.1) indexed in https://docs.firstpromoter.com/llms.txt.
-  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/email-settings
-  baseURL: https://api.firstpromoter.com/api/v2/affiliate
-  tags:
-  - Email Settings
-  properties:
-  - type: OpenAPI
-    url: openapi/firstpromoter-v2-affiliate-email-settings-openapi.yml
-  - type: Overlay
-    url: overlays/firstpromoter-v2-affiliate-email-settings-overlay.yaml
   - type: Documentation
     url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/email-settings
-  - type: APIReference
-    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
-- aid: firstpromoter:firstpromoter-v2-affiliate-payout-methods
-  name: FirstPromoter Affiliate Payout Methods API
-  description: FirstPromoter Affiliate Payout Methods API - 5 operation(s) on the promoter-facing (api/v2/affiliate)
-    surface, from FirstPromoter's own published OpenAPI definition (3.0.1) indexed in https://docs.firstpromoter.com/llms.txt.
-  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/payout-methods
-  baseURL: https://api.firstpromoter.com/api/v2/affiliate
-  tags:
-  - Payout Methods
-  properties:
-  - type: OpenAPI
-    url: openapi/firstpromoter-v2-affiliate-payout-methods-openapi.yml
-  - type: Overlay
-    url: overlays/firstpromoter-v2-affiliate-payout-methods-overlay.yaml
   - type: Documentation
     url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/payout-methods
-  - type: APIReference
-    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
-- aid: firstpromoter:firstpromoter-v2-affiliate-payouts
-  name: FirstPromoter Affiliate Payouts API
-  description: FirstPromoter Affiliate Payouts API - 3 operation(s) on the promoter-facing (api/v2/affiliate) surface,
-    from FirstPromoter's own published OpenAPI definition (3.0.1) indexed in https://docs.firstpromoter.com/llms.txt.
-  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/payouts
-  baseURL: https://api.firstpromoter.com/api/v2/affiliate
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/payouts
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/promo-codes
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/promoter-campaigns
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/promoters
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/referral-links
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/referrals
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/reports
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/asset-categories-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/assets
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/batches
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/campaigns-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/commissions
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/contract-documents-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/contracts-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/custom-referral-statuses
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/dashboard-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/invoices
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/payments-batches
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/payouts
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/promo-codes
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/promoter-campaigns
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/promoters
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/referrals
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/reports
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/rewards
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/tracking-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/webhooks
+  - type: Webhooks
+    url: asyncapi/firstpromoter-webhooks.yml
+- aid: firstpromoter:firstpromoter-payouts-api
+  name: FirstPromoter Payouts API
+  description: The Payouts API from FirstPromoter — 10 operation(s) for payouts.
+  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-advanced/payout-methods-api
+  baseURL: https://api.firstpromoter.com/api/v2/company
   tags:
   - Payouts
   properties:
   - type: OpenAPI
-    url: openapi/firstpromoter-v2-affiliate-payouts-openapi.yml
-  - type: Overlay
-    url: overlays/firstpromoter-v2-affiliate-payouts-overlay.yaml
+    url: openapi/firstpromoter-payouts-api-openapi.yml
   - type: Documentation
-    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/payouts
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/payout-methods-api
   - type: APIReference
     url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
-- aid: firstpromoter:firstpromoter-v2-affiliate-promo-codes
-  name: FirstPromoter Affiliate Promo Codes API
-  description: FirstPromoter Affiliate Promo Codes API - 3 operation(s) on the promoter-facing (api/v2/affiliate)
-    surface, from FirstPromoter's own published OpenAPI definition (3.0.1) indexed in https://docs.firstpromoter.com/llms.txt.
-  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/promo-codes
-  baseURL: https://api.firstpromoter.com/api/v2/affiliate
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/products-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/assets
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/campaigns
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/commissions
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/contract-documents
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/email-settings
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/payout-methods
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/payouts
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/promo-codes
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/promoter-campaigns
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/promoters
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/referral-links
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/referrals
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/reports
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/asset-categories-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/assets
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/batches
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/campaigns-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/commissions
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/contract-documents-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/contracts-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/custom-referral-statuses
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/dashboard-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/invoices
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/payments-batches
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/payouts
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/promo-codes
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/promoter-campaigns
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/promoters
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/referrals
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/reports
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/rewards
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/tracking-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/webhooks
+  - type: Webhooks
+    url: asyncapi/firstpromoter-webhooks.yml
+- aid: firstpromoter:firstpromoter-products-api
+  name: FirstPromoter Products API
+  description: The Products API from FirstPromoter — 2 operation(s) for products.
+  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-advanced/payout-methods-api
+  baseURL: https://api.firstpromoter.com/api/v2/company
+  tags:
+  - Products
+  properties:
+  - type: OpenAPI
+    url: openapi/firstpromoter-products-api-openapi.yml
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/payout-methods-api
+  - type: APIReference
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/products-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/assets
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/campaigns
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/commissions
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/contract-documents
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/email-settings
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/payout-methods
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/payouts
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/promo-codes
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/promoter-campaigns
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/promoters
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/referral-links
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/referrals
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/reports
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/asset-categories-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/assets
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/batches
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/campaigns-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/commissions
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/contract-documents-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/contracts-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/custom-referral-statuses
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/dashboard-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/invoices
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/payments-batches
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/payouts
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/promo-codes
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/promoter-campaigns
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/promoters
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/referrals
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/reports
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/rewards
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/tracking-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/webhooks
+  - type: Webhooks
+    url: asyncapi/firstpromoter-webhooks.yml
+- aid: firstpromoter:firstpromoter-promo-codes-api
+  name: FirstPromoter Promo Codes API
+  description: The Promo Codes API from FirstPromoter — 2 operation(s) for promo codes.
+  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-advanced/payout-methods-api
+  baseURL: https://api.firstpromoter.com/api/v2/company
   tags:
   - Promo Codes
   properties:
   - type: OpenAPI
-    url: openapi/firstpromoter-v2-affiliate-promo-codes-openapi.yml
-  - type: Overlay
-    url: overlays/firstpromoter-v2-affiliate-promo-codes-overlay.yaml
+    url: openapi/firstpromoter-promo-codes-api-openapi.yml
   - type: Documentation
-    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/promo-codes
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/payout-methods-api
   - type: APIReference
     url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
-- aid: firstpromoter:firstpromoter-v2-affiliate-promoter-campaigns
-  name: FirstPromoter Affiliate Promoter Campaigns API
-  description: FirstPromoter Affiliate Promoter Campaigns API - 1 operation(s) on the promoter-facing (api/v2/affiliate)
-    surface, from FirstPromoter's own published OpenAPI definition (3.0.1) indexed in https://docs.firstpromoter.com/llms.txt.
-  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/promoter-campaigns
-  baseURL: https://api.firstpromoter.com/api/v2/affiliate
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/products-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/assets
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/campaigns
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/commissions
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/contract-documents
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/email-settings
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/payout-methods
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/payouts
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/promo-codes
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/promoter-campaigns
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/promoters
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/referral-links
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/referrals
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/reports
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/asset-categories-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/assets
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/batches
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/campaigns-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/commissions
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/contract-documents-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/contracts-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/custom-referral-statuses
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/dashboard-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/invoices
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/payments-batches
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/payouts
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/promo-codes
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/promoter-campaigns
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/promoters
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/referrals
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/reports
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/rewards
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/tracking-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/webhooks
+  - type: Webhooks
+    url: asyncapi/firstpromoter-webhooks.yml
+- aid: firstpromoter:firstpromoter-promoter-campaigns-api
+  name: FirstPromoter Promoter Campaigns API
+  description: The Promoter Campaigns API from FirstPromoter — 5 operation(s) for promoter campaigns.
+  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-advanced/payout-methods-api
+  baseURL: https://api.firstpromoter.com/api/v2/company
   tags:
   - Promoter Campaigns
   properties:
   - type: OpenAPI
-    url: openapi/firstpromoter-v2-affiliate-promoter-campaigns-openapi.yml
-  - type: Overlay
-    url: overlays/firstpromoter-v2-affiliate-promoter-campaigns-overlay.yaml
+    url: openapi/firstpromoter-promoter-campaigns-api-openapi.yml
   - type: Documentation
-    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/promoter-campaigns
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/payout-methods-api
   - type: APIReference
     url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
-- aid: firstpromoter:firstpromoter-v2-affiliate-promoters
-  name: FirstPromoter Affiliate Promoters API
-  description: FirstPromoter Affiliate Promoters API - 6 operation(s) on the promoter-facing (api/v2/affiliate)
-    surface, from FirstPromoter's own published OpenAPI definition (3.0.1) indexed in https://docs.firstpromoter.com/llms.txt.
-  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/promoters
-  baseURL: https://api.firstpromoter.com/api/v2/affiliate
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/products-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/assets
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/campaigns
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/commissions
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/contract-documents
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/email-settings
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/payout-methods
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/payouts
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/promo-codes
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/promoter-campaigns
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/promoters
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/referral-links
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/referrals
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/reports
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/asset-categories-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/assets
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/batches
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/campaigns-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/commissions
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/contract-documents-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/contracts-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/custom-referral-statuses
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/dashboard-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/invoices
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/payments-batches
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/payouts
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/promo-codes
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/promoter-campaigns
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/promoters
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/referrals
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/reports
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/rewards
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/tracking-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/webhooks
+  - type: Webhooks
+    url: asyncapi/firstpromoter-webhooks.yml
+- aid: firstpromoter:firstpromoter-promoters-api
+  name: FirstPromoter Promoters API
+  description: The Promoters API from FirstPromoter — 16 operation(s) for promoters.
+  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-advanced/payout-methods-api
+  baseURL: https://api.firstpromoter.com/api/v2/company
   tags:
   - Promoters
   properties:
   - type: OpenAPI
-    url: openapi/firstpromoter-v2-affiliate-promoters-openapi.yml
-  - type: Overlay
-    url: overlays/firstpromoter-v2-affiliate-promoters-overlay.yaml
+    url: openapi/firstpromoter-promoters-api-openapi.yml
   - type: Documentation
-    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/promoters
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/payout-methods-api
   - type: APIReference
     url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
-- aid: firstpromoter:firstpromoter-v2-affiliate-referral-links
-  name: FirstPromoter Affiliate Referral Links API
-  description: FirstPromoter Affiliate Referral Links API - 4 operation(s) on the promoter-facing (api/v2/affiliate)
-    surface, from FirstPromoter's own published OpenAPI definition (3.0.1) indexed in https://docs.firstpromoter.com/llms.txt.
-  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/referral-links
-  baseURL: https://api.firstpromoter.com/api/v2/affiliate
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/products-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/assets
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/campaigns
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/commissions
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/contract-documents
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/email-settings
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/payout-methods
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/payouts
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/promo-codes
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/promoter-campaigns
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/promoters
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/referral-links
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/referrals
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/reports
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/asset-categories-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/assets
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/batches
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/campaigns-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/commissions
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/contract-documents-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/contracts-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/custom-referral-statuses
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/dashboard-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/invoices
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/payments-batches
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/payouts
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/promo-codes
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/promoter-campaigns
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/promoters
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/referrals
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/reports
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/rewards
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/tracking-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/webhooks
+  - type: Webhooks
+    url: asyncapi/firstpromoter-webhooks.yml
+- aid: firstpromoter:firstpromoter-referral-links-api
+  name: FirstPromoter Referral Links API
+  description: The Referral Links API from FirstPromoter — 2 operation(s) for referral links.
+  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-advanced/payout-methods-api
+  baseURL: https://api.firstpromoter.com/api/v2/company
   tags:
   - Referral Links
   properties:
   - type: OpenAPI
-    url: openapi/firstpromoter-v2-affiliate-referral-links-openapi.yml
-  - type: Overlay
-    url: overlays/firstpromoter-v2-affiliate-referral-links-overlay.yaml
+    url: openapi/firstpromoter-referral-links-api-openapi.yml
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/payout-methods-api
+  - type: APIReference
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/products-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/assets
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/campaigns
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/commissions
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/contract-documents
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/email-settings
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/payout-methods
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/payouts
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/promo-codes
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/promoter-campaigns
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/promoters
   - type: Documentation
     url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/referral-links
-  - type: APIReference
-    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
-- aid: firstpromoter:firstpromoter-v2-affiliate-referrals
-  name: FirstPromoter Affiliate Referrals API
-  description: FirstPromoter Affiliate Referrals API - 5 operation(s) on the promoter-facing (api/v2/affiliate)
-    surface, from FirstPromoter's own published OpenAPI definition (3.0.1) indexed in https://docs.firstpromoter.com/llms.txt.
-  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/referrals
-  baseURL: https://api.firstpromoter.com/api/v2/affiliate
-  tags:
-  - Referrals
-  properties:
-  - type: OpenAPI
-    url: openapi/firstpromoter-v2-affiliate-referrals-openapi.yml
-  - type: Overlay
-    url: overlays/firstpromoter-v2-affiliate-referrals-overlay.yaml
   - type: Documentation
     url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/referrals
-  - type: APIReference
-    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
-- aid: firstpromoter:firstpromoter-v2-affiliate-reports
-  name: FirstPromoter Affiliate Reports API
-  description: FirstPromoter Affiliate Reports API - 3 operation(s) on the promoter-facing (api/v2/affiliate) surface,
-    from FirstPromoter's own published OpenAPI definition (3.0.1) indexed in https://docs.firstpromoter.com/llms.txt.
-  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/reports
-  baseURL: https://api.firstpromoter.com/api/v2/affiliate
-  tags:
-  - Reports
-  properties:
-  - type: OpenAPI
-    url: openapi/firstpromoter-v2-affiliate-reports-openapi.yml
-  - type: Overlay
-    url: overlays/firstpromoter-v2-affiliate-reports-overlay.yaml
   - type: Documentation
     url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/reports
-  - type: APIReference
-    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
-- aid: firstpromoter:firstpromoter-v2-asset-categories
-  name: FirstPromoter Asset Categories API
-  description: FirstPromoter Asset Categories API - 2 operation(s) on the admin (api/v2/company) surface, from FirstPromoter's
-    own published OpenAPI definition (3.0.1) indexed in https://docs.firstpromoter.com/llms.txt.
-  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-advanced/asset-categories-api
-  baseURL: https://api.firstpromoter.com/api/v2/company
-  tags:
-  - Asset Categories
-  properties:
-  - type: OpenAPI
-    url: openapi/firstpromoter-v2-asset-categories-openapi.yml
-  - type: Overlay
-    url: overlays/firstpromoter-v2-asset-categories-overlay.yaml
   - type: Documentation
     url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/asset-categories-api
-  - type: APIReference
-    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
-- aid: firstpromoter:firstpromoter-v2-assets
-  name: FirstPromoter Assets API
-  description: FirstPromoter Assets API - 6 operation(s) on the admin (api/v2/company) surface, from FirstPromoter's
-    own published OpenAPI definition (3.0.1) indexed in https://docs.firstpromoter.com/llms.txt.
-  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-advanced/assets
-  baseURL: https://api.firstpromoter.com/api/v2/company
-  tags:
-  - Assets
-  properties:
-  - type: OpenAPI
-    url: openapi/firstpromoter-v2-assets-openapi.yml
-  - type: Overlay
-    url: overlays/firstpromoter-v2-assets-overlay.yaml
   - type: Documentation
     url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/assets
-  - type: APIReference
-    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
-- aid: firstpromoter:firstpromoter-v2-batches
-  name: FirstPromoter Batch Processes API
-  description: FirstPromoter Batch Processes API - 3 operation(s) on the admin (api/v2/company) surface, from FirstPromoter's
-    own published OpenAPI definition (3.0.0) indexed in https://docs.firstpromoter.com/llms.txt.
-  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-admin/batches
-  baseURL: https://api.firstpromoter.com/api/v2/company
-  tags:
-  - Batch Processes
-  properties:
-  - type: OpenAPI
-    url: openapi/firstpromoter-v2-batches-openapi.yml
-  - type: Overlay
-    url: overlays/firstpromoter-v2-batches-overlay.yaml
   - type: Documentation
     url: https://docs.firstpromoter.com/api-reference-v2/api-admin/batches
-  - type: APIReference
-    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
-- aid: firstpromoter:firstpromoter-v2-campaigns
-  name: FirstPromoter Campaigns API
-  description: FirstPromoter Campaigns API - 5 operation(s) on the admin (api/v2/company) surface, from FirstPromoter's
-    own published OpenAPI definition (3.0.1) indexed in https://docs.firstpromoter.com/llms.txt.
-  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-advanced/campaigns-api
-  baseURL: https://api.firstpromoter.com/api/v2/company
-  tags:
-  - Campaigns
-  properties:
-  - type: OpenAPI
-    url: openapi/firstpromoter-v2-campaigns-openapi.yml
-  - type: Overlay
-    url: overlays/firstpromoter-v2-campaigns-overlay.yaml
   - type: Documentation
     url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/campaigns-api
-  - type: APIReference
-    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
-- aid: firstpromoter:firstpromoter-v2-commissions
-  name: FirstPromoter Commissions API
-  description: FirstPromoter Commissions API - 9 operation(s) on the admin (api/v2/company) surface, from FirstPromoter's
-    own published OpenAPI definition (3.0.1) indexed in https://docs.firstpromoter.com/llms.txt.
-  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-admin/commissions
-  baseURL: https://api.firstpromoter.com/api/v2/company
-  tags:
-  - Commissions
-  properties:
-  - type: OpenAPI
-    url: openapi/firstpromoter-v2-commissions-openapi.yml
-  - type: Overlay
-    url: overlays/firstpromoter-v2-commissions-overlay.yaml
   - type: Documentation
     url: https://docs.firstpromoter.com/api-reference-v2/api-admin/commissions
-  - type: APIReference
-    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
-- aid: firstpromoter:firstpromoter-v2-contract-documents
-  name: FirstPromoter Contract Documents API
-  description: FirstPromoter Contract Documents API - 2 operation(s) on the admin (api/v2/company) surface, from
-    FirstPromoter's own published OpenAPI definition (3.0.1) indexed in https://docs.firstpromoter.com/llms.txt.
-  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-advanced/contract-documents-api
-  baseURL: https://api.firstpromoter.com/api/v2/company
-  tags:
-  - Contract Documents
-  properties:
-  - type: OpenAPI
-    url: openapi/firstpromoter-v2-contract-documents-openapi.yml
-  - type: Overlay
-    url: overlays/firstpromoter-v2-contract-documents-overlay.yaml
   - type: Documentation
     url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/contract-documents-api
-  - type: APIReference
-    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
-- aid: firstpromoter:firstpromoter-v2-contracts
-  name: FirstPromoter Contracts API
-  description: FirstPromoter Contracts API - 5 operation(s) on the admin (api/v2/company) surface, from FirstPromoter's
-    own published OpenAPI definition (3.0.1) indexed in https://docs.firstpromoter.com/llms.txt.
-  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-advanced/contracts-api
-  baseURL: https://api.firstpromoter.com/api/v2/company
-  tags:
-  - Contracts
-  properties:
-  - type: OpenAPI
-    url: openapi/firstpromoter-v2-contracts-openapi.yml
-  - type: Overlay
-    url: overlays/firstpromoter-v2-contracts-overlay.yaml
   - type: Documentation
     url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/contracts-api
-  - type: APIReference
-    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
-- aid: firstpromoter:firstpromoter-v2-custom-referral-statuses
-  name: FirstPromoter Custom Referral Statuses API
-  description: FirstPromoter Custom Referral Statuses API - 2 operation(s) on the legacy admin (api/admin/v1) surface,
-    from FirstPromoter's own published OpenAPI definition (3.0.0) indexed in https://docs.firstpromoter.com/llms.txt.
-  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-advanced/custom-referral-statuses
-  baseURL: https://api.firstpromoter.com/api/admin/v1
-  tags:
-  - Custom Referral Statuses
-  properties:
-  - type: OpenAPI
-    url: openapi/firstpromoter-v2-custom-referral-statuses-openapi.yml
-  - type: Overlay
-    url: overlays/firstpromoter-v2-custom-referral-statuses-overlay.yaml
   - type: Documentation
     url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/custom-referral-statuses
-  - type: APIReference
-    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
-- aid: firstpromoter:firstpromoter-v2-dashboard
-  name: FirstPromoter Dashboards API
-  description: FirstPromoter Dashboards API - 4 operation(s) on the admin (api/v2/company) surface, from FirstPromoter's
-    own published OpenAPI definition (3.0.1) indexed in https://docs.firstpromoter.com/llms.txt.
-  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-advanced/dashboard-api
-  baseURL: https://api.firstpromoter.com/api/v2/company
-  tags:
-  - Dashboards
-  properties:
-  - type: OpenAPI
-    url: openapi/firstpromoter-v2-dashboard-openapi.yml
-  - type: Overlay
-    url: overlays/firstpromoter-v2-dashboard-overlay.yaml
   - type: Documentation
     url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/dashboard-api
-  - type: APIReference
-    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
-- aid: firstpromoter:firstpromoter-v2-emails
-  name: FirstPromoter Emails API
-  description: FirstPromoter Emails API - 11 operation(s) on the admin (api/v2/company) surface, from FirstPromoter's
-    own published OpenAPI definition (3.0.1) indexed in https://docs.firstpromoter.com/llms.txt.
-  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-admin
-  baseURL: https://api.firstpromoter.com/api/v2/company
-  tags:
-  - Emails
-  properties:
-  - type: OpenAPI
-    url: openapi/firstpromoter-v2-emails-openapi.yml
-  - type: Overlay
-    url: overlays/firstpromoter-v2-emails-overlay.yaml
   - type: Documentation
     url: https://docs.firstpromoter.com/api-reference-v2/api-admin
-  - type: APIReference
-    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
-- aid: firstpromoter:firstpromoter-v2-invoices
-  name: FirstPromoter Invoices API
-  description: FirstPromoter Invoices API - 11 operation(s) on the admin (api/v2/company) surface, from FirstPromoter's
-    own published OpenAPI definition (3.0.0) indexed in https://docs.firstpromoter.com/llms.txt.
-  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-advanced/invoices
-  baseURL: https://api.firstpromoter.com/api/v2/company
-  tags:
-  - Invoices
-  properties:
-  - type: OpenAPI
-    url: openapi/firstpromoter-v2-invoices-openapi.yml
-  - type: Overlay
-    url: overlays/firstpromoter-v2-invoices-overlay.yaml
   - type: Documentation
     url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/invoices
-  - type: APIReference
-    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
-- aid: firstpromoter:firstpromoter-v2-payent-batches
-  name: FirstPromoter Payments Batches API
-  description: FirstPromoter Payments Batches API - 2 operation(s) on the admin (api/v2/company) surface, from FirstPromoter's
-    own published OpenAPI definition (3.0.1) indexed in https://docs.firstpromoter.com/llms.txt.
-  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-advanced/payments-batches
-  baseURL: https://api.firstpromoter.com/api/v2/company
-  tags:
-  - Payments Batches
-  properties:
-  - type: OpenAPI
-    url: openapi/firstpromoter-v2-payent-batches-openapi.yml
-  - type: Overlay
-    url: overlays/firstpromoter-v2-payent-batches-overlay.yaml
   - type: Documentation
     url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/payments-batches
-  - type: APIReference
-    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
-- aid: firstpromoter:firstpromoter-v2-payouts
-  name: FirstPromoter Payouts API
-  description: FirstPromoter Payouts API - 8 operation(s) on the admin (api/v2/company) surface, from FirstPromoter's
-    own published OpenAPI definition (3.0.3) indexed in https://docs.firstpromoter.com/llms.txt.
-  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-admin/payouts
-  baseURL: https://api.firstpromoter.com/api/v2/company
-  tags:
-  - Payouts
-  properties:
-  - type: OpenAPI
-    url: openapi/firstpromoter-v2-payouts-openapi.yml
-  - type: Overlay
-    url: overlays/firstpromoter-v2-payouts-overlay.yaml
   - type: Documentation
     url: https://docs.firstpromoter.com/api-reference-v2/api-admin/payouts
-  - type: APIReference
-    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
-- aid: firstpromoter:firstpromoter-v2-promocodes
-  name: FirstPromoter Promo Codes API
-  description: FirstPromoter Promo Codes API - 5 operation(s) on the admin (api/v2/company) surface, from FirstPromoter's
-    own published OpenAPI definition (3.0.1) indexed in https://docs.firstpromoter.com/llms.txt.
-  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-admin/promo-codes
-  baseURL: https://api.firstpromoter.com/api/v2/company
-  tags:
-  - Promo Codes
-  properties:
-  - type: OpenAPI
-    url: openapi/firstpromoter-v2-promocodes-openapi.yml
-  - type: Overlay
-    url: overlays/firstpromoter-v2-promocodes-overlay.yaml
   - type: Documentation
     url: https://docs.firstpromoter.com/api-reference-v2/api-admin/promo-codes
-  - type: APIReference
-    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
-- aid: firstpromoter:firstpromoter-v2-promoter-campaigns
-  name: FirstPromoter Promoter Campaigns API
-  description: FirstPromoter Promoter Campaigns API - 5 operation(s) on the admin (api/v2/company) surface, from
-    FirstPromoter's own published OpenAPI definition (3.0.1) indexed in https://docs.firstpromoter.com/llms.txt.
-  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-admin/promoter-campaigns
-  baseURL: https://api.firstpromoter.com/api/v2/company
-  tags:
-  - Promoter Campaigns
-  properties:
-  - type: OpenAPI
-    url: openapi/firstpromoter-v2-promoter-campaigns-openapi.yml
-  - type: Overlay
-    url: overlays/firstpromoter-v2-promoter-campaigns-overlay.yaml
   - type: Documentation
     url: https://docs.firstpromoter.com/api-reference-v2/api-admin/promoter-campaigns
-  - type: APIReference
-    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
-- aid: firstpromoter:firstpromoter-v2-promoters
-  name: FirstPromoter Promoters API
-  description: FirstPromoter Promoters API - 13 operation(s) on the admin (api/v2/company) surface, from FirstPromoter's
-    own published OpenAPI definition (3.0.1) indexed in https://docs.firstpromoter.com/llms.txt.
-  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-admin/promoters
-  baseURL: https://api.firstpromoter.com/api/v2/company
-  tags:
-  - Promoters
-  properties:
-  - type: OpenAPI
-    url: openapi/firstpromoter-v2-promoters-openapi.yml
-  - type: Overlay
-    url: overlays/firstpromoter-v2-promoters-overlay.yaml
   - type: Documentation
     url: https://docs.firstpromoter.com/api-reference-v2/api-admin/promoters
-  - type: APIReference
-    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
-- aid: firstpromoter:firstpromoter-v2-referral-custom-status
-  name: FirstPromoter Referral Custom Status API
-  description: FirstPromoter Referral Custom Status API - 1 operation(s) on the admin (api/v2/company) surface,
-    from FirstPromoter's own published OpenAPI definition (3.0.0) indexed in https://docs.firstpromoter.com/llms.txt.
-  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-advanced/custom-referral-statuses
-  baseURL: https://api.firstpromoter.com/api/v2/company
-  tags:
-  - Referrals
-  properties:
-  - type: OpenAPI
-    url: openapi/firstpromoter-v2-referral-custom-status-openapi.yml
-  - type: Overlay
-    url: overlays/firstpromoter-v2-referral-custom-status-overlay.yaml
-  - type: Documentation
-    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/custom-referral-statuses
-  - type: APIReference
-    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
-- aid: firstpromoter:firstpromoter-v2-referrals
-  name: FirstPromoter Referrals API
-  description: FirstPromoter Referrals API - 10 operation(s) on the admin (api/v2/company) surface, from FirstPromoter's
-    own published OpenAPI definition (3.0.0) indexed in https://docs.firstpromoter.com/llms.txt.
-  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-admin/referrals
-  baseURL: https://api.firstpromoter.com/api/v2/company
-  tags:
-  - Referrals
-  properties:
-  - type: OpenAPI
-    url: openapi/firstpromoter-v2-referrals-openapi.yml
-  - type: Overlay
-    url: overlays/firstpromoter-v2-referrals-overlay.yaml
   - type: Documentation
     url: https://docs.firstpromoter.com/api-reference-v2/api-admin/referrals
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/reports
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/rewards
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/tracking-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/webhooks
+  - type: Webhooks
+    url: asyncapi/firstpromoter-webhooks.yml
+- aid: firstpromoter:firstpromoter-referrals-api
+  name: FirstPromoter Referrals API
+  description: The Referrals API from FirstPromoter — 8 operation(s) for referrals.
+  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-advanced/payout-methods-api
+  baseURL: https://api.firstpromoter.com/api/v2/company
+  tags:
+  - Referrals
+  properties:
+  - type: OpenAPI
+    url: openapi/firstpromoter-referrals-api-openapi.yml
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/payout-methods-api
   - type: APIReference
     url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
-- aid: firstpromoter:firstpromoter-v2-reports
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/products-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/assets
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/campaigns
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/commissions
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/contract-documents
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/email-settings
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/payout-methods
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/payouts
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/promo-codes
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/promoter-campaigns
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/promoters
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/referral-links
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/referrals
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/reports
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/asset-categories-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/assets
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/batches
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/campaigns-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/commissions
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/contract-documents-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/contracts-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/custom-referral-statuses
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/dashboard-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/invoices
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/payments-batches
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/payouts
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/promo-codes
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/promoter-campaigns
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/promoters
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/referrals
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/reports
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/rewards
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/tracking-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/webhooks
+  - type: Webhooks
+    url: asyncapi/firstpromoter-webhooks.yml
+- aid: firstpromoter:firstpromoter-refund-api
+  name: FirstPromoter Refund API
+  description: The Refund API from FirstPromoter — 1 operation(s) for refund.
+  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-advanced/payout-methods-api
+  baseURL: https://api.firstpromoter.com/api/v2/company
+  tags:
+  - Refund
+  properties:
+  - type: OpenAPI
+    url: openapi/firstpromoter-refund-api-openapi.yml
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/payout-methods-api
+  - type: APIReference
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/products-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/assets
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/campaigns
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/commissions
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/contract-documents
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/email-settings
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/payout-methods
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/payouts
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/promo-codes
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/promoter-campaigns
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/promoters
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/referral-links
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/referrals
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/reports
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/asset-categories-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/assets
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/batches
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/campaigns-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/commissions
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/contract-documents-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/contracts-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/custom-referral-statuses
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/dashboard-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/invoices
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/payments-batches
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/payouts
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/promo-codes
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/promoter-campaigns
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/promoters
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/referrals
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/reports
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/rewards
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/tracking-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/webhooks
+  - type: Webhooks
+    url: asyncapi/firstpromoter-webhooks.yml
+- aid: firstpromoter:firstpromoter-reports-api
   name: FirstPromoter Reports API
-  description: FirstPromoter Reports API - 6 operation(s) on the admin (api/v2/company) surface, from FirstPromoter's
-    own published OpenAPI definition (3.0.1) indexed in https://docs.firstpromoter.com/llms.txt.
-  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-admin/reports
+  description: The Reports API from FirstPromoter — 7 operation(s) for reports.
+  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-advanced/payout-methods-api
   baseURL: https://api.firstpromoter.com/api/v2/company
   tags:
   - Reports
   properties:
   - type: OpenAPI
-    url: openapi/firstpromoter-v2-reports-openapi.yml
-  - type: Overlay
-    url: overlays/firstpromoter-v2-reports-overlay.yaml
+    url: openapi/firstpromoter-reports-api-openapi.yml
   - type: Documentation
-    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/reports
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/payout-methods-api
   - type: APIReference
     url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
-- aid: firstpromoter:firstpromoter-v2-rewards
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/products-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/assets
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/campaigns
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/commissions
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/contract-documents
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/email-settings
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/payout-methods
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/payouts
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/promo-codes
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/promoter-campaigns
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/promoters
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/referral-links
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/referrals
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/reports
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/asset-categories-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/assets
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/batches
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/campaigns-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/commissions
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/contract-documents-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/contracts-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/custom-referral-statuses
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/dashboard-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/invoices
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/payments-batches
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/payouts
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/promo-codes
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/promoter-campaigns
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/promoters
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/referrals
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/reports
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/rewards
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/tracking-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/webhooks
+  - type: Webhooks
+    url: asyncapi/firstpromoter-webhooks.yml
+- aid: firstpromoter:firstpromoter-rewards-api
   name: FirstPromoter Rewards API
-  description: FirstPromoter Rewards API - 4 operation(s) on the admin (api/v2/company) surface, from FirstPromoter's
-    own published OpenAPI definition (3.0.0) indexed in https://docs.firstpromoter.com/llms.txt.
-  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-advanced/rewards
+  description: The Rewards API from FirstPromoter — 3 operation(s) for rewards.
+  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-advanced/payout-methods-api
   baseURL: https://api.firstpromoter.com/api/v2/company
   tags:
   - Rewards
   properties:
   - type: OpenAPI
-    url: openapi/firstpromoter-v2-rewards-openapi.yml
-  - type: Overlay
-    url: overlays/firstpromoter-v2-rewards-overlay.yaml
+    url: openapi/firstpromoter-rewards-api-openapi.yml
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/payout-methods-api
+  - type: APIReference
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/products-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/assets
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/campaigns
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/commissions
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/contract-documents
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/email-settings
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/payout-methods
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/payouts
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/promo-codes
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/promoter-campaigns
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/promoters
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/referral-links
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/referrals
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/reports
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/asset-categories-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/assets
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/batches
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/campaigns-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/commissions
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/contract-documents-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/contracts-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/custom-referral-statuses
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/dashboard-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/invoices
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/payments-batches
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/payouts
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/promo-codes
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/promoter-campaigns
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/promoters
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/referrals
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/reports
   - type: Documentation
     url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/rewards
-  - type: APIReference
-    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
-- aid: firstpromoter:firstpromoter-v2-tracking
-  name: FirstPromoter Tracking API
-  description: FirstPromoter Tracking API - 4 operation(s) on the server-side tracking (api/v2/track) surface, from
-    FirstPromoter's own published OpenAPI definition (3.0.1) indexed in https://docs.firstpromoter.com/llms.txt.
-  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-admin/tracking-api
-  baseURL: https://api.firstpromoter.com/api/v2/track
-  tags:
-  - Tracking
-  properties:
-  - type: OpenAPI
-    url: openapi/firstpromoter-v2-tracking-openapi.yml
-  - type: Overlay
-    url: overlays/firstpromoter-v2-tracking-overlay.yaml
   - type: Documentation
     url: https://docs.firstpromoter.com/api-reference-v2/api-admin/tracking-api
-  - type: APIReference
-    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
-- aid: firstpromoter:firstpromoter-v2-webhooks
-  name: FirstPromoter Webhooks API
-  description: FirstPromoter Webhooks API - 10 operation(s) on the admin (api/v2/company) surface, from FirstPromoter's
-    own published OpenAPI definition (3.0.0) indexed in https://docs.firstpromoter.com/llms.txt.
-  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-admin/webhooks
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/webhooks
+  - type: Webhooks
+    url: asyncapi/firstpromoter-webhooks.yml
+- aid: firstpromoter:firstpromoter-sale-api
+  name: FirstPromoter Sale API
+  description: The Sale API from FirstPromoter — 1 operation(s) for sale.
+  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-advanced/payout-methods-api
   baseURL: https://api.firstpromoter.com/api/v2/company
   tags:
-  - Webhook
-  tags_raw:
+  - Sale
+  properties:
+  - type: OpenAPI
+    url: openapi/firstpromoter-sale-api-openapi.yml
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/payout-methods-api
+  - type: APIReference
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/products-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/assets
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/campaigns
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/commissions
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/contract-documents
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/email-settings
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/payout-methods
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/payouts
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/promo-codes
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/promoter-campaigns
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/promoters
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/referral-links
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/referrals
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/reports
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/asset-categories-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/assets
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/batches
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/campaigns-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/commissions
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/contract-documents-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/contracts-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/custom-referral-statuses
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/dashboard-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/invoices
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/payments-batches
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/payouts
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/promo-codes
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/promoter-campaigns
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/promoters
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/referrals
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/reports
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/rewards
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/tracking-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/webhooks
+  - type: Webhooks
+    url: asyncapi/firstpromoter-webhooks.yml
+- aid: firstpromoter:firstpromoter-signup-api
+  name: FirstPromoter Signup API
+  description: The Signup API from FirstPromoter — 1 operation(s) for signup.
+  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-advanced/payout-methods-api
+  baseURL: https://api.firstpromoter.com/api/v2/company
+  tags:
+  - Signup
+  properties:
+  - type: OpenAPI
+    url: openapi/firstpromoter-signup-api-openapi.yml
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/payout-methods-api
+  - type: APIReference
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/products-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/assets
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/campaigns
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/commissions
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/contract-documents
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/email-settings
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/payout-methods
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/payouts
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/promo-codes
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/promoter-campaigns
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/promoters
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/referral-links
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/referrals
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/reports
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/asset-categories-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/assets
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/batches
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/campaigns-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/commissions
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/contract-documents-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/contracts-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/custom-referral-statuses
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/dashboard-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/invoices
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/payments-batches
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/payouts
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/promo-codes
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/promoter-campaigns
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/promoters
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/referrals
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/reports
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/rewards
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/tracking-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/webhooks
+  - type: Webhooks
+    url: asyncapi/firstpromoter-webhooks.yml
+- aid: firstpromoter:firstpromoter-webhook-deliveries-api
+  name: FirstPromoter Webhook Deliveries API
+  description: The Webhook Deliveries API from FirstPromoter — 3 operation(s) for webhook deliveries.
+  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-advanced/payout-methods-api
+  baseURL: https://api.firstpromoter.com/api/v2/company
+  tags:
+  - Webhook Deliveries
+  properties:
+  - type: OpenAPI
+    url: openapi/firstpromoter-webhook-deliveries-api-openapi.yml
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/payout-methods-api
+  - type: APIReference
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/products-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/assets
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/campaigns
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/commissions
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/contract-documents
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/email-settings
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/payout-methods
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/payouts
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/promo-codes
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/promoter-campaigns
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/promoters
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/referral-links
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/referrals
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/reports
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/asset-categories-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/assets
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/batches
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/campaigns-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/commissions
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/contract-documents-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/contracts-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/custom-referral-statuses
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/dashboard-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/invoices
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/payments-batches
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/payouts
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/promo-codes
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/promoter-campaigns
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/promoters
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/referrals
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/reports
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/rewards
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/tracking-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/webhooks
+  - type: Webhooks
+    url: asyncapi/firstpromoter-webhooks.yml
+- aid: firstpromoter:firstpromoter-webhooks-api
+  name: FirstPromoter Webhooks API
+  description: The Webhooks API from FirstPromoter — 4 operation(s) for webhooks.
+  humanURL: https://docs.firstpromoter.com/api-reference-v2/api-advanced/payout-methods-api
+  baseURL: https://api.firstpromoter.com/api/v2/company
+  tags:
   - Webhooks
   properties:
   - type: OpenAPI
-    url: openapi/firstpromoter-v2-webhooks-openapi.yml
-  - type: Overlay
-    url: overlays/firstpromoter-v2-webhooks-overlay.yaml
+    url: openapi/firstpromoter-webhooks-api-openapi.yml
   - type: Documentation
-    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/webhooks
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/payout-methods-api
   - type: APIReference
     url: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/products-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/assets
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/campaigns
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/commissions
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/contract-documents
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/email-settings
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/payout-methods
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/payouts
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/promo-codes
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/promoter-campaigns
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/promoters
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/referral-links
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/referrals
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-affiliate/reports
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/asset-categories-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/assets
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/batches
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/campaigns-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/commissions
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/contract-documents-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/contracts-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/custom-referral-statuses
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/dashboard-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/invoices
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/payments-batches
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/payouts
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/promo-codes
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/promoter-campaigns
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/promoters
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/referrals
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/reports
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-advanced/rewards
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/tracking-api
+  - type: Documentation
+    url: https://docs.firstpromoter.com/api-reference-v2/api-admin/webhooks
   - type: Webhooks
     url: asyncapi/firstpromoter-webhooks.yml
 common:
+- type: Overlay
+  url: overlays/firstpromoter-v2-advanced-payout-methods-overlay.yaml
+- type: Overlay
+  url: overlays/firstpromoter-v2-advanced-products-overlay.yaml
+- type: Overlay
+  url: overlays/firstpromoter-v2-affiliate-assets-overlay.yaml
+- type: Overlay
+  url: overlays/firstpromoter-v2-affiliate-campaigns-overlay.yaml
+- type: Overlay
+  url: overlays/firstpromoter-v2-affiliate-commissions-overlay.yaml
+- type: Overlay
+  url: overlays/firstpromoter-v2-affiliate-contract-documents-overlay.yaml
+- type: Overlay
+  url: overlays/firstpromoter-v2-affiliate-email-settings-overlay.yaml
+- type: Overlay
+  url: overlays/firstpromoter-v2-affiliate-payout-methods-overlay.yaml
+- type: Overlay
+  url: overlays/firstpromoter-v2-affiliate-payouts-overlay.yaml
+- type: Overlay
+  url: overlays/firstpromoter-v2-affiliate-promo-codes-overlay.yaml
+- type: Overlay
+  url: overlays/firstpromoter-v2-affiliate-promoter-campaigns-overlay.yaml
+- type: Overlay
+  url: overlays/firstpromoter-v2-affiliate-promoters-overlay.yaml
+- type: Overlay
+  url: overlays/firstpromoter-v2-affiliate-referral-links-overlay.yaml
+- type: Overlay
+  url: overlays/firstpromoter-v2-affiliate-referrals-overlay.yaml
+- type: Overlay
+  url: overlays/firstpromoter-v2-affiliate-reports-overlay.yaml
+- type: Overlay
+  url: overlays/firstpromoter-v2-asset-categories-overlay.yaml
+- type: Overlay
+  url: overlays/firstpromoter-v2-assets-overlay.yaml
+- type: Overlay
+  url: overlays/firstpromoter-v2-batches-overlay.yaml
+- type: Overlay
+  url: overlays/firstpromoter-v2-campaigns-overlay.yaml
+- type: Overlay
+  url: overlays/firstpromoter-v2-commissions-overlay.yaml
+- type: Overlay
+  url: overlays/firstpromoter-v2-contract-documents-overlay.yaml
+- type: Overlay
+  url: overlays/firstpromoter-v2-contracts-overlay.yaml
+- type: Overlay
+  url: overlays/firstpromoter-v2-custom-referral-statuses-overlay.yaml
+- type: Overlay
+  url: overlays/firstpromoter-v2-dashboard-overlay.yaml
+- type: Overlay
+  url: overlays/firstpromoter-v2-emails-overlay.yaml
+- type: Overlay
+  url: overlays/firstpromoter-v2-invoices-overlay.yaml
+- type: Overlay
+  url: overlays/firstpromoter-v2-payent-batches-overlay.yaml
+- type: Overlay
+  url: overlays/firstpromoter-v2-payouts-overlay.yaml
+- type: Overlay
+  url: overlays/firstpromoter-v2-promocodes-overlay.yaml
+- type: Overlay
+  url: overlays/firstpromoter-v2-promoter-campaigns-overlay.yaml
+- type: Overlay
+  url: overlays/firstpromoter-v2-promoters-overlay.yaml
+- type: Overlay
+  url: overlays/firstpromoter-v2-referral-custom-status-overlay.yaml
+- type: Overlay
+  url: overlays/firstpromoter-v2-referrals-overlay.yaml
+- type: Overlay
+  url: overlays/firstpromoter-v2-reports-overlay.yaml
+- type: Overlay
+  url: overlays/firstpromoter-v2-rewards-overlay.yaml
+- type: Overlay
+  url: overlays/firstpromoter-v2-tracking-overlay.yaml
+- type: Overlay
+  url: overlays/firstpromoter-v2-webhooks-overlay.yaml
 - type: Website
   url: https://firstpromoter.com/
 - type: DeveloperPortal
