@@ -1,0 +1,66 @@
+slug: firstpromoter
+provider: FirstPromoter
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Media, Entertainment & Telecom Content
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 5
+edges:
+- tag: Webhooks
+  spec_file: firstpromoter-webhooks-api-openapi.yml
+  capability_id: BC-4270.80
+  capability_id_l1: BC-4270
+  capability_name: Webhook & Event Subscription Management
+  confidence: 0.8
+  evidence: POST /webhooks "Create a webhook subscription"; GET /webhooks/event_types "List supported
+    event types"; schema WebhookSubscription
+  reason: Full lifecycle of outbound webhook subscriptions plus event-type catalogue and test delivery
+    — a direct match to Webhook & Event Subscription Management within the vendor's public developer platform.
+- tag: Contracts
+  spec_file: firstpromoter-contracts-api-openapi.yml
+  capability_id: BC-150.10
+  capability_id_l1: BC-150
+  capability_name: Contract Management
+  confidence: 0.72
+  evidence: POST /contracts  Create a contract. Calls the service that generates the contract documents.
+  reason: Full CRUD lifecycle over contract records with document generation is contract management; the
+    counterparties happen to be affiliates but the capability is contract lifecycle.
+- tag: Campaigns
+  spec_file: firstpromoter-campaigns-api-openapi.yml
+  capability_id: BC-410.60
+  capability_id_l1: BC-410
+  capability_name: Channel Sales Management
+  confidence: 0.7
+  evidence: 'POST /campaigns  Create a campaign; schemas: CampaignCreate, Campaign, Reward, Link, UpgradeDetails'
+  reason: Campaigns here are affiliate/referral programmes with rewards and tracking links, i.e. configuration
+    of the indirect promoter channel rather than a marketing demand-gen campaign; some ambiguity with
+    BC-400.40 keeps confidence at 0.7.
+- tag: Commissions
+  spec_file: firstpromoter-commissions-api-openapi.yml
+  capability_id: BC-410
+  capability_id_l1: BC-410
+  capability_name: Sales Management
+  confidence: 0.7
+  evidence: POST /commissions/approve  Approve commissions; POST /commissions/generate_payouts  generatePayouts  Generate
+    payouts for commissions
+  reason: Calculation, approval and payout of affiliate commissions is compensation of the indirect sales
+    channel. Evidence does not cleanly separate channel management (BC-410.60) from sales compensation
+    (BC-410.70), so only the L1 is asserted.
+- tag: Webhook Deliveries
+  spec_file: firstpromoter-webhook-deliveries-api-openapi.yml
+  capability_id: BC-4270.80
+  capability_id_l1: BC-4270
+  capability_name: Webhook & Event Subscription Management
+  confidence: 0.7
+  evidence: '"Manage webhook subscriptions and inspect deliveries."; POST /webhooks/{webhook_id}/webhook_deliveries/{id}/retry_delivery
+    "Retry a failed delivery"'
+  reason: Inspection and retry of outbound webhook deliveries is precisely the delivery-reliability half
+    of Webhook & Event Subscription Management on the vendor's developer platform. It is integration plumbing,
+    but the candidate list contains an explicit capability for it.

@@ -2646,6 +2646,9 @@ apis:
   - type: Webhooks
     url: asyncapi/firstpromoter-webhooks.yml
 common:
+- type: CapabilityMap
+  url: capabilities/firstpromoter-capability-edges.yml
+  name: FirstPromoter Business Capability Map
 - type: Overlay
   url: overlays/firstpromoter-v2-advanced-payout-methods-overlay.yaml
 - type: Overlay
