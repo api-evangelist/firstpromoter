@@ -1,0 +1,169 @@
+openapi: 3.2.0
+info:
+  title: FirstPromoter Tracking API V2 Signup API
+  description: Our tracking API allows companies to track any type of signups, sales, cancellations and refunds for any billing provider, you are not limited to our built-in integrations with Stripe, Chargebee, Recurly and Braintree.
+  license:
+    name: MIT
+  version: 1.0.0
+servers:
+- url: https://api.firstpromoter.com/api/v2/track
+security:
+- BearerAuth: []
+tags:
+- name: Signup
+paths:
+  /signup:
+    post:
+      description: Capture a lead when they sign-up or fill an optin form. This endpoint is used to track leads and sign-ups. It's not for tracking the actual sales and commissions. <br/>  <br/> Sign-ups are tracked as leads in FirstPromoter so when a person referred by the promoter/affiliate signs up, a new referral should be added inside FirstPromoter **(you can see them inside the `Referrals` section as `Leads`)**. <br/><br/><Tip>The recommended way to do this is to grab the `_fprom_tid` **(_fprom_track for accounts created prior to April 2021)** cookie value(which keeps the tracking id and referral identification) on your server and send it along with the sign-up data through the tid parameter. <br/><br/> **Alternative:** In some special cases, you can refer sign ups directly to a promoter, by passing the referral id through ref_id parameter. Be careful when using this because the referral id can be modified by the promoter by default, however you can disable that from the campaign configuration page.</Tip><Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/track/signup`</Tip>
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: Email of the lead/sign-up. Required if uid is not provided.
+                uid:
+                  type: string
+                  description: ID to match the sale with the lead if the email can be changed before the first sale. Required if email is not provided.
+                tid:
+                  type: string
+                  description: Visitor tracking ID. It's set when the visitor tracking script tracks the referral visit on our system. The value is found inside _fprom_tid cookie. Required if ref_id is not provided.
+                ref_id:
+                  type: string
+                  description: Default referral id of the promoter. Use this only when you want to assign the lead to a specific promoter. Required if tid is not provided.
+                ip:
+                  type: string
+                  description: IP of the visitor who generated the sign up. It's used for fraud analysis.
+                created_at:
+                  type: string
+                  description: ISO date string of the date of the signup event
+                skip_email_notification:
+                  type: boolean
+                  description: Set this to true to skip email notifications. Default is false.
+              oneOf:
+              - required:
+                - email
+              - required:
+                - uid
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      responses:
+        '200':
+          description: Successful signup response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 45831611
+                  etype:
+                    type: string
+                    example: signup
+                  sale_amount:
+                    type:
+                    - integer
+                    - 'null'
+                    example: null
+                  original_sale_amount:
+                    type:
+                    - integer
+                    - 'null'
+                    example: null
+                  original_sale_currency:
+                    type:
+                    - string
+                    - 'null'
+                    example: null
+                  event_id:
+                    type:
+                    - string
+                    - 'null'
+                    example: null
+                  plan_id:
+                    type:
+                    - string
+                    - 'null'
+                    example: null
+                  billing_period:
+                    type:
+                    - string
+                    - 'null'
+                    example: null
+                  created_at:
+                    type: string
+                    format: date-time
+                    example: '2025-04-25T09:29:51.973Z'
+                  referral:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 29203686
+                      email:
+                        type: string
+                        example: testme@test1.com
+                      uid:
+                        type:
+                        - string
+                        - 'null'
+                        example: null
+                  commissions:
+                    type: array
+                    items: {}
+                    example: []
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Error. Email and uid can not be blank!
+        '404':
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Visitor  invalid, not found or you are trying to use the signup tracking test via API which doesn't work on API calls.
+        '422':
+          description: Unprocessable Entity
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  transaction_id:
+                    type: string
+                    example: there is already a signup event registered on this lead
+      tags:
+      - Signup
+components:
+  parameters:
+    AccountId:
+      name: Account-ID
+      in: header
+      required: true
+      description: Account id. You can find your Account ID on Your FirstPromoter Dashboard. Navigate to Settings → Integrations
+      schema:
+        type: string
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: API key passed as a Bearer token in the Authorization header. You can find your API Key on Your FirstPromoter Dashboard. Navigate to Settings → Integrations section → Manage API Keys
+    accountId:
+      type: apiKey
+      in: header
+      name: ACCOUNT-ID
+      description: Your FirstPromoter Account ID. You can find this in the  Settings → Integrations section of your dashboard.

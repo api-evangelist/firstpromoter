@@ -1,0 +1,311 @@
+openapi: 3.2.0
+info:
+  title: FirstPromoter Tracking API V2 Refund API
+  description: Our tracking API allows companies to track any type of signups, sales, cancellations and refunds for any billing provider, you are not limited to our built-in integrations with Stripe, Chargebee, Recurly and Braintree.
+  license:
+    name: MIT
+  version: 1.0.0
+servers:
+- url: https://api.firstpromoter.com/api/v2/track
+security:
+- BearerAuth: []
+tags:
+- name: Refund
+paths:
+  /refund:
+    post:
+      description: The refund call is similar to the sale call. It works the same way, except that it generates negative commissions. <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/track/refund`</Tip>
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - event_id
+              - amount
+              properties:
+                email:
+                  type: string
+                  description: Email of the lead/sign-up. Required if uid is not provided.
+                uid:
+                  type: string
+                  description: uid of the lead added on signup tracking. Required if email is not provided.
+                event_id:
+                  type: string
+                  description: Transaction or refund event ID. Required to avoid generating duplicate refunds.
+                amount:
+                  type: string
+                  description: The refund amount in cents. Used to calculate negative commissions/rewards.
+                currency:
+                  type: string
+                  description: This field is only required if the currency of the sale/refund is not the same as the one set on FirstPromoter settings. We'll automatically convert the amount from this currency to the default one set on your FirstPromoter account.
+                quantity:
+                  type: string
+                  description: Number of subscriptions/items refunded. Optional if quantity is 1.
+                sale_event_id:
+                  type: string
+                  description: The event id of the sale for which the refund is processed. Should match the event_id from the sales tracking API call. Required for accurate tracking of multiple products or changing commission levels.
+                skip_email_notification:
+                  type: boolean
+                  description: Set true to skip email notifications. Default is false.
+              oneOf:
+              - required:
+                - email
+              - required:
+                - uid
+      responses:
+        '200':
+          description: Success response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 33847726
+                  type:
+                    type: string
+                    example: refund
+                  amount_cents:
+                    type: integer
+                    example: -1000
+                  reward:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 10940148
+                      status:
+                        type: string
+                        example: approved
+                      amount:
+                        type: integer
+                        example: -200
+                      unit:
+                        type: string
+                        example: cash
+                      created_at:
+                        type: string
+                        format: date-time
+                        example: '2024-09-11T14:36:01.016Z'
+                      lead:
+                        $ref: '#/components/schemas/Lead'
+                      event_id:
+                        type: string
+                        example: test_sale_12340987_refund
+                      conversion_amount:
+                        type: integer
+                        example: -1000
+                      tier_level:
+                        type: integer
+                        example: 1
+                      split_type:
+                        type:
+                        - string
+                        - 'null'
+                        example: null
+                  lead:
+                    $ref: '#/components/schemas/Lead'
+                  promoter:
+                    $ref: '#/components/schemas/Promoter'
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Error. Amount blank or invalid.
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: The 'refund' event with the id 'test_sale_12340987_refund' already exists.
+      tags:
+      - Refund
+components:
+  schemas:
+    Lead:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 20738339
+        state:
+          type: string
+          example: cancelled
+        email:
+          type: string
+          example: hello@testmintli.com
+        uid:
+          type:
+          - string
+          - 'null'
+          example: null
+        customer_since:
+          type: string
+          format: date-time
+          example: '2024-09-11T14:22:12.160Z'
+        cancelled_at:
+          type: string
+          format: date-time
+          example: '2024-09-11T15:07:46.174Z'
+        plan_name:
+          type:
+          - string
+          - 'null'
+          example: null
+        suspicion:
+          type: string
+          example: no_suspicion
+        username:
+          type:
+          - string
+          - 'null'
+          example: null
+        website:
+          type:
+          - string
+          - 'null'
+          example: null
+        created_at:
+          type: string
+          format: date-time
+          example: '2024-09-09T16:22:44.168Z'
+        split_promotion_id:
+          type:
+          - string
+          - 'null'
+          example: null
+        custom_fields:
+          type:
+          - string
+          - 'null'
+          example: null
+        split_percentage_value:
+          type:
+          - string
+          - 'null'
+          example: null
+        visitor_sub_id:
+          type:
+          - string
+          - 'null'
+          example: null
+    Promoter:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: ID of the promoter
+          example: 3920164
+        status:
+          type: string
+          description: Status of the promoter
+          example: active
+        cust_id:
+          type: string
+          example: ''
+        email:
+          type: string
+          description: Email of the promoter
+          example: peluwydo@mailinator.com
+        created_at:
+          type: string
+          format: date-time
+          description: ISO date of when the promoter was created
+          example: '2022-04-26T15:28:24.800Z'
+        temp_password:
+          type:
+          - string
+          - 'null'
+          description: Temporary password created for the promoter
+          example: xxxxxxxxxx
+        default_promotion_id:
+          type: integer
+          example: 4210919
+        pref:
+          type: string
+          example: db1znwe
+        default_ref_id:
+          type: string
+          description: Default referral id of the promoter
+          example: 8yi2epelut
+        note:
+          type:
+          - string
+          - 'null'
+          description: A note/description of promoter
+          example: This is a note
+        w8_form_url:
+          type:
+          - string
+          - 'null'
+          description: Url of the w8 form
+          example: null
+        w9_form_url:
+          type:
+          - string
+          - 'null'
+          description: Url of the w9 form
+          example: null
+        parent_promoter_id:
+          type: integer
+          description: Parent promoter id
+          example: 577918
+        earnings_balance:
+          type: object
+          description: Earning balance of the promoter
+          properties:
+            cash:
+              type: integer
+              example: 50744
+        current_balance:
+          type: object
+          description: Current balance of the promoter
+          properties:
+            cash:
+              type: integer
+              example: 20044
+        paid_balance:
+          type: object
+          description: Paid balance of the promoter
+          properties:
+            cash:
+              type: integer
+              example: 30700
+        auth_token:
+          type: string
+          description: Authentication token generated when the promoter was created
+          example: xxxxxxxxxxxxxx
+  parameters:
+    AccountId:
+      name: Account-ID
+      in: header
+      required: true
+      description: Account id. You can find your Account ID on Your FirstPromoter Dashboard. Navigate to Settings → Integrations
+      schema:
+        type: string
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: API key passed as a Bearer token in the Authorization header. You can find your API Key on Your FirstPromoter Dashboard. Navigate to Settings → Integrations section → Manage API Keys
+    accountId:
+      type: apiKey
+      in: header
+      name: ACCOUNT-ID
+      description: Your FirstPromoter Account ID. You can find this in the  Settings → Integrations section of your dashboard.

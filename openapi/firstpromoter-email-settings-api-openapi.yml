@@ -1,0 +1,159 @@
+openapi: 3.2.0
+info:
+  title: FirstPromoter Email Settings API
+  version: '1.0'
+  description: API for managing affiliate email settings
+servers:
+- url: https://api.firstpromoter.com/api/v2/affiliate
+security:
+- BearerAuth: []
+tags:
+- name: Email Settings
+paths:
+  /email_settings:
+    get:
+      summary: Get affiliate email settings
+      tags:
+      - Email Settings
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      - name: e
+        in: query
+        description: Encrypted email
+        required: false
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Email settings retrieved successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/EmailSettings'
+                  meta:
+                    type: object
+                    properties:
+                      email:
+                        type: string
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /email_settings/{id}:
+    put:
+      summary: Update affiliate email settings
+      tags:
+      - Email Settings
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      - name: id
+        in: path
+        description: Promoter ID
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                e:
+                  type: string
+                  description: Encrypted email
+                marketing_consent:
+                  type: boolean
+                  description: General company wide marketing consent
+                emails_opt_drip:
+                  type: boolean
+                  description: Receive helpful emails regarding your referral/affiliate program
+                emails_opt_new_commission:
+                  type: boolean
+                  description: Receive notifications each time you get a new reward/commission
+                emails_opt_new_referral:
+                  type: boolean
+                  description: Receive notifications when a new user signs up
+                emails_opt_payout:
+                  type: boolean
+                  description: Receive notifications when a payment is sent to you
+      responses:
+        '200':
+          description: Email settings updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EmailSettings'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+components:
+  schemas:
+    EmailSettings:
+      type: object
+      properties:
+        id:
+          type: integer
+        company_domain:
+          type: string
+        emails_opt_drip:
+          type: boolean
+        emails_opt_new_commission:
+          type: boolean
+        emails_opt_new_referral:
+          type: boolean
+        emails_opt_payout:
+          type: boolean
+        company_name:
+          type: string
+        marketing_consent:
+          type: boolean
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: string
+  parameters:
+    AccountId:
+      name: Account-ID
+      in: header
+      required: true
+      description: Account identifier that specifies which account is making the request
+      schema:
+        type: string
+        example: acc_123456
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: Access token passed as a Bearer token in the Authorization header

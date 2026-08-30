@@ -1,0 +1,134 @@
+openapi: 3.2.0
+info:
+  title: FirstPromoter Invoices Invoice Templates API
+  version: 1.0.0
+  description: API for managing invoices in FirstPromoter
+servers:
+- url: https://api.firstpromoter.com/api/v2/company
+security:
+- BearerAuth: []
+tags:
+- name: Invoice Templates
+paths:
+  /invoices/template:
+    get:
+      summary: Show invoice template
+      description: <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/invoices/template`</Tip>
+      tags:
+      - Invoice Templates
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      responses:
+        '200':
+          description: Invoice template
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      html:
+                        type: string
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+  /invoices/preview_template:
+    post:
+      summary: Show invoice template preview
+      description: <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/company/invoices/preview_template`</Tip>
+      tags:
+      - Invoice Templates
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                html:
+                  type: string
+                  description: The invoice template html to preview
+                vat_invoice:
+                  type: boolean
+                  description: According to this value, the invoice will contain VAT info or not
+              required:
+              - html
+      responses:
+        '200':
+          description: Template preview
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      html:
+                        type: string
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+  /invoices/custom_template:
+    put:
+      summary: Update invoice template
+      description: <Tip>**HTTP Request** <br/>`PUT https://api.firstpromoter.com/api/v2/company/invoices/custom_template`</Tip>
+      tags:
+      - Invoice Templates
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                html:
+                  type: string
+                  description: The new invoice template html
+              required:
+              - html
+      responses:
+        '200':
+          description: Updated template
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      html:
+                        type: string
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+components:
+  parameters:
+    AccountId:
+      name: Account-ID
+      in: header
+      required: true
+      description: Account identifier that specifies which account is making the request
+      schema:
+        type: string
+        example: acc_123456
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: Access token passed as a Bearer token in the Authorization header
+    accountId:
+      type: apiKey
+      in: header
+      name: ACCOUNT-ID
+      description: Account ID required with bearer token

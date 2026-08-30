@@ -1,0 +1,336 @@
+openapi: 3.2.0
+info:
+  title: Firstpromoter Promo Codes API
+  version: '1.0'
+  description: 'Operations tagged Promo Codes across 2 of this provider''s published API definitions: firstpromoter-v2-affiliate-promo-codes-openapi.yml, firstpromoter-v2-promocodes-openapi.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://api.firstpromoter.com/api/v2/affiliate
+- url: https://api.firstpromoter.com/api/v2/company
+security:
+- BearerAuth: []
+tags:
+- name: Promo Codes
+paths:
+  /promo_codes:
+    post:
+      summary: Create promo code
+      tags:
+      - Promo Codes
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PromoCodeCreate'
+      responses:
+        '200':
+          description: Promo code created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PromoCode'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    get:
+      summary: Get promo codes
+      operationId: getPromoCodes
+      description: "With this endpoint you can list all promo codes. \n <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/promo_codes`</Tip>"
+      tags:
+      - Promo Codes
+      parameters:
+      - $ref: '#/components/parameters/AccountId_2'
+      - name: promoter_campaign_id
+        in: query
+        description: Filters promo codes by promoter campaign id
+        required: false
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: List of promo codes
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PromoCode_2'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error_2'
+    servers:
+    - url: https://api.firstpromoter.com/api/v2/affiliate
+  /promo_codes/{id}:
+    put:
+      summary: Update promo code by id
+      description: Can not be updated if archived and ext_id present and promoter can manage tracking coupons.
+      tags:
+      - Promo Codes
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PromoCodeUpdate'
+      responses:
+        '200':
+          description: Promo code updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PromoCode'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    delete:
+      summary: Archive promo code by id
+      description: Archive promo code by id only if promo code is created by current promoter.
+      tags:
+      - Promo Codes
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Promo code archived successfully
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    get:
+      summary: Get promo code by id
+      operationId: getPromoCode
+      tags:
+      - Promo Codes
+      description: "With this endpoint you can get the details of a specific promo code. \n <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/promo_codes/{id}`</Tip>"
+      parameters:
+      - $ref: '#/components/parameters/AccountId_2'
+      - name: id
+        in: path
+        description: ID of the promo code
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Promo code details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PromoCode_2'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error_2'
+    servers:
+    - url: https://api.firstpromoter.com/api/v2/affiliate
+components:
+  schemas:
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: string
+        errors:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string
+    PromoCodeUpdate:
+      type: object
+      properties:
+        code:
+          type: string
+          description: Code of the promo code
+        description:
+          type: string
+          description: Description of the promo code
+        reward_id:
+          type: integer
+          description: ID of the reward
+        promoter_campaign_id:
+          type: integer
+          description: ID of the promoter campaign
+        metadata:
+          type: object
+          description: Metadata of the promo code
+        details:
+          type: object
+          description: Details of the promo code
+    PromoCode:
+      type: object
+      properties:
+        id:
+          type: integer
+        code:
+          type: string
+        reward:
+          type: object
+          properties:
+            id:
+              type: integer
+            name:
+              type: string
+        ext_id:
+          type: string
+        description:
+          type: string
+        company_id:
+          type: integer
+        promoter_campaign_id:
+          type: integer
+        metadata:
+          type: object
+        details:
+          type: object
+        archived_at:
+          type: string
+          format: date-time
+    PromoCodeCreate:
+      type: object
+      required:
+      - code
+      - reward_id
+      - promoter_campaign_id
+      properties:
+        code:
+          type: string
+          description: Code of the promo code
+        description:
+          type: string
+          description: Description of the promo code
+        reward_id:
+          type: integer
+          description: ID of the reward
+        promoter_campaign_id:
+          type: integer
+          description: ID of the promoter campaign
+        metadata:
+          type: object
+          description: Metadata of the promo code
+        details:
+          type: object
+          description: Details of the promo code
+    Error_2:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: string
+    PromoCode_2:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: ID of the promo code entry
+        code:
+          type: string
+          description: Code of the promo code
+        reward:
+          type: object
+          properties:
+            id:
+              type: integer
+              description: ID of the reward
+            name:
+              type: string
+              description: Name of the reward
+          description: Reward
+        ext_id:
+          type: string
+        description:
+          type: string
+          description: Description of the promo code
+        company_id:
+          type: integer
+        promoter_campaign_id:
+          type: integer
+          description: ID of the promoter campaign
+        metadata:
+          type: object
+          description: Metadata of the promo code
+        details:
+          type: object
+          description: Details of the promo code
+        archived_at:
+          type: string
+          format: date-time
+  parameters:
+    AccountId:
+      name: Account-ID
+      in: header
+      required: true
+      description: Account identifier that specifies which account is making the request
+      schema:
+        type: string
+        example: acc_123456
+    AccountId_2:
+      name: Account-ID
+      in: header
+      required: true
+      description: Account id. You can find your Account ID on Your FirstPromoter Dashboard. Navigate to Settings → Integrations
+      schema:
+        type: string
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: Access token passed as a Bearer token in the Authorization header
+    accountId:
+      type: apiKey
+      in: header
+      name: ACCOUNT-ID
+      description: Account ID required with bearer token
+x-refined-from:
+- firstpromoter-v2-affiliate-promo-codes-openapi.yml
+- firstpromoter-v2-promocodes-openapi.yml

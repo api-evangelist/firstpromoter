@@ -1,0 +1,152 @@
+openapi: 3.2.0
+info:
+  title: FirstPromoter Payments Batches API
+  version: '1.0'
+  description: FirstPromoter Admin API Documentation
+servers:
+- url: https://api.firstpromoter.com/api/v2/company
+security:
+- BearerAuth: []
+tags:
+- name: Payments Batches
+paths:
+  /payments_batches/{id}/pay:
+    post:
+      summary: Pay / Start payments batch
+      description: "This endpoint starts a payments batch. \n <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/company/payments_batches/{id}/pay`</Tip>"
+      tags:
+      - Payments Batches
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+        description: Payment batch ID
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                otp:
+                  type: string
+                  description: Required OTP
+                otp_code:
+                  type: string
+                  description: Optional OTP code
+              required:
+              - otp
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  status:
+                    type: string
+                  ext_reference:
+                    type: string
+                  ext_id:
+                    type: string
+                  scheduled_at:
+                    type: string
+                    format: date-time
+                  processing_started_at:
+                    type: string
+                    format: date-time
+                  completed_at:
+                    type: string
+                    format: date-time
+                  is_payable:
+                    type: boolean
+                  is_retriable:
+                    type: boolean
+                  is_payment_otp_required:
+                    type: boolean
+                  total:
+                    type: number
+                  promoters_count:
+                    type: integer
+                  error:
+                    type: string
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden - Invalid OTP or insufficient permissions
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  code:
+                    type: string
+        '422':
+          description: Unprocessable Entity - Invalid parameters
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  code:
+                    type: string
+  /payments_batches/{id}:
+    delete:
+      summary: Delete payments batch
+      description: "Deletes selected payments batch \n <Tip>**HTTP Request** <br/>`DELETE https://api.firstpromoter.com/api/v2/company/payments_batches/{id}`</Tip>"
+      tags:
+      - Payments Batches
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+        description: Payment batch ID
+      responses:
+        '200':
+          description: Successfully deleted
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden - Insufficient permissions
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  code:
+                    type: string
+components:
+  parameters:
+    AccountId:
+      name: Account-ID
+      in: header
+      required: true
+      description: Account identifier that specifies which account is making the request
+      schema:
+        type: string
+        example: acc_123456
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: Access token passed as a Bearer token in the Authorization header
+    accountId:
+      type: apiKey
+      in: header
+      name: ACCOUNT-ID
+      description: Account ID required with bearer token

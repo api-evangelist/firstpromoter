@@ -1,0 +1,304 @@
+openapi: 3.2.0
+info:
+  title: Firstpromoter Custom Referral Statuses API
+  version: 1.0.0
+  description: 'Operations tagged Custom Referral Statuses across 2 of this provider''s published API definitions: firstpromoter-v2-custom-referral-statuses-openapi.yml, firstpromoter-v2-referral-custom-status-openapi.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://api.firstpromoter.com/api/admin/v1
+  description: Production server
+- url: https://api.firstpromoter.com/api/v2/company
+  description: Production server
+security:
+- BearerAuth: []
+tags:
+- name: Custom Referral Statuses
+paths:
+  /custom_referral_statuses:
+    get:
+      summary: List custom referral statuses
+      tags:
+      - Custom Referral Statuses
+      description: "Returns all custom referral statuses for your account, ordered by the `order` field ascending.\n\n <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/admin/v1/custom_referral_statuses`</Tip>"
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      responses:
+        '200':
+          description: List of custom referral statuses
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CustomReferralStatus'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    servers:
+    - url: https://api.firstpromoter.com/api/admin/v1
+      description: Production server
+  /custom_referral_statuses/update:
+    put:
+      summary: Create, update, or delete custom referral statuses
+      tags:
+      - Custom Referral Statuses
+      description: "Batch operation to create, update, and/or delete custom referral statuses in a single request. Pass an array of status objects under the `custom_referral_statuses` key.\n\n- **Create**: omit `id`\n- **Update**: include the existing `id`\n- **Delete**: include `id` and set `_destroy` to `true`\n\n <Note>Both `name` and `order` must be unique within your account. Leading and trailing whitespace is stripped from `name`.</Note>\n\n <Tip>**HTTP Request** <br/>`PUT https://api.firstpromoter.com/api/admin/v1/custom_referral_statuses/update`</Tip>"
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - custom_referral_statuses
+              properties:
+                custom_referral_statuses:
+                  type: array
+                  description: Array of custom referral status objects to create, update, or delete
+                  items:
+                    type: object
+                    required:
+                    - name
+                    - order
+                    properties:
+                      id:
+                        type: integer
+                        description: ID of an existing custom referral status. Omit when creating a new status.
+                      name:
+                        type: string
+                        description: Display name of the status. Must be unique within your account. Whitespace is stripped automatically.
+                      description:
+                        type:
+                        - string
+                        - 'null'
+                        description: Optional description for the status.
+                      order:
+                        type: integer
+                        description: Display order of the status. Must be unique within your account.
+                      _destroy:
+                        type: boolean
+                        description: Set to `true` to delete the status. Requires `id` to be present. Referrals that had this status will have their `custom_status` cleared.
+                  example:
+                  - name: Hot Lead
+                    description: High-intent prospect
+                    order: 1
+                  - id: 42
+                    name: Qualified
+                    order: 2
+                  - id: 55
+                    _destroy: true
+      responses:
+        '200':
+          description: Updated list of all custom referral statuses, ordered by `order` ascending
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CustomReferralStatus'
+        '400':
+          description: Missing required parameter
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '422':
+          description: Validation error (e.g. duplicate name or order)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+    servers:
+    - url: https://api.firstpromoter.com/api/admin/v1
+      description: Production server
+  /referrals/{id}:
+    put:
+      summary: Set custom status on a referral
+      tags:
+      - Custom Referral Statuses
+      description: "Assign or clear a custom status on an existing referral by passing `custom_status_id`. \n\nFirst use `GET /api/admin/v1/custom_referral_statuses` to retrieve the IDs of your available statuses, then pass the desired `id` here. Pass `null` to remove the status.\n\n<Tip>**HTTP Request** <br/>`PUT https://api.firstpromoter.com/api/v2/company/referrals/{id}`</Tip>"
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        description: The referral ID. Can also be an email, uid, or username when used with `find_by`.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                custom_status_id:
+                  type:
+                  - integer
+                  - 'null'
+                  description: The `id` of the custom referral status to assign. Pass `null` to clear the current status.
+                find_by:
+                  type: string
+                  enum:
+                  - email
+                  - uid
+                  - username
+                  description: Required when the `id` path parameter is an email, uid, or username instead of a numeric ID.
+            examples:
+              assign:
+                summary: Assign a status
+                value:
+                  custom_status_id: 42
+              clear:
+                summary: Clear the status
+                value:
+                  custom_status_id: null
+      responses:
+        '200':
+          description: Referral updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Referral'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Referral not found
+        '422':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error_2'
+    servers:
+    - url: https://api.firstpromoter.com/api/v2/company
+      description: Production server
+components:
+  parameters:
+    AccountId:
+      name: Account-ID
+      in: header
+      required: true
+      description: Your FirstPromoter Account ID. Found in Settings → Integrations.
+      schema:
+        type: string
+  schemas:
+    CustomReferralStatus:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Unique identifier of the custom referral status
+        name:
+          type: string
+          description: Display name of the status
+        description:
+          type:
+          - string
+          - 'null'
+          description: Optional description
+        order:
+          type: integer
+          description: Display order (ascending)
+        company_id:
+          type: integer
+          description: ID of the company this status belongs to
+        created_at:
+          type: string
+          format: date-time
+          description: When the status was created
+        updated_at:
+          type: string
+          format: date-time
+          description: When the status was last updated
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: string
+        errors:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string
+    Error_2:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: string
+    Referral:
+      type: object
+      properties:
+        id:
+          type: integer
+        email:
+          type: string
+          format: email
+        uid:
+          type:
+          - string
+          - 'null'
+        state:
+          type: string
+          enum:
+          - subscribed
+          - signup
+          - active
+          - cancelled
+          - refunded
+          - denied
+          - pending
+          - moved
+        custom_status:
+          type:
+          - object
+          - 'null'
+          description: The custom status assigned to this referral after the update. `null` if no status is set.
+          properties:
+            id:
+              type: integer
+            name:
+              type: string
+            description:
+              type:
+              - string
+              - 'null'
+            order:
+              type: integer
+            company_id:
+              type: integer
+            created_at:
+              type: string
+              format: date-time
+            updated_at:
+              type: string
+              format: date-time
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: API key passed as a Bearer token in the Authorization header. Found in Settings → Integrations → Manage API Keys.
+x-refined-from:
+- firstpromoter-v2-custom-referral-statuses-openapi.yml
+- firstpromoter-v2-referral-custom-status-openapi.yml

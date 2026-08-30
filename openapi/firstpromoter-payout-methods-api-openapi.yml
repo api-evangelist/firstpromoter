@@ -1,0 +1,753 @@
+openapi: 3.2.0
+info:
+  title: Firstpromoter Payout Methods API
+  version: '1.0'
+  description: 'Operations tagged Payout Methods across 2 of this provider''s published API definitions: firstpromoter-v2-advanced-payout-methods-openapi.yml, firstpromoter-v2-affiliate-payout-methods-openapi.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://api.firstpromoter.com/api/v2/company
+- url: https://api.firstpromoter.com/api/v2/affiliate
+tags:
+- name: Payout Methods
+paths:
+  /payout_methods:
+    get:
+      summary: Get all payout methods
+      description: "This endpoint gets all payout methods \n <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/payout_methods`</Tip>"
+      operationId: adminGetPayoutMethods
+      tags:
+      - Payout Methods
+      parameters:
+      - name: filters[promoter_id]
+        in: query
+        required: true
+        schema:
+          type: integer
+        description: Promoter id
+      responses:
+        '200':
+          description: List of payout methods
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/PayoutMethod'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+      security:
+      - BearerAuth: []
+        accountId: []
+    post:
+      summary: Create a payout method
+      description: "This endpoint creates a payout method under a promoter \n <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/company/payout_methods`</Tip>"
+      operationId: adminCreatePayoutMethod
+      tags:
+      - Payout Methods
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PayoutMethodCreate'
+      responses:
+        '200':
+          description: Created payout method
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PayoutMethod'
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '422':
+          $ref: '#/components/responses/InvalidParams'
+      security:
+      - BearerAuth: []
+        accountId: []
+    servers:
+    - url: https://api.firstpromoter.com/api/v2/company
+  /payout_methods/{id}:
+    get:
+      summary: Get a payout method
+      description: "This endpoint gets a payout method \n <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/payout_methods/{id}`</Tip>"
+      operationId: adminGetPayoutMethod
+      tags:
+      - Payout Methods
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+        description: Payout method ID
+      responses:
+        '200':
+          description: Payout method details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PayoutMethod'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+      security:
+      - BearerAuth: []
+        accountId: []
+    put:
+      description: "This endpoint updates a payout method under a promoter \n <Tip>**HTTP Request** <br/>`PUT https://api.firstpromoter.com/api/v2/company/payout_methods/{id}`</Tip>"
+      summary: Update a payout method
+      operationId: adminUpdatePayoutMethod
+      tags:
+      - Payout Methods
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+        description: Payout method ID
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PayoutMethodUpdate'
+      responses:
+        '200':
+          description: Updated payout method
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PayoutMethod'
+        '400':
+          $ref: '#/components/responses/ValidationError'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '422':
+          $ref: '#/components/responses/InvalidParams'
+      security:
+      - BearerAuth: []
+        accountId: []
+    delete:
+      summary: Delete a payout method
+      operationId: adminDeletePayoutMethod
+      tags:
+      - Payout Methods
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+        description: Payout method ID
+      responses:
+        '200':
+          description: Payout method deleted
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '409':
+          $ref: '#/components/responses/Conflict'
+      security:
+      - BearerAuth: []
+        accountId: []
+    servers:
+    - url: https://api.firstpromoter.com/api/v2/company
+components:
+  schemas:
+    CryptoDetails:
+      type: object
+      required:
+      - wallet_address
+      - crypto_currency
+      properties:
+        wallet_address:
+          type: string
+        crypto_currency:
+          type: string
+    PayoutMethodUpdate:
+      type: object
+      required:
+      - details
+      - method
+      - promoter_id
+      properties:
+        method:
+          type: string
+          enum:
+          - paypal
+          - bank
+          - wise
+          - crypto
+          - custom
+          - dots
+        is_disabled:
+          type: boolean
+        is_selected:
+          type: boolean
+        promoter_id:
+          type: integer
+          description: Id of the promoter
+        details:
+          type: object
+          oneOf:
+          - $ref: '#/components/schemas/PaypalDetails'
+          - $ref: '#/components/schemas/BankDetails'
+          - $ref: '#/components/schemas/WiseDetails'
+          - $ref: '#/components/schemas/CryptoDetails'
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: string
+    PayoutMethodCreate:
+      type: object
+      required:
+      - method
+      - details
+      - promoter_id
+      properties:
+        method:
+          type: string
+          enum:
+          - paypal
+          - bank
+          - wise
+          - crypto
+          - custom
+          - dots
+        is_disabled:
+          type: boolean
+        is_selected:
+          type: boolean
+        promoter_id:
+          type: integer
+          description: Id of the promoter
+        details:
+          type: object
+          oneOf:
+          - $ref: '#/components/schemas/PaypalDetails'
+          - $ref: '#/components/schemas/BankDetails'
+          - $ref: '#/components/schemas/WiseDetails'
+          - $ref: '#/components/schemas/CryptoDetails'
+    PayoutMethod:
+      type: object
+      properties:
+        id:
+          type: integer
+        method:
+          type: string
+          enum:
+          - paypal
+          - bank
+          - wise
+          - crypto
+          - custom
+          - dots
+        date_added:
+          type: string
+          format: date-time
+        is_disabled:
+          type: boolean
+        meta:
+          type: object
+        is_selected:
+          type: boolean
+        details:
+          type: object
+          oneOf:
+          - $ref: '#/components/schemas/PaypalDetails'
+          - $ref: '#/components/schemas/BankDetails'
+          - $ref: '#/components/schemas/WiseDetails'
+          - $ref: '#/components/schemas/CryptoDetails'
+        managed_payouts:
+          type: boolean
+    BankDetails:
+      type: object
+      required:
+      - bank_country
+      - account_holder_name
+      properties:
+        bank_country:
+          type: string
+          enum:
+          - AD
+          - AE
+          - AL
+          - AT
+          - AU
+          - AZ
+          - BA
+          - BE
+          - BG
+          - BH
+          - BR
+          - BY
+          - CA
+          - CH
+          - CI
+          - CR
+          - CV
+          - CY
+          - CZ
+          - DE
+          - DK
+          - DO
+          - EE
+          - EG
+          - ES
+          - FI
+          - FO
+          - FR
+          - GA
+          - GB
+          - GE
+          - GI
+          - GL
+          - GR
+          - HR
+          - HU
+          - IE
+          - IL
+          - IQ
+          - IS
+          - IT
+          - JO
+          - KW
+          - KZ
+          - LB
+          - LI
+          - LT
+          - LU
+          - LV
+          - MC
+          - MD
+          - ME
+          - MG
+          - MK
+          - MR
+          - MT
+          - MU
+          - NL
+          - 'NO'
+          - PK
+          - PL
+          - PS
+          - PT
+          - QA
+          - RO
+          - RS
+          - SA
+          - SC
+          - SE
+          - SI
+          - SK
+          - SM
+          - SV
+          - TN
+          - TR
+          - UA
+          - US
+          - VA
+          - VG
+          - XK
+        account_holder_name:
+          type: string
+        account_number:
+          type: string
+        routing_aba_number:
+          type: string
+        country:
+          type: string
+        state:
+          type: string
+        postal_code:
+          type: string
+        address:
+          type: string
+        city:
+          type: string
+        transit_number:
+          type: string
+        institution_number:
+          type: string
+        bsb_code:
+          type: string
+        sort_code:
+          type: string
+        iban:
+          type: string
+        swift_bic_code:
+          type: string
+        bank_name:
+          type: string
+        bank_city:
+          type: string
+        bank_address:
+          type: string
+    WiseDetails:
+      type: object
+      required:
+      - wise_email
+      properties:
+        wise_email:
+          type: string
+          format: email
+    PaypalDetails:
+      type: object
+      required:
+      - paypal_email
+      properties:
+        paypal_email:
+          type: string
+          format: email
+    PayoutMethodUpdate_2:
+      type: object
+      required:
+      - details
+      properties:
+        method:
+          type: string
+          enum:
+          - paypal
+          - bank
+          - wise
+          - crypto
+          - custom
+          - dots
+        is_disabled:
+          type: boolean
+        is_selected:
+          type: boolean
+        details:
+          $ref: '#/components/schemas/PayoutMethodDetails'
+    Error_2:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: string
+        errors:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string
+    PayoutMethodCreate_2:
+      type: object
+      required:
+      - method
+      - details
+      properties:
+        method:
+          type: string
+          enum:
+          - paypal
+          - bank
+          - wise
+          - crypto
+          - custom
+          - dots
+        is_disabled:
+          type: boolean
+        is_selected:
+          type: boolean
+        details:
+          $ref: '#/components/schemas/PayoutMethodDetails'
+    PayoutMethodDetails:
+      type: object
+      properties:
+        paypal_email:
+          type: string
+        wise_email:
+          type: string
+        wallet_address:
+          type: string
+        crypto_currency:
+          type: string
+        bank_country:
+          type: string
+          enum:
+          - AD
+          - AE
+          - AL
+          - AT
+          - AU
+          - AZ
+          - BA
+          - BE
+          - BG
+          - BH
+          - BR
+          - BY
+          - CA
+          - CH
+          - CI
+          - CR
+          - CV
+          - CY
+          - CZ
+          - DE
+          - DK
+          - DO
+          - EE
+          - EG
+          - ES
+          - FI
+          - FO
+          - FR
+          - GA
+          - GB
+          - GE
+          - GI
+          - GL
+          - GR
+          - HR
+          - HU
+          - IE
+          - IL
+          - IQ
+          - IS
+          - IT
+          - JO
+          - KW
+          - KZ
+          - LB
+          - LI
+          - LT
+          - LU
+          - LV
+          - MC
+          - MD
+          - ME
+          - MG
+          - MK
+          - MR
+          - MT
+          - MU
+          - NL
+          - 'NO'
+          - PK
+          - PL
+          - PS
+          - PT
+          - QA
+          - RO
+          - RS
+          - SA
+          - SC
+          - SE
+          - SI
+          - SK
+          - SM
+          - SV
+          - TN
+          - TR
+          - UA
+          - US
+          - VA
+          - VG
+          - XK
+        account_holder_name:
+          type: string
+        account_number:
+          type: string
+        routing_aba_number:
+          type: string
+        country:
+          type: string
+        state:
+          type: string
+        postal_code:
+          type: string
+        address:
+          type: string
+        city:
+          type: string
+        transit_number:
+          type: string
+        institution_number:
+          type: string
+        bsb_code:
+          type: string
+        sort_code:
+          type: string
+        iban:
+          type: string
+        swift_bic_code:
+          type: string
+        bank_name:
+          type: string
+        bank_city:
+          type: string
+        bank_address:
+          type: string
+    PayoutMethod_2:
+      type: object
+      properties:
+        id:
+          type: integer
+        method:
+          type: string
+          enum:
+          - paypal
+          - bank
+          - wise
+          - crypto
+          - custom
+          - dots
+        date_added:
+          type: string
+          format: date-time
+        is_disabled:
+          type: boolean
+        meta:
+          type: object
+        is_selected:
+          type: boolean
+        details:
+          $ref: '#/components/schemas/PayoutMethodDetails'
+        managed_payouts:
+          type: boolean
+  responses:
+    Conflict:
+      description: Conflict
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            message: Failed to destroy Rewards::Providers::Account
+            code: destroy_failed
+    InvalidParams:
+      description: Invalid Parameters
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            message: Invalid method
+            code: invalid_params
+    ValidationError:
+      description: Validation Error
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+              errors:
+                type: object
+                additionalProperties:
+                  type: array
+                  items:
+                    type: string
+              code:
+                type: string
+            example:
+              message: 'Validation failed: Details paypal email can''t be blank'
+              errors:
+                details.paypal_email:
+                - can't be blank
+                - is invalid
+              code: invalid_record
+    Forbidden:
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            message: Invalid user type
+            code: forbidden
+    NotFound:
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            message: Record not found
+            code: not_found
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Conflict_2:
+      description: Conflict
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error_2'
+    ValidationError_2:
+      description: Validation error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error_2'
+    Forbidden_2:
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error_2'
+    UnprocessableEntity:
+      description: Unprocessable Entity
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error_2'
+    NotFound_2:
+      description: Record not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error_2'
+  parameters:
+    AccountId:
+      name: Account-ID
+      in: header
+      required: true
+      description: Account identifier that specifies which account is making the request
+      schema:
+        type: string
+        example: acc_123456
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: Access token passed as a Bearer token in the Authorization header
+    accountId:
+      type: apiKey
+      in: header
+      name: ACCOUNT-ID
+      description: Account identifier that specifies which account is making the request
+x-refined-from:
+- firstpromoter-v2-advanced-payout-methods-openapi.yml
+- firstpromoter-v2-affiliate-payout-methods-openapi.yml

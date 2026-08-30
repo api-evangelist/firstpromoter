@@ -1,0 +1,983 @@
+openapi: 3.2.0
+info:
+  title: Firstpromoter Referrals API
+  version: '1.0'
+  description: 'Operations tagged Referrals across 2 of this provider''s published API definitions: firstpromoter-v2-affiliate-referrals-openapi.yml, firstpromoter-v2-referrals-openapi.yml. Each path carries the servers of the definition it was published in.'
+servers:
+- url: https://api.firstpromoter.com/api/v2/affiliate
+- url: https://api.firstpromoter.com/api/v2/company
+  description: Production server
+security:
+- BearerAuth: []
+tags:
+- name: Referrals
+paths:
+  /referrals:
+    get:
+      summary: Get available referrals
+      operationId: getReferrals
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      - name: q
+        in: query
+        description: Search params. Searches by email, uid, username, website
+        required: false
+        schema:
+          type: string
+      - name: filters[type]
+        in: query
+        description: Type (lead or customer)
+        required: false
+        schema:
+          type: string
+          enum:
+          - lead
+          - customer
+      - name: filters[state]
+        in: query
+        description: State
+        required: false
+        schema:
+          type: string
+          enum:
+          - subscribed
+          - signup
+          - active
+          - cancelled
+          - refunded
+          - denied
+          - pending
+          - moved
+      - name: filters[created_at][from]
+        in: query
+        description: created_at start date
+        required: false
+        schema:
+          type: string
+          format: date
+      - name: filters[created_at][to]
+        in: query
+        description: created_at end date
+        required: false
+        schema:
+          type: string
+          format: date
+      - name: filters[customer_since][from]
+        in: query
+        description: customer_since start date
+        required: false
+        schema:
+          type: string
+          format: date
+      - name: filters[customer_since][to]
+        in: query
+        description: customer_since end date
+        required: false
+        schema:
+          type: string
+          format: date
+      - name: filters[campaign_id]
+        in: query
+        description: Campaign ids. Can be Integer or an Array of Integers
+        required: false
+        schema:
+          oneOf:
+          - type: integer
+          - type: array
+            items:
+              type: integer
+      - name: sorting[state]
+        in: query
+        description: Sort by state direction
+        required: false
+        schema:
+          type: string
+          enum:
+          - asc
+          - desc
+      - name: sorting[email]
+        in: query
+        description: Sort by email direction
+        required: false
+        schema:
+          type: string
+          enum:
+          - asc
+          - desc
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Referral'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      tags:
+      - Referrals
+    post:
+      summary: Create referral
+      operationId: createReferral
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - email
+              - promoter_campaign_id
+              properties:
+                email:
+                  type: string
+                  format: email
+                  description: Email of the referral
+                promoter_campaign_id:
+                  type: integer
+                  description: The ID of the promoter campaign
+                uid:
+                  type: string
+                  description: Unique ID of the referral
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Referral'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '422':
+          description: Validation Error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      tags:
+      - Referrals
+    delete:
+      summary: Delete referrals
+      description: "With this endpoint you can delete referrals. \n <Note>If there are more than __5__ ids on the __ids__ param/field, the action will be processed asynchronously. The response for the batch status will most likely be `in_progress`. The available statuses are `pending`, `in_progress`, `completed`, `failed` and `stopped`</Note> \n <Tip>**HTTP Request** <br/>`DELETE https://api.firstpromoter.com/api/v2/company/referrals`</Tip>"
+      tags:
+      - Referrals
+      parameters:
+      - $ref: '#/components/parameters/AccountId_2'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BatchSelectionRequest'
+      responses:
+        '200':
+          description: Batch operation completed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BatchOperationResponse'
+        '202':
+          description: Batch operation accepted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BatchOperationResponse'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+    servers:
+    - url: https://api.firstpromoter.com/api/v2/affiliate
+  /referrals/{id}:
+    put:
+      summary: Update referral
+      operationId: updateReferral
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  format: email
+                  description: Email of the referral
+                uid:
+                  type: string
+                  description: Unique ID of the referral
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Referral'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      tags:
+      - Referrals
+    delete:
+      summary: Delete referral
+      operationId: deleteReferral
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '204':
+          description: Successfully deleted
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      tags:
+      - Referrals
+    get:
+      summary: Get referral
+      tags:
+      - Referrals
+      description: "Get a specific referral \n <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/referrals/{id}`</Tip>"
+      parameters:
+      - $ref: '#/components/parameters/AccountId_2'
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        description: ID of the referral
+      - in: query
+        name: find_by
+        schema:
+          type: string
+          enum:
+          - email
+          - uid
+          - username
+        description: Find by attribute
+      responses:
+        '200':
+          description: Referral details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Referral_2'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
+    servers:
+    - url: https://api.firstpromoter.com/api/v2/affiliate
+  /referrals/export:
+    get:
+      summary: Export referrals
+      operationId: exportReferrals
+      parameters:
+      - $ref: '#/components/parameters/AccountId'
+      - name: filters[type]
+        in: query
+        description: Type (lead or customer)
+        required: false
+        schema:
+          type: string
+          enum:
+          - lead
+          - customer
+      - name: filters[state]
+        in: query
+        description: State
+        required: false
+        schema:
+          type: string
+          enum:
+          - subscribed
+          - signup
+          - active
+          - cancelled
+          - refunded
+          - denied
+          - pending
+          - moved
+      responses:
+        '200':
+          description: Successful response
+          content:
+            text/csv:
+              schema:
+                type: string
+        '202':
+          description: Export is being processed
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+      tags:
+      - Referrals
+    servers:
+    - url: https://api.firstpromoter.com/api/v2/affiliate
+  /referrals/approve:
+    post:
+      summary: Approve referrals
+      description: "With this endpoint you can approve referrals. \n <Note>If there are more than __5__ ids on the __ids__ param/field, the action will be processed asynchronously. The response for the batch status will most likely be `in_progress`. The available statuses are `pending`, `in_progress`, `completed`, `failed` and `stopped`</Note> \n <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/company/referrals/approve`</Tip>"
+      tags:
+      - Referrals
+      parameters:
+      - $ref: '#/components/parameters/AccountId_2'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BatchSelectionRequest'
+      responses:
+        '200':
+          description: Batch operation completed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BatchOperationResponse'
+        '202':
+          description: Batch operation accepted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BatchOperationResponse'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+    servers:
+    - url: https://api.firstpromoter.com/api/v2/company
+      description: Production server
+  /referrals/disable:
+    post:
+      summary: Disable referrals
+      description: "With this endpoint you can disable referrals. \n <Note>If there are more than __5__ ids on the __ids__ param/field, the action will be processed asynchronously. The response for the batch status will most likely be `in_progress`. The available statuses are `pending`, `in_progress`, `completed`, `failed` and `stopped`</Note> \n <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/company/referrals/disable`</Tip>"
+      tags:
+      - Referrals
+      parameters:
+      - $ref: '#/components/parameters/AccountId_2'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BatchSelectionRequest'
+      responses:
+        '200':
+          description: Batch operation completed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BatchOperationResponse'
+        '202':
+          description: Batch operation accepted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BatchOperationResponse'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+    servers:
+    - url: https://api.firstpromoter.com/api/v2/company
+      description: Production server
+  /referrals/enable:
+    post:
+      summary: Enable referrals
+      description: "With this endpoint you can enable referrals. \n <Note>If there are more than __5__ ids on the __ids__ param/field, the action will be processed asynchronously. The response for the batch status will most likely be `in_progress`. The available statuses are `pending`, `in_progress`, `completed`, `failed` and `stopped`</Note> \n <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/company/referrals/enable`</Tip>"
+      tags:
+      - Referrals
+      parameters:
+      - $ref: '#/components/parameters/AccountId_2'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BatchSelectionRequest'
+      responses:
+        '200':
+          description: Batch operation completed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BatchOperationResponse'
+        '202':
+          description: Batch operation accepted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BatchOperationResponse'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+    servers:
+    - url: https://api.firstpromoter.com/api/v2/company
+      description: Production server
+  /referrals/move_to_promoter:
+    post:
+      summary: Move referrals to promoter
+      description: "With this endpoint you can move referrals to another promoter. \n <Note>If there are more than __5__ ids on the __ids__ param/field, the action will be processed asynchronously. The response for the batch status will most likely be `in_progress`. The available statuses are `pending`, `in_progress`, `completed`, `failed` and `stopped`</Note> \n <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/company/referrals/move_to_promoter`</Tip>"
+      tags:
+      - Referrals
+      parameters:
+      - $ref: '#/components/parameters/AccountId_2'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - promoter_campaign_id
+              - selection
+              properties:
+                promoter_campaign_id:
+                  type: integer
+                  description: Destination promoter campaign ID
+                move_associated_commissions:
+                  type: boolean
+                  description: Move associated commissions
+                  enum:
+                  - true
+                  - false
+                ids:
+                  type: array
+                  description: Array of selected referral ids. If there are more than __5__ ids on this param/field, the action will be processed asynchronously. The response for the batch status will most likely be `in_progress`. The available statuses are `pending`, `in_progress`, `completed`, `failed` and `stopped`
+                  items:
+                    type: integer
+      responses:
+        '200':
+          description: Batch operation completed successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  status:
+                    type: string
+                    enum:
+                    - completed
+                  total:
+                    type: integer
+                  selected_total:
+                    type: integer
+                  processed_count:
+                    type: integer
+                  failed_count:
+                    type: integer
+                  action_label:
+                    type: string
+                  created_at:
+                    type: string
+                    format: date-time
+                  updated_at:
+                    type: string
+                    format: date-time
+                  meta:
+                    type: object
+                  progress:
+                    type: integer
+                  processing_errors:
+                    type: array
+                    items:
+                      type: string
+        '202':
+          description: Batch operation accepted for processing
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  status:
+                    type: string
+                  total:
+                    type: integer
+                  selected_total:
+                    type: integer
+                  processed_count:
+                    type: integer
+                  failed_count:
+                    type: integer
+                  action_label:
+                    type: string
+                  created_at:
+                    type: string
+                    format: date-time
+                  updated_at:
+                    type: string
+                    format: date-time
+                  meta:
+                    type: object
+                  progress:
+                    type: integer
+                    minimum: 0
+                  processing_errors:
+                    type: array
+                    items:
+                      type: string
+                required:
+                - id
+                - status
+                - total
+                - selected_total
+                - processed_count
+                - failed_count
+                - action_label
+                - created_at
+                - updated_at
+                - progress
+                - processing_errors
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: You don't have enough rights to perform this action
+                  code:
+                    type: string
+                required:
+                - message
+                - code
+        '422':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  code:
+                    type: string
+                    enum:
+                    - invalid_params
+                    - operation_failed
+                required:
+                - message
+                - code
+    servers:
+    - url: https://api.firstpromoter.com/api/v2/company
+      description: Production server
+  /referrals/{id}/import_events:
+    post:
+      summary: Import previous sales from stripe
+      description: "With this endpoint you can import previous sales from Stripe. \n <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/company/referrals/{id}/import_events`</Tip>"
+      tags:
+      - Referrals
+      parameters:
+      - $ref: '#/components/parameters/AccountId_2'
+      - in: path
+        name: id
+        required: true
+        schema:
+          type: string
+        description: ID of the referral
+      - in: query
+        name: find_by
+        schema:
+          type: string
+          enum:
+          - email
+          - uid
+          - username
+        description: Find by attribute
+      responses:
+        '202':
+          description: Import task accepted
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BatchOperationResponse'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '422':
+          description: Operation failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error_2'
+    servers:
+    - url: https://api.firstpromoter.com/api/v2/company
+      description: Production server
+components:
+  schemas:
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: string
+        errors:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string
+      required:
+      - message
+      - code
+    Campaign:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        color:
+          type: string
+    PromoterCampaign:
+      type: object
+      properties:
+        id:
+          type: integer
+        campaign_id:
+          type: integer
+        created_at:
+          type: string
+          format: date-time
+        campaign:
+          $ref: '#/components/schemas/Campaign'
+    Referral:
+      type: object
+      properties:
+        id:
+          type: integer
+        uid:
+          type: string
+        state:
+          type: string
+          enum:
+          - subscribed
+          - signup
+          - active
+          - cancelled
+          - refunded
+          - denied
+          - pending
+          - moved
+        metadata:
+          type: object
+        created_at:
+          type: string
+          format: date-time
+        customer_since:
+          type: string
+          format: date-time
+        email:
+          type: string
+          format: email
+        promoter_campaign:
+          $ref: '#/components/schemas/PromoterCampaign'
+    Promoter:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Id of the promoter
+        email:
+          type: string
+          format: email
+          description: Email address of the promoter
+        name:
+          type: string
+          description: Name of the promoter
+    BatchOperationResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Id of the batch operation
+        status:
+          type: string
+          enum:
+          - pending
+          - completed
+          description: Status of the batch operation
+        total:
+          type: integer
+          description: Total number of items
+        selected_total:
+          type: integer
+          description: Number of selected items
+        processed_count:
+          type: integer
+          description: Number of processed items
+        failed_count:
+          type: integer
+          description: Number of failed operations
+        action_label:
+          type: string
+          description: Action identifier/ label assigned to the action
+        created_at:
+          type: string
+          format: date-time
+          description: Date and time when the batch operation was created
+        updated_at:
+          type: string
+          format: date-time
+          description: Date and time when the batch operation was updated
+        meta:
+          type: object
+          description: Meta data of the batch operation
+        progress:
+          type: integer
+          description: Progress of the action (0-100)
+        processing_errors:
+          type: array
+          items:
+            type: string
+            description: List of processing errors
+    Error_2:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: string
+        errors:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string
+    Campaign_2:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Id of the campaign
+        name:
+          type: string
+          description: Name of the campaign
+        color:
+          type:
+          - string
+          - 'null'
+          description: Color assigned to the campaign
+    PromoterCampaign_2:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Id of the promoter campaign
+        campaign_id:
+          type: integer
+          description: Id of the campaign
+        promoter_id:
+          type: integer
+          description: Id of the promoter
+        created_at:
+          type: string
+          format: date-time
+          description: Date and time when the promoter campaign was created
+        promoter:
+          $ref: '#/components/schemas/Promoter'
+        campaign:
+          $ref: '#/components/schemas/Campaign_2'
+    Referral_2:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Id of the referral
+        email:
+          type: string
+          format: email
+          description: Email address of the referral
+        uid:
+          type: string
+          description: uid of the referral
+        state:
+          type: string
+          enum:
+          - subscribed
+          - signup
+          - active
+          - cancelled
+          - refunded
+          - denied
+          - pending
+          - moved
+          description: State of the referral
+        metadata:
+          type: object
+          description: Additional metadata of the referral
+        entry_source:
+          type: string
+          enum:
+          - api
+          - coupon
+          - cookie
+          - manual_admin
+          - manual_affiliate
+          description: "Entry source of the referral. This shows where the referral was captured from. \n **Cookie** is set if the referral was captured using the tid cookie, \n **Coupon** is for when the referral is captured via a coupon code. \n**Manual admin** is for when the referral is added manually by an admin. \n**Manual affiliate** is for when the referral is added manually by an affiliate."
+        created_at:
+          type: string
+          format: date-time
+          description: Date and time when the referral was created
+        customer_since:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: Date and time when the referral became a customer
+        promoter_campaign:
+          $ref: '#/components/schemas/PromoterCampaign_2'
+        fraud_check:
+          type: string
+          enum:
+          - no_suspicion
+          - same_ip_suspicion
+          - same_promoter_email
+          - ad_source
+          description: Fraud check (suspicion) status of the referral. `no_suspicion` means the referral is clean or was manually cleared. `same_ip_suspicion` means the referral shares an IP with the promoter. `same_promoter_email` means the referral email matches the promoter email. `ad_source` means the referral arrived via a paid ad click.
+        created_by_user_email:
+          type:
+          - string
+          - 'null'
+          format: email
+          description: Email address of the user who created the referral
+        username:
+          type:
+          - string
+          - 'null'
+          description: Username chosen by the referral
+        split_details:
+          type:
+          - array
+          - 'null'
+          description: The commission split configuration for this referral. Each entry represents a split partner. The primary promoter (the referral owner) receives the remainder of the commission after all split percentages are applied.
+          items:
+            type: object
+            properties:
+              promoter_campaign_id:
+                type: integer
+                description: The ID of the split partner's campaign enrollment
+              promoter_id:
+                type: integer
+                description: The ID of the split partner (promoter)
+              percentage:
+                type: integer
+                description: The percentage of each commission this promoter receives
+        first_name:
+          type:
+          - string
+          - 'null'
+        last_name:
+          type:
+          - string
+          - 'null'
+        website:
+          type:
+          - string
+          - 'null'
+        comment:
+          type:
+          - string
+          - 'null'
+          description: Internal note or comment on this referral
+        is_expired:
+          type: boolean
+          description: Whether the referral has expired
+    BatchSelectionRequest:
+      type: object
+      properties:
+        ids:
+          type: array
+          description: Array of selected referral ids. If there are more than __5__ ids on this param/field, the action will be processed asynchronously. The response for the batch status will most likely be `in_progress`. The available statuses are `pending`, `in_progress`, `completed`, `failed` and `stopped`
+          items:
+            type: integer
+  parameters:
+    AccountId:
+      name: Account-ID
+      in: header
+      required: true
+      description: Account identifier that specifies which account is making the request
+      schema:
+        type: string
+        example: acc_123456
+    AccountId_2:
+      name: Account-ID
+      in: header
+      required: true
+      description: Account id. You can find your Account ID on Your FirstPromoter Dashboard. Navigate to Settings → Integrations
+      schema:
+        type: string
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      description: Access token passed as a Bearer token in the Authorization header
+    accountId:
+      type: apiKey
+      in: header
+      name: ACCOUNT-ID
+      description: Your FirstPromoter Account ID. You can find this in the  Settings → Integrations section of your dashboard.
+x-refined-from:
+- firstpromoter-v2-affiliate-referrals-openapi.yml
+- firstpromoter-v2-referrals-openapi.yml
