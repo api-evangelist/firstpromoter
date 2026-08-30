@@ -1533,6 +1533,8 @@ apis:
   humanURL: https://docs.firstpromoter.com/api-reference-v2/api-advanced/payout-methods-api
   baseURL: https://api.firstpromoter.com/api/v2/company
   tags:
+  - Product
+  tags_raw:
   - Products
   properties:
   - type: OpenAPI
@@ -2393,6 +2395,8 @@ apis:
   humanURL: https://docs.firstpromoter.com/api-reference-v2/api-advanced/payout-methods-api
   baseURL: https://api.firstpromoter.com/api/v2/company
   tags:
+  - Sign Up
+  tags_raw:
   - Signup
   properties:
   - type: OpenAPI
@@ -2565,6 +2569,8 @@ apis:
   humanURL: https://docs.firstpromoter.com/api-reference-v2/api-advanced/payout-methods-api
   baseURL: https://api.firstpromoter.com/api/v2/company
   tags:
+  - Webhook
+  tags_raw:
   - Webhooks
   properties:
   - type: OpenAPI
