@@ -1020,6 +1020,8 @@ apis:
   humanURL: https://docs.firstpromoter.com/api-reference-v2/api-advanced/payout-methods-api
   baseURL: https://api.firstpromoter.com/api/v2/company
   tags:
+  - Email
+  tags_raw:
   - Emails
   properties:
   - type: OpenAPI
