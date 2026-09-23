@@ -13,7 +13,9 @@ paths:
   /invoices/template:
     get:
       summary: Show invoice template
-      description: <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/invoices/template`</Tip>
+      description: '**HTTP Request**
+
+        `GET https://api.firstpromoter.com/api/v2/company/invoices/template`'
       tags:
       - Invoice Templates
       parameters:
@@ -35,10 +37,14 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      operationId: getInvoicesTemplate
+      x-operation-id-source: derived
   /invoices/preview_template:
     post:
       summary: Show invoice template preview
-      description: <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/company/invoices/preview_template`</Tip>
+      description: '**HTTP Request**
+
+        `POST https://api.firstpromoter.com/api/v2/company/invoices/preview_template`'
       tags:
       - Invoice Templates
       parameters:
@@ -75,10 +81,14 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      operationId: postInvoicesPreviewTemplate
+      x-operation-id-source: derived
   /invoices/custom_template:
     put:
       summary: Update invoice template
-      description: <Tip>**HTTP Request** <br/>`PUT https://api.firstpromoter.com/api/v2/company/invoices/custom_template`</Tip>
+      description: '**HTTP Request**
+
+        `PUT https://api.firstpromoter.com/api/v2/company/invoices/custom_template`'
       tags:
       - Invoice Templates
       parameters:
@@ -112,6 +122,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      operationId: putInvoicesCustomTemplate
+      x-operation-id-source: derived
 components:
   parameters:
     AccountId:

@@ -13,7 +13,11 @@ paths:
   /invoices:
     get:
       summary: Get invoices
-      description: "Returns all invoices. \n <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/invoices`</Tip>"
+      description: 'Returns all invoices.
+
+        **HTTP Request**
+
+        `GET https://api.firstpromoter.com/api/v2/company/invoices`'
       tags:
       - Invoices
       parameters:
@@ -50,10 +54,16 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      operationId: getInvoices
+      x-operation-id-source: derived
   /invoices/{id}:
     get:
       summary: Get invoice by id
-      description: "Returns single invoice \n <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/invoices/{id}`</Tip>"
+      description: 'Returns single invoice
+
+        **HTTP Request**
+
+        `GET https://api.firstpromoter.com/api/v2/company/invoices/{id}`'
       tags:
       - Invoices
       parameters:
@@ -84,10 +94,16 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+      operationId: getInvoicesById
+      x-operation-id-source: derived
   /invoices/void:
     post:
       summary: Void invoices
-      description: "Marks invoices as void \n <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/company/invoices/void`</Tip>"
+      description: 'Marks invoices as void
+
+        **HTTP Request**
+
+        `POST https://api.firstpromoter.com/api/v2/company/invoices/void`'
       tags:
       - Invoices
       parameters:
@@ -121,10 +137,16 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+      operationId: postInvoicesVoid
+      x-operation-id-source: derived
   /invoices/finalize:
     post:
       summary: Finalize invoices
-      description: "Marks invoices as finalized \n <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/company/invoices/finalize`</Tip>"
+      description: 'Marks invoices as finalized
+
+        **HTTP Request**
+
+        `POST https://api.firstpromoter.com/api/v2/company/invoices/finalize`'
       tags:
       - Invoices
       parameters:
@@ -158,10 +180,16 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+      operationId: postInvoicesFinalize
+      x-operation-id-source: derived
   /invoices/destroy:
     delete:
       summary: Destroy invoices
-      description: "Deletes invoices \n <Tip>**HTTP Request** <br/>`DELETE https://api.firstpromoter.com/api/v2/company/invoices/destroy`</Tip>"
+      description: 'Deletes invoices
+
+        **HTTP Request**
+
+        `DELETE https://api.firstpromoter.com/api/v2/company/invoices/destroy`'
       tags:
       - Invoices
       parameters:
@@ -191,10 +219,16 @@ paths:
           description: Forbidden
         '422':
           description: Invalid parameters
+      operationId: deleteInvoicesDestroy
+      x-operation-id-source: derived
   /invoices/export:
     get:
       summary: Export invoices as csv
-      description: "Exports invoices as csv \n <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/invoices/export`</Tip>"
+      description: 'Exports invoices as csv
+
+        **HTTP Request**
+
+        `GET https://api.firstpromoter.com/api/v2/company/invoices/export`'
       tags:
       - Invoices
       parameters:
@@ -215,10 +249,16 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      operationId: getInvoicesExport
+      x-operation-id-source: derived
   /invoices/export_zip:
     get:
       summary: Export all invoices PDF in a single zip
-      description: "Exports invoices PDF in a single zip \n <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/invoices/export_zip`</Tip>"
+      description: 'Exports invoices PDF in a single zip
+
+        **HTTP Request**
+
+        `GET https://api.firstpromoter.com/api/v2/company/invoices/export_zip`'
       tags:
       - Invoices
       parameters:
@@ -237,10 +277,14 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      operationId: getInvoicesExportZip
+      x-operation-id-source: derived
   /invoices/preview:
     get:
       summary: Show invoice preview
-      description: <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/invoices/preview`</Tip>
+      description: '**HTTP Request**
+
+        `GET https://api.firstpromoter.com/api/v2/company/invoices/preview`'
       tags:
       - Invoices
       parameters:
@@ -275,8 +319,53 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      operationId: getInvoicesPreview
+      x-operation-id-source: derived
 components:
   schemas:
+    BatchRequest:
+      type: object
+      properties:
+        ids:
+          type: array
+          items:
+            type: integer
+            description: Array of invoice ids.
+    BatchResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        status:
+          type: string
+          enum:
+          - pending
+          - completed
+          - failed
+        total:
+          type: integer
+        selected_total:
+          type: integer
+        processed_count:
+          type: integer
+        failed_count:
+          type: integer
+        action_label:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+        meta:
+          type: object
+        progress:
+          type: integer
+        processing_errors:
+          type: array
+          items:
+            type: object
     Error:
       type: object
       properties:
@@ -319,49 +408,6 @@ components:
             name:
               type: string
         payouts:
-          type: array
-          items:
-            type: object
-    BatchRequest:
-      type: object
-      properties:
-        ids:
-          type: array
-          items:
-            type: integer
-            description: Array of invoice ids.
-    BatchResponse:
-      type: object
-      properties:
-        id:
-          type: integer
-        status:
-          type: string
-          enum:
-          - pending
-          - completed
-          - failed
-        total:
-          type: integer
-        selected_total:
-          type: integer
-        processed_count:
-          type: integer
-        failed_count:
-          type: integer
-        action_label:
-          type: string
-        created_at:
-          type: string
-          format: date-time
-        updated_at:
-          type: string
-          format: date-time
-        meta:
-          type: object
-        progress:
-          type: integer
-        processing_errors:
           type: array
           items:
             type: object

@@ -16,7 +16,11 @@ paths:
       summary: Get available rewards
       tags:
       - Rewards
-      description: "Get available rewards for current company \n <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/rewards`</Tip>"
+      description: 'Get available rewards for current company
+
+        **HTTP Request**
+
+        `GET https://api.firstpromoter.com/api/v2/company/rewards`'
       parameters:
       - $ref: '#/components/parameters/AccountId'
       - in: query
@@ -50,11 +54,17 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+      operationId: getRewards
+      x-operation-id-source: derived
     post:
       summary: Create reward
       tags:
       - Rewards
-      description: "Create rewards for current company \n <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/company/rewards`</Tip>"
+      description: 'Create rewards for current company
+
+        **HTTP Request**
+
+        `POST https://api.firstpromoter.com/api/v2/company/rewards`'
       parameters:
       - $ref: '#/components/parameters/AccountId'
       requestBody:
@@ -217,12 +227,18 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+      operationId: postRewards
+      x-operation-id-source: derived
   /rewards/{id}:
     put:
       summary: Update reward
       tags:
       - Rewards
-      description: "Update reward for current company \n <Tip>**HTTP Request** <br/>`PUT https://api.firstpromoter.com/api/v2/company/rewards/{id}`</Tip>"
+      description: 'Update reward for current company
+
+        **HTTP Request**
+
+        `PUT https://api.firstpromoter.com/api/v2/company/rewards/{id}`'
       parameters:
       - $ref: '#/components/parameters/AccountId'
       - in: path
@@ -365,12 +381,18 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+      operationId: putRewardsById
+      x-operation-id-source: derived
   /rewards/{id}/hide:
     post:
       summary: Hide reward
       tags:
       - Rewards
-      description: "Hide reward for current company \n <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/company/rewards/{id}/hide`</Tip>"
+      description: 'Hide reward for current company
+
+        **HTTP Request**
+
+        `POST https://api.firstpromoter.com/api/v2/company/rewards/{id}/hide`'
       parameters:
       - $ref: '#/components/parameters/AccountId'
       - in: path
@@ -390,17 +412,37 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+      operationId: postRewardsByIdHide
+      x-operation-id-source: derived
 components:
-  parameters:
-    AccountId:
-      name: Account-ID
-      in: header
-      required: true
-      description: Account identifier that specifies which account is making the request
-      schema:
-        type: string
-        example: acc_123456
   schemas:
+    ValidationError:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Error message
+        errors:
+          type: object
+          description: Validation errors
+          additionalProperties:
+            type: array
+            items:
+              type: string
+        code:
+          type: string
+          description: Error code
+          example: invalid_record
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Error message
+        code:
+          type: string
+          description: Error code
+          example: forbidden
     Reward:
       type: object
       properties:
@@ -548,33 +590,15 @@ components:
                       - and
                       - or
                       description: Logical operator to combine with other rules
-    Error:
-      type: object
-      properties:
-        message:
-          type: string
-          description: Error message
-        code:
-          type: string
-          description: Error code
-          example: forbidden
-    ValidationError:
-      type: object
-      properties:
-        message:
-          type: string
-          description: Error message
-        errors:
-          type: object
-          description: Validation errors
-          additionalProperties:
-            type: array
-            items:
-              type: string
-        code:
-          type: string
-          description: Error code
-          example: invalid_record
+  parameters:
+    AccountId:
+      name: Account-ID
+      in: header
+      required: true
+      description: Account identifier that specifies which account is making the request
+      schema:
+        type: string
+        example: acc_123456
   securitySchemes:
     BearerAuth:
       type: http

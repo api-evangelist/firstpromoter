@@ -110,6 +110,8 @@ paths:
           description: Success
         '401':
           description: Unauthorized
+      operationId: getEmails
+      x-operation-id-source: derived
     post:
       summary: Create email
       tags:
@@ -213,6 +215,8 @@ paths:
           description: Success
         '401':
           description: Unauthorized
+      operationId: postEmails
+      x-operation-id-source: derived
   /emails/{id}:
     get:
       summary: Get email by id
@@ -231,6 +235,8 @@ paths:
           description: Success
         '401':
           description: Unauthorized
+      operationId: getEmailsById
+      x-operation-id-source: derived
     put:
       summary: Update email
       tags:
@@ -254,6 +260,8 @@ paths:
           description: Success
         '401':
           description: Unauthorized
+      operationId: putEmailsById
+      x-operation-id-source: derived
     delete:
       summary: Delete email
       tags:
@@ -271,6 +279,8 @@ paths:
           description: Success
         '401':
           description: Unauthorized
+      operationId: deleteEmailsById
+      x-operation-id-source: derived
   /emails/{id}/copy:
     post:
       summary: Copy email
@@ -289,6 +299,8 @@ paths:
           description: Success
         '401':
           description: Unauthorized
+      operationId: postEmailsByIdCopy
+      x-operation-id-source: derived
   /emails/{id}/send_now:
     post:
       summary: Send email
@@ -307,6 +319,8 @@ paths:
           description: Success
         '401':
           description: Unauthorized
+      operationId: postEmailsByIdSendNow
+      x-operation-id-source: derived
   /emails/{id}/send_test:
     post:
       summary: Send test email
@@ -325,6 +339,8 @@ paths:
           description: Success
         '401':
           description: Unauthorized
+      operationId: postEmailsByIdSendTest
+      x-operation-id-source: derived
   /emails/template:
     get:
       summary: Get the html of the company email theme
@@ -333,6 +349,8 @@ paths:
       responses:
         '200':
           description: Success
+      operationId: getEmailsTemplate
+      x-operation-id-source: derived
   /emails/custom_template:
     patch:
       summary: Updates the html of the company email theme
@@ -355,6 +373,8 @@ paths:
           description: Success
         '401':
           description: Unauthorized
+      operationId: patchEmailsCustomTemplate
+      x-operation-id-source: derived
   /emails/test_custom_template:
     post:
       summary: Sends a test email to current user with the custom template
@@ -365,6 +385,8 @@ paths:
           description: Success
         '401':
           description: Unauthorized
+      operationId: postEmailsTestCustomTemplate
+      x-operation-id-source: derived
 components:
   parameters:
     AccountId:

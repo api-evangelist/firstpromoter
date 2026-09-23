@@ -14,7 +14,18 @@ tags:
 paths:
   /signup:
     post:
-      description: Capture a lead when they sign-up or fill an optin form. This endpoint is used to track leads and sign-ups. It's not for tracking the actual sales and commissions. <br/>  <br/> Sign-ups are tracked as leads in FirstPromoter so when a person referred by the promoter/affiliate signs up, a new referral should be added inside FirstPromoter **(you can see them inside the `Referrals` section as `Leads`)**. <br/><br/><Tip>The recommended way to do this is to grab the `_fprom_tid` **(_fprom_track for accounts created prior to April 2021)** cookie value(which keeps the tracking id and referral identification) on your server and send it along with the sign-up data through the tid parameter. <br/><br/> **Alternative:** In some special cases, you can refer sign ups directly to a promoter, by passing the referral id through ref_id parameter. Be careful when using this because the referral id can be modified by the promoter by default, however you can disable that from the campaign configuration page.</Tip><Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/track/signup`</Tip>
+      description: 'Capture a lead when they sign-up or fill an optin form. This endpoint is used to track leads and sign-ups. It''s not for tracking the actual sales and commissions.
+
+
+        Sign-ups are tracked as leads in FirstPromoter so when a person referred by the promoter/affiliate signs up, a new referral should be added inside FirstPromoter **(you can see them inside the `Referrals` section as `Leads`)**.
+
+
+        The recommended way to do this is to grab the `_fprom_tid` **(_fprom_track for accounts created prior to April 2021)** cookie value(which keeps the tracking id and referral identification) on your server and send it along with the sign-up data through the tid parameter.
+
+
+        **Alternative:** In some special cases, you can refer sign ups directly to a promoter, by passing the referral id through ref_id parameter. Be careful when using this because the referral id can be modified by the promoter by default, however you can disable that from the campaign configuration page.**HTTP Request**
+
+        `POST https://api.firstpromoter.com/api/v2/track/signup`'
       requestBody:
         required: true
         content:
@@ -148,6 +159,10 @@ paths:
                     example: there is already a signup event registered on this lead
       tags:
       - Signup
+      summary: Create signup
+      x-summary-source: derived
+      operationId: postSignup
+      x-operation-id-source: derived
 components:
   parameters:
     AccountId:

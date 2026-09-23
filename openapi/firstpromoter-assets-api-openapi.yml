@@ -14,7 +14,11 @@ paths:
   /assets:
     get:
       summary: Get available assets
-      description: "Returns all assets \n <Tip>**HTTP Request** <br/>` GET  https://api.firstpromoter.com/api/v2/affiliate/assets`</Tip>"
+      description: 'Returns all assets
+
+        **HTTP Request**
+
+        ` GET https://api.firstpromoter.com/api/v2/affiliate/assets`'
       parameters:
       - $ref: '#/components/parameters/AccountId'
       responses:
@@ -144,9 +148,15 @@ paths:
                 description: Error response
       tags:
       - Assets
+      operationId: getAssets
+      x-operation-id-source: derived
     post:
       summary: Create assets
-      description: "Create assets \n <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/company/assets`</Tip>"
+      description: 'Create assets
+
+        **HTTP Request**
+
+        `POST https://api.firstpromoter.com/api/v2/company/assets`'
       tags:
       - Assets
       parameters:
@@ -214,12 +224,18 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+      operationId: postAssets
+      x-operation-id-source: derived
     servers:
     - url: https://api.firstpromoter.com/api/v2/affiliate
   /assets/{id}:
     get:
       summary: Get asset
-      description: "Get asset details \n <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/assets/{id}`</Tip>"
+      description: 'Get asset details
+
+        **HTTP Request**
+
+        `GET https://api.firstpromoter.com/api/v2/company/assets/{id}`'
       tags:
       - Assets
       parameters:
@@ -245,11 +261,17 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+      operationId: getAssetsById
+      x-operation-id-source: derived
     put:
       summary: Update asset
       tags:
       - Assets
-      description: " Update an asset \n <Tip>**HTTP Request** <br/>`PUT https://api.firstpromoter.com/api/v2/company/assets/{id}`</Tip>"
+      description: 'Update an asset
+
+        **HTTP Request**
+
+        `PUT https://api.firstpromoter.com/api/v2/company/assets/{id}`'
       parameters:
       - $ref: '#/components/parameters/AccountId'
       - name: id
@@ -312,12 +334,18 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+      operationId: putAssetsById
+      x-operation-id-source: derived
     servers:
     - url: https://api.firstpromoter.com/api/v2/company
   /assets/update_category:
     put:
       summary: Update category of an asset
-      description: "Update category of an asset \n <Tip>**HTTP Request** <br/>`PUT https://api.firstpromoter.com/api/v2/company/assets/update_category`</Tip>"
+      description: 'Update category of an asset
+
+        **HTTP Request**
+
+        `PUT https://api.firstpromoter.com/api/v2/company/assets/update_category`'
       tags:
       - Assets
       parameters:
@@ -366,12 +394,18 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+      operationId: putAssetsUpdateCategory
+      x-operation-id-source: derived
     servers:
     - url: https://api.firstpromoter.com/api/v2/company
   /assets/destroy:
     delete:
       summary: Delete assets
-      description: "Delete assets \n <Tip>**HTTP Request** <br/>`DELETE https://api.firstpromoter.com/api/v2/company/assets/destroy`</Tip>"
+      description: 'Delete assets
+
+        **HTTP Request**
+
+        `DELETE https://api.firstpromoter.com/api/v2/company/assets/destroy`'
       tags:
       - Assets
       parameters:
@@ -415,6 +449,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+      operationId: deleteAssetsDestroy
+      x-operation-id-source: derived
     servers:
     - url: https://api.firstpromoter.com/api/v2/company
 components:
@@ -428,6 +464,53 @@ components:
         type: string
         example: acc_123456
   schemas:
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: string
+        errors:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string
+    BatchOperationResult:
+      type: object
+      properties:
+        id:
+          type: integer
+        status:
+          type: string
+          enum:
+          - pending
+          - completed
+        total:
+          type: integer
+        selected_total:
+          type: integer
+        processed_count:
+          type: integer
+        failed_count:
+          type: integer
+        action_label:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+        meta:
+          type: object
+        progress:
+          type: integer
+        processing_errors:
+          type: array
+          items:
+            type: string
     Asset:
       type: object
       properties:
@@ -490,53 +573,6 @@ components:
                 type: string
               color:
                 type: string
-    Error:
-      type: object
-      properties:
-        message:
-          type: string
-        code:
-          type: string
-        errors:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              type: string
-    BatchOperationResult:
-      type: object
-      properties:
-        id:
-          type: integer
-        status:
-          type: string
-          enum:
-          - pending
-          - completed
-        total:
-          type: integer
-        selected_total:
-          type: integer
-        processed_count:
-          type: integer
-        failed_count:
-          type: integer
-        action_label:
-          type: string
-        created_at:
-          type: string
-          format: date-time
-        updated_at:
-          type: string
-          format: date-time
-        meta:
-          type: object
-        progress:
-          type: integer
-        processing_errors:
-          type: array
-          items:
-            type: string
   securitySchemes:
     BearerAuth:
       type: http

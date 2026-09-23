@@ -109,6 +109,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+      operationId: getReportsOverview
+      x-operation-id-source: derived
     servers:
     - url: https://api.firstpromoter.com/api/v2/affiliate
   /reports/sub_ids:
@@ -201,6 +203,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+      operationId: getReportsSubIds
+      x-operation-id-source: derived
     servers:
     - url: https://api.firstpromoter.com/api/v2/affiliate
   /reports/download:
@@ -267,12 +271,16 @@ paths:
           description: Forbidden
         '422':
           description: Unprocessable Entity
+      operationId: getReportsDownload
+      x-operation-id-source: derived
     servers:
     - url: https://api.firstpromoter.com/api/v2/affiliate
   /reports/campaigns:
     get:
       summary: Get reports for campaigns
-      description: With this endpoint you can get the report data grouped by campaigns.<Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/reports/campaigns`</Tip>
+      description: 'With this endpoint you can get the report data grouped by campaigns.**HTTP Request**
+
+        `GET https://api.firstpromoter.com/api/v2/company/reports/campaigns`'
       tags:
       - Reports
       parameters:
@@ -431,12 +439,16 @@ paths:
                     type: string
                   code:
                     type: string
+      operationId: getReportsCampaigns
+      x-operation-id-source: derived
     servers:
     - url: https://api.firstpromoter.com/api/v2/company
   /reports/promoters:
     get:
       summary: Get reports for promoters
-      description: ' With this endpoint you can get the report data grouped by promoters.<Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/reports/promoters`</Tip>'
+      description: 'With this endpoint you can get the report data grouped by promoters.**HTTP Request**
+
+        `GET https://api.firstpromoter.com/api/v2/company/reports/promoters`'
       tags:
       - Reports
       parameters:
@@ -622,12 +634,18 @@ paths:
                   code:
                     type: string
                     example: invalid_params
+      operationId: getReportsPromoters
+      x-operation-id-source: derived
     servers:
     - url: https://api.firstpromoter.com/api/v2/company
   /reports/traffic_sources:
     get:
       summary: Get reports for traffic sources
-      description: "With this endpoint you can get the report data grouped by traffic sources. \n <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/reports/traffic_sources`</Tip>"
+      description: 'With this endpoint you can get the report data grouped by traffic sources.
+
+        **HTTP Request**
+
+        `GET https://api.firstpromoter.com/api/v2/company/reports/traffic_sources`'
       tags:
       - Reports
       parameters:
@@ -805,12 +823,16 @@ paths:
                   code:
                     type: string
                     example: invalid_params
+      operationId: getReportsTrafficSources
+      x-operation-id-source: derived
     servers:
     - url: https://api.firstpromoter.com/api/v2/company
   /reports/urls:
     get:
       summary: Get reports for URLs
-      description: With this endpoint you can get the report data grouped by URLs.<Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/reports/urls`</Tip>
+      description: 'With this endpoint you can get the report data grouped by URLs.**HTTP Request**
+
+        `GET https://api.firstpromoter.com/api/v2/company/reports/urls`'
       tags:
       - Reports
       parameters:
@@ -885,20 +907,12 @@ paths:
           description: Forbidden
         '422':
           description: Unprocessable Entity
+      operationId: getReportsUrls
+      x-operation-id-source: derived
     servers:
     - url: https://api.firstpromoter.com/api/v2/company
 components:
   schemas:
-    Error:
-      type: object
-      properties:
-        message:
-          type: string
-        code:
-          type: string
-      required:
-      - message
-      - code
     SubIdReportData:
       type: object
       properties:
@@ -942,6 +956,16 @@ components:
                 type: string
               data:
                 $ref: '#/components/schemas/SubIdReportData/properties/data'
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: string
+      required:
+      - message
+      - code
     ReportData:
       type: object
       properties:

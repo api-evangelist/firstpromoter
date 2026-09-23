@@ -52,6 +52,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+      operationId: getEmailSettings
+      x-operation-id-source: derived
   /email_settings/{id}:
     put:
       summary: Update affiliate email settings
@@ -115,6 +117,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+      operationId: putEmailSettingsById
+      x-operation-id-source: derived
 components:
   schemas:
     EmailSettings:

@@ -173,7 +173,13 @@ paths:
       - Referrals
     delete:
       summary: Delete referrals
-      description: "With this endpoint you can delete referrals. \n <Note>If there are more than __5__ ids on the __ids__ param/field, the action will be processed asynchronously. The response for the batch status will most likely be `in_progress`. The available statuses are `pending`, `in_progress`, `completed`, `failed` and `stopped`</Note> \n <Tip>**HTTP Request** <br/>`DELETE https://api.firstpromoter.com/api/v2/company/referrals`</Tip>"
+      description: 'With this endpoint you can delete referrals.
+
+        If there are more than __5__ ids on the __ids__ param/field, the action will be processed asynchronously. The response for the batch status will most likely be `in_progress`. The available statuses are `pending`, `in_progress`, `completed`, `failed` and `stopped`
+
+        **HTTP Request**
+
+        `DELETE https://api.firstpromoter.com/api/v2/company/referrals`'
       tags:
       - Referrals
       parameters:
@@ -201,6 +207,8 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      operationId: deleteReferrals
+      x-operation-id-source: derived
     servers:
     - url: https://api.firstpromoter.com/api/v2/affiliate
   /referrals/{id}:
@@ -272,7 +280,11 @@ paths:
       summary: Get referral
       tags:
       - Referrals
-      description: "Get a specific referral \n <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/referrals/{id}`</Tip>"
+      description: 'Get a specific referral
+
+        **HTTP Request**
+
+        `GET https://api.firstpromoter.com/api/v2/company/referrals/{id}`'
       parameters:
       - $ref: '#/components/parameters/AccountId_2'
       - in: path
@@ -303,6 +315,8 @@ paths:
           description: Forbidden
         '404':
           description: Not found
+      operationId: getReferralsById
+      x-operation-id-source: derived
     servers:
     - url: https://api.firstpromoter.com/api/v2/affiliate
   /referrals/export:
@@ -366,7 +380,13 @@ paths:
   /referrals/approve:
     post:
       summary: Approve referrals
-      description: "With this endpoint you can approve referrals. \n <Note>If there are more than __5__ ids on the __ids__ param/field, the action will be processed asynchronously. The response for the batch status will most likely be `in_progress`. The available statuses are `pending`, `in_progress`, `completed`, `failed` and `stopped`</Note> \n <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/company/referrals/approve`</Tip>"
+      description: 'With this endpoint you can approve referrals.
+
+        If there are more than __5__ ids on the __ids__ param/field, the action will be processed asynchronously. The response for the batch status will most likely be `in_progress`. The available statuses are `pending`, `in_progress`, `completed`, `failed` and `stopped`
+
+        **HTTP Request**
+
+        `POST https://api.firstpromoter.com/api/v2/company/referrals/approve`'
       tags:
       - Referrals
       parameters:
@@ -394,13 +414,21 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      operationId: postReferralsApprove
+      x-operation-id-source: derived
     servers:
     - url: https://api.firstpromoter.com/api/v2/company
       description: Production server
   /referrals/disable:
     post:
       summary: Disable referrals
-      description: "With this endpoint you can disable referrals. \n <Note>If there are more than __5__ ids on the __ids__ param/field, the action will be processed asynchronously. The response for the batch status will most likely be `in_progress`. The available statuses are `pending`, `in_progress`, `completed`, `failed` and `stopped`</Note> \n <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/company/referrals/disable`</Tip>"
+      description: 'With this endpoint you can disable referrals.
+
+        If there are more than __5__ ids on the __ids__ param/field, the action will be processed asynchronously. The response for the batch status will most likely be `in_progress`. The available statuses are `pending`, `in_progress`, `completed`, `failed` and `stopped`
+
+        **HTTP Request**
+
+        `POST https://api.firstpromoter.com/api/v2/company/referrals/disable`'
       tags:
       - Referrals
       parameters:
@@ -428,13 +456,21 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      operationId: postReferralsDisable
+      x-operation-id-source: derived
     servers:
     - url: https://api.firstpromoter.com/api/v2/company
       description: Production server
   /referrals/enable:
     post:
       summary: Enable referrals
-      description: "With this endpoint you can enable referrals. \n <Note>If there are more than __5__ ids on the __ids__ param/field, the action will be processed asynchronously. The response for the batch status will most likely be `in_progress`. The available statuses are `pending`, `in_progress`, `completed`, `failed` and `stopped`</Note> \n <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/company/referrals/enable`</Tip>"
+      description: 'With this endpoint you can enable referrals.
+
+        If there are more than __5__ ids on the __ids__ param/field, the action will be processed asynchronously. The response for the batch status will most likely be `in_progress`. The available statuses are `pending`, `in_progress`, `completed`, `failed` and `stopped`
+
+        **HTTP Request**
+
+        `POST https://api.firstpromoter.com/api/v2/company/referrals/enable`'
       tags:
       - Referrals
       parameters:
@@ -462,13 +498,21 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      operationId: postReferralsEnable
+      x-operation-id-source: derived
     servers:
     - url: https://api.firstpromoter.com/api/v2/company
       description: Production server
   /referrals/move_to_promoter:
     post:
       summary: Move referrals to promoter
-      description: "With this endpoint you can move referrals to another promoter. \n <Note>If there are more than __5__ ids on the __ids__ param/field, the action will be processed asynchronously. The response for the batch status will most likely be `in_progress`. The available statuses are `pending`, `in_progress`, `completed`, `failed` and `stopped`</Note> \n <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/company/referrals/move_to_promoter`</Tip>"
+      description: 'With this endpoint you can move referrals to another promoter.
+
+        If there are more than __5__ ids on the __ids__ param/field, the action will be processed asynchronously. The response for the batch status will most likely be `in_progress`. The available statuses are `pending`, `in_progress`, `completed`, `failed` and `stopped`
+
+        **HTTP Request**
+
+        `POST https://api.firstpromoter.com/api/v2/company/referrals/move_to_promoter`'
       tags:
       - Referrals
       parameters:
@@ -617,13 +661,19 @@ paths:
                 required:
                 - message
                 - code
+      operationId: postReferralsMoveToPromoter
+      x-operation-id-source: derived
     servers:
     - url: https://api.firstpromoter.com/api/v2/company
       description: Production server
   /referrals/{id}/import_events:
     post:
       summary: Import previous sales from stripe
-      description: "With this endpoint you can import previous sales from Stripe. \n <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/company/referrals/{id}/import_events`</Tip>"
+      description: 'With this endpoint you can import previous sales from Stripe.
+
+        **HTTP Request**
+
+        `POST https://api.firstpromoter.com/api/v2/company/referrals/{id}/import_events`'
       tags:
       - Referrals
       parameters:
@@ -660,6 +710,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error_2'
+      operationId: postReferralsByIdImportEvents
+      x-operation-id-source: derived
     servers:
     - url: https://api.firstpromoter.com/api/v2/company
       description: Production server
@@ -681,15 +733,6 @@ components:
       required:
       - message
       - code
-    Campaign:
-      type: object
-      properties:
-        id:
-          type: integer
-        name:
-          type: string
-        color:
-          type: string
     PromoterCampaign:
       type: object
       properties:
@@ -733,19 +776,15 @@ components:
           format: email
         promoter_campaign:
           $ref: '#/components/schemas/PromoterCampaign'
-    Promoter:
+    Campaign:
       type: object
       properties:
         id:
           type: integer
-          description: Id of the promoter
-        email:
-          type: string
-          format: email
-          description: Email address of the promoter
         name:
           type: string
-          description: Name of the promoter
+        color:
+          type: string
     BatchOperationResponse:
       type: object
       properties:
@@ -805,20 +844,6 @@ components:
             type: array
             items:
               type: string
-    Campaign_2:
-      type: object
-      properties:
-        id:
-          type: integer
-          description: Id of the campaign
-        name:
-          type: string
-          description: Name of the campaign
-        color:
-          type:
-          - string
-          - 'null'
-          description: Color assigned to the campaign
     PromoterCampaign_2:
       type: object
       properties:
@@ -839,6 +864,14 @@ components:
           $ref: '#/components/schemas/Promoter'
         campaign:
           $ref: '#/components/schemas/Campaign_2'
+    BatchSelectionRequest:
+      type: object
+      properties:
+        ids:
+          type: array
+          description: Array of selected referral ids. If there are more than __5__ ids on this param/field, the action will be processed asynchronously. The response for the batch status will most likely be `in_progress`. The available statuses are `pending`, `in_progress`, `completed`, `failed` and `stopped`
+          items:
+            type: integer
     Referral_2:
       type: object
       properties:
@@ -944,14 +977,33 @@ components:
         is_expired:
           type: boolean
           description: Whether the referral has expired
-    BatchSelectionRequest:
+    Promoter:
       type: object
       properties:
-        ids:
-          type: array
-          description: Array of selected referral ids. If there are more than __5__ ids on this param/field, the action will be processed asynchronously. The response for the batch status will most likely be `in_progress`. The available statuses are `pending`, `in_progress`, `completed`, `failed` and `stopped`
-          items:
-            type: integer
+        id:
+          type: integer
+          description: Id of the promoter
+        email:
+          type: string
+          format: email
+          description: Email address of the promoter
+        name:
+          type: string
+          description: Name of the promoter
+    Campaign_2:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Id of the campaign
+        name:
+          type: string
+          description: Name of the campaign
+        color:
+          type:
+          - string
+          - 'null'
+          description: Color assigned to the campaign
   parameters:
     AccountId:
       name: Account-ID

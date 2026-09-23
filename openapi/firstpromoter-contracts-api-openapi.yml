@@ -13,7 +13,11 @@ paths:
   /contracts:
     get:
       summary: Get all contracts
-      description: "Returns all contracts \n <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/contracts`</Tip>"
+      description: 'Returns all contracts
+
+        **HTTP Request**
+
+        `GET https://api.firstpromoter.com/api/v2/company/contracts`'
       tags:
       - Contracts
       parameters:
@@ -21,9 +25,15 @@ paths:
       responses:
         '401':
           description: Unauthorized
+      operationId: getContracts
+      x-operation-id-source: derived
     post:
-      summary: Create a contract. Calls the service that generates the contract documents.
-      description: "Create a contract \n <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/company/contracts`</Tip>"
+      summary: Create a contract. Calls the service that generates the contract documents
+      description: 'Create a contract
+
+        **HTTP Request**
+
+        `POST https://api.firstpromoter.com/api/v2/company/contracts`'
       tags:
       - Contracts
       parameters:
@@ -37,10 +47,16 @@ paths:
       responses:
         '401':
           description: Unauthorized
+      operationId: postContracts
+      x-operation-id-source: derived
   /contracts/{id}:
     get:
       summary: Get contract by id
-      description: "Returns a contract by id \n <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/contracts/{id}`</Tip>"
+      description: 'Returns a contract by id
+
+        **HTTP Request**
+
+        `GET https://api.firstpromoter.com/api/v2/company/contracts/{id}`'
       tags:
       - Contracts
       parameters:
@@ -53,9 +69,15 @@ paths:
       responses:
         '401':
           description: Unauthorized
+      operationId: getContractsById
+      x-operation-id-source: derived
     put:
-      summary: Update a contract. Calls the service that generates the contract documents if needed.
-      description: "Update a contract \n <Tip>**HTTP Request** <br/>`PUT https://api.firstpromoter.com/api/v2/company/contracts/{id}`</Tip>"
+      summary: Update a contract.
+      description: 'Update a contract
+
+        **HTTP Request**
+
+        `PUT https://api.firstpromoter.com/api/v2/company/contracts/{id}`'
       tags:
       - Contracts
       parameters:
@@ -74,9 +96,15 @@ paths:
       responses:
         '401':
           description: Unauthorized
+      operationId: putContractsById
+      x-operation-id-source: derived
     delete:
       summary: Delete a contract
-      description: "Delete a contract \n <Tip>**HTTP Request** <br/>`DELETE https://api.firstpromoter.com/api/v2/company/contracts/{id}`</Tip>"
+      description: 'Delete a contract
+
+        **HTTP Request**
+
+        `DELETE https://api.firstpromoter.com/api/v2/company/contracts/{id}`'
       tags:
       - Contracts
       parameters:
@@ -89,6 +117,8 @@ paths:
       responses:
         '401':
           description: Unauthorized
+      operationId: deleteContractsById
+      x-operation-id-source: derived
 components:
   parameters:
     AccountId:
@@ -100,6 +130,14 @@ components:
         type: string
         example: acc_123456
   schemas:
+    ContractUpdate:
+      allOf:
+      - $ref: '#/components/schemas/ContractCreate'
+      - type: object
+        properties:
+          default:
+            type: boolean
+            description: Tells if this contract is the default one
     ContractCreate:
       type: object
       required:
@@ -128,14 +166,6 @@ components:
           description: The selected campaign ids
           items:
             type: integer
-    ContractUpdate:
-      allOf:
-      - $ref: '#/components/schemas/ContractCreate'
-      - type: object
-        properties:
-          default:
-            type: boolean
-            description: Tells if this contract is the default one
   securitySchemes:
     BearerAuth:
       type: http

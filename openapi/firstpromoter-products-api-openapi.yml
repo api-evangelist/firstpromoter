@@ -16,7 +16,11 @@ paths:
       summary: Get available products
       tags:
       - Products
-      description: "Get available products \n <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/products`</Tip>"
+      description: 'Get available products
+
+        **HTTP Request**
+
+        `GET https://api.firstpromoter.com/api/v2/company/products`'
       parameters:
       - $ref: '#/components/parameters/AccountId'
       - in: query
@@ -41,11 +45,17 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+      operationId: getProducts
+      x-operation-id-source: derived
     post:
       summary: Create product
       tags:
       - Products
-      description: "Create product \n <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/company/products`</Tip>"
+      description: 'Create product
+
+        **HTTP Request**
+
+        `POST https://api.firstpromoter.com/api/v2/company/products`'
       parameters:
       - $ref: '#/components/parameters/AccountId'
       requestBody:
@@ -101,12 +111,18 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+      operationId: postProducts
+      x-operation-id-source: derived
   /products/{id}:
     get:
       summary: Get product
       tags:
       - Products
-      description: "Get product based on id \n <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/products/{id}`</Tip>"
+      description: 'Get product based on id
+
+        **HTTP Request**
+
+        `GET https://api.firstpromoter.com/api/v2/company/products/{id}`'
       parameters:
       - $ref: '#/components/parameters/AccountId'
       - in: path
@@ -136,11 +152,17 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+      operationId: getProductsById
+      x-operation-id-source: derived
     put:
       summary: Update product
       tags:
       - Products
-      description: "Update product based on id \n <Tip>**HTTP Request** <br/>`PUT https://api.firstpromoter.com/api/v2/company/products/{id}`</Tip>"
+      description: 'Update product based on id
+
+        **HTTP Request**
+
+        `PUT https://api.firstpromoter.com/api/v2/company/products/{id}`'
       parameters:
       - $ref: '#/components/parameters/AccountId'
       - in: path
@@ -205,11 +227,17 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+      operationId: putProductsById
+      x-operation-id-source: derived
     delete:
       summary: Delete product
       tags:
       - Products
-      description: "Delete product based on id \n <Tip>**HTTP Request** <br/>`DELETE https://api.firstpromoter.com/api/v2/company/products/{id}`</Tip>"
+      description: 'Delete product based on id
+
+        **HTTP Request**
+
+        `DELETE https://api.firstpromoter.com/api/v2/company/products/{id}`'
       parameters:
       - $ref: '#/components/parameters/AccountId'
       - in: path
@@ -235,16 +263,35 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+      operationId: deleteProductsById
+      x-operation-id-source: derived
 components:
-  parameters:
-    AccountId:
-      name: Account-ID
-      in: header
-      required: true
-      description: Account ID. You can find your Account ID on Your FirstPromoter Dashboard. Navigate to Settings → Integrations
-      schema:
-        type: string
   schemas:
+    ValidationError:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Error message
+        errors:
+          type: object
+          description: Validation errors
+          additionalProperties:
+            type: array
+            items:
+              type: string
+        code:
+          type: string
+          description: Error code
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Error message
+        code:
+          type: string
+          description: Error code
     Product:
       type: object
       properties:
@@ -275,31 +322,14 @@ components:
           type: string
           format: date-time
           description: Date and time when the product was created
-    Error:
-      type: object
-      properties:
-        message:
-          type: string
-          description: Error message
-        code:
-          type: string
-          description: Error code
-    ValidationError:
-      type: object
-      properties:
-        message:
-          type: string
-          description: Error message
-        errors:
-          type: object
-          description: Validation errors
-          additionalProperties:
-            type: array
-            items:
-              type: string
-        code:
-          type: string
-          description: Error code
+  parameters:
+    AccountId:
+      name: Account-ID
+      in: header
+      required: true
+      description: Account ID. You can find your Account ID on Your FirstPromoter Dashboard. Navigate to Settings → Integrations
+      schema:
+        type: string
   securitySchemes:
     BearerAuth:
       type: http

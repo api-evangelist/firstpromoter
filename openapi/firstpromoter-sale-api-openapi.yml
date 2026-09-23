@@ -14,7 +14,24 @@ tags:
 paths:
   /sale:
     post:
-      description: Assign sales and commissions to your promoters. To track sales and generate commissions correctly, you need to use this API call each time a non-zero amount sale is processed in your system, even if it comes from a recurring charge or one-time charge. <Note>To avoid fraudulent sales, we don't use JS conversion pixels to track sales, which are very unreliable and can be easily faked. Instead, we use server-side tracking for all sales to ensure that a sale is tracked only when you actually receive money in your billing account.  <br/><br/>To maintain the same standards with the API, we recommend making the sale API call (this call) only when you receive confirmation of the sale from your billing provider, such as from a webhook, an IPN, or a success response from an API charge call.<br/><br/>You just need to pass the sale amount (before taxes) and we'll take care of the rest. The commissions/rewards will be calculated based on that amount and the plan ID, in case you use the plan-level rewards feature.</Note> Using email or UID parameters, we identify the lead/customer who generated the sale, which also helps us determine the promoter who owns the reward/commission. <br/><br/>The lead is added to our system either by the client signup tracking script when the user signs up or by calling the signup API endpoint. There is also the option to bypass the signup tracking by using TID or ref_id parameters, which will create the lead and assign the sale in one go.<br/><br/>**If we don't find the lead in our system, then it means that the sale is not a referral sale, you'll get a 404 response. Also, if the promoter is banned, you'll get a 404 response. You don't have to identify which sale is from referrals and which is not; we'll take care of that.** <Tip>**For zero-decimal** currencies like `JPY`, `amount` and `mrr` parameters should be sent as **whole values**. <br/><br/>**For other currencies**, `amount` and `mrr` parameter values should be in cents, i.e., you will need to **multiply the value by 100** before sending the request.</Tip><Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/track/sale`</Tip>
+      description: 'Assign sales and commissions to your promoters. To track sales and generate commissions correctly, you need to use this API call each time a non-zero amount sale is processed in your system, even if it comes from a recurring charge or one-time charge. To avoid fraudulent sales, we don''t use JS conversion pixels to track sales, which are very unreliable and can be easily faked. Instead, we use server-side tracking for all sales to ensure that a sale is tracked only when you actually receive money in your billing account.
+
+
+        To maintain the same standards with the API, we recommend making the sale API call (this call) only when you receive confirmation of the sale from your billing provider, such as from a webhook, an IPN, or a success response from an API charge call.
+
+
+        You just need to pass the sale amount (before taxes) and we''ll take care of the rest. The commissions/rewards will be calculated based on that amount and the plan ID, in case you use the plan-level rewards feature. Using email or UID parameters, we identify the lead/customer who generated the sale, which also helps us determine the promoter who owns the reward/commission.
+
+
+        The lead is added to our system either by the client signup tracking script when the user signs up or by calling the signup API endpoint. There is also the option to bypass the signup tracking by using TID or ref_id parameters, which will create the lead and assign the sale in one go.
+
+
+        **If we don''t find the lead in our system, then it means that the sale is not a referral sale, you''ll get a 404 response. Also, if the promoter is banned, you''ll get a 404 response. You don''t have to identify which sale is from referrals and which is not; we''ll take care of that.** **For zero-decimal** currencies like `JPY`, `amount` and `mrr` parameters should be sent as **whole values**.
+
+
+        **For other currencies**, `amount` and `mrr` parameter values should be in cents, i.e., you will need to **multiply the value by 100** before sending the request.**HTTP Request**
+
+        `POST https://api.firstpromoter.com/api/v2/track/sale`'
       parameters:
       - $ref: '#/components/parameters/AccountId'
       requestBody:
@@ -312,6 +329,10 @@ paths:
                     example: The 'sale' event with the id 'test_sale_12340987' already exists.
       tags:
       - Sale
+      summary: Create sale
+      x-summary-source: derived
+      operationId: postSale
+      x-operation-id-source: derived
 components:
   parameters:
     AccountId:

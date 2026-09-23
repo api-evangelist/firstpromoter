@@ -14,7 +14,11 @@ paths:
   /asset_categories:
     get:
       summary: Get available asset categories
-      description: "Returns all asset categories \n <Tip>**HTTP Request** <br/>` GET  https://api.firstpromoter.com/api/v2/affiliate/asset_categories`</Tip>"
+      description: 'Returns all asset categories
+
+        **HTTP Request**
+
+        ` GET https://api.firstpromoter.com/api/v2/affiliate/asset_categories`'
       parameters:
       - $ref: '#/components/parameters/AccountId'
       responses:
@@ -24,12 +28,18 @@ paths:
           description: Unauthorized
       tags:
       - Asset Categories
+      operationId: getAssetCategories
+      x-operation-id-source: derived
     servers:
     - url: https://api.firstpromoter.com/api/v2/affiliate
   /assets/categories:
     get:
       summary: Get available asset categories
-      description: "Get all available asset categories \n <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/assets/categories`</Tip>"
+      description: 'Get all available asset categories
+
+        **HTTP Request**
+
+        `GET https://api.firstpromoter.com/api/v2/company/assets/categories`'
       tags:
       - Asset Categories
       responses:
@@ -43,11 +53,17 @@ paths:
                   $ref: '#/components/schemas/AssetCategory'
         '401':
           description: Unauthorized
+      operationId: getAssetsCategories
+      x-operation-id-source: derived
     put:
       summary: Update asset categories
       tags:
       - Asset Categories
-      description: "Update asset categories. \n <Tip>**HTTP Request** <br/>`PUT https://api.firstpromoter.com/api/v2/company/assets/categories`</Tip>"
+      description: 'Update asset categories.
+
+        **HTTP Request**
+
+        `PUT https://api.firstpromoter.com/api/v2/company/assets/categories`'
       requestBody:
         required: true
         content:
@@ -87,6 +103,8 @@ paths:
                   $ref: '#/components/schemas/AssetCategory'
         '401':
           description: Unauthorized
+      operationId: putAssetsCategories
+      x-operation-id-source: derived
     servers:
     - url: https://api.firstpromoter.com/api/v2/company
 components:

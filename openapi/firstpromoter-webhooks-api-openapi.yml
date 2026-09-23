@@ -16,7 +16,11 @@ paths:
       summary: List webhook subscriptions
       tags:
       - Webhooks
-      description: "Returns a paginated list of all webhook subscriptions for your account, ordered by creation date descending. \n <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/webhooks`</Tip>"
+      description: 'Returns a paginated list of all webhook subscriptions for your account, ordered by creation date descending.
+
+        **HTTP Request**
+
+        `GET https://api.firstpromoter.com/api/v2/company/webhooks`'
       parameters:
       - $ref: '#/components/parameters/AccountId'
       - name: per_page
@@ -44,11 +48,17 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      operationId: getWebhooks
+      x-operation-id-source: derived
     post:
       summary: Create a webhook subscription
       tags:
       - Webhooks
-      description: "Creates a new webhook subscription. The `secret_key` is auto-generated and returned only in this response — store it immediately. \n <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/company/webhooks`</Tip>"
+      description: 'Creates a new webhook subscription. The `secret_key` is auto-generated and returned only in this response — store it immediately.
+
+        **HTTP Request**
+
+        `POST https://api.firstpromoter.com/api/v2/company/webhooks`'
       parameters:
       - $ref: '#/components/parameters/AccountId'
       requestBody:
@@ -74,12 +84,18 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+      operationId: postWebhooks
+      x-operation-id-source: derived
   /webhooks/event_types:
     get:
       summary: List supported event types
       tags:
       - Webhooks
-      description: "Returns a sorted list of all event type strings that can be subscribed to. Use these values in the `event_types` array when creating or updating a subscription. \n <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/webhooks/event_types`</Tip>"
+      description: 'Returns a sorted list of all event type strings that can be subscribed to. Use these values in the `event_types` array when creating or updating a subscription.
+
+        **HTTP Request**
+
+        `GET https://api.firstpromoter.com/api/v2/company/webhooks/event_types`'
       parameters:
       - $ref: '#/components/parameters/AccountId'
       responses:
@@ -127,12 +143,24 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      operationId: getWebhooksEventTypes
+      x-operation-id-source: derived
   /webhooks/test:
     post:
       summary: Send a test webhook delivery
       tags:
       - Webhooks
-      description: "Sends a sample payload for the given event type to the specified URL immediately. Useful for verifying that your endpoint is reachable and processing payloads correctly before creating a subscription. \n\n The signature in the test request is generated with a random secret (not a saved subscription's secret), so signature verification will fail — this is expected during testing. \n\n Returns the HTTP status and body received from your endpoint. \n <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/company/webhooks/test`</Tip>"
+      description: 'Sends a sample payload for the given event type to the specified URL immediately. Useful for verifying that your endpoint is reachable and processing payloads correctly before creating a subscription.
+
+
+        The signature in the test request is generated with a random secret (not a saved subscription''s secret), so signature verification will fail — this is expected during testing.
+
+
+        Returns the HTTP status and body received from your endpoint.
+
+        **HTTP Request**
+
+        `POST https://api.firstpromoter.com/api/v2/company/webhooks/test`'
       parameters:
       - $ref: '#/components/parameters/AccountId'
       requestBody:
@@ -178,12 +206,18 @@ paths:
           description: Unauthorized
         '403':
           description: Forbidden
+      operationId: postWebhooksTest
+      x-operation-id-source: derived
   /webhooks/{id}:
     get:
       summary: Get a webhook subscription
       tags:
       - Webhooks
-      description: "Returns the details of a single webhook subscription. \n <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/webhooks/{id}`</Tip>"
+      description: 'Returns the details of a single webhook subscription.
+
+        **HTTP Request**
+
+        `GET https://api.firstpromoter.com/api/v2/company/webhooks/{id}`'
       parameters:
       - $ref: '#/components/parameters/AccountId'
       - name: id
@@ -205,11 +239,17 @@ paths:
           description: Forbidden
         '404':
           description: Not found
+      operationId: getWebhooksById
+      x-operation-id-source: derived
     put:
       summary: Update a webhook subscription
       tags:
       - Webhooks
-      description: "Updates an existing webhook subscription. Only fields you include in the request body are changed. \n <Tip>**HTTP Request** <br/>`PUT https://api.firstpromoter.com/api/v2/company/webhooks/{id}`</Tip>"
+      description: 'Updates an existing webhook subscription. Only fields you include in the request body are changed.
+
+        **HTTP Request**
+
+        `PUT https://api.firstpromoter.com/api/v2/company/webhooks/{id}`'
       parameters:
       - $ref: '#/components/parameters/AccountId'
       - name: id
@@ -243,11 +283,17 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+      operationId: putWebhooksById
+      x-operation-id-source: derived
     delete:
       summary: Delete a webhook subscription
       tags:
       - Webhooks
-      description: "Permanently deletes a webhook subscription and all its delivery records. \n <Tip>**HTTP Request** <br/>`DELETE https://api.firstpromoter.com/api/v2/company/webhooks/{id}`</Tip>"
+      description: 'Permanently deletes a webhook subscription and all its delivery records.
+
+        **HTTP Request**
+
+        `DELETE https://api.firstpromoter.com/api/v2/company/webhooks/{id}`'
       parameters:
       - $ref: '#/components/parameters/AccountId'
       - name: id
@@ -265,17 +311,18 @@ paths:
           description: Forbidden
         '404':
           description: Not found
+      operationId: deleteWebhooksById
+      x-operation-id-source: derived
 components:
+  parameters:
+    AccountId:
+      name: Account-ID
+      in: header
+      required: true
+      description: Account ID. Found in your FirstPromoter dashboard under Settings → Integrations.
+      schema:
+        type: string
   schemas:
-    Error:
-      type: object
-      properties:
-        message:
-          type: string
-          description: Human-readable error description.
-        code:
-          type: string
-          description: Machine-readable error code.
     WebhookSubscriptionInput:
       type: object
       properties:
@@ -327,6 +374,15 @@ components:
         basic_auth_password:
           type: string
           description: HTTP Basic Auth password. Write-only — never returned in responses. Encrypted at rest.
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Human-readable error description.
+        code:
+          type: string
+          description: Machine-readable error code.
     WebhookSubscription:
       type: object
       properties:
@@ -393,14 +449,6 @@ components:
           type: string
           format: date-time
           description: ISO 8601 timestamp of the last update.
-  parameters:
-    AccountId:
-      name: Account-ID
-      in: header
-      required: true
-      description: Account ID. Found in your FirstPromoter dashboard under Settings → Integrations.
-      schema:
-        type: string
   securitySchemes:
     BearerAuth:
       type: http

@@ -13,7 +13,11 @@ paths:
   /payments_batches/{id}/pay:
     post:
       summary: Pay / Start payments batch
-      description: "This endpoint starts a payments batch. \n <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/company/payments_batches/{id}/pay`</Tip>"
+      description: 'This endpoint starts a payments batch.
+
+        **HTTP Request**
+
+        `POST https://api.firstpromoter.com/api/v2/company/payments_batches/{id}/pay`'
       tags:
       - Payments Batches
       parameters:
@@ -100,10 +104,16 @@ paths:
                     type: string
                   code:
                     type: string
+      operationId: postPaymentsBatchesByIdPay
+      x-operation-id-source: derived
   /payments_batches/{id}:
     delete:
       summary: Delete payments batch
-      description: "Deletes selected payments batch \n <Tip>**HTTP Request** <br/>`DELETE https://api.firstpromoter.com/api/v2/company/payments_batches/{id}`</Tip>"
+      description: 'Deletes selected payments batch
+
+        **HTTP Request**
+
+        `DELETE https://api.firstpromoter.com/api/v2/company/payments_batches/{id}`'
       tags:
       - Payments Batches
       parameters:
@@ -130,6 +140,8 @@ paths:
                     type: string
                   code:
                     type: string
+      operationId: deletePaymentsBatchesById
+      x-operation-id-source: derived
 components:
   parameters:
     AccountId:

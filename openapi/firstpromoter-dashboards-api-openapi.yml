@@ -13,7 +13,11 @@ paths:
   /dashboards/stats:
     get:
       summary: Get dashboard stats
-      description: "Returns data for stats from the top and pending actions. \n <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/dashboards/stats`</Tip>"
+      description: 'Returns data for stats from the top and pending actions.
+
+        **HTTP Request**
+
+        `GET https://api.firstpromoter.com/api/v2/company/dashboards/stats`'
       tags:
       - Dashboards
       parameters:
@@ -25,10 +29,16 @@ paths:
       responses:
         '401':
           description: Unauthorized
+      operationId: getDashboardsStats
+      x-operation-id-source: derived
   /dashboards/trendings:
     get:
       summary: Get dashboard trendings
-      description: "Returns data for stats from the top and pending actions. \n <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/dashboards/trendings`</Tip>"
+      description: 'Returns data for stats from the top and pending actions.
+
+        **HTTP Request**
+
+        `GET https://api.firstpromoter.com/api/v2/company/dashboards/trendings`'
       tags:
       - Dashboards
       parameters:
@@ -40,10 +50,16 @@ paths:
       responses:
         '401':
           description: Unauthorized
+      operationId: getDashboardsTrendings
+      x-operation-id-source: derived
   /dashboards/chart_data:
     get:
       summary: Get dashboard chart data
-      description: "Returns data for chart. \n <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/dashboards/chart_data`</Tip>"
+      description: 'Returns data for chart.
+
+        **HTTP Request**
+
+        `GET https://api.firstpromoter.com/api/v2/company/dashboards/chart_data`'
       tags:
       - Dashboards
       parameters:
@@ -79,10 +95,16 @@ paths:
       responses:
         '401':
           description: Unauthorized
+      operationId: getDashboardsChartData
+      x-operation-id-source: derived
   /dashboards/payouts_and_commissions:
     get:
       summary: Get dashboard payouts and commissions data
-      description: "Returns data for payouts and commissions. \n <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/dashboards/payouts_and_commissions`</Tip>"
+      description: 'Returns data for payouts and commissions.
+
+        **HTTP Request**
+
+        `GET https://api.firstpromoter.com/api/v2/company/dashboards/payouts_and_commissions`'
       tags:
       - Dashboards
       parameters:
@@ -94,7 +116,18 @@ paths:
       responses:
         '401':
           description: Unauthorized
+      operationId: getDashboardsPayoutsAndCommissions
+      x-operation-id-source: derived
 components:
+  parameters:
+    AccountId:
+      name: Account-ID
+      in: header
+      required: true
+      description: Account identifier that specifies which account is making the request
+      schema:
+        type: string
+        example: acc_123456
   schemas:
     DashboardFilters:
       type: object
@@ -106,15 +139,6 @@ components:
             items:
               type: integer
           description: Campaign ids. Can be Integer or Array of Integers
-  parameters:
-    AccountId:
-      name: Account-ID
-      in: header
-      required: true
-      description: Account identifier that specifies which account is making the request
-      schema:
-        type: string
-        example: acc_123456
   securitySchemes:
     BearerAuth:
       type: http

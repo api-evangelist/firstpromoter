@@ -14,7 +14,11 @@ paths:
   /commissions:
     get:
       summary: Get all commissions
-      description: "Return all commissions \n <Tip>**HTTP Request** <br/>` GET  https://api.firstpromoter.com/api/v2/affiliate/commissions`</Tip>"
+      description: 'Return all commissions
+
+        **HTTP Request**
+
+        ` GET https://api.firstpromoter.com/api/v2/affiliate/commissions`'
       tags:
       - Commissions
       parameters:
@@ -220,9 +224,15 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+      operationId: getCommissions
+      x-operation-id-source: derived
     post:
       summary: Create a commission
-      description: "With this endpoint you can create a commission. \n <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/company/commissions`</Tip>"
+      description: 'With this endpoint you can create a commission.
+
+        **HTTP Request**
+
+        `POST https://api.firstpromoter.com/api/v2/company/commissions`'
       tags:
       - Commissions
       parameters:
@@ -250,12 +260,18 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+      operationId: postCommissions
+      x-operation-id-source: derived
     servers:
     - url: https://api.firstpromoter.com/api/v2/affiliate
   /commissions/export:
     get:
       summary: Export all commissions
-      description: "Export all commissions \n <Tip>**HTTP Request** <br/>` GET  https://api.firstpromoter.com/api/v2/affiliate/commissions/export`</Tip>"
+      description: 'Export all commissions
+
+        **HTTP Request**
+
+        ` GET https://api.firstpromoter.com/api/v2/affiliate/commissions/export`'
       tags:
       - Commissions
       parameters:
@@ -286,12 +302,18 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+      operationId: getCommissionsExport
+      x-operation-id-source: derived
     servers:
     - url: https://api.firstpromoter.com/api/v2/affiliate
   /commissions/{id}:
     put:
       summary: Update a commission
-      description: "With this endpoint you can update a commission. \n <Tip>**HTTP Request** <br/>`PUT https://api.firstpromoter.com/api/v2/company/commissions/{id}`</Tip>"
+      description: 'With this endpoint you can update a commission.
+
+        **HTTP Request**
+
+        `PUT https://api.firstpromoter.com/api/v2/company/commissions/{id}`'
       tags:
       - Commissions
       parameters:
@@ -329,12 +351,20 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+      operationId: putCommissionsById
+      x-operation-id-source: derived
     servers:
     - url: https://api.firstpromoter.com/api/v2/company
   /commissions/approve:
     post:
       summary: Approve commissions
-      description: "With this endpoint you can approve commissions. \n <Note>If there are more than __5__ ids on the __ids__ param/field, the action will be processed asynchronously. The response for the batch status will most likely be `in_progress`. The available statuses are `pending`, `in_progress`, `completed`, `failed` and `stopped`</Note> \n <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/company/commissions/approve`</Tip>"
+      description: 'With this endpoint you can approve commissions.
+
+        If there are more than __5__ ids on the __ids__ param/field, the action will be processed asynchronously. The response for the batch status will most likely be `in_progress`. The available statuses are `pending`, `in_progress`, `completed`, `failed` and `stopped`
+
+        **HTTP Request**
+
+        `POST https://api.firstpromoter.com/api/v2/company/commissions/approve`'
       tags:
       - Commissions
       parameters:
@@ -386,12 +416,20 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+      operationId: postCommissionsApprove
+      x-operation-id-source: derived
     servers:
     - url: https://api.firstpromoter.com/api/v2/company
   /commissions/deny:
     post:
       summary: Deny commissions
-      description: "With this endpoint you can deny commissions. \n <Note>If there are more than __5__ ids on the __ids__ param/field, the action will be processed asynchronously. The response for the batch status will most likely be `in_progress`. The available statuses are `pending`, `in_progress`, `completed`, `failed` and `stopped`</Note> \n  <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/company/commissions/deny`</Tip>"
+      description: 'With this endpoint you can deny commissions.
+
+        If there are more than __5__ ids on the __ids__ param/field, the action will be processed asynchronously. The response for the batch status will most likely be `in_progress`. The available statuses are `pending`, `in_progress`, `completed`, `failed` and `stopped`
+
+        **HTTP Request**
+
+        `POST https://api.firstpromoter.com/api/v2/company/commissions/deny`'
       tags:
       - Commissions
       parameters:
@@ -443,12 +481,18 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+      operationId: postCommissionsDeny
+      x-operation-id-source: derived
     servers:
     - url: https://api.firstpromoter.com/api/v2/company
   /commissions/mark_fulfilled:
     post:
       summary: Mark nonmonetary commissions as fulfilled
-      description: "With this endpoint you can mark nonmonetary commissions as fulfilled. \n <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/company/commissions/mark_fulfilled`</Tip>"
+      description: 'With this endpoint you can mark nonmonetary commissions as fulfilled.
+
+        **HTTP Request**
+
+        `POST https://api.firstpromoter.com/api/v2/company/commissions/mark_fulfilled`'
       tags:
       - Commissions
       parameters:
@@ -500,12 +544,18 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+      operationId: postCommissionsMarkFulfilled
+      x-operation-id-source: derived
     servers:
     - url: https://api.firstpromoter.com/api/v2/company
   /commissions/mark_unfulfilled:
     post:
       summary: Mark nonmonetary commissions as unfulfilled
-      description: "With this endpoint you can mark nonmonetary commissions as unfulfilled. \n <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/company/commissions/mark_unfulfilled`</Tip>"
+      description: 'With this endpoint you can mark nonmonetary commissions as unfulfilled.
+
+        **HTTP Request**
+
+        `POST https://api.firstpromoter.com/api/v2/company/commissions/mark_unfulfilled`'
       tags:
       - Commissions
       parameters:
@@ -557,12 +607,18 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+      operationId: postCommissionsMarkUnfulfilled
+      x-operation-id-source: derived
     servers:
     - url: https://api.firstpromoter.com/api/v2/company
   /commissions/destroy:
     delete:
       summary: Delete commissions
-      description: "With this endpoint you can delete commissions. \n <Tip>**HTTP Request** <br/>`DELETE https://api.firstpromoter.com/api/v2/company/commissions/destroy`</Tip>"
+      description: 'With this endpoint you can delete commissions.
+
+        **HTTP Request**
+
+        `DELETE https://api.firstpromoter.com/api/v2/company/commissions/destroy`'
       tags:
       - Commissions
       parameters:
@@ -614,12 +670,20 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
+      operationId: deleteCommissionsDestroy
+      x-operation-id-source: derived
     servers:
     - url: https://api.firstpromoter.com/api/v2/company
   /commissions/generate_payouts:
     post:
       summary: Generate payouts for commissions
-      description: "With this endpoint you can generate payouts for commissions. \n <Note>If there are more than __5__ ids on the __ids__ param/field, the action will be processed asynchronously. The response for the batch status will most likely be `in_progress`. The available statuses are `pending`, `in_progress`, `completed`, `failed` and `stopped`</Note> \n <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/company/commissions/generate_payouts`</Tip>"
+      description: 'With this endpoint you can generate payouts for commissions.
+
+        If there are more than __5__ ids on the __ids__ param/field, the action will be processed asynchronously. The response for the batch status will most likely be `in_progress`. The available statuses are `pending`, `in_progress`, `completed`, `failed` and `stopped`
+
+        **HTTP Request**
+
+        `POST https://api.firstpromoter.com/api/v2/company/commissions/generate_payouts`'
       tags:
       - Commissions
       operationId: generatePayouts
@@ -691,24 +755,6 @@ paths:
     - url: https://api.firstpromoter.com/api/v2/company
 components:
   schemas:
-    Error:
-      type: object
-      properties:
-        message:
-          type: string
-        code:
-          type: string
-    Campaign:
-      type: object
-      properties:
-        id:
-          type: integer
-        name:
-          type: string
-        color:
-          type:
-          - string
-          - 'null'
     Commission:
       type: object
       properties:
@@ -763,6 +809,13 @@ components:
           type: number
         is_paid:
           type: boolean
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: string
     PromoterCampaign:
       type: object
       properties:
@@ -775,13 +828,6 @@ components:
           format: date-time
         campaign:
           $ref: '#/components/schemas/Campaign'
-    Reward:
-      type: object
-      properties:
-        id:
-          type: integer
-        name:
-          type: string
     Referral:
       type:
       - object
@@ -793,118 +839,24 @@ components:
           type: string
         email:
           type: string
-    CommissionCreate:
-      oneOf:
-      - title: Sale Commission
-        type: object
-        required:
-        - commission_type
-        - referral_id
-        - sale_amount
-        properties:
-          commission_type:
-            type: string
-            enum:
-            - sale
-            description: The commission type
-          referral_id:
-            type: integer
-            description: Referral id. Required for sale commission type.
-          plan_id:
-            type: integer
-            description: One of the items id from price_ids
-          sale_amount:
-            type: integer
-            description: Sale amount in cents. Required for sale commission type.
-          event_id:
-            type: string
-            description: The ID of the event that generated the sale from billing provider
-          event_date:
-            type: string
-            format: date
-            description: The date of the event that generated the sale
-          internal_note:
-            type: string
-            description: Internal note visible only by the team
-          external_note:
-            type: string
-            description: External note visible by the promoter
-          unit:
-            type: string
-            enum:
-            - cash
-            - credits
-            - points
-            - free_months
-            - mon_discount
-            - discount_per
-            description: Set the reward unit type
-          notify_promoter:
-            type: boolean
-            description: If true a notification email is sent to promoter if enabled on Emails section
-          billing_period:
-            type: string
-            enum:
-            - monthly
-            - yearly
-            - one_time
-            description: The billing period of the event that generated the sale
-      - title: Custom Commission
-        type: object
-        required:
-        - commission_type
-        - promoter_campaign_id
-        - amount
-        properties:
-          commission_type:
-            type: string
-            enum:
-            - custom
-            description: The commission type
-          promoter_campaign_id:
-            type: integer
-            description: PromoterCampaign id. Required for custom commission type. This ID is not the promoter’s ID or the campaign’s ID. It’s the linking record that defines the promoter’s participation in that campaign. You can find this id in each object in the promoter_campaigns array when you get the details of the promoter.
-          amount:
-            type: integer
-            description: Commission amount in cents. Required for custom commission type.
-          event_id:
-            type: string
-            description: The ID of the event that generated the sale from billing provider
-          event_date:
-            type: string
-            format: date
-            description: The date of the event that generated the sale
-          internal_note:
-            type: string
-            description: Internal note visible only by the team
-          external_note:
-            type: string
-            description: External note visible by the promoter
-          unit:
-            type: string
-            enum:
-            - cash
-            - credits
-            - points
-            - free_months
-            - mon_discount
-            - discount_per
-            description: Set the reward unit type
-          notify_promoter:
-            type: boolean
-            description: If true a notification email is sent to promoter if enabled on Emails section
-          billing_period:
-            type: string
-            enum:
-            - monthly
-            - yearly
-            - one_time
-            description: The billing period of the event that generated the sale
-      discriminator:
-        propertyName: commission_type
-        mapping:
-          sale: '#/components/schemas/CommissionCreate/oneOf/0'
-          custom: '#/components/schemas/CommissionCreate/oneOf/1'
+    Reward:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+    Campaign:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        color:
+          type:
+          - string
+          - 'null'
     BatchActionRequest:
       type: object
       properties:
@@ -922,150 +874,6 @@ components:
         code:
           type: string
           description: Error code
-    BatchOperationResponse:
-      type: object
-      properties:
-        id:
-          type: integer
-          description: Batch ID
-        status:
-          type: string
-          enum:
-          - completed
-          - pending
-          - in_progress
-          - failed
-          - stopped
-          description: Status of the batch operation
-        total:
-          type: integer
-          description: Total number of items
-        selected_total:
-          type: integer
-          description: Total number of selected items
-        processed_count:
-          type: integer
-          description: Number of processed items
-        failed_count:
-          type: integer
-          description: Number of failed operations
-        action_label:
-          type: string
-          description: Label for the action
-        created_at:
-          type: string
-          format: date-time
-          description: Creation date of the batch operation
-        updated_at:
-          type: string
-          format: date-time
-          description: Last update date of the batch operation
-        meta:
-          type: object
-          description: Additional metadata
-        progress:
-          type: integer
-          description: Progress of the batch operation
-        processing_errors:
-          type: array
-          items:
-            type: string
-          description: List of processing errors if any
-    CommissionFilters:
-      type: object
-      properties:
-        status:
-          type: string
-          enum:
-          - pending
-          - approved
-          - denied
-        paid:
-          type: string
-          enum:
-          - 'yes'
-          - 'no'
-          description: Paid filter for monetary commissions
-        fulfilled:
-          type: string
-          enum:
-          - 'yes'
-          - 'no'
-          description: Fulfilled filter for non-monetary commissions
-        sale_amount:
-          type: object
-          properties:
-            from:
-              type: integer
-              description: Sale amount from
-            to:
-              type: integer
-              description: Sale amount to
-        amount:
-          type: object
-          properties:
-            from:
-              type: integer
-              description: Amount from
-            to:
-              type: integer
-              description: Amount to
-        created_at:
-          type: object
-          properties:
-            from:
-              type: string
-              format: date
-              description: created_at start date
-            to:
-              type: string
-              format: date
-              description: created_at end date
-        campaign_id:
-          oneOf:
-          - type: integer
-          - type: array
-            items:
-              type: integer
-          description: Campaign ids. Can be Integer or Array of Integers
-        payout_id:
-          oneOf:
-          - type: integer
-          - type: array
-            items:
-              type: integer
-          description: Payout ids. Can be Integer or Array of Integers
-        due_period:
-          type: string
-          enum:
-          - next
-          - overdue
-          - custom
-          description: Due period filter
-        promoter_id:
-          type: integer
-          description: Promoter id
-        first_commission:
-          type: boolean
-          description: First commission
-        refunded:
-          type: boolean
-          description: Refunded reward
-        fraud_check:
-          type: string
-          enum:
-          - no_suspicion
-          - same_ip_suspicion
-          - same_promoter_email
-          - ad_source
-          description: Referral fraud check (suspicion). Array accepted
-        plan_id:
-          oneOf:
-          - type: integer
-          - type: array
-            items:
-              type: integer
-          description: Plan id
     Commission_2:
       type: object
       properties:
@@ -1247,6 +1055,213 @@ components:
           - object
           - 'null'
           description: Commission split details from the associated referral, when the referral is shared between promoters
+    CommissionCreate:
+      oneOf:
+      - title: Sale Commission
+        type: object
+        required:
+        - commission_type
+        - referral_id
+        - sale_amount
+        properties:
+          commission_type:
+            type: string
+            enum:
+            - sale
+            description: The commission type
+          referral_id:
+            type: integer
+            description: Referral id. Required for sale commission type.
+          plan_id:
+            type: integer
+            description: One of the items id from price_ids
+          sale_amount:
+            type: integer
+            description: Sale amount in cents. Required for sale commission type.
+          event_id:
+            type: string
+            description: The ID of the event that generated the sale from billing provider
+          event_date:
+            type: string
+            format: date
+            description: The date of the event that generated the sale
+          internal_note:
+            type: string
+            description: Internal note visible only by the team
+          external_note:
+            type: string
+            description: External note visible by the promoter
+          unit:
+            type: string
+            enum:
+            - cash
+            - credits
+            - points
+            - free_months
+            - mon_discount
+            - discount_per
+            description: Set the reward unit type
+          notify_promoter:
+            type: boolean
+            description: If true a notification email is sent to promoter if enabled on Emails section
+          billing_period:
+            type: string
+            enum:
+            - monthly
+            - yearly
+            - one_time
+            description: The billing period of the event that generated the sale
+      - title: Custom Commission
+        type: object
+        required:
+        - commission_type
+        - promoter_campaign_id
+        - amount
+        properties:
+          commission_type:
+            type: string
+            enum:
+            - custom
+            description: The commission type
+          promoter_campaign_id:
+            type: integer
+            description: PromoterCampaign id. Required for custom commission type. This ID is not the promoter’s ID or the campaign’s ID. It’s the linking record that defines the promoter’s participation in that campaign. You can find this id in each object in the promoter_campaigns array when you get the details of the promoter.
+          amount:
+            type: integer
+            description: Commission amount in cents. Required for custom commission type.
+          event_id:
+            type: string
+            description: The ID of the event that generated the sale from billing provider
+          event_date:
+            type: string
+            format: date
+            description: The date of the event that generated the sale
+          internal_note:
+            type: string
+            description: Internal note visible only by the team
+          external_note:
+            type: string
+            description: External note visible by the promoter
+          unit:
+            type: string
+            enum:
+            - cash
+            - credits
+            - points
+            - free_months
+            - mon_discount
+            - discount_per
+            description: Set the reward unit type
+          notify_promoter:
+            type: boolean
+            description: If true a notification email is sent to promoter if enabled on Emails section
+          billing_period:
+            type: string
+            enum:
+            - monthly
+            - yearly
+            - one_time
+            description: The billing period of the event that generated the sale
+      discriminator:
+        propertyName: commission_type
+        mapping:
+          sale: '#/components/schemas/CommissionCreate/oneOf/0'
+          custom: '#/components/schemas/CommissionCreate/oneOf/1'
+    CommissionFilters:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+          - pending
+          - approved
+          - denied
+        paid:
+          type: string
+          enum:
+          - 'yes'
+          - 'no'
+          description: Paid filter for monetary commissions
+        fulfilled:
+          type: string
+          enum:
+          - 'yes'
+          - 'no'
+          description: Fulfilled filter for non-monetary commissions
+        sale_amount:
+          type: object
+          properties:
+            from:
+              type: integer
+              description: Sale amount from
+            to:
+              type: integer
+              description: Sale amount to
+        amount:
+          type: object
+          properties:
+            from:
+              type: integer
+              description: Amount from
+            to:
+              type: integer
+              description: Amount to
+        created_at:
+          type: object
+          properties:
+            from:
+              type: string
+              format: date
+              description: created_at start date
+            to:
+              type: string
+              format: date
+              description: created_at end date
+        campaign_id:
+          oneOf:
+          - type: integer
+          - type: array
+            items:
+              type: integer
+          description: Campaign ids. Can be Integer or Array of Integers
+        payout_id:
+          oneOf:
+          - type: integer
+          - type: array
+            items:
+              type: integer
+          description: Payout ids. Can be Integer or Array of Integers
+        due_period:
+          type: string
+          enum:
+          - next
+          - overdue
+          - custom
+          description: Due period filter
+        promoter_id:
+          type: integer
+          description: Promoter id
+        first_commission:
+          type: boolean
+          description: First commission
+        refunded:
+          type: boolean
+          description: Refunded reward
+        fraud_check:
+          type: string
+          enum:
+          - no_suspicion
+          - same_ip_suspicion
+          - same_promoter_email
+          - ad_source
+          description: Referral fraud check (suspicion). Array accepted
+        plan_id:
+          oneOf:
+          - type: integer
+          - type: array
+            items:
+              type: integer
+          description: Plan id
     CommissionSorting:
       type: object
       properties:
@@ -1274,6 +1289,55 @@ components:
           - asc
           - desc
           description: The sort by referral direction
+    BatchOperationResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Batch ID
+        status:
+          type: string
+          enum:
+          - completed
+          - pending
+          - in_progress
+          - failed
+          - stopped
+          description: Status of the batch operation
+        total:
+          type: integer
+          description: Total number of items
+        selected_total:
+          type: integer
+          description: Total number of selected items
+        processed_count:
+          type: integer
+          description: Number of processed items
+        failed_count:
+          type: integer
+          description: Number of failed operations
+        action_label:
+          type: string
+          description: Label for the action
+        created_at:
+          type: string
+          format: date-time
+          description: Creation date of the batch operation
+        updated_at:
+          type: string
+          format: date-time
+          description: Last update date of the batch operation
+        meta:
+          type: object
+          description: Additional metadata
+        progress:
+          type: integer
+          description: Progress of the batch operation
+        processing_errors:
+          type: array
+          items:
+            type: string
+          description: List of processing errors if any
     CommissionUpdate:
       type: object
       properties:

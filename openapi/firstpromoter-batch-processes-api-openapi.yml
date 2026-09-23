@@ -13,8 +13,12 @@ tags:
 paths:
   /batch_processes:
     get:
-      summary: List in progress batch processes.
-      description: "List batch processes that are in progress \n <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/batch_processes`</Tip>"
+      summary: List in progress batch processes
+      description: 'List batch processes that are in progress
+
+        **HTTP Request**
+
+        `GET https://api.firstpromoter.com/api/v2/company/batch_processes`'
       operationId: listBatchProcesses
       parameters:
       - $ref: '#/components/parameters/AccountId'
@@ -62,7 +66,11 @@ paths:
   /batch_processes/{id}:
     get:
       summary: Show batch process
-      description: "Show details of a specific batch process \n <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/batch_processes/{id}`</Tip>"
+      description: 'Show details of a specific batch process
+
+        **HTTP Request**
+
+        `GET https://api.firstpromoter.com/api/v2/company/batch_processes/{id}`'
       operationId: getBatchProcess
       parameters:
       - $ref: '#/components/parameters/AccountId'
@@ -92,7 +100,11 @@ paths:
   /batch_processes/progress:
     get:
       summary: Show progress
-      description: "Show progress of batch process. \n <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/batch_processes/progress`</Tip>"
+      description: 'Show progress of batch process.
+
+        **HTTP Request**
+
+        `GET https://api.firstpromoter.com/api/v2/company/batch_processes/progress`'
       operationId: getBatchProcessProgress
       parameters:
       - $ref: '#/components/parameters/AccountId'

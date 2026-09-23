@@ -1,11 +1,10 @@
 openapi: 3.2.0
 info:
-  title: Firstpromoter Contract Documents API
+  title: FirstPromoter Contract Documents API
   version: '1.0'
-  description: 'Operations tagged Contract Documents across 2 of this provider''s published API definitions: firstpromoter-v2-affiliate-contract-documents-openapi.yml, firstpromoter-v2-contract-documents-openapi.yml. Each path carries the servers of the definition it was published in.'
+  description: API for managing affiliate contract documents
 servers:
 - url: https://api.firstpromoter.com/api/v2/affiliate
-- url: https://api.firstpromoter.com/api/v2/company
 security:
 - BearerAuth: []
 tags:
@@ -14,7 +13,11 @@ paths:
   /contract_documents:
     get:
       summary: Get current version contract documents
-      description: "Returns the current contract document  \n <Tip>**HTTP Request** <br/>` GET  https://api.firstpromoter.com/api/v2/affiliate/contract_documents`</Tip>"
+      description: 'Returns the current contract document
+
+        **HTTP Request**
+
+        ` GET https://api.firstpromoter.com/api/v2/affiliate/contract_documents`'
       tags:
       - Contract Documents
       parameters:
@@ -36,12 +39,16 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-    servers:
-    - url: https://api.firstpromoter.com/api/v2/affiliate
+      operationId: getContractDocuments
+      x-operation-id-source: derived
   /contract_documents/{id}:
     get:
       summary: Get contract documents by id (html/pdf)
-      description: "Gets contract document and returns it in the selected format  \n <Tip>**HTTP Request** <br/>` GET  https://api.firstpromoter.com/api/v2/affiliate/contract_documents/{id}`</Tip>"
+      description: 'Gets contract document and returns it in the selected format
+
+        **HTTP Request**
+
+        ` GET https://api.firstpromoter.com/api/v2/affiliate/contract_documents/{id}`'
       tags:
       - Contract Documents
       parameters:
@@ -98,12 +105,16 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-    servers:
-    - url: https://api.firstpromoter.com/api/v2/affiliate
+      operationId: getContractDocumentsById
+      x-operation-id-source: derived
   /contract_documents/{id}/sign:
     post:
       summary: Sign a document with id
-      description: "Signs a contract document with id \n <Tip>**HTTP Request** <br/>` GET  https://api.firstpromoter.com/api/v2/affiliate/contract_documents/{id}/sign`</Tip>"
+      description: 'Signs a contract document with id
+
+        **HTTP Request**
+
+        ` GET https://api.firstpromoter.com/api/v2/affiliate/contract_documents/{id}/sign`'
       tags:
       - Contract Documents
       parameters:
@@ -151,14 +162,18 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-    servers:
-    - url: https://api.firstpromoter.com/api/v2/affiliate
+      operationId: postContractDocumentsByIdSign
+      x-operation-id-source: derived
   /contract_documents/draft:
     post:
       parameters:
       - $ref: '#/components/parameters/AccountId'
       summary: Get the draft content of the contract
-      description: "Returns the draft content of the contract with user details \n <Tip>**HTTP Request** <br/>` GET  https://api.firstpromoter.com/api/v2/affiliate/contract_documents/draft`</Tip>"
+      description: 'Returns the draft content of the contract with user details
+
+        **HTTP Request**
+
+        ` GET https://api.firstpromoter.com/api/v2/affiliate/contract_documents/draft`'
       tags:
       - Contract Documents
       requestBody:
@@ -198,24 +213,30 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-    servers:
-    - url: https://api.firstpromoter.com/api/v2/affiliate
+      operationId: postContractDocumentsDraft
+      x-operation-id-source: derived
 components:
   schemas:
-    Promoter:
+    ValidationError:
+      type: object
+      properties:
+        message:
+          type: string
+        errors:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string
+        code:
+          type: string
+    Contract:
       type: object
       properties:
         id:
           type: integer
-        email:
-          type: string
         name:
           type: string
-        profile:
-          type: object
-          properties:
-            avatar:
-              type: string
     ContractDocument:
       type: object
       properties:
@@ -238,26 +259,6 @@ components:
           $ref: '#/components/schemas/ContractVersion'
         contract:
           $ref: '#/components/schemas/Contract'
-    ValidationError:
-      type: object
-      properties:
-        message:
-          type: string
-        errors:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              type: string
-        code:
-          type: string
-    Error:
-      type: object
-      properties:
-        message:
-          type: string
-        code:
-          type: string
     ContractVersion:
       type: object
       properties:
@@ -274,38 +275,27 @@ components:
           - 'null'
         content_hosted:
           type: boolean
-    Contract:
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: string
+    Promoter:
       type: object
       properties:
         id:
           type: integer
+        email:
+          type: string
         name:
           type: string
-    DocumentSorting:
-      type: object
-      properties:
-        created_at:
-          type: string
-          enum:
-          - asc
-          - desc
-        signed_at:
-          type: string
-          enum:
-          - asc
-          - desc
-    DocumentFilters:
-      type: object
-      properties:
-        status:
-          type: string
-          enum:
-          - pending
-          - signed
-        promoter_id:
-          type: integer
-        contract_id:
-          type: integer
+        profile:
+          type: object
+          properties:
+            avatar:
+              type: string
   parameters:
     AccountId:
       name: Account-ID
@@ -325,6 +315,3 @@ components:
       in: header
       name: ACCOUNT-ID
       description: Account ID required with bearer token
-x-refined-from:
-- firstpromoter-v2-affiliate-contract-documents-openapi.yml
-- firstpromoter-v2-contract-documents-openapi.yml

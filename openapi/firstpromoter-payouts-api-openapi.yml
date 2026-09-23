@@ -109,6 +109,8 @@ paths:
           $ref: '#/components/responses/Unauthorized'
         '403':
           $ref: '#/components/responses/Forbidden'
+      operationId: getPayouts
+      x-operation-id-source: derived
     servers:
     - url: https://api.firstpromoter.com/api/v2/affiliate
   /payouts/due_stats:
@@ -141,6 +143,8 @@ paths:
           $ref: '#/components/responses/Unauthorized'
         '403':
           $ref: '#/components/responses/Forbidden'
+      operationId: getPayoutsDueStats
+      x-operation-id-source: derived
     servers:
     - url: https://api.firstpromoter.com/api/v2/affiliate
   /payouts/export:
@@ -178,12 +182,20 @@ paths:
           $ref: '#/components/responses/Forbidden'
         '422':
           $ref: '#/components/responses/UnprocessableEntity'
+      operationId: getPayoutsExport
+      x-operation-id-source: derived
     servers:
     - url: https://api.firstpromoter.com/api/v2/affiliate
   /commissions/generate_payouts:
     post:
       summary: Generate payouts for commissions
-      description: "With this endpoint you can generate payouts for commissions. \n <Note>If there are more than __5__ ids on the __ids__ param/field, the action will be processed asynchronously. The response for the batch status will most likely be `in_progress`. The available statuses are `pending`, `in_progress`, `completed`, `failed` and `stopped`</Note> \n <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/company/commissions/generate_payouts`</Tip>"
+      description: 'With this endpoint you can generate payouts for commissions.
+
+        If there are more than __5__ ids on the __ids__ param/field, the action will be processed asynchronously. The response for the batch status will most likely be `in_progress`. The available statuses are `pending`, `in_progress`, `completed`, `failed` and `stopped`
+
+        **HTTP Request**
+
+        `POST https://api.firstpromoter.com/api/v2/company/commissions/generate_payouts`'
       tags:
       - Payouts
       operationId: generatePayouts
@@ -256,7 +268,11 @@ paths:
   /payouts/stats:
     get:
       summary: Get payout stats
-      description: "This endpoint returns statistics about payouts. \n <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/payouts/stats`</Tip>"
+      description: 'This endpoint returns statistics about payouts.
+
+        **HTTP Request**
+
+        `GET https://api.firstpromoter.com/api/v2/company/payouts/stats`'
       operationId: getAdminPayoutStats
       parameters:
       - $ref: '#/components/parameters/AccountId'
@@ -333,7 +349,11 @@ paths:
   /payouts/group_by_promoters:
     get:
       summary: Get all payouts grouped by promoters
-      description: "This endpoint returns all payouts but grouped by promoters. \n <Tip>**HTTP Request** <br/>`GET https://api.firstpromoter.com/api/v2/company/payouts/group_by_promoters`</Tip>"
+      description: 'This endpoint returns all payouts but grouped by promoters.
+
+        **HTTP Request**
+
+        `GET https://api.firstpromoter.com/api/v2/company/payouts/group_by_promoters`'
       operationId: getAdminPayoutsGroupedByPromoters
       parameters:
       - $ref: '#/components/parameters/AccountId'
@@ -414,7 +434,11 @@ paths:
   /payouts/create_payments_batch:
     post:
       summary: Create payments batch
-      description: "This endpoint creates a new payments batch. \n <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/company/payouts/create_payments_batch`</Tip>"
+      description: 'This endpoint creates a new payments batch.
+
+        **HTTP Request**
+
+        `POST https://api.firstpromoter.com/api/v2/company/payouts/create_payments_batch`'
       operationId: createPaymentsBatch
       parameters:
       - $ref: '#/components/parameters/AccountId'
@@ -469,7 +493,11 @@ paths:
   /payouts/mark_as_paid:
     post:
       summary: Mark payouts as paid
-      description: "Marks selected payouts as paid \n <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/company/payouts/mark_as_paid`</Tip>"
+      description: 'Marks selected payouts as paid
+
+        **HTTP Request**
+
+        `POST https://api.firstpromoter.com/api/v2/company/payouts/mark_as_paid`'
       operationId: markPayoutsAsPaid
       parameters:
       - $ref: '#/components/parameters/AccountId'
@@ -523,7 +551,11 @@ paths:
   /payouts/mark_as_unpaid:
     post:
       summary: Mark payouts as unpaid
-      description: "Marks selected payouts as unpaid \n <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/company/payouts/mark_as_unpaid`</Tip>"
+      description: 'Marks selected payouts as unpaid
+
+        **HTTP Request**
+
+        `POST https://api.firstpromoter.com/api/v2/company/payouts/mark_as_unpaid`'
       operationId: markPayoutsAsUnpaid
       parameters:
       - $ref: '#/components/parameters/AccountId'
@@ -577,7 +609,11 @@ paths:
   /payouts/destroy:
     delete:
       summary: Delete payouts
-      description: "Deletes selected payouts \n <Tip>**HTTP Request** <br/>`DELETE https://api.firstpromoter.com/api/v2/company/payouts/destroy`</Tip>"
+      description: 'Deletes selected payouts
+
+        **HTTP Request**
+
+        `DELETE https://api.firstpromoter.com/api/v2/company/payouts/destroy`'
       operationId: deletePayouts
       parameters:
       - $ref: '#/components/parameters/AccountId'
@@ -629,6 +665,25 @@ paths:
     - url: https://api.firstpromoter.com/api/v2/company
       description: Production server
 components:
+  responses:
+    UnprocessableEntity:
+      description: Unprocessable Entity
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Forbidden:
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   parameters:
     filters:
       name: filters
@@ -697,6 +752,28 @@ components:
       schema:
         type: string
   schemas:
+    PayoutMeta:
+      type: object
+      properties:
+        net_payout_days:
+          type: integer
+        payout_cycle:
+          type: string
+        min_payment:
+          type: number
+          format: float
+        min_paying_customers:
+          type: integer
+        terms_description:
+          type: string
+        selected_payout_methods:
+          type: array
+          items:
+            type: string
+        payout_method_options:
+          type: object
+        managed_payouts:
+          type: boolean
     Error:
       type: object
       properties:
@@ -710,6 +787,23 @@ components:
             type: array
             items:
               type: string
+    PayoutStats:
+      type: object
+      properties:
+        promoters_count:
+          type: integer
+        amounts:
+          type: object
+          additionalProperties:
+            type: number
+        total_incl_tax:
+          type: number
+        due_date:
+          type: string
+          format: date
+        period_end:
+          type: string
+          format: date
     Payout:
       type: object
       properties:
@@ -776,45 +870,68 @@ components:
               type: string
             color:
               type: string
-    PayoutStats:
+    PaymentsBatch:
       type: object
       properties:
-        promoters_count:
-          type: integer
-        amounts:
+        data:
           type: object
-          additionalProperties:
-            type: number
-        total_incl_tax:
-          type: number
-        due_date:
-          type: string
-          format: date
-        period_end:
-          type: string
-          format: date
-    PayoutMeta:
-      type: object
-      properties:
-        net_payout_days:
-          type: integer
-        payout_cycle:
-          type: string
-        min_payment:
-          type: number
-          format: float
-        min_paying_customers:
-          type: integer
-        terms_description:
-          type: string
-        selected_payout_methods:
-          type: array
-          items:
-            type: string
-        payout_method_options:
+          properties:
+            id:
+              type: integer
+              description: ID of the payments batch
+            status:
+              type: string
+              enum:
+              - awaiting_confirmation
+              - pending
+              - processing
+              - completed
+              - failed
+              description: Status of the payments batch
+            ext_reference:
+              type: string
+              description: External reference
+            ext_id:
+              type: string
+              description: External ID
+            scheduled_at:
+              type: string
+              format: date-time
+              description: When the batch is scheduled
+            processing_started_at:
+              type: string
+              format: date-time
+              description: When processing started
+            completed_at:
+              type: string
+              format: date-time
+              description: When the batch was completed
+            is_payable:
+              type: boolean
+              description: Whether the batch is payable
+            is_retriable:
+              type: boolean
+              description: Whether the batch can be retried
+            is_payment_otp_required:
+              type: boolean
+              description: Whether OTP is required for payment
+            total:
+              type: number
+              description: Total amount
+            promoters_count:
+              type: integer
+              description: Count of promoters
+            error:
+              type: string
+              description: Error message if the batch failed
+        meta:
           type: object
-        managed_payouts:
-          type: boolean
+          properties:
+            failed:
+              type: array
+              items:
+                type: object
+              description: List of failed items
     BatchActionResult:
       type: object
       properties:
@@ -880,68 +997,104 @@ components:
             all_promoters_count:
               type: integer
               description: Count of all promoters
-    PaymentsBatch:
+    Ids:
+      type: array
+      items:
+        type: integer
+      description: Array of Payout IDs
+    PayoutDueStats:
       type: object
       properties:
-        data:
-          type: object
-          properties:
-            id:
-              type: integer
-              description: ID of the payments batch
-            status:
-              type: string
-              enum:
-              - awaiting_confirmation
-              - pending
-              - processing
-              - completed
-              - failed
-              description: Status of the payments batch
-            ext_reference:
-              type: string
-              description: External reference
-            ext_id:
-              type: string
-              description: External ID
-            scheduled_at:
-              type: string
-              format: date-time
-              description: When the batch is scheduled
-            processing_started_at:
-              type: string
-              format: date-time
-              description: When processing started
-            completed_at:
-              type: string
-              format: date-time
-              description: When the batch was completed
-            is_payable:
-              type: boolean
-              description: Whether the batch is payable
-            is_retriable:
-              type: boolean
-              description: Whether the batch can be retried
-            is_payment_otp_required:
-              type: boolean
-              description: Whether OTP is required for payment
-            total:
-              type: number
-              description: Total amount
-            promoters_count:
-              type: integer
-              description: Count of promoters
-            error:
-              type: string
-              description: Error message if the batch failed
         meta:
           type: object
           properties:
-            failed:
+            net_payout_days:
+              type: integer
+              description: Number of days for net payout
+            payout_cycle:
+              type: string
+              description: Payout cycle (e.g., monthly)
+            min_payment:
+              type: integer
+              description: Minimum payment amount
+            min_paying_customers:
+              type: integer
+              description: Minimum number of paying customers
+            terms_description:
+              type: string
+              description: Description of payment terms
+            selected_payout_methods:
               type: array
               items:
-                type: object
-              description: List of failed items
+                type: string
+              description: List of selected payout methods
+            payout_method_options:
+              type: object
+              description: Options for payout methods
+            managed_payouts:
+              type: boolean
+              description: Whether payouts are managed by us (auto-payouts)
+        data:
+          type: object
+          properties:
+            next:
+              type: object
+              properties:
+                promoters_count:
+                  type: integer
+                  description: Count of promoters
+                amounts:
+                  type: object
+                  additionalProperties:
+                    type: number
+                  description: Amounts by currency or unit
+                total_incl_tax:
+                  type: number
+                  description: Total amount including tax
+                due_date:
+                  type: string
+                  format: date
+                  description: Due date for the next payout
+                period_end:
+                  type: string
+                  format: date
+                  description: End date of the period
+            overdue:
+              type: object
+              properties:
+                promoters_count:
+                  type: integer
+                  description: Count of promoters
+                amounts:
+                  type: object
+                  additionalProperties:
+                    type: number
+                  description: Amounts by currency or unit
+                total_incl_tax:
+                  type: number
+                  description: Total amount including tax
+                due_date:
+                  type: string
+                  format: date
+                  description: Due date for overdue payout
+                period_end:
+                  type: string
+                  format: date
+                  description: End date of the period
+            custom:
+              type: object
+              properties:
+                promoters_count:
+                  type: integer
+                  description: Count of promoters
+                amounts:
+                  type: object
+                  additionalProperties:
+                    type: number
+                  description: Amounts by currency or unit
+                total_incl_tax:
+                  type: number
+                  description: Total amount including tax
     Error_2:
       type: object
       properties:
@@ -1054,6 +1207,91 @@ components:
               type: string
               format: date
               description: End date of the period
+    PayoutStats_2:
+      type: object
+      properties:
+        meta:
+          type: object
+          properties:
+            net_payout_days:
+              type: integer
+              description: Number of days for net payout
+            payout_cycle:
+              type: string
+              description: Payout cycle (e.g., monthly)
+            min_payment:
+              type: integer
+              description: Minimum payment amount
+            min_paying_customers:
+              type: integer
+              description: Minimum number of paying customers
+            terms_description:
+              type: string
+              description: Description of payment terms
+            selected_payout_methods:
+              type: array
+              items:
+                type: string
+              description: List of selected payout methods
+            payout_method_options:
+              type: object
+              description: Options for payout methods
+            managed_payouts:
+              type: boolean
+              description: Whether payouts are managed by us (auto-payouts)
+        data:
+          type: object
+          properties:
+            by_paid_period:
+              type: array
+              items:
+                type: object
+                properties:
+                  period_start:
+                    type: string
+                    format: date-time
+                    description: Start date of the period
+                  period_end:
+                    type: string
+                    format: date-time
+                    description: End date of the period
+                  promoters_count:
+                    type: integer
+                    description: Count of promoters
+                  amounts:
+                    type: object
+                    additionalProperties:
+                      type: number
+                    description: Amounts by currency or unit
+                  total_incl_tax:
+                    type: number
+                    description: Total amount including tax
+            by_status:
+              type: object
+              additionalProperties:
+                type: object
+                properties:
+                  amounts:
+                    type: object
+                    additionalProperties:
+                      type: number
+                  total_incl_tax:
+                    type: number
+                  promoters_count:
+                    type: integer
+            by_payout_method:
+              type: object
+              additionalProperties:
+                type: object
+                properties:
+                  amounts:
+                    type: object
+                    additionalProperties:
+                      type: number
+                  total_incl_tax:
+                    type: number
+                  promoters_count:
+                    type: integer
     Payout_2:
       type: object
       properties:
@@ -1166,208 +1404,6 @@ components:
             color:
               type: string
               description: Color of the campaign
-    PayoutStats_2:
-      type: object
-      properties:
-        meta:
-          type: object
-          properties:
-            net_payout_days:
-              type: integer
-              description: Number of days for net payout
-            payout_cycle:
-              type: string
-              description: Payout cycle (e.g., monthly)
-            min_payment:
-              type: integer
-              description: Minimum payment amount
-            min_paying_customers:
-              type: integer
-              description: Minimum number of paying customers
-            terms_description:
-              type: string
-              description: Description of payment terms
-            selected_payout_methods:
-              type: array
-              items:
-                type: string
-              description: List of selected payout methods
-            payout_method_options:
-              type: object
-              description: Options for payout methods
-            managed_payouts:
-              type: boolean
-              description: Whether payouts are managed by us (auto-payouts)
-        data:
-          type: object
-          properties:
-            by_paid_period:
-              type: array
-              items:
-                type: object
-                properties:
-                  period_start:
-                    type: string
-                    format: date-time
-                    description: Start date of the period
-                  period_end:
-                    type: string
-                    format: date-time
-                    description: End date of the period
-                  promoters_count:
-                    type: integer
-                    description: Count of promoters
-                  amounts:
-                    type: object
-                    additionalProperties:
-                      type: number
-                    description: Amounts by currency or unit
-                  total_incl_tax:
-                    type: number
-                    description: Total amount including tax
-            by_status:
-              type: object
-              additionalProperties:
-                type: object
-                properties:
-                  amounts:
-                    type: object
-                    additionalProperties:
-                      type: number
-                  total_incl_tax:
-                    type: number
-                  promoters_count:
-                    type: integer
-            by_payout_method:
-              type: object
-              additionalProperties:
-                type: object
-                properties:
-                  amounts:
-                    type: object
-                    additionalProperties:
-                      type: number
-                  total_incl_tax:
-                    type: number
-                  promoters_count:
-                    type: integer
-    PayoutDueStats:
-      type: object
-      properties:
-        meta:
-          type: object
-          properties:
-            net_payout_days:
-              type: integer
-              description: Number of days for net payout
-            payout_cycle:
-              type: string
-              description: Payout cycle (e.g., monthly)
-            min_payment:
-              type: integer
-              description: Minimum payment amount
-            min_paying_customers:
-              type: integer
-              description: Minimum number of paying customers
-            terms_description:
-              type: string
-              description: Description of payment terms
-            selected_payout_methods:
-              type: array
-              items:
-                type: string
-              description: List of selected payout methods
-            payout_method_options:
-              type: object
-              description: Options for payout methods
-            managed_payouts:
-              type: boolean
-              description: Whether payouts are managed by us (auto-payouts)
-        data:
-          type: object
-          properties:
-            next:
-              type: object
-              properties:
-                promoters_count:
-                  type: integer
-                  description: Count of promoters
-                amounts:
-                  type: object
-                  additionalProperties:
-                    type: number
-                  description: Amounts by currency or unit
-                total_incl_tax:
-                  type: number
-                  description: Total amount including tax
-                due_date:
-                  type: string
-                  format: date
-                  description: Due date for the next payout
-                period_end:
-                  type: string
-                  format: date
-                  description: End date of the period
-            overdue:
-              type: object
-              properties:
-                promoters_count:
-                  type: integer
-                  description: Count of promoters
-                amounts:
-                  type: object
-                  additionalProperties:
-                    type: number
-                  description: Amounts by currency or unit
-                total_incl_tax:
-                  type: number
-                  description: Total amount including tax
-                due_date:
-                  type: string
-                  format: date
-                  description: Due date for overdue payout
-                period_end:
-                  type: string
-                  format: date
-                  description: End date of the period
-            custom:
-              type: object
-              properties:
-                promoters_count:
-                  type: integer
-                  description: Count of promoters
-                amounts:
-                  type: object
-                  additionalProperties:
-                    type: number
-                  description: Amounts by currency or unit
-                total_incl_tax:
-                  type: number
-                  description: Total amount including tax
-    Ids:
-      type: array
-      items:
-        type: integer
-      description: Array of Payout IDs
-  responses:
-    Forbidden:
-      description: Forbidden
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    UnprocessableEntity:
-      description: Unprocessable Entity
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Unauthorized
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   securitySchemes:
     BearerAuth:
       type: http

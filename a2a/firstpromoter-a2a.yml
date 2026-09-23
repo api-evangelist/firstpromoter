@@ -2,10 +2,7 @@ generated: '2026-08-13'
 method: probed
 source: https://docs.firstpromoter.com/.well-known/agent-card.json
 name: FirstPromoter A2A Agent Card
-description: >-
-  FirstPromoter serves an A2A agent card from its own documentation host. The card advertises a
-  single skill - an Agent Skill markdown document describing how to build, configure and manage
-  FirstPromoter affiliate and referral programs - and points at HTTP+JSON as its transport.
+description: FirstPromoter serves an A2A agent card from its own documentation host. The card advertises a single skill - an Agent Skill markdown document describing how to build, configure and manage FirstPromoter affiliate and referral programs - and points at HTTP+JSON as its transport.
 discovery:
   path: /.well-known/agent-card.json
   canonical: true
@@ -13,12 +10,12 @@ discovery:
   legacy_path_probed: /.well-known/agent.json
   legacy_path_status: 404
   other_hosts_probed:
-    - host: firstpromoter.com
-      status: 404
-    - host: api.firstpromoter.com
-      status: 404
-    - host: mcp.firstpromoter.com
-      status: 404
+  - host: firstpromoter.com
+    status: 404
+  - host: api.firstpromoter.com
+    status: 404
+  - host: mcp.firstpromoter.com
+    status: 404
 x-evidence:
   fetched: '2026-08-13'
   url: https://docs.firstpromoter.com/.well-known/agent-card.json
@@ -39,13 +36,14 @@ card:
     streaming: false
     pushNotifications: false
   defaultInputModes:
-    - text/plain
+  - text/plain
   defaultOutputModes:
-    - text/plain
+  - text/plain
   skills:
-    - id: firstpromoter
-      name: Firstpromoter
-      url: https://docs.firstpromoter.com/.well-known/agent-skills/firstpromoter/skill.md
+  - id: firstpromoter
+    name: Firstpromoter
+    url: https://docs.firstpromoter.com/.well-known/agent-skills/firstpromoter/skill.md
+  file: a2a/firstpromoter-agent-card.json
 grade:
   against: A2A 1.0.0
   result: conformant
@@ -58,29 +56,19 @@ grade:
     default_input_modes_present: true
     default_output_modes_present: true
 deviations:
-  - field: protocolVersion
-    observed: '0.3'
-    expected: '1.0.0'
-    severity: minor
-    note: >-
-      The card declares the pre-1.0 A2A protocol version 0.3 and uses supportedInterfaces rather
-      than the 1.0 additionalInterfaces field. It passes every hard structural check but is not
-      pinned to the released 1.0.0 protocol.
-  - field: skills[].tags
-    observed: []
-    severity: minor
-    note: The single skill declares an empty tags array, so it is not discoverable by tag.
-  - field: url
-    observed: https://docs.firstpromoter.com/
-    severity: minor
-    note: >-
-      The agent endpoint is the documentation site root rather than an A2A JSON-RPC endpoint. The
-      card describes a documentation/skill surface, not a callable A2A agent. FirstPromoter's
-      callable agent surface is the MCP server at https://mcp.firstpromoter.com.
+- field: protocolVersion
+  observed: '0.3'
+  expected: 1.0.0
+  severity: minor
+  note: The card declares the pre-1.0 A2A protocol version 0.3 and uses supportedInterfaces rather than the 1.0 additionalInterfaces field. It passes every hard structural check but is not pinned to the released 1.0.0 protocol.
+- field: skills[].tags
+  observed: []
+  severity: minor
+  note: The single skill declares an empty tags array, so it is not discoverable by tag.
+- field: url
+  observed: https://docs.firstpromoter.com/
+  severity: minor
+  note: The agent endpoint is the documentation site root rather than an A2A JSON-RPC endpoint. The card describes a documentation/skill surface, not a callable A2A agent. FirstPromoter's callable agent surface is the MCP server at https://mcp.firstpromoter.com.
 notes:
-  - >-
-    The card is served by the Mintlify-hosted documentation site on a firstpromoter.com host and
-    names FirstPromoter as the provider, so it is attributed to FirstPromoter.
-  - >-
-    The skill referenced by the card resolves to a real document (HTTP 200) and is saved verbatim
-    at skills/firstpromoter-firstpromoter.md.
+- The card is served by the Mintlify-hosted documentation site on a firstpromoter.com host and names FirstPromoter as the provider, so it is attributed to FirstPromoter.
+- The skill referenced by the card resolves to a real document (HTTP 200) and is saved verbatim at skills/firstpromoter-firstpromoter.md.

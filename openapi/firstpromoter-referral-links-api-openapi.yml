@@ -170,6 +170,16 @@ components:
         type: string
         example: acc_123456
   schemas:
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: string
+      required:
+      - message
+      - code
     ReferralLink:
       type: object
       properties:
@@ -205,16 +215,6 @@ components:
               type:
               - string
               - 'null'
-    Error:
-      type: object
-      properties:
-        message:
-          type: string
-        code:
-          type: string
-      required:
-      - message
-      - code
   securitySchemes:
     BearerAuth:
       type: http

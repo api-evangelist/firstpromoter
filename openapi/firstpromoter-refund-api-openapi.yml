@@ -14,7 +14,9 @@ tags:
 paths:
   /refund:
     post:
-      description: The refund call is similar to the sale call. It works the same way, except that it generates negative commissions. <Tip>**HTTP Request** <br/>`POST https://api.firstpromoter.com/api/v2/track/refund`</Tip>
+      description: 'The refund call is similar to the sale call. It works the same way, except that it generates negative commissions. **HTTP Request**
+
+        `POST https://api.firstpromoter.com/api/v2/track/refund`'
       parameters:
       - $ref: '#/components/parameters/AccountId'
       requestBody:
@@ -136,7 +138,19 @@ paths:
                     example: The 'refund' event with the id 'test_sale_12340987_refund' already exists.
       tags:
       - Refund
+      summary: Create refund
+      x-summary-source: derived
+      operationId: postRefund
+      x-operation-id-source: derived
 components:
+  parameters:
+    AccountId:
+      name: Account-ID
+      in: header
+      required: true
+      description: Account id. You can find your Account ID on Your FirstPromoter Dashboard. Navigate to Settings → Integrations
+      schema:
+        type: string
   schemas:
     Lead:
       type: object
@@ -291,14 +305,6 @@ components:
           type: string
           description: Authentication token generated when the promoter was created
           example: xxxxxxxxxxxxxx
-  parameters:
-    AccountId:
-      name: Account-ID
-      in: header
-      required: true
-      description: Account id. You can find your Account ID on Your FirstPromoter Dashboard. Navigate to Settings → Integrations
-      schema:
-        type: string
   securitySchemes:
     BearerAuth:
       type: http
