@@ -717,34 +717,6 @@ paths:
       description: Production server
 components:
   schemas:
-    Error:
-      type: object
-      properties:
-        message:
-          type: string
-        code:
-          type: string
-        errors:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              type: string
-      required:
-      - message
-      - code
-    PromoterCampaign:
-      type: object
-      properties:
-        id:
-          type: integer
-        campaign_id:
-          type: integer
-        created_at:
-          type: string
-          format: date-time
-        campaign:
-          $ref: '#/components/schemas/Campaign'
     Referral:
       type: object
       properties:
@@ -776,62 +748,7 @@ components:
           format: email
         promoter_campaign:
           $ref: '#/components/schemas/PromoterCampaign'
-    Campaign:
-      type: object
-      properties:
-        id:
-          type: integer
-        name:
-          type: string
-        color:
-          type: string
-    BatchOperationResponse:
-      type: object
-      properties:
-        id:
-          type: integer
-          description: Id of the batch operation
-        status:
-          type: string
-          enum:
-          - pending
-          - completed
-          description: Status of the batch operation
-        total:
-          type: integer
-          description: Total number of items
-        selected_total:
-          type: integer
-          description: Number of selected items
-        processed_count:
-          type: integer
-          description: Number of processed items
-        failed_count:
-          type: integer
-          description: Number of failed operations
-        action_label:
-          type: string
-          description: Action identifier/ label assigned to the action
-        created_at:
-          type: string
-          format: date-time
-          description: Date and time when the batch operation was created
-        updated_at:
-          type: string
-          format: date-time
-          description: Date and time when the batch operation was updated
-        meta:
-          type: object
-          description: Meta data of the batch operation
-        progress:
-          type: integer
-          description: Progress of the action (0-100)
-        processing_errors:
-          type: array
-          items:
-            type: string
-            description: List of processing errors
-    Error_2:
+    Error:
       type: object
       properties:
         message:
@@ -844,34 +761,30 @@ components:
             type: array
             items:
               type: string
-    PromoterCampaign_2:
+      required:
+      - message
+      - code
+    PromoterCampaign:
       type: object
       properties:
         id:
           type: integer
-          description: Id of the promoter campaign
         campaign_id:
           type: integer
-          description: Id of the campaign
-        promoter_id:
-          type: integer
-          description: Id of the promoter
         created_at:
           type: string
           format: date-time
-          description: Date and time when the promoter campaign was created
-        promoter:
-          $ref: '#/components/schemas/Promoter'
         campaign:
-          $ref: '#/components/schemas/Campaign_2'
-    BatchSelectionRequest:
+          $ref: '#/components/schemas/Campaign'
+    Campaign:
       type: object
       properties:
-        ids:
-          type: array
-          description: Array of selected referral ids. If there are more than __5__ ids on this param/field, the action will be processed asynchronously. The response for the batch status will most likely be `in_progress`. The available statuses are `pending`, `in_progress`, `completed`, `failed` and `stopped`
-          items:
-            type: integer
+        id:
+          type: integer
+        name:
+          type: string
+        color:
+          type: string
     Referral_2:
       type: object
       properties:
@@ -977,6 +890,39 @@ components:
         is_expired:
           type: boolean
           description: Whether the referral has expired
+    Error_2:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: string
+        errors:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string
+    PromoterCampaign_2:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Id of the promoter campaign
+        campaign_id:
+          type: integer
+          description: Id of the campaign
+        promoter_id:
+          type: integer
+          description: Id of the promoter
+        created_at:
+          type: string
+          format: date-time
+          description: Date and time when the promoter campaign was created
+        promoter:
+          $ref: '#/components/schemas/Promoter'
+        campaign:
+          $ref: '#/components/schemas/Campaign_2'
     Promoter:
       type: object
       properties:
@@ -990,6 +936,60 @@ components:
         name:
           type: string
           description: Name of the promoter
+    BatchOperationResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Id of the batch operation
+        status:
+          type: string
+          enum:
+          - pending
+          - completed
+          description: Status of the batch operation
+        total:
+          type: integer
+          description: Total number of items
+        selected_total:
+          type: integer
+          description: Number of selected items
+        processed_count:
+          type: integer
+          description: Number of processed items
+        failed_count:
+          type: integer
+          description: Number of failed operations
+        action_label:
+          type: string
+          description: Action identifier/ label assigned to the action
+        created_at:
+          type: string
+          format: date-time
+          description: Date and time when the batch operation was created
+        updated_at:
+          type: string
+          format: date-time
+          description: Date and time when the batch operation was updated
+        meta:
+          type: object
+          description: Meta data of the batch operation
+        progress:
+          type: integer
+          description: Progress of the action (0-100)
+        processing_errors:
+          type: array
+          items:
+            type: string
+            description: List of processing errors
+    BatchSelectionRequest:
+      type: object
+      properties:
+        ids:
+          type: array
+          description: Array of selected referral ids. If there are more than __5__ ids on this param/field, the action will be processed asynchronously. The response for the batch status will most likely be `in_progress`. The available statuses are `pending`, `in_progress`, `completed`, `failed` and `stopped`
+          items:
+            type: integer
     Campaign_2:
       type: object
       properties:

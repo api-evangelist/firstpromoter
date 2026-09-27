@@ -283,15 +283,6 @@ components:
         code:
           type: string
           description: Error code
-    Error:
-      type: object
-      properties:
-        message:
-          type: string
-          description: Error message
-        code:
-          type: string
-          description: Error code
     Product:
       type: object
       properties:
@@ -322,6 +313,15 @@ components:
           type: string
           format: date-time
           description: Date and time when the product was created
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Error message
+        code:
+          type: string
+          description: Error code
   parameters:
     AccountId:
       name: Account-ID

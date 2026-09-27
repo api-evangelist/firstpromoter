@@ -268,44 +268,6 @@ paths:
                 $ref: '#/components/schemas/Error'
 components:
   schemas:
-    ChartData:
-      type: object
-      properties:
-        period_from:
-          type: string
-          format: date
-        period_to:
-          type: string
-          format: date
-        selection:
-          type: string
-          enum:
-          - revenue
-          - clicks
-          - referrals
-          - customers
-          - cancellations
-        selection_items:
-          type: array
-          items:
-            type: object
-            properties:
-              date:
-                type: string
-                format: date
-              value:
-                type: number
-        group_by:
-          type: string
-    Promoter:
-      type: object
-      properties:
-        id:
-          type: integer
-        email:
-          type: string
-        name:
-          type: string
     Error:
       type: object
       properties:
@@ -322,26 +284,6 @@ components:
       required:
       - message
       - code
-    ReferralLink:
-      type: object
-      properties:
-        id:
-          type: integer
-        name:
-          type: string
-        url:
-          type: string
-        is_default:
-          type: boolean
-        source:
-          type: string
-          enum:
-          - campaign
-          - promoter
-        sub_id:
-          type: string
-        campaign:
-          $ref: '#/components/schemas/Campaign'
     PromoterCampaign:
       type: object
       properties:
@@ -407,27 +349,6 @@ components:
           type: array
           items:
             type: string
-    RewardConfig:
-      type: object
-      required:
-      - apply_on
-      - product_ids
-      - reward_id
-      properties:
-        apply_on:
-          type: string
-          enum:
-          - monthly
-          - yearly
-          - one_time
-          - all
-          - specific
-        product_ids:
-          type: array
-          items:
-            type: integer
-        reward_id:
-          type: integer
     Reward:
       type: object
       properties:
@@ -461,6 +382,35 @@ components:
                 type: integer
               name:
                 type: string
+    Promoter:
+      type: object
+      properties:
+        id:
+          type: integer
+        email:
+          type: string
+        name:
+          type: string
+    ReferralLink:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        url:
+          type: string
+        is_default:
+          type: boolean
+        source:
+          type: string
+          enum:
+          - campaign
+          - promoter
+        sub_id:
+          type: string
+        campaign:
+          $ref: '#/components/schemas/Campaign'
     Campaign:
       type: object
       properties:
@@ -469,6 +419,56 @@ components:
         name:
           type: string
         color:
+          type: string
+    RewardConfig:
+      type: object
+      required:
+      - apply_on
+      - product_ids
+      - reward_id
+      properties:
+        apply_on:
+          type: string
+          enum:
+          - monthly
+          - yearly
+          - one_time
+          - all
+          - specific
+        product_ids:
+          type: array
+          items:
+            type: integer
+        reward_id:
+          type: integer
+    ChartData:
+      type: object
+      properties:
+        period_from:
+          type: string
+          format: date
+        period_to:
+          type: string
+          format: date
+        selection:
+          type: string
+          enum:
+          - revenue
+          - clicks
+          - referrals
+          - customers
+          - cancellations
+        selection_items:
+          type: array
+          items:
+            type: object
+            properties:
+              date:
+                type: string
+                format: date
+              value:
+                type: number
+        group_by:
           type: string
   parameters:
     AccountId:

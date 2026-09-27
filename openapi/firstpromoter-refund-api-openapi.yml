@@ -143,82 +143,7 @@ paths:
       operationId: postRefund
       x-operation-id-source: derived
 components:
-  parameters:
-    AccountId:
-      name: Account-ID
-      in: header
-      required: true
-      description: Account id. You can find your Account ID on Your FirstPromoter Dashboard. Navigate to Settings → Integrations
-      schema:
-        type: string
   schemas:
-    Lead:
-      type: object
-      properties:
-        id:
-          type: integer
-          example: 20738339
-        state:
-          type: string
-          example: cancelled
-        email:
-          type: string
-          example: hello@testmintli.com
-        uid:
-          type:
-          - string
-          - 'null'
-          example: null
-        customer_since:
-          type: string
-          format: date-time
-          example: '2024-09-11T14:22:12.160Z'
-        cancelled_at:
-          type: string
-          format: date-time
-          example: '2024-09-11T15:07:46.174Z'
-        plan_name:
-          type:
-          - string
-          - 'null'
-          example: null
-        suspicion:
-          type: string
-          example: no_suspicion
-        username:
-          type:
-          - string
-          - 'null'
-          example: null
-        website:
-          type:
-          - string
-          - 'null'
-          example: null
-        created_at:
-          type: string
-          format: date-time
-          example: '2024-09-09T16:22:44.168Z'
-        split_promotion_id:
-          type:
-          - string
-          - 'null'
-          example: null
-        custom_fields:
-          type:
-          - string
-          - 'null'
-          example: null
-        split_percentage_value:
-          type:
-          - string
-          - 'null'
-          example: null
-        visitor_sub_id:
-          type:
-          - string
-          - 'null'
-          example: null
     Promoter:
       type: object
       properties:
@@ -305,6 +230,81 @@ components:
           type: string
           description: Authentication token generated when the promoter was created
           example: xxxxxxxxxxxxxx
+    Lead:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 20738339
+        state:
+          type: string
+          example: cancelled
+        email:
+          type: string
+          example: hello@testmintli.com
+        uid:
+          type:
+          - string
+          - 'null'
+          example: null
+        customer_since:
+          type: string
+          format: date-time
+          example: '2024-09-11T14:22:12.160Z'
+        cancelled_at:
+          type: string
+          format: date-time
+          example: '2024-09-11T15:07:46.174Z'
+        plan_name:
+          type:
+          - string
+          - 'null'
+          example: null
+        suspicion:
+          type: string
+          example: no_suspicion
+        username:
+          type:
+          - string
+          - 'null'
+          example: null
+        website:
+          type:
+          - string
+          - 'null'
+          example: null
+        created_at:
+          type: string
+          format: date-time
+          example: '2024-09-09T16:22:44.168Z'
+        split_promotion_id:
+          type:
+          - string
+          - 'null'
+          example: null
+        custom_fields:
+          type:
+          - string
+          - 'null'
+          example: null
+        split_percentage_value:
+          type:
+          - string
+          - 'null'
+          example: null
+        visitor_sub_id:
+          type:
+          - string
+          - 'null'
+          example: null
+  parameters:
+    AccountId:
+      name: Account-ID
+      in: header
+      required: true
+      description: Account id. You can find your Account ID on Your FirstPromoter Dashboard. Navigate to Settings → Integrations
+      schema:
+        type: string
   securitySchemes:
     BearerAuth:
       type: http

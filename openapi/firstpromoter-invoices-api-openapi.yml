@@ -323,14 +323,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    BatchRequest:
-      type: object
-      properties:
-        ids:
-          type: array
-          items:
-            type: integer
-            description: Array of invoice ids.
     BatchResponse:
       type: object
       properties:
@@ -373,6 +365,14 @@ components:
           type: string
         code:
           type: string
+    BatchRequest:
+      type: object
+      properties:
+        ids:
+          type: array
+          items:
+            type: integer
+            description: Array of invoice ids.
     Invoice:
       type: object
       properties:

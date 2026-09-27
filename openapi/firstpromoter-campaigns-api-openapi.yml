@@ -269,27 +269,8 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    Link:
+    CampaignUpdate:
       type: object
-      required:
-      - name
-      - url
-      properties:
-        id:
-          type: integer
-        name:
-          type: string
-        url:
-          type: string
-        _destroy:
-          type: boolean
-    CampaignCreate:
-      type: object
-      required:
-      - name
-      - landing_url
-      - ref_token_param
-      - visitor_cookie_life
       properties:
         name:
           type: string
@@ -334,8 +315,33 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Reward'
-    CampaignUpdate:
+    Reward:
       type: object
+      required:
+      - apply_on
+      - product_ids
+      - reward_id
+      properties:
+        apply_on:
+          type: string
+          enum:
+          - monthly
+          - yearly
+          - one_time
+          - all
+          - specific
+        product_ids:
+          type: array
+          items: {}
+        reward_id:
+          type: integer
+    CampaignCreate:
+      type: object
+      required:
+      - name
+      - landing_url
+      - ref_token_param
+      - visitor_cookie_life
       properties:
         name:
           type: string
@@ -396,26 +402,20 @@ components:
           enum:
           - customers
           - revenue
-    Reward:
+    Link:
       type: object
       required:
-      - apply_on
-      - product_ids
-      - reward_id
+      - name
+      - url
       properties:
-        apply_on:
-          type: string
-          enum:
-          - monthly
-          - yearly
-          - one_time
-          - all
-          - specific
-        product_ids:
-          type: array
-          items: {}
-        reward_id:
+        id:
           type: integer
+        name:
+          type: string
+        url:
+          type: string
+        _destroy:
+          type: boolean
     Campaign:
       type: object
       properties:

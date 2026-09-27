@@ -913,6 +913,16 @@ paths:
     - url: https://api.firstpromoter.com/api/v2/company
 components:
   schemas:
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: string
+      required:
+      - message
+      - code
     SubIdReportData:
       type: object
       properties:
@@ -956,16 +966,6 @@ components:
                 type: string
               data:
                 $ref: '#/components/schemas/SubIdReportData/properties/data'
-    Error:
-      type: object
-      properties:
-        message:
-          type: string
-        code:
-          type: string
-      required:
-      - message
-      - code
     ReportData:
       type: object
       properties:

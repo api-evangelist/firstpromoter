@@ -154,24 +154,7 @@ paths:
       tags:
       - Batch Processes
 components:
-  parameters:
-    AccountId:
-      name: Account-ID
-      in: header
-      required: true
-      description: Account ID. You can find your Account ID on Your FirstPromoter Dashboard. Navigate to Settings → Integrations
-      schema:
-        type: string
   schemas:
-    Error:
-      type: object
-      properties:
-        message:
-          type: string
-          example: Invalid user type
-        code:
-          type: string
-          example: forbidden
     BatchProcess:
       type: object
       properties:
@@ -222,6 +205,23 @@ components:
           items:
             type: string
           example: []
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+          example: Invalid user type
+        code:
+          type: string
+          example: forbidden
+  parameters:
+    AccountId:
+      name: Account-ID
+      in: header
+      required: true
+      description: Account ID. You can find your Account ID on Your FirstPromoter Dashboard. Navigate to Settings → Integrations
+      schema:
+        type: string
   securitySchemes:
     BearerAuth:
       type: http

@@ -53,6 +53,7 @@ tags:
 - Attribution
 - Webhook
 - MCP
+- A2A
 tags_raw:
 - Affiliate Marketing
 - Referral Tracking
@@ -66,6 +67,7 @@ tags_raw:
 - Attribution
 - Webhooks
 - MCP
+- A2A
 apis:
 - aid: firstpromoter:firstpromoter-asset-categories-api
   name: FirstPromoter Asset Categories API
@@ -2844,3 +2846,10 @@ x-enrichment:
   status: enriched
   artifacts_added: 152
   pass: local-v1
+x-a2a:
+  verified: true
+  probed: '2026-09-26'
+  url: "https://docs.firstpromoter.com/.well-known/agent-card.json"
+  grade: "conformant"
+  protocol_version: "0.3"
+  control: 404

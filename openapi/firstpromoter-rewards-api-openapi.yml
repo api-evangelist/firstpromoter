@@ -433,16 +433,6 @@ components:
           type: string
           description: Error code
           example: invalid_record
-    Error:
-      type: object
-      properties:
-        message:
-          type: string
-          description: Error message
-        code:
-          type: string
-          description: Error code
-          example: forbidden
     Reward:
       type: object
       properties:
@@ -590,6 +580,16 @@ components:
                       - and
                       - or
                       description: Logical operator to combine with other rules
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Error message
+        code:
+          type: string
+          description: Error code
+          example: forbidden
   parameters:
     AccountId:
       name: Account-ID

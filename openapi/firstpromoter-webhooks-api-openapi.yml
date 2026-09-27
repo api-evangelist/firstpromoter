@@ -323,57 +323,6 @@ components:
       schema:
         type: string
   schemas:
-    WebhookSubscriptionInput:
-      type: object
-      properties:
-        url:
-          type: string
-          format: uri
-          description: The HTTPS URL that will receive webhook payloads. Required when creating.
-        event_types:
-          type: array
-          items:
-            type: string
-          description: One or more event type strings to subscribe to. Required when creating. Use the `event_types` endpoint to list all supported values.
-          example:
-          - referral.created
-          - commission.created
-        active:
-          type: boolean
-          description: Enable or pause delivery. Defaults to `true`.
-        timeout:
-          type: integer
-          description: Request timeout in seconds. Must be 1–120. Defaults to 30.
-          minimum: 1
-          maximum: 120
-        max_retries:
-          type: integer
-          description: Automatic retry count for failed deliveries. Must be 0–10. Defaults to 3.
-          minimum: 0
-          maximum: 10
-        description:
-          type: string
-          description: Optional human-readable label.
-        campaign_ids:
-          type: array
-          items:
-            type: integer
-          description: Restrict this subscription to events from specific campaigns. Pass `[1]` (the default) to receive events from all campaigns.
-          example:
-          - 1
-        headers:
-          type: object
-          description: Custom HTTP headers to include in every delivery request.
-          additionalProperties:
-            type: string
-          example:
-            Authorization: Bearer my-token
-        basic_auth_user:
-          type: string
-          description: HTTP Basic Auth username. Must be set together with `basic_auth_password`.
-        basic_auth_password:
-          type: string
-          description: HTTP Basic Auth password. Write-only — never returned in responses. Encrypted at rest.
     Error:
       type: object
       properties:
@@ -449,6 +398,57 @@ components:
           type: string
           format: date-time
           description: ISO 8601 timestamp of the last update.
+    WebhookSubscriptionInput:
+      type: object
+      properties:
+        url:
+          type: string
+          format: uri
+          description: The HTTPS URL that will receive webhook payloads. Required when creating.
+        event_types:
+          type: array
+          items:
+            type: string
+          description: One or more event type strings to subscribe to. Required when creating. Use the `event_types` endpoint to list all supported values.
+          example:
+          - referral.created
+          - commission.created
+        active:
+          type: boolean
+          description: Enable or pause delivery. Defaults to `true`.
+        timeout:
+          type: integer
+          description: Request timeout in seconds. Must be 1–120. Defaults to 30.
+          minimum: 1
+          maximum: 120
+        max_retries:
+          type: integer
+          description: Automatic retry count for failed deliveries. Must be 0–10. Defaults to 3.
+          minimum: 0
+          maximum: 10
+        description:
+          type: string
+          description: Optional human-readable label.
+        campaign_ids:
+          type: array
+          items:
+            type: integer
+          description: Restrict this subscription to events from specific campaigns. Pass `[1]` (the default) to receive events from all campaigns.
+          example:
+          - 1
+        headers:
+          type: object
+          description: Custom HTTP headers to include in every delivery request.
+          additionalProperties:
+            type: string
+          example:
+            Authorization: Bearer my-token
+        basic_auth_user:
+          type: string
+          description: HTTP Basic Auth username. Must be set together with `basic_auth_password`.
+        basic_auth_password:
+          type: string
+          description: HTTP Basic Auth password. Write-only — never returned in responses. Encrypted at rest.
   securitySchemes:
     BearerAuth:
       type: http

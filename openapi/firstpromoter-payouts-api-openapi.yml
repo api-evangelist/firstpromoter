@@ -665,115 +665,7 @@ paths:
     - url: https://api.firstpromoter.com/api/v2/company
       description: Production server
 components:
-  responses:
-    UnprocessableEntity:
-      description: Unprocessable Entity
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Unauthorized
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Forbidden:
-      description: Forbidden
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-  parameters:
-    filters:
-      name: filters
-      in: query
-      description: Filter parameters
-      schema:
-        type: object
-        properties:
-          status:
-            type: string
-            enum:
-            - pending
-            - completed
-            - failed
-            - processing
-            - cancelled
-          campaign_id:
-            oneOf:
-            - type: integer
-            - type: array
-              items:
-                type: integer
-          payments_batch_id:
-            oneOf:
-            - type: integer
-            - type: array
-              items:
-                type: integer
-          due_period:
-            type: string
-            enum:
-            - next
-            - overdue
-            - custom
-          period_start:
-            type: string
-            format: date
-          period_end:
-            type: string
-            format: date
-          payout_method:
-            type: string
-            enum:
-            - paypal
-            - bank
-            - wise
-            - crypto
-            - custom
-            - dots
-            - not_set
-          group_ref:
-            type: string
-    AccountId:
-      name: Account-ID
-      in: header
-      required: true
-      description: Account identifier that specifies which account is making the request
-      schema:
-        type: string
-        example: acc_123456
-    AccountId_2:
-      name: Account-ID
-      in: header
-      required: true
-      description: Account id. You can find your Account ID on Your FirstPromoter Dashboard. Navigate to Settings → Integrations
-      schema:
-        type: string
   schemas:
-    PayoutMeta:
-      type: object
-      properties:
-        net_payout_days:
-          type: integer
-        payout_cycle:
-          type: string
-        min_payment:
-          type: number
-          format: float
-        min_paying_customers:
-          type: integer
-        terms_description:
-          type: string
-        selected_payout_methods:
-          type: array
-          items:
-            type: string
-        payout_method_options:
-          type: object
-        managed_payouts:
-          type: boolean
     Error:
       type: object
       properties:
@@ -804,6 +696,28 @@ components:
         period_end:
           type: string
           format: date
+    PayoutMeta:
+      type: object
+      properties:
+        net_payout_days:
+          type: integer
+        payout_cycle:
+          type: string
+        min_payment:
+          type: number
+          format: float
+        min_paying_customers:
+          type: integer
+        terms_description:
+          type: string
+        selected_payout_methods:
+          type: array
+          items:
+            type: string
+        payout_method_options:
+          type: object
+        managed_payouts:
+          type: boolean
     Payout:
       type: object
       properties:
@@ -870,6 +784,216 @@ components:
               type: string
             color:
               type: string
+    Error_2:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Error message
+        code:
+          type: string
+          description: Error code
+      required:
+      - message
+      - code
+    PayoutsGroupedByPromoters:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            type: object
+            properties:
+              promoter:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    description: ID of the promoter
+                  email:
+                    type: string
+                    description: Email of the promoter
+                  name:
+                    type: string
+                    description: Name of the promoter
+                  invoice_details_status:
+                    type: string
+                    description: Status of invoice details
+                  fraud_suspicions:
+                    type: array
+                    items:
+                      type: string
+                    description: List of fraud suspicions
+                  profile:
+                    type: object
+                    properties:
+                      invoice_details_validation_errors:
+                        type: object
+                        description: Validation errors for invoice details
+              payout_method:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    description: ID of the payout method
+                  method:
+                    type: string
+                    description: Payout method name
+                  date_added:
+                    type: string
+                    format: date-time
+                    description: Date when the payout method was added
+                  is_disabled:
+                    type: boolean
+                    description: Whether the payout method is disabled
+                  meta:
+                    type: object
+                    description: Additional meta information
+                  is_selected:
+                    type: boolean
+                    description: Whether the payout method is selected
+                  details:
+                    type: object
+                    description: Details about the payout method
+                  managed_payouts:
+                    type: boolean
+                    description: Whether payouts are managed by us (auto-payouts)
+              payouts:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Payout_2'
+              is_amount_payable:
+                type: boolean
+                description: Whether the amount is payable
+              payout_ids:
+                type: array
+                items:
+                  type: integer
+                description: List of payout IDs
+              amount:
+                type: number
+                description: Total amount
+              total_incl_tax:
+                type: number
+                description: Total amount including tax
+        meta:
+          type: object
+          properties:
+            total:
+              type: number
+              description: Total amount
+            promoters_count:
+              type: integer
+              description: Count of promoters
+            total_incl_tax:
+              type: number
+              description: Total amount including tax
+            due_date:
+              type: string
+              format: date
+              description: Due date
+            period_end:
+              type: string
+              format: date
+              description: End date of the period
+    PayoutDueStats:
+      type: object
+      properties:
+        meta:
+          type: object
+          properties:
+            net_payout_days:
+              type: integer
+              description: Number of days for net payout
+            payout_cycle:
+              type: string
+              description: Payout cycle (e.g., monthly)
+            min_payment:
+              type: integer
+              description: Minimum payment amount
+            min_paying_customers:
+              type: integer
+              description: Minimum number of paying customers
+            terms_description:
+              type: string
+              description: Description of payment terms
+            selected_payout_methods:
+              type: array
+              items:
+                type: string
+              description: List of selected payout methods
+            payout_method_options:
+              type: object
+              description: Options for payout methods
+            managed_payouts:
+              type: boolean
+              description: Whether payouts are managed by us (auto-payouts)
+        data:
+          type: object
+          properties:
+            next:
+              type: object
+              properties:
+                promoters_count:
+                  type: integer
+                  description: Count of promoters
+                amounts:
+                  type: object
+                  additionalProperties:
+                    type: number
+                  description: Amounts by currency or unit
+                total_incl_tax:
+                  type: number
+                  description: Total amount including tax
+                due_date:
+                  type: string
+                  format: date
+                  description: Due date for the next payout
+                period_end:
+                  type: string
+                  format: date
+                  description: End date of the period
+            overdue:
+              type: object
+              properties:
+                promoters_count:
+                  type: integer
+                  description: Count of promoters
+                amounts:
+                  type: object
+                  additionalProperties:
+                    type: number
+                  description: Amounts by currency or unit
+                total_incl_tax:
+                  type: number
+                  description: Total amount including tax
+                due_date:
+                  type: string
+                  format: date
+                  description: Due date for overdue payout
+                period_end:
+                  type: string
+                  format: date
+                  description: End date of the period
+            custom:
+              type: object
+              properties:
+                promoters_count:
+                  type: integer
+                  description: Count of promoters
+                amounts:
+                  type: object
+                  additionalProperties:
+                    type: number
+                  description: Amounts by currency or unit
+                total_incl_tax:
+                  type: number
+                  description: Total amount including tax
+    Ids:
+      type: array
+      items:
+        type: integer
+      description: Array of Payout IDs
     PaymentsBatch:
       type: object
       properties:
@@ -997,216 +1121,6 @@ components:
             all_promoters_count:
               type: integer
               description: Count of all promoters
-    Ids:
-      type: array
-      items:
-        type: integer
-      description: Array of Payout IDs
-    PayoutDueStats:
-      type: object
-      properties:
-        meta:
-          type: object
-          properties:
-            net_payout_days:
-              type: integer
-              description: Number of days for net payout
-            payout_cycle:
-              type: string
-              description: Payout cycle (e.g., monthly)
-            min_payment:
-              type: integer
-              description: Minimum payment amount
-            min_paying_customers:
-              type: integer
-              description: Minimum number of paying customers
-            terms_description:
-              type: string
-              description: Description of payment terms
-            selected_payout_methods:
-              type: array
-              items:
-                type: string
-              description: List of selected payout methods
-            payout_method_options:
-              type: object
-              description: Options for payout methods
-            managed_payouts:
-              type: boolean
-              description: Whether payouts are managed by us (auto-payouts)
-        data:
-          type: object
-          properties:
-            next:
-              type: object
-              properties:
-                promoters_count:
-                  type: integer
-                  description: Count of promoters
-                amounts:
-                  type: object
-                  additionalProperties:
-                    type: number
-                  description: Amounts by currency or unit
-                total_incl_tax:
-                  type: number
-                  description: Total amount including tax
-                due_date:
-                  type: string
-                  format: date
-                  description: Due date for the next payout
-                period_end:
-                  type: string
-                  format: date
-                  description: End date of the period
-            overdue:
-              type: object
-              properties:
-                promoters_count:
-                  type: integer
-                  description: Count of promoters
-                amounts:
-                  type: object
-                  additionalProperties:
-                    type: number
-                  description: Amounts by currency or unit
-                total_incl_tax:
-                  type: number
-                  description: Total amount including tax
-                due_date:
-                  type: string
-                  format: date
-                  description: Due date for overdue payout
-                period_end:
-                  type: string
-                  format: date
-                  description: End date of the period
-            custom:
-              type: object
-              properties:
-                promoters_count:
-                  type: integer
-                  description: Count of promoters
-                amounts:
-                  type: object
-                  additionalProperties:
-                    type: number
-                  description: Amounts by currency or unit
-                total_incl_tax:
-                  type: number
-                  description: Total amount including tax
-    Error_2:
-      type: object
-      properties:
-        message:
-          type: string
-          description: Error message
-        code:
-          type: string
-          description: Error code
-      required:
-      - message
-      - code
-    PayoutsGroupedByPromoters:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            type: object
-            properties:
-              promoter:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                    description: ID of the promoter
-                  email:
-                    type: string
-                    description: Email of the promoter
-                  name:
-                    type: string
-                    description: Name of the promoter
-                  invoice_details_status:
-                    type: string
-                    description: Status of invoice details
-                  fraud_suspicions:
-                    type: array
-                    items:
-                      type: string
-                    description: List of fraud suspicions
-                  profile:
-                    type: object
-                    properties:
-                      invoice_details_validation_errors:
-                        type: object
-                        description: Validation errors for invoice details
-              payout_method:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                    description: ID of the payout method
-                  method:
-                    type: string
-                    description: Payout method name
-                  date_added:
-                    type: string
-                    format: date-time
-                    description: Date when the payout method was added
-                  is_disabled:
-                    type: boolean
-                    description: Whether the payout method is disabled
-                  meta:
-                    type: object
-                    description: Additional meta information
-                  is_selected:
-                    type: boolean
-                    description: Whether the payout method is selected
-                  details:
-                    type: object
-                    description: Details about the payout method
-                  managed_payouts:
-                    type: boolean
-                    description: Whether payouts are managed by us (auto-payouts)
-              payouts:
-                type: array
-                items:
-                  $ref: '#/components/schemas/Payout_2'
-              is_amount_payable:
-                type: boolean
-                description: Whether the amount is payable
-              payout_ids:
-                type: array
-                items:
-                  type: integer
-                description: List of payout IDs
-              amount:
-                type: number
-                description: Total amount
-              total_incl_tax:
-                type: number
-                description: Total amount including tax
-        meta:
-          type: object
-          properties:
-            total:
-              type: number
-              description: Total amount
-            promoters_count:
-              type: integer
-              description: Count of promoters
-            total_incl_tax:
-              type: number
-              description: Total amount including tax
-            due_date:
-              type: string
-              format: date
-              description: Due date
-            period_end:
-              type: string
-              format: date
-              description: End date of the period
     PayoutStats_2:
       type: object
       properties:
@@ -1404,6 +1318,92 @@ components:
             color:
               type: string
               description: Color of the campaign
+  parameters:
+    AccountId:
+      name: Account-ID
+      in: header
+      required: true
+      description: Account identifier that specifies which account is making the request
+      schema:
+        type: string
+        example: acc_123456
+    filters:
+      name: filters
+      in: query
+      description: Filter parameters
+      schema:
+        type: object
+        properties:
+          status:
+            type: string
+            enum:
+            - pending
+            - completed
+            - failed
+            - processing
+            - cancelled
+          campaign_id:
+            oneOf:
+            - type: integer
+            - type: array
+              items:
+                type: integer
+          payments_batch_id:
+            oneOf:
+            - type: integer
+            - type: array
+              items:
+                type: integer
+          due_period:
+            type: string
+            enum:
+            - next
+            - overdue
+            - custom
+          period_start:
+            type: string
+            format: date
+          period_end:
+            type: string
+            format: date
+          payout_method:
+            type: string
+            enum:
+            - paypal
+            - bank
+            - wise
+            - crypto
+            - custom
+            - dots
+            - not_set
+          group_ref:
+            type: string
+    AccountId_2:
+      name: Account-ID
+      in: header
+      required: true
+      description: Account id. You can find your Account ID on Your FirstPromoter Dashboard. Navigate to Settings → Integrations
+      schema:
+        type: string
+  responses:
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Forbidden:
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    UnprocessableEntity:
+      description: Unprocessable Entity
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   securitySchemes:
     BearerAuth:
       type: http
