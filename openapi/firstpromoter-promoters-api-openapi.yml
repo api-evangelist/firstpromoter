@@ -954,6 +954,83 @@ paths:
     - url: https://api.firstpromoter.com/api/v2/company
 components:
   schemas:
+    SubAffiliate:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        email:
+          type: string
+        stats:
+          type: object
+          properties:
+            clicks_count:
+              type: integer
+            referrals_count:
+              type: integer
+            sales_count:
+              type: integer
+            customers_count:
+              type: integer
+            revenue_amount:
+              type: number
+            active_customers_count:
+              type: integer
+        joined_at:
+          type: string
+          format: date-time
+    Promoter:
+      type: object
+      properties:
+        id:
+          type: integer
+        email:
+          type: string
+        name:
+          type: string
+        stats:
+          type: object
+          properties:
+            clicks_count:
+              type: integer
+            referrals_count:
+              type: integer
+            sales_count:
+              type: integer
+            customers_count:
+              type: integer
+            revenue_amount:
+              type: number
+            active_customers_count:
+              type: integer
+        balances:
+          type: object
+        custom_fields:
+          type: object
+        first_event_at:
+          type: string
+          format: date-time
+        invoice_details_status:
+          type: string
+        joined_at:
+          type: string
+          format: date-time
+        selected_payout_method:
+          type: string
+        pending_contract_documents:
+          type: array
+          items:
+            type: string
+        profile:
+          $ref: '#/components/schemas/PromoterProfile'
+        promoter_campaigns:
+          type: array
+          items:
+            $ref: '#/components/schemas/PromoterCampaign'
+        is_confirmed:
+          type: boolean
     PromoterProfile:
       type: object
       properties:
@@ -1033,192 +1110,87 @@ components:
           type: string
         has_monetary_rewards:
           type: boolean
-    SubAffiliate:
+    CustomFieldFilter:
+      type: object
+      required:
+      - key
+      - operator
+      - value
+      properties:
+        key:
+          type: string
+          description: The key custom_field key
+        operator:
+          type: string
+          enum:
+          - exact
+          - partial
+          description: The custom field operator
+        value:
+          oneOf:
+          - type: string
+          - type: array
+            items:
+              type: string
+          description: The value of the custom field. Must be String or Array of strings
+    BatchOperationResponse:
       type: object
       properties:
         id:
           type: integer
-        name:
+          description: Batch ID
+        status:
           type: string
-        email:
-          type: string
-        stats:
-          type: object
-          properties:
-            clicks_count:
-              type: integer
-            referrals_count:
-              type: integer
-            sales_count:
-              type: integer
-            customers_count:
-              type: integer
-            revenue_amount:
-              type: number
-            active_customers_count:
-              type: integer
-        joined_at:
-          type: string
-          format: date-time
-    Promoter:
-      type: object
-      properties:
-        id:
+          enum:
+          - completed
+          - pending
+          - in_progress
+          - failed
+          - stopped
+          description: Status of the batch operation
+        total:
           type: integer
-        email:
+          description: Total number of promoters
+        selected_total:
+          type: integer
+          description: Total number of selected promoters
+        processed_count:
+          type: integer
+          description: Number of processed promoters
+        failed_count:
+          type: integer
+          description: Number of failed promoters
+        action_label:
           type: string
-        name:
-          type: string
-        stats:
-          type: object
-          properties:
-            clicks_count:
-              type: integer
-            referrals_count:
-              type: integer
-            sales_count:
-              type: integer
-            customers_count:
-              type: integer
-            revenue_amount:
-              type: number
-            active_customers_count:
-              type: integer
-        balances:
-          type: object
-        custom_fields:
-          type: object
-        first_event_at:
+          description: Label for the action
+        created_at:
           type: string
           format: date-time
-        invoice_details_status:
-          type: string
-        joined_at:
+          description: Creation date of the batch operation
+        updated_at:
           type: string
           format: date-time
-        selected_payout_method:
-          type: string
-        pending_contract_documents:
+          description: Last update date of the batch operation
+        meta:
+          type: object
+          description: Additional metadata
+        progress:
+          type: integer
+          description: Progress of the batch operation
+        processing_errors:
           type: array
           items:
             type: string
-        profile:
-          $ref: '#/components/schemas/PromoterProfile'
-        promoter_campaigns:
-          type: array
-          items:
-            $ref: '#/components/schemas/PromoterCampaign'
-        is_confirmed:
-          type: boolean
-    PromoterProfile_2:
+          description: List of processing errors if any
+    ErrorResponse:
       type: object
       properties:
-        id:
-          type: integer
-          description: ID of the profile
-        first_name:
+        message:
           type: string
-          description: First name of the promoter
-        last_name:
+          description: Error message
+        code:
           type: string
-          description: Last name of the promoter
-        website:
-          type:
-          - string
-          - 'null'
-          description: Website of the promoter
-        company_name:
-          type:
-          - string
-          - 'null'
-          description: Company name of the promoter
-        company_number:
-          type:
-          - string
-          - 'null'
-          description: Company registration number
-        phone_number:
-          type:
-          - string
-          - 'null'
-          description: Phone number of the promoter
-        vat_id:
-          type:
-          - string
-          - 'null'
-          description: VAT ID of the promoter
-        country:
-          type:
-          - string
-          - 'null'
-          description: Country in 2 characters format
-          example: US
-        address:
-          type:
-          - string
-          - 'null'
-          description: Address of the promoter
-        avatar:
-          type: string
-          description: URL to the promoter's avatar image
-        w8_form_url:
-          type:
-          - string
-          - 'null'
-          description: URL to the promoter's W8 form if available
-        w9_form_url:
-          type:
-          - string
-          - 'null'
-          description: URL to the promoter's W9 form if available
-        description:
-          type:
-          - string
-          - 'null'
-          description: Description of the promoter
-        invoice_details_validation_errors:
-          type:
-          - object
-          - 'null'
-          description: Validation errors for invoice details
-        should_validate_invoice_details:
-          type: boolean
-          description: Should validate invoice details
-        instagram_url:
-          type:
-          - string
-          - 'null'
-          description: Promoter's Instagram URL
-        youtube_url:
-          type:
-          - string
-          - 'null'
-          description: Promoter's YouTube URL
-        linkedin_url:
-          type:
-          - string
-          - 'null'
-          description: Promoter's LinkedIn URL
-        facebook_url:
-          type:
-          - string
-          - 'null'
-          description: Promoter's Facebook URL
-        twitter_url:
-          type:
-          - string
-          - 'null'
-          description: Promoter's Twitter URL
-        twitch_url:
-          type:
-          - string
-          - 'null'
-          description: Promoter's Twitch URL
-        tiktok_url:
-          type:
-          - string
-          - 'null'
-          description: Promoter's TikTok URL
+          description: Error code
     PromoterChartData:
       type: object
       properties:
@@ -1261,64 +1233,6 @@ components:
           - week
           - month
           - year
-    PromoterCreate:
-      type: object
-      required:
-      - email
-      properties:
-        email:
-          type: string
-          format: email
-          description: Email address of the promoter
-        cust_id:
-          type:
-          - string
-          - 'null'
-          description: Cust ID of the promoter
-        profile:
-          $ref: '#/components/schemas/PromoterProfile_2'
-        initial_campaign_id:
-          type: integer
-          description: The ID of the campaign promoter will be added first
-        drip_emails:
-          type: boolean
-          description: Send a welcome email to the promoter
-        always_approve:
-          type: boolean
-          default: true
-          description: Whether the promoter should be automatically accepted into the campaign upon creation. Set to `false` to create the promoter in a pending state instead, requiring manual acceptance or rejection.
-    PromoterUpdate:
-      type: object
-      properties:
-        email:
-          type: string
-          format: email
-          description: Email address of the promoter
-        find_by:
-          type: string
-          enum:
-          - email
-          - cust_id
-          - auth_token
-          - ref_token
-          - promo_code
-          description: "Find by attribute. Required when you want to find the promoter using another parameter like the email, cust_id, auth_token, ref_token, or promo_code instead of an ID. \n \n  Your request should follow the format `https://api.firstpromoter.com/api/v2/company/promoters/{email, cust_id, auth_token, ref_token, or promo_code}`"
-        cust_id:
-          type:
-          - string
-          - 'null'
-          description: Cust ID of the promoter
-        custom_fields:
-          type: array
-          description: "Custom fields must be a Hash with the keys being the ones from the company custom fields and values must be String or Array of Strings. These are based on the custom fields that you set in your Settings > Affiliate portal > Custom fields.\n \n **Note**: Each item will have to be set as `custom_fields[my_custom_field_key]: my_custom_field_value`"
-        profile:
-          $ref: '#/components/schemas/PromoterProfile_2'
-        profile[_destroy_w8form]:
-          type: boolean
-          description: Destroy W8 form
-        profile[_destroy_w9form]:
-          type: boolean
-          description: Destroy W9 form
     Promoter_2:
       type: object
       properties:
@@ -1526,60 +1440,334 @@ components:
               type:
               - string
               - 'null'
-    BatchOperationResponse:
+    PromoterCreate:
+      type: object
+      required:
+      - email
+      properties:
+        email:
+          type: string
+          format: email
+          description: Email address of the promoter
+        cust_id:
+          type:
+          - string
+          - 'null'
+          description: Cust ID of the promoter
+        profile:
+          $ref: '#/components/schemas/PromoterProfile_2'
+        initial_campaign_id:
+          type: integer
+          description: The ID of the campaign promoter will be added first
+        drip_emails:
+          type: boolean
+          description: Send a welcome email to the promoter
+        always_approve:
+          type: boolean
+          default: true
+          description: Whether the promoter should be automatically accepted into the campaign upon creation. Set to `false` to create the promoter in a pending state instead, requiring manual acceptance or rejection.
+    PromoterProfile_2:
       type: object
       properties:
         id:
           type: integer
-          description: Batch ID
-        status:
+          description: ID of the profile
+        first_name:
           type: string
-          enum:
-          - completed
-          - pending
-          - in_progress
-          - failed
-          - stopped
-          description: Status of the batch operation
-        total:
-          type: integer
-          description: Total number of promoters
-        selected_total:
-          type: integer
-          description: Total number of selected promoters
-        processed_count:
-          type: integer
-          description: Number of processed promoters
-        failed_count:
-          type: integer
-          description: Number of failed promoters
-        action_label:
+          description: First name of the promoter
+        last_name:
           type: string
-          description: Label for the action
-        created_at:
+          description: Last name of the promoter
+        website:
+          type:
+          - string
+          - 'null'
+          description: Website of the promoter
+        company_name:
+          type:
+          - string
+          - 'null'
+          description: Company name of the promoter
+        company_number:
+          type:
+          - string
+          - 'null'
+          description: Company registration number
+        phone_number:
+          type:
+          - string
+          - 'null'
+          description: Phone number of the promoter
+        vat_id:
+          type:
+          - string
+          - 'null'
+          description: VAT ID of the promoter
+        country:
+          type:
+          - string
+          - 'null'
+          description: Country in 2 characters format
+          example: US
+        address:
+          type:
+          - string
+          - 'null'
+          description: Address of the promoter
+        avatar:
           type: string
-          format: date-time
-          description: Creation date of the batch operation
-        updated_at:
-          type: string
-          format: date-time
-          description: Last update date of the batch operation
-        meta:
-          type: object
-          description: Additional metadata
-        progress:
-          type: integer
-          description: Progress of the batch operation
-        processing_errors:
-          type: array
-          items:
-            type: string
-          description: List of processing errors if any
+          description: URL to the promoter's avatar image
+        w8_form_url:
+          type:
+          - string
+          - 'null'
+          description: URL to the promoter's W8 form if available
+        w9_form_url:
+          type:
+          - string
+          - 'null'
+          description: URL to the promoter's W9 form if available
+        description:
+          type:
+          - string
+          - 'null'
+          description: Description of the promoter
+        invoice_details_validation_errors:
+          type:
+          - object
+          - 'null'
+          description: Validation errors for invoice details
+        should_validate_invoice_details:
+          type: boolean
+          description: Should validate invoice details
+        instagram_url:
+          type:
+          - string
+          - 'null'
+          description: Promoter's Instagram URL
+        youtube_url:
+          type:
+          - string
+          - 'null'
+          description: Promoter's YouTube URL
+        linkedin_url:
+          type:
+          - string
+          - 'null'
+          description: Promoter's LinkedIn URL
+        facebook_url:
+          type:
+          - string
+          - 'null'
+          description: Promoter's Facebook URL
+        twitter_url:
+          type:
+          - string
+          - 'null'
+          description: Promoter's Twitter URL
+        twitch_url:
+          type:
+          - string
+          - 'null'
+          description: Promoter's Twitch URL
+        tiktok_url:
+          type:
+          - string
+          - 'null'
+          description: Promoter's TikTok URL
     Ids:
       type: array
       description: Array of promoter ids. If there are more than __5__ ids on this param/field, the action will be processed asynchronously. The response for the batch status will most likely be `in_progress`. The available statuses are `pending`, `in_progress`, `completed`, `failed` and `stopped`
       items:
         type: integer
+    PromoterFilters:
+      type: object
+      properties:
+        revenue_amount:
+          type: object
+          description: Revenue amount filter
+          properties:
+            from:
+              type: integer
+              minimum: 0
+              description: Minimum revenue amount
+            to:
+              type: integer
+              description: Maximum revenue amount
+        customers_count:
+          type: object
+          description: Customers count filter
+          properties:
+            from:
+              type: integer
+              minimum: 0
+              description: Minimum customers count
+            to:
+              type: integer
+              description: Maximum customers count
+        referrals_count:
+          type: object
+          description: Referrals count filter
+          properties:
+            from:
+              type: integer
+              minimum: 0
+              description: Minimum referrals count
+            to:
+              type: integer
+              description: Maximum referrals count
+        clicks_count:
+          type: object
+          description: Clicks count filter
+          properties:
+            from:
+              type: integer
+              minimum: 0
+              description: Minimum clicks count
+            to:
+              type: integer
+              description: Maximum clicks count
+        joined_at:
+          type: object
+          description: Joined at filter
+          properties:
+            from:
+              type: string
+              description: Minimum joined at date, ISO date format (YYYY-MM-DD HH:MM:SS)
+              format: date
+            to:
+              type: string
+              description: Maximum joined at date, ISO date format (YYYY-MM-DD HH:MM:SS)
+              format: date
+        last_login_at:
+          type: object
+          description: Last login at filter
+          properties:
+            from:
+              type: string
+              format: date
+              description: Minimum last login at date, ISO date format (YYYY-MM-DD HH:MM:SS)
+            to:
+              type: string
+              format: date
+              description: Maximum last login at date, ISO date format (YYYY-MM-DD HH:MM:SS)
+        campaign_id:
+          oneOf:
+          - type: integer
+            description: Campaign id
+          - type: array
+            description: Array of campaign ids
+            items:
+              type: integer
+        state:
+          type: string
+          enum:
+          - pending
+          - accepted
+          - rejected
+          - blocked
+          - inactive
+          - not_set
+          description: Promoter state filter
+        has_wform:
+          type: string
+          enum:
+          - 'yes'
+          - 'no'
+          description: Has wform filter
+        parent_promoter_id:
+          type: integer
+          description: Parent promoter id
+        archived:
+          type: string
+          enum:
+          - 'true'
+          - 'false'
+          - '`true`'
+          - '`false`'
+          - '`yes`'
+          - '`no`'
+          description: Archived filter
+        subscribed_to_email:
+          type: string
+          enum:
+          - 'true'
+          - 'false'
+          - '`true`'
+          - '`false`'
+          - '`yes`'
+          - '`no`'
+          description: Subscribed to email filter
+        custom_field1:
+          $ref: '#/components/schemas/CustomFieldFilter'
+        custom_field2:
+          $ref: '#/components/schemas/CustomFieldFilter'
+        fraud_suspicions:
+          type: array
+          items:
+            type: string
+            enum:
+            - same_ip_suspicion
+            - same_promoter_email
+            - ad_source
+            - no_suspicion
+            description: Suspicion type filter
+        inactivity:
+          type: object
+          description: Filter promoters by inactivity — promoters who have not performed the specified metric within the given number of days
+          properties:
+            metric:
+              type: string
+              enum:
+              - referral
+              - customer
+              - click
+              - sale
+              description: The activity metric to measure inactivity against
+            days:
+              type: integer
+              minimum: 1
+              description: Number of days of inactivity
+        invoice_details_status:
+          type: string
+          enum:
+          - approved
+          - pending
+          - rejected
+          - not_submitted
+          description: Filter promoters by their invoice details status
+    PromoterUpdate:
+      type: object
+      properties:
+        email:
+          type: string
+          format: email
+          description: Email address of the promoter
+        find_by:
+          type: string
+          enum:
+          - email
+          - cust_id
+          - auth_token
+          - ref_token
+          - promo_code
+          description: "Find by attribute. Required when you want to find the promoter using another parameter like the email, cust_id, auth_token, ref_token, or promo_code instead of an ID. \n \n  Your request should follow the format `https://api.firstpromoter.com/api/v2/company/promoters/{email, cust_id, auth_token, ref_token, or promo_code}`"
+        cust_id:
+          type:
+          - string
+          - 'null'
+          description: Cust ID of the promoter
+        custom_fields:
+          type: array
+          description: "Custom fields must be a Hash with the keys being the ones from the company custom fields and values must be String or Array of Strings. These are based on the custom fields that you set in your Settings > Affiliate portal > Custom fields.\n \n **Note**: Each item will have to be set as `custom_fields[my_custom_field_key]: my_custom_field_value`"
+        profile:
+          $ref: '#/components/schemas/PromoterProfile_2'
+        profile[_destroy_w8form]:
+          type: boolean
+          description: Destroy W8 form
+        profile[_destroy_w9form]:
+          type: boolean
+          description: Destroy W9 form
     PromoterListItem:
       type: object
       properties:
@@ -1773,194 +1961,6 @@ components:
               format: date-time
             is_disabled:
               type: boolean
-    ErrorResponse:
-      type: object
-      properties:
-        message:
-          type: string
-          description: Error message
-        code:
-          type: string
-          description: Error code
-    PromoterFilters:
-      type: object
-      properties:
-        revenue_amount:
-          type: object
-          description: Revenue amount filter
-          properties:
-            from:
-              type: integer
-              minimum: 0
-              description: Minimum revenue amount
-            to:
-              type: integer
-              description: Maximum revenue amount
-        customers_count:
-          type: object
-          description: Customers count filter
-          properties:
-            from:
-              type: integer
-              minimum: 0
-              description: Minimum customers count
-            to:
-              type: integer
-              description: Maximum customers count
-        referrals_count:
-          type: object
-          description: Referrals count filter
-          properties:
-            from:
-              type: integer
-              minimum: 0
-              description: Minimum referrals count
-            to:
-              type: integer
-              description: Maximum referrals count
-        clicks_count:
-          type: object
-          description: Clicks count filter
-          properties:
-            from:
-              type: integer
-              minimum: 0
-              description: Minimum clicks count
-            to:
-              type: integer
-              description: Maximum clicks count
-        joined_at:
-          type: object
-          description: Joined at filter
-          properties:
-            from:
-              type: string
-              description: Minimum joined at date, ISO date format (YYYY-MM-DD HH:MM:SS)
-              format: date
-            to:
-              type: string
-              description: Maximum joined at date, ISO date format (YYYY-MM-DD HH:MM:SS)
-              format: date
-        last_login_at:
-          type: object
-          description: Last login at filter
-          properties:
-            from:
-              type: string
-              format: date
-              description: Minimum last login at date, ISO date format (YYYY-MM-DD HH:MM:SS)
-            to:
-              type: string
-              format: date
-              description: Maximum last login at date, ISO date format (YYYY-MM-DD HH:MM:SS)
-        campaign_id:
-          oneOf:
-          - type: integer
-            description: Campaign id
-          - type: array
-            description: Array of campaign ids
-            items:
-              type: integer
-        state:
-          type: string
-          enum:
-          - pending
-          - accepted
-          - rejected
-          - blocked
-          - inactive
-          - not_set
-          description: Promoter state filter
-        has_wform:
-          type: string
-          enum:
-          - 'yes'
-          - 'no'
-          description: Has wform filter
-        parent_promoter_id:
-          type: integer
-          description: Parent promoter id
-        archived:
-          type: string
-          enum:
-          - 'true'
-          - 'false'
-          - '`true`'
-          - '`false`'
-          - '`yes`'
-          - '`no`'
-          description: Archived filter
-        subscribed_to_email:
-          type: string
-          enum:
-          - 'true'
-          - 'false'
-          - '`true`'
-          - '`false`'
-          - '`yes`'
-          - '`no`'
-          description: Subscribed to email filter
-        custom_field1:
-          $ref: '#/components/schemas/CustomFieldFilter'
-        custom_field2:
-          $ref: '#/components/schemas/CustomFieldFilter'
-        fraud_suspicions:
-          type: array
-          items:
-            type: string
-            enum:
-            - same_ip_suspicion
-            - same_promoter_email
-            - ad_source
-            - no_suspicion
-            description: Suspicion type filter
-        inactivity:
-          type: object
-          description: Filter promoters by inactivity — promoters who have not performed the specified metric within the given number of days
-          properties:
-            metric:
-              type: string
-              enum:
-              - referral
-              - customer
-              - click
-              - sale
-              description: The activity metric to measure inactivity against
-            days:
-              type: integer
-              minimum: 1
-              description: Number of days of inactivity
-        invoice_details_status:
-          type: string
-          enum:
-          - approved
-          - pending
-          - rejected
-          - not_submitted
-          description: Filter promoters by their invoice details status
-    CustomFieldFilter:
-      type: object
-      required:
-      - key
-      - operator
-      - value
-      properties:
-        key:
-          type: string
-          description: The key custom_field key
-        operator:
-          type: string
-          enum:
-          - exact
-          - partial
-          description: The custom field operator
-        value:
-          oneOf:
-          - type: string
-          - type: array
-            items:
-              type: string
-          description: The value of the custom field. Must be String or Array of strings
   parameters:
     AccountId:
       name: Account-ID

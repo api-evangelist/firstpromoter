@@ -173,84 +173,47 @@ paths:
         '409':
           $ref: '#/components/responses/Conflict'
 components:
-  responses:
-    InvalidParams:
-      description: Invalid Parameters
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-          example:
-            message: Invalid method
-            code: invalid_params
-    ValidationError:
-      description: Validation Error
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              message:
-                type: string
-              errors:
-                type: object
-                additionalProperties:
-                  type: array
-                  items:
-                    type: string
-              code:
-                type: string
-            example:
-              message: 'Validation failed: Details paypal email can''t be blank'
-              errors:
-                details.paypal_email:
-                - can't be blank
-                - is invalid
-              code: invalid_record
-    Conflict:
-      description: Conflict
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-          example:
-            message: Failed to destroy Rewards::Providers::Account
-            code: destroy_failed
-    NotFound:
-      description: Not Found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-          example:
-            message: Record not found
-            code: not_found
-    Unauthorized:
-      description: Unauthorized
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Forbidden:
-      description: Forbidden
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-          example:
-            message: Invalid user type
-            code: forbidden
   schemas:
-    CryptoDetails:
+    PayoutMethod:
+      type: object
+      properties:
+        id:
+          type: integer
+        method:
+          type: string
+          enum:
+          - paypal
+          - bank
+          - wise
+          - crypto
+          - custom
+          - dots
+        date_added:
+          type: string
+          format: date-time
+        is_disabled:
+          type: boolean
+        meta:
+          type: object
+        is_selected:
+          type: boolean
+        details:
+          type: object
+          oneOf:
+          - $ref: '#/components/schemas/PaypalDetails'
+          - $ref: '#/components/schemas/BankDetails'
+          - $ref: '#/components/schemas/WiseDetails'
+          - $ref: '#/components/schemas/CryptoDetails'
+        managed_payouts:
+          type: boolean
+    WiseDetails:
       type: object
       required:
-      - wallet_address
-      - crypto_currency
+      - wise_email
       properties:
-        wallet_address:
+        wise_email:
           type: string
-        crypto_currency:
-          type: string
+          format: email
     Error:
       type: object
       properties:
@@ -258,6 +221,14 @@ components:
           type: string
         code:
           type: string
+    PaypalDetails:
+      type: object
+      required:
+      - paypal_email
+      properties:
+        paypal_email:
+          type: string
+          format: email
     BankDetails:
       type: object
       required:
@@ -381,84 +352,6 @@ components:
           type: string
         bank_address:
           type: string
-    PayoutMethod:
-      type: object
-      properties:
-        id:
-          type: integer
-        method:
-          type: string
-          enum:
-          - paypal
-          - bank
-          - wise
-          - crypto
-          - custom
-          - dots
-        date_added:
-          type: string
-          format: date-time
-        is_disabled:
-          type: boolean
-        meta:
-          type: object
-        is_selected:
-          type: boolean
-        details:
-          type: object
-          oneOf:
-          - $ref: '#/components/schemas/PaypalDetails'
-          - $ref: '#/components/schemas/BankDetails'
-          - $ref: '#/components/schemas/WiseDetails'
-          - $ref: '#/components/schemas/CryptoDetails'
-        managed_payouts:
-          type: boolean
-    PaypalDetails:
-      type: object
-      required:
-      - paypal_email
-      properties:
-        paypal_email:
-          type: string
-          format: email
-    WiseDetails:
-      type: object
-      required:
-      - wise_email
-      properties:
-        wise_email:
-          type: string
-          format: email
-    PayoutMethodCreate:
-      type: object
-      required:
-      - method
-      - details
-      - promoter_id
-      properties:
-        method:
-          type: string
-          enum:
-          - paypal
-          - bank
-          - wise
-          - crypto
-          - custom
-          - dots
-        is_disabled:
-          type: boolean
-        is_selected:
-          type: boolean
-        promoter_id:
-          type: integer
-          description: Id of the promoter
-        details:
-          type: object
-          oneOf:
-          - $ref: '#/components/schemas/PaypalDetails'
-          - $ref: '#/components/schemas/BankDetails'
-          - $ref: '#/components/schemas/WiseDetails'
-          - $ref: '#/components/schemas/CryptoDetails'
     PayoutMethodUpdate:
       type: object
       required:
@@ -489,6 +382,113 @@ components:
           - $ref: '#/components/schemas/BankDetails'
           - $ref: '#/components/schemas/WiseDetails'
           - $ref: '#/components/schemas/CryptoDetails'
+    CryptoDetails:
+      type: object
+      required:
+      - wallet_address
+      - crypto_currency
+      properties:
+        wallet_address:
+          type: string
+        crypto_currency:
+          type: string
+    PayoutMethodCreate:
+      type: object
+      required:
+      - method
+      - details
+      - promoter_id
+      properties:
+        method:
+          type: string
+          enum:
+          - paypal
+          - bank
+          - wise
+          - crypto
+          - custom
+          - dots
+        is_disabled:
+          type: boolean
+        is_selected:
+          type: boolean
+        promoter_id:
+          type: integer
+          description: Id of the promoter
+        details:
+          type: object
+          oneOf:
+          - $ref: '#/components/schemas/PaypalDetails'
+          - $ref: '#/components/schemas/BankDetails'
+          - $ref: '#/components/schemas/WiseDetails'
+          - $ref: '#/components/schemas/CryptoDetails'
+  responses:
+    NotFound:
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            message: Record not found
+            code: not_found
+    Forbidden:
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            message: Invalid user type
+            code: forbidden
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    InvalidParams:
+      description: Invalid Parameters
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            message: Invalid method
+            code: invalid_params
+    Conflict:
+      description: Conflict
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            message: Failed to destroy Rewards::Providers::Account
+            code: destroy_failed
+    ValidationError:
+      description: Validation Error
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+              errors:
+                type: object
+                additionalProperties:
+                  type: array
+                  items:
+                    type: string
+              code:
+                type: string
+            example:
+              message: 'Validation failed: Details paypal email can''t be blank'
+              errors:
+                details.paypal_email:
+                - can't be blank
+                - is invalid
+              code: invalid_record
   parameters:
     AccountId:
       name: Account-ID

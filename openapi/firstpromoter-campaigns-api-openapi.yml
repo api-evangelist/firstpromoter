@@ -269,72 +269,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    CampaignUpdate:
-      type: object
-      properties:
-        name:
-          type: string
-        landing_url:
-          type: string
-        ref_token_param:
-          type: string
-          enum:
-          - ?fpr
-          - ?via
-          - ?fp_ref
-          - ?deal
-          - ?ref
-          - ?_from
-          - ?_by
-          - ?_go
-        color:
-          type: string
-        visitor_cookie_life:
-          type: integer
-        auto_approve_promoters:
-          type: boolean
-        is_private:
-          type: boolean
-        track_ad_traffic:
-          type: string
-          enum:
-          - pending
-          - allow
-          - block
-        links:
-          type: array
-          items:
-            $ref: '#/components/schemas/Link'
-        upgrade_details:
-          $ref: '#/components/schemas/UpgradeDetails'
-        rewards_for_promoters:
-          type: array
-          items:
-            $ref: '#/components/schemas/Reward'
-        rewards_for_referrals:
-          type: array
-          items:
-            $ref: '#/components/schemas/Reward'
-    Reward:
-      type: object
-      required:
-      - apply_on
-      - product_ids
-      - reward_id
-      properties:
-        apply_on:
-          type: string
-          enum:
-          - monthly
-          - yearly
-          - one_time
-          - all
-          - specific
-        product_ids:
-          type: array
-          items: {}
-        reward_id:
-          type: integer
     CampaignCreate:
       type: object
       required:
@@ -386,6 +320,20 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Reward'
+    Link:
+      type: object
+      required:
+      - name
+      - url
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        url:
+          type: string
+        _destroy:
+          type: boolean
     UpgradeDetails:
       type: object
       required:
@@ -402,20 +350,72 @@ components:
           enum:
           - customers
           - revenue
-    Link:
+    Reward:
       type: object
       required:
-      - name
-      - url
+      - apply_on
+      - product_ids
+      - reward_id
       properties:
-        id:
+        apply_on:
+          type: string
+          enum:
+          - monthly
+          - yearly
+          - one_time
+          - all
+          - specific
+        product_ids:
+          type: array
+          items: {}
+        reward_id:
           type: integer
+    CampaignUpdate:
+      type: object
+      properties:
         name:
           type: string
-        url:
+        landing_url:
           type: string
-        _destroy:
+        ref_token_param:
+          type: string
+          enum:
+          - ?fpr
+          - ?via
+          - ?fp_ref
+          - ?deal
+          - ?ref
+          - ?_from
+          - ?_by
+          - ?_go
+        color:
+          type: string
+        visitor_cookie_life:
+          type: integer
+        auto_approve_promoters:
           type: boolean
+        is_private:
+          type: boolean
+        track_ad_traffic:
+          type: string
+          enum:
+          - pending
+          - allow
+          - block
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/Link'
+        upgrade_details:
+          $ref: '#/components/schemas/UpgradeDetails'
+        rewards_for_promoters:
+          type: array
+          items:
+            $ref: '#/components/schemas/Reward'
+        rewards_for_referrals:
+          type: array
+          items:
+            $ref: '#/components/schemas/Reward'
     Campaign:
       type: object
       properties:

@@ -416,23 +416,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    ValidationError:
-      type: object
-      properties:
-        message:
-          type: string
-          description: Error message
-        errors:
-          type: object
-          description: Validation errors
-          additionalProperties:
-            type: array
-            items:
-              type: string
-        code:
-          type: string
-          description: Error code
-          example: invalid_record
     Reward:
       type: object
       properties:
@@ -590,6 +573,23 @@ components:
           type: string
           description: Error code
           example: forbidden
+    ValidationError:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Error message
+        errors:
+          type: object
+          description: Validation errors
+          additionalProperties:
+            type: array
+            items:
+              type: string
+        code:
+          type: string
+          description: Error code
+          example: invalid_record
   parameters:
     AccountId:
       name: Account-ID

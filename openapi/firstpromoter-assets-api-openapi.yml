@@ -464,6 +464,53 @@ components:
         type: string
         example: acc_123456
   schemas:
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: string
+        errors:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string
+    BatchOperationResult:
+      type: object
+      properties:
+        id:
+          type: integer
+        status:
+          type: string
+          enum:
+          - pending
+          - completed
+        total:
+          type: integer
+        selected_total:
+          type: integer
+        processed_count:
+          type: integer
+        failed_count:
+          type: integer
+        action_label:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+        meta:
+          type: object
+        progress:
+          type: integer
+        processing_errors:
+          type: array
+          items:
+            type: string
     Asset:
       type: object
       properties:
@@ -526,53 +573,6 @@ components:
                 type: string
               color:
                 type: string
-    BatchOperationResult:
-      type: object
-      properties:
-        id:
-          type: integer
-        status:
-          type: string
-          enum:
-          - pending
-          - completed
-        total:
-          type: integer
-        selected_total:
-          type: integer
-        processed_count:
-          type: integer
-        failed_count:
-          type: integer
-        action_label:
-          type: string
-        created_at:
-          type: string
-          format: date-time
-        updated_at:
-          type: string
-          format: date-time
-        meta:
-          type: object
-        progress:
-          type: integer
-        processing_errors:
-          type: array
-          items:
-            type: string
-    Error:
-      type: object
-      properties:
-        message:
-          type: string
-        code:
-          type: string
-        errors:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              type: string
   securitySchemes:
     BearerAuth:
       type: http

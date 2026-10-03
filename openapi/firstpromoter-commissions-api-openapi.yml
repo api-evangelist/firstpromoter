@@ -754,6 +754,41 @@ paths:
     servers:
     - url: https://api.firstpromoter.com/api/v2/company
 components:
+  parameters:
+    CommissionFilters:
+      name: filters
+      in: query
+      description: Filter parameters
+      required: false
+      schema:
+        type: object
+        properties:
+          status:
+            type: string
+            enum:
+            - pending
+            - approved
+            - denied
+          paid:
+            type: string
+            enum:
+            - 'yes'
+            - 'no'
+    AccountId:
+      name: Account-ID
+      in: header
+      required: true
+      description: Account identifier that specifies which account is making the request
+      schema:
+        type: string
+        example: acc_123456
+    AccountId_2:
+      name: Account-ID
+      in: header
+      required: true
+      description: Account id. You can find your Account ID on Your FirstPromoter Dashboard. Navigate to Settings → Integrations
+      schema:
+        type: string
   schemas:
     Referral:
       type:
@@ -765,32 +800,6 @@ components:
         uid:
           type: string
         email:
-          type: string
-    Error:
-      type: object
-      properties:
-        message:
-          type: string
-        code:
-          type: string
-    PromoterCampaign:
-      type: object
-      properties:
-        id:
-          type: integer
-        campaign_id:
-          type: integer
-        created_at:
-          type: string
-          format: date-time
-        campaign:
-          $ref: '#/components/schemas/Campaign'
-    Reward:
-      type: object
-      properties:
-        id:
-          type: integer
-        name:
           type: string
     Commission:
       type: object
@@ -846,6 +855,13 @@ components:
           type: number
         is_paid:
           type: boolean
+    Reward:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
     Campaign:
       type: object
       properties:
@@ -857,158 +873,25 @@ components:
           type:
           - string
           - 'null'
-    CommissionFilters:
+    Error:
       type: object
       properties:
-        status:
+        message:
           type: string
-          enum:
-          - pending
-          - approved
-          - denied
-        paid:
+        code:
           type: string
-          enum:
-          - 'yes'
-          - 'no'
-          description: Paid filter for monetary commissions
-        fulfilled:
-          type: string
-          enum:
-          - 'yes'
-          - 'no'
-          description: Fulfilled filter for non-monetary commissions
-        sale_amount:
-          type: object
-          properties:
-            from:
-              type: integer
-              description: Sale amount from
-            to:
-              type: integer
-              description: Sale amount to
-        amount:
-          type: object
-          properties:
-            from:
-              type: integer
-              description: Amount from
-            to:
-              type: integer
-              description: Amount to
-        created_at:
-          type: object
-          properties:
-            from:
-              type: string
-              format: date
-              description: created_at start date
-            to:
-              type: string
-              format: date
-              description: created_at end date
-        campaign_id:
-          oneOf:
-          - type: integer
-          - type: array
-            items:
-              type: integer
-          description: Campaign ids. Can be Integer or Array of Integers
-        payout_id:
-          oneOf:
-          - type: integer
-          - type: array
-            items:
-              type: integer
-          description: Payout ids. Can be Integer or Array of Integers
-        due_period:
-          type: string
-          enum:
-          - next
-          - overdue
-          - custom
-          description: Due period filter
-        promoter_id:
-          type: integer
-          description: Promoter id
-        first_commission:
-          type: boolean
-          description: First commission
-        refunded:
-          type: boolean
-          description: Refunded reward
-        fraud_check:
-          type: string
-          enum:
-          - no_suspicion
-          - same_ip_suspicion
-          - same_promoter_email
-          - ad_source
-          description: Referral fraud check (suspicion). Array accepted
-        plan_id:
-          oneOf:
-          - type: integer
-          - type: array
-            items:
-              type: integer
-          description: Plan id
-    BatchActionRequest:
-      type: object
-      properties:
-        ids:
-          type: array
-          items:
-            type: integer
-          description: Array of commission Ids. If there are more than __5__ ids on this param/field, the action will be processed asynchronously. The response for the batch status will most likely be `in_progress`. The available statuses are `pending`, `in_progress`, `completed`, `failed` and `stopped`
-    BatchOperationResponse:
+    PromoterCampaign:
       type: object
       properties:
         id:
           type: integer
-          description: Batch ID
-        status:
-          type: string
-          enum:
-          - completed
-          - pending
-          - in_progress
-          - failed
-          - stopped
-          description: Status of the batch operation
-        total:
+        campaign_id:
           type: integer
-          description: Total number of items
-        selected_total:
-          type: integer
-          description: Total number of selected items
-        processed_count:
-          type: integer
-          description: Number of processed items
-        failed_count:
-          type: integer
-          description: Number of failed operations
-        action_label:
-          type: string
-          description: Label for the action
         created_at:
           type: string
           format: date-time
-          description: Creation date of the batch operation
-        updated_at:
-          type: string
-          format: date-time
-          description: Last update date of the batch operation
-        meta:
-          type: object
-          description: Additional metadata
-        progress:
-          type: integer
-          description: Progress of the batch operation
-        processing_errors:
-          type: array
-          items:
-            type: string
-          description: List of processing errors if any
+        campaign:
+          $ref: '#/components/schemas/Campaign'
     CommissionCreate:
       oneOf:
       - title: Sale Commission
@@ -1121,6 +1004,167 @@ components:
         mapping:
           sale: '#/components/schemas/CommissionCreate/oneOf/0'
           custom: '#/components/schemas/CommissionCreate/oneOf/1'
+    CommissionFilters:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+          - pending
+          - approved
+          - denied
+        paid:
+          type: string
+          enum:
+          - 'yes'
+          - 'no'
+          description: Paid filter for monetary commissions
+        fulfilled:
+          type: string
+          enum:
+          - 'yes'
+          - 'no'
+          description: Fulfilled filter for non-monetary commissions
+        sale_amount:
+          type: object
+          properties:
+            from:
+              type: integer
+              description: Sale amount from
+            to:
+              type: integer
+              description: Sale amount to
+        amount:
+          type: object
+          properties:
+            from:
+              type: integer
+              description: Amount from
+            to:
+              type: integer
+              description: Amount to
+        created_at:
+          type: object
+          properties:
+            from:
+              type: string
+              format: date
+              description: created_at start date
+            to:
+              type: string
+              format: date
+              description: created_at end date
+        campaign_id:
+          oneOf:
+          - type: integer
+          - type: array
+            items:
+              type: integer
+          description: Campaign ids. Can be Integer or Array of Integers
+        payout_id:
+          oneOf:
+          - type: integer
+          - type: array
+            items:
+              type: integer
+          description: Payout ids. Can be Integer or Array of Integers
+        due_period:
+          type: string
+          enum:
+          - next
+          - overdue
+          - custom
+          description: Due period filter
+        promoter_id:
+          type: integer
+          description: Promoter id
+        first_commission:
+          type: boolean
+          description: First commission
+        refunded:
+          type: boolean
+          description: Refunded reward
+        fraud_check:
+          type: string
+          enum:
+          - no_suspicion
+          - same_ip_suspicion
+          - same_promoter_email
+          - ad_source
+          description: Referral fraud check (suspicion). Array accepted
+        plan_id:
+          oneOf:
+          - type: integer
+          - type: array
+            items:
+              type: integer
+          description: Plan id
+    BatchOperationResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Batch ID
+        status:
+          type: string
+          enum:
+          - completed
+          - pending
+          - in_progress
+          - failed
+          - stopped
+          description: Status of the batch operation
+        total:
+          type: integer
+          description: Total number of items
+        selected_total:
+          type: integer
+          description: Total number of selected items
+        processed_count:
+          type: integer
+          description: Number of processed items
+        failed_count:
+          type: integer
+          description: Number of failed operations
+        action_label:
+          type: string
+          description: Label for the action
+        created_at:
+          type: string
+          format: date-time
+          description: Creation date of the batch operation
+        updated_at:
+          type: string
+          format: date-time
+          description: Last update date of the batch operation
+        meta:
+          type: object
+          description: Additional metadata
+        progress:
+          type: integer
+          description: Progress of the batch operation
+        processing_errors:
+          type: array
+          items:
+            type: string
+          description: List of processing errors if any
+    ErrorResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Error message
+        code:
+          type: string
+          description: Error code
+    BatchActionRequest:
+      type: object
+      properties:
+        ids:
+          type: array
+          items:
+            type: integer
+          description: Array of commission Ids. If there are more than __5__ ids on this param/field, the action will be processed asynchronously. The response for the batch status will most likely be `in_progress`. The available statuses are `pending`, `in_progress`, `completed`, `failed` and `stopped`
     Commission_2:
       type: object
       properties:
@@ -1302,15 +1346,6 @@ components:
           - object
           - 'null'
           description: Commission split details from the associated referral, when the referral is shared between promoters
-    ErrorResponse:
-      type: object
-      properties:
-        message:
-          type: string
-          description: Error message
-        code:
-          type: string
-          description: Error code
     CommissionSorting:
       type: object
       properties:
@@ -1347,41 +1382,6 @@ components:
         external_note:
           type: string
           description: External note visible by the promoter
-  parameters:
-    CommissionFilters:
-      name: filters
-      in: query
-      description: Filter parameters
-      required: false
-      schema:
-        type: object
-        properties:
-          status:
-            type: string
-            enum:
-            - pending
-            - approved
-            - denied
-          paid:
-            type: string
-            enum:
-            - 'yes'
-            - 'no'
-    AccountId:
-      name: Account-ID
-      in: header
-      required: true
-      description: Account identifier that specifies which account is making the request
-      schema:
-        type: string
-        example: acc_123456
-    AccountId_2:
-      name: Account-ID
-      in: header
-      required: true
-      description: Account id. You can find your Account ID on Your FirstPromoter Dashboard. Navigate to Settings → Integrations
-      schema:
-        type: string
   securitySchemes:
     BearerAuth:
       type: http

@@ -913,16 +913,32 @@ paths:
     - url: https://api.firstpromoter.com/api/v2/company
 components:
   schemas:
-    Error:
+    ReportData:
       type: object
       properties:
-        message:
+        period:
           type: string
-        code:
+        id:
           type: string
-      required:
-      - message
-      - code
+        data:
+          type: object
+          properties:
+            revenue_amount:
+              type: number
+            net_revenue_amount:
+              type: number
+            promoter_earnings_amount:
+              type: number
+            customers_count:
+              type: integer
+            referrals_count:
+              type: integer
+            clicks_count:
+              type: integer
+            active_customers:
+              type: integer
+            3m_epc:
+              type: number
     SubIdReportData:
       type: object
       properties:
@@ -966,32 +982,16 @@ components:
                 type: string
               data:
                 $ref: '#/components/schemas/SubIdReportData/properties/data'
-    ReportData:
+    Error:
       type: object
       properties:
-        period:
+        message:
           type: string
-        id:
+        code:
           type: string
-        data:
-          type: object
-          properties:
-            revenue_amount:
-              type: number
-            net_revenue_amount:
-              type: number
-            promoter_earnings_amount:
-              type: number
-            customers_count:
-              type: integer
-            referrals_count:
-              type: integer
-            clicks_count:
-              type: integer
-            active_customers:
-              type: integer
-            3m_epc:
-              type: number
+      required:
+      - message
+      - code
     URLsResponse:
       type: array
       items:

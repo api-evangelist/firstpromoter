@@ -120,23 +120,7 @@ paths:
       operationId: putEmailSettingsById
       x-operation-id-source: derived
 components:
-  parameters:
-    AccountId:
-      name: Account-ID
-      in: header
-      required: true
-      description: Account identifier that specifies which account is making the request
-      schema:
-        type: string
-        example: acc_123456
   schemas:
-    Error:
-      type: object
-      properties:
-        message:
-          type: string
-        code:
-          type: string
     EmailSettings:
       type: object
       properties:
@@ -156,6 +140,22 @@ components:
           type: string
         marketing_consent:
           type: boolean
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: string
+  parameters:
+    AccountId:
+      name: Account-ID
+      in: header
+      required: true
+      description: Account identifier that specifies which account is making the request
+      schema:
+        type: string
+        example: acc_123456
   securitySchemes:
     BearerAuth:
       type: http

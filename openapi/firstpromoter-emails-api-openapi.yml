@@ -388,15 +388,6 @@ paths:
       operationId: postEmailsTestCustomTemplate
       x-operation-id-source: derived
 components:
-  parameters:
-    AccountId:
-      name: Account-ID
-      in: header
-      required: true
-      description: Account identifier that specifies which account is making the request
-      schema:
-        type: string
-        example: acc_123456
   schemas:
     EmailRequest:
       type: object
@@ -489,6 +480,15 @@ components:
                   minimum: 0
                   maximum: 59
                   description: Required for recurring trigger_on
+  parameters:
+    AccountId:
+      name: Account-ID
+      in: header
+      required: true
+      description: Account identifier that specifies which account is making the request
+      schema:
+        type: string
+        example: acc_123456
   securitySchemes:
     BearerAuth:
       type: http

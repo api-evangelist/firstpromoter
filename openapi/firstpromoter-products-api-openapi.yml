@@ -267,19 +267,12 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    ValidationError:
+    Error:
       type: object
       properties:
         message:
           type: string
           description: Error message
-        errors:
-          type: object
-          description: Validation errors
-          additionalProperties:
-            type: array
-            items:
-              type: string
         code:
           type: string
           description: Error code
@@ -313,12 +306,19 @@ components:
           type: string
           format: date-time
           description: Date and time when the product was created
-    Error:
+    ValidationError:
       type: object
       properties:
         message:
           type: string
           description: Error message
+        errors:
+          type: object
+          description: Validation errors
+          additionalProperties:
+            type: array
+            items:
+              type: string
         code:
           type: string
           description: Error code

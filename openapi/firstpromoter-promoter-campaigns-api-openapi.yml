@@ -268,6 +268,127 @@ paths:
                 $ref: '#/components/schemas/Error'
 components:
   schemas:
+    RewardConfig:
+      type: object
+      required:
+      - apply_on
+      - product_ids
+      - reward_id
+      properties:
+        apply_on:
+          type: string
+          enum:
+          - monthly
+          - yearly
+          - one_time
+          - all
+          - specific
+        product_ids:
+          type: array
+          items:
+            type: integer
+        reward_id:
+          type: integer
+    ReferralLink:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        url:
+          type: string
+        is_default:
+          type: boolean
+        source:
+          type: string
+          enum:
+          - campaign
+          - promoter
+        sub_id:
+          type: string
+        campaign:
+          $ref: '#/components/schemas/Campaign'
+    Promoter:
+      type: object
+      properties:
+        id:
+          type: integer
+        email:
+          type: string
+        name:
+          type: string
+    Reward:
+      type: object
+      properties:
+        apply_on:
+          type: string
+        product_ids:
+          type: array
+          items:
+            type: integer
+        reward_id:
+          type: integer
+        reward:
+          type: object
+          properties:
+            name:
+              type: string
+            promoter_reward_type:
+              type: string
+            hide_reward:
+              type: boolean
+            tier_level:
+              type: integer
+            coupon:
+              type: string
+        products:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: integer
+              name:
+                type: string
+    ChartData:
+      type: object
+      properties:
+        period_from:
+          type: string
+          format: date
+        period_to:
+          type: string
+          format: date
+        selection:
+          type: string
+          enum:
+          - revenue
+          - clicks
+          - referrals
+          - customers
+          - cancellations
+        selection_items:
+          type: array
+          items:
+            type: object
+            properties:
+              date:
+                type: string
+                format: date
+              value:
+                type: number
+        group_by:
+          type: string
+    Campaign:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        color:
+          type: string
     Error:
       type: object
       properties:
@@ -349,127 +470,6 @@ components:
           type: array
           items:
             type: string
-    Reward:
-      type: object
-      properties:
-        apply_on:
-          type: string
-        product_ids:
-          type: array
-          items:
-            type: integer
-        reward_id:
-          type: integer
-        reward:
-          type: object
-          properties:
-            name:
-              type: string
-            promoter_reward_type:
-              type: string
-            hide_reward:
-              type: boolean
-            tier_level:
-              type: integer
-            coupon:
-              type: string
-        products:
-          type: array
-          items:
-            type: object
-            properties:
-              id:
-                type: integer
-              name:
-                type: string
-    Promoter:
-      type: object
-      properties:
-        id:
-          type: integer
-        email:
-          type: string
-        name:
-          type: string
-    ReferralLink:
-      type: object
-      properties:
-        id:
-          type: integer
-        name:
-          type: string
-        url:
-          type: string
-        is_default:
-          type: boolean
-        source:
-          type: string
-          enum:
-          - campaign
-          - promoter
-        sub_id:
-          type: string
-        campaign:
-          $ref: '#/components/schemas/Campaign'
-    Campaign:
-      type: object
-      properties:
-        id:
-          type: integer
-        name:
-          type: string
-        color:
-          type: string
-    RewardConfig:
-      type: object
-      required:
-      - apply_on
-      - product_ids
-      - reward_id
-      properties:
-        apply_on:
-          type: string
-          enum:
-          - monthly
-          - yearly
-          - one_time
-          - all
-          - specific
-        product_ids:
-          type: array
-          items:
-            type: integer
-        reward_id:
-          type: integer
-    ChartData:
-      type: object
-      properties:
-        period_from:
-          type: string
-          format: date
-        period_to:
-          type: string
-          format: date
-        selection:
-          type: string
-          enum:
-          - revenue
-          - clicks
-          - referrals
-          - customers
-          - cancellations
-        selection_items:
-          type: array
-          items:
-            type: object
-            properties:
-              date:
-                type: string
-                format: date
-              value:
-                type: number
-        group_by:
-          type: string
   parameters:
     AccountId:
       name: Account-ID

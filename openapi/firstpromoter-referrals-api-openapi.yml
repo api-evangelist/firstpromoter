@@ -748,6 +748,15 @@ components:
           format: email
         promoter_campaign:
           $ref: '#/components/schemas/PromoterCampaign'
+    Campaign:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        color:
+          type: string
     Error:
       type: object
       properties:
@@ -776,15 +785,65 @@ components:
           format: date-time
         campaign:
           $ref: '#/components/schemas/Campaign'
-    Campaign:
+    BatchOperationResponse:
       type: object
       properties:
         id:
           type: integer
+          description: Id of the batch operation
+        status:
+          type: string
+          enum:
+          - pending
+          - completed
+          description: Status of the batch operation
+        total:
+          type: integer
+          description: Total number of items
+        selected_total:
+          type: integer
+          description: Number of selected items
+        processed_count:
+          type: integer
+          description: Number of processed items
+        failed_count:
+          type: integer
+          description: Number of failed operations
+        action_label:
+          type: string
+          description: Action identifier/ label assigned to the action
+        created_at:
+          type: string
+          format: date-time
+          description: Date and time when the batch operation was created
+        updated_at:
+          type: string
+          format: date-time
+          description: Date and time when the batch operation was updated
+        meta:
+          type: object
+          description: Meta data of the batch operation
+        progress:
+          type: integer
+          description: Progress of the action (0-100)
+        processing_errors:
+          type: array
+          items:
+            type: string
+            description: List of processing errors
+    Promoter:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Id of the promoter
+        email:
+          type: string
+          format: email
+          description: Email address of the promoter
         name:
           type: string
-        color:
-          type: string
+          description: Name of the promoter
     Referral_2:
       type: object
       properties:
@@ -890,6 +949,20 @@ components:
         is_expired:
           type: boolean
           description: Whether the referral has expired
+    Campaign_2:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Id of the campaign
+        name:
+          type: string
+          description: Name of the campaign
+        color:
+          type:
+          - string
+          - 'null'
+          description: Color assigned to the campaign
     Error_2:
       type: object
       properties:
@@ -903,6 +976,14 @@ components:
             type: array
             items:
               type: string
+    BatchSelectionRequest:
+      type: object
+      properties:
+        ids:
+          type: array
+          description: Array of selected referral ids. If there are more than __5__ ids on this param/field, the action will be processed asynchronously. The response for the batch status will most likely be `in_progress`. The available statuses are `pending`, `in_progress`, `completed`, `failed` and `stopped`
+          items:
+            type: integer
     PromoterCampaign_2:
       type: object
       properties:
@@ -923,87 +1004,6 @@ components:
           $ref: '#/components/schemas/Promoter'
         campaign:
           $ref: '#/components/schemas/Campaign_2'
-    Promoter:
-      type: object
-      properties:
-        id:
-          type: integer
-          description: Id of the promoter
-        email:
-          type: string
-          format: email
-          description: Email address of the promoter
-        name:
-          type: string
-          description: Name of the promoter
-    BatchOperationResponse:
-      type: object
-      properties:
-        id:
-          type: integer
-          description: Id of the batch operation
-        status:
-          type: string
-          enum:
-          - pending
-          - completed
-          description: Status of the batch operation
-        total:
-          type: integer
-          description: Total number of items
-        selected_total:
-          type: integer
-          description: Number of selected items
-        processed_count:
-          type: integer
-          description: Number of processed items
-        failed_count:
-          type: integer
-          description: Number of failed operations
-        action_label:
-          type: string
-          description: Action identifier/ label assigned to the action
-        created_at:
-          type: string
-          format: date-time
-          description: Date and time when the batch operation was created
-        updated_at:
-          type: string
-          format: date-time
-          description: Date and time when the batch operation was updated
-        meta:
-          type: object
-          description: Meta data of the batch operation
-        progress:
-          type: integer
-          description: Progress of the action (0-100)
-        processing_errors:
-          type: array
-          items:
-            type: string
-            description: List of processing errors
-    BatchSelectionRequest:
-      type: object
-      properties:
-        ids:
-          type: array
-          description: Array of selected referral ids. If there are more than __5__ ids on this param/field, the action will be processed asynchronously. The response for the batch status will most likely be `in_progress`. The available statuses are `pending`, `in_progress`, `completed`, `failed` and `stopped`
-          items:
-            type: integer
-    Campaign_2:
-      type: object
-      properties:
-        id:
-          type: integer
-          description: Id of the campaign
-        name:
-          type: string
-          description: Name of the campaign
-        color:
-          type:
-          - string
-          - 'null'
-          description: Color assigned to the campaign
   parameters:
     AccountId:
       name: Account-ID

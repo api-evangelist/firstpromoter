@@ -120,24 +120,7 @@ paths:
       operationId: deleteContractsById
       x-operation-id-source: derived
 components:
-  parameters:
-    AccountId:
-      name: Account-ID
-      in: header
-      required: true
-      description: Account identifier that specifies which account is making the request
-      schema:
-        type: string
-        example: acc_123456
   schemas:
-    ContractUpdate:
-      allOf:
-      - $ref: '#/components/schemas/ContractCreate'
-      - type: object
-        properties:
-          default:
-            type: boolean
-            description: Tells if this contract is the default one
     ContractCreate:
       type: object
       required:
@@ -166,6 +149,23 @@ components:
           description: The selected campaign ids
           items:
             type: integer
+    ContractUpdate:
+      allOf:
+      - $ref: '#/components/schemas/ContractCreate'
+      - type: object
+        properties:
+          default:
+            type: boolean
+            description: Tells if this contract is the default one
+  parameters:
+    AccountId:
+      name: Account-ID
+      in: header
+      required: true
+      description: Account identifier that specifies which account is making the request
+      schema:
+        type: string
+        example: acc_123456
   securitySchemes:
     BearerAuth:
       type: http

@@ -217,29 +217,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    Error:
-      type: object
-      properties:
-        message:
-          type: string
-        code:
-          type: string
-    ContractVersion:
-      type: object
-      properties:
-        added_at:
-          type: string
-          format: date-time
-        changes_made:
-          type:
-          - string
-          - 'null'
-        external_link:
-          type:
-          - string
-          - 'null'
-        content_hosted:
-          type: boolean
     Promoter:
       type: object
       properties:
@@ -261,6 +238,22 @@ components:
           type: integer
         name:
           type: string
+    ContractVersion:
+      type: object
+      properties:
+        added_at:
+          type: string
+          format: date-time
+        changes_made:
+          type:
+          - string
+          - 'null'
+        external_link:
+          type:
+          - string
+          - 'null'
+        content_hosted:
+          type: boolean
     ValidationError:
       type: object
       properties:
@@ -272,6 +265,13 @@ components:
             type: array
             items:
               type: string
+        code:
+          type: string
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
         code:
           type: string
     ContractDocument:

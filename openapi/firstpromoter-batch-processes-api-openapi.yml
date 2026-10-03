@@ -155,6 +155,15 @@ paths:
       - Batch Processes
 components:
   schemas:
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+          example: Invalid user type
+        code:
+          type: string
+          example: forbidden
     BatchProcess:
       type: object
       properties:
@@ -205,15 +214,6 @@ components:
           items:
             type: string
           example: []
-    Error:
-      type: object
-      properties:
-        message:
-          type: string
-          example: Invalid user type
-        code:
-          type: string
-          example: forbidden
   parameters:
     AccountId:
       name: Account-ID

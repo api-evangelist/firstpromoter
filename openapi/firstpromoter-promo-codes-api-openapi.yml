@@ -221,14 +221,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/Error'
 components:
-  parameters:
-    AccountId:
-      name: Account-ID
-      in: header
-      required: true
-      description: Account id. You can find your Account ID on Your FirstPromoter Dashboard. Navigate to Settings → Integrations
-      schema:
-        type: string
   schemas:
     Error:
       type: object
@@ -275,6 +267,14 @@ components:
         archived_at:
           type: string
           format: date-time
+  parameters:
+    AccountId:
+      name: Account-ID
+      in: header
+      required: true
+      description: Account id. You can find your Account ID on Your FirstPromoter Dashboard. Navigate to Settings → Integrations
+      schema:
+        type: string
   securitySchemes:
     BearerAuth:
       type: http
