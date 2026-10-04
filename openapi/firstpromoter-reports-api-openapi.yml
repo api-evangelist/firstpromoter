@@ -912,33 +912,24 @@ paths:
     servers:
     - url: https://api.firstpromoter.com/api/v2/company
 components:
+  parameters:
+    AccountId:
+      name: Account-ID
+      in: header
+      required: true
+      description: Account identifier that specifies which account is making the request
+      schema:
+        type: string
+        example: acc_123456
+    AccountId_2:
+      name: Account-ID
+      in: header
+      required: true
+      description: Account id. You can find your Account ID on Your FirstPromoter Dashboard. Navigate to Settings → Integrations
+      schema:
+        type: string
+        example: acc_123456
   schemas:
-    ReportData:
-      type: object
-      properties:
-        period:
-          type: string
-        id:
-          type: string
-        data:
-          type: object
-          properties:
-            revenue_amount:
-              type: number
-            net_revenue_amount:
-              type: number
-            promoter_earnings_amount:
-              type: number
-            customers_count:
-              type: integer
-            referrals_count:
-              type: integer
-            clicks_count:
-              type: integer
-            active_customers:
-              type: integer
-            3m_epc:
-              type: number
     SubIdReportData:
       type: object
       properties:
@@ -992,6 +983,32 @@ components:
       required:
       - message
       - code
+    ReportData:
+      type: object
+      properties:
+        period:
+          type: string
+        id:
+          type: string
+        data:
+          type: object
+          properties:
+            revenue_amount:
+              type: number
+            net_revenue_amount:
+              type: number
+            promoter_earnings_amount:
+              type: number
+            customers_count:
+              type: integer
+            referrals_count:
+              type: integer
+            clicks_count:
+              type: integer
+            active_customers:
+              type: integer
+            3m_epc:
+              type: number
     URLsResponse:
       type: array
       items:
@@ -1026,23 +1043,6 @@ components:
                 type: number
               clicks_to_referrals_cr:
                 type: number
-  parameters:
-    AccountId:
-      name: Account-ID
-      in: header
-      required: true
-      description: Account identifier that specifies which account is making the request
-      schema:
-        type: string
-        example: acc_123456
-    AccountId_2:
-      name: Account-ID
-      in: header
-      required: true
-      description: Account id. You can find your Account ID on Your FirstPromoter Dashboard. Navigate to Settings → Integrations
-      schema:
-        type: string
-        example: acc_123456
   securitySchemes:
     BearerAuth:
       type: http

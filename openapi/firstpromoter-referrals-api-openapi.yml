@@ -716,7 +716,51 @@ paths:
     - url: https://api.firstpromoter.com/api/v2/company
       description: Production server
 components:
+  parameters:
+    AccountId:
+      name: Account-ID
+      in: header
+      required: true
+      description: Account identifier that specifies which account is making the request
+      schema:
+        type: string
+        example: acc_123456
+    AccountId_2:
+      name: Account-ID
+      in: header
+      required: true
+      description: Account id. You can find your Account ID on Your FirstPromoter Dashboard. Navigate to Settings → Integrations
+      schema:
+        type: string
   schemas:
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: string
+        errors:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string
+      required:
+      - message
+      - code
+    PromoterCampaign:
+      type: object
+      properties:
+        id:
+          type: integer
+        campaign_id:
+          type: integer
+        created_at:
+          type: string
+          format: date-time
+        campaign:
+          $ref: '#/components/schemas/Campaign'
     Referral:
       type: object
       properties:
@@ -757,80 +801,6 @@ components:
           type: string
         color:
           type: string
-    Error:
-      type: object
-      properties:
-        message:
-          type: string
-        code:
-          type: string
-        errors:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              type: string
-      required:
-      - message
-      - code
-    PromoterCampaign:
-      type: object
-      properties:
-        id:
-          type: integer
-        campaign_id:
-          type: integer
-        created_at:
-          type: string
-          format: date-time
-        campaign:
-          $ref: '#/components/schemas/Campaign'
-    BatchOperationResponse:
-      type: object
-      properties:
-        id:
-          type: integer
-          description: Id of the batch operation
-        status:
-          type: string
-          enum:
-          - pending
-          - completed
-          description: Status of the batch operation
-        total:
-          type: integer
-          description: Total number of items
-        selected_total:
-          type: integer
-          description: Number of selected items
-        processed_count:
-          type: integer
-          description: Number of processed items
-        failed_count:
-          type: integer
-          description: Number of failed operations
-        action_label:
-          type: string
-          description: Action identifier/ label assigned to the action
-        created_at:
-          type: string
-          format: date-time
-          description: Date and time when the batch operation was created
-        updated_at:
-          type: string
-          format: date-time
-          description: Date and time when the batch operation was updated
-        meta:
-          type: object
-          description: Meta data of the batch operation
-        progress:
-          type: integer
-          description: Progress of the action (0-100)
-        processing_errors:
-          type: array
-          items:
-            type: string
-            description: List of processing errors
     Promoter:
       type: object
       properties:
@@ -844,6 +814,47 @@ components:
         name:
           type: string
           description: Name of the promoter
+    Error_2:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: string
+        errors:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string
+    PromoterCampaign_2:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Id of the promoter campaign
+        campaign_id:
+          type: integer
+          description: Id of the campaign
+        promoter_id:
+          type: integer
+          description: Id of the promoter
+        created_at:
+          type: string
+          format: date-time
+          description: Date and time when the promoter campaign was created
+        promoter:
+          $ref: '#/components/schemas/Promoter'
+        campaign:
+          $ref: '#/components/schemas/Campaign_2'
+    BatchSelectionRequest:
+      type: object
+      properties:
+        ids:
+          type: array
+          description: Array of selected referral ids. If there are more than __5__ ids on this param/field, the action will be processed asynchronously. The response for the batch status will most likely be `in_progress`. The available statuses are `pending`, `in_progress`, `completed`, `failed` and `stopped`
+          items:
+            type: integer
     Referral_2:
       type: object
       properties:
@@ -963,63 +974,52 @@ components:
           - string
           - 'null'
           description: Color assigned to the campaign
-    Error_2:
-      type: object
-      properties:
-        message:
-          type: string
-        code:
-          type: string
-        errors:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              type: string
-    BatchSelectionRequest:
-      type: object
-      properties:
-        ids:
-          type: array
-          description: Array of selected referral ids. If there are more than __5__ ids on this param/field, the action will be processed asynchronously. The response for the batch status will most likely be `in_progress`. The available statuses are `pending`, `in_progress`, `completed`, `failed` and `stopped`
-          items:
-            type: integer
-    PromoterCampaign_2:
+    BatchOperationResponse:
       type: object
       properties:
         id:
           type: integer
-          description: Id of the promoter campaign
-        campaign_id:
+          description: Id of the batch operation
+        status:
+          type: string
+          enum:
+          - pending
+          - completed
+          description: Status of the batch operation
+        total:
           type: integer
-          description: Id of the campaign
-        promoter_id:
+          description: Total number of items
+        selected_total:
           type: integer
-          description: Id of the promoter
+          description: Number of selected items
+        processed_count:
+          type: integer
+          description: Number of processed items
+        failed_count:
+          type: integer
+          description: Number of failed operations
+        action_label:
+          type: string
+          description: Action identifier/ label assigned to the action
         created_at:
           type: string
           format: date-time
-          description: Date and time when the promoter campaign was created
-        promoter:
-          $ref: '#/components/schemas/Promoter'
-        campaign:
-          $ref: '#/components/schemas/Campaign_2'
-  parameters:
-    AccountId:
-      name: Account-ID
-      in: header
-      required: true
-      description: Account identifier that specifies which account is making the request
-      schema:
-        type: string
-        example: acc_123456
-    AccountId_2:
-      name: Account-ID
-      in: header
-      required: true
-      description: Account id. You can find your Account ID on Your FirstPromoter Dashboard. Navigate to Settings → Integrations
-      schema:
-        type: string
+          description: Date and time when the batch operation was created
+        updated_at:
+          type: string
+          format: date-time
+          description: Date and time when the batch operation was updated
+        meta:
+          type: object
+          description: Meta data of the batch operation
+        progress:
+          type: integer
+          description: Progress of the action (0-100)
+        processing_errors:
+          type: array
+          items:
+            type: string
+            description: List of processing errors
   securitySchemes:
     BearerAuth:
       type: http

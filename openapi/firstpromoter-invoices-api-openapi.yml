@@ -358,21 +358,6 @@ components:
           type: array
           items:
             type: object
-    Error:
-      type: object
-      properties:
-        message:
-          type: string
-        code:
-          type: string
-    BatchRequest:
-      type: object
-      properties:
-        ids:
-          type: array
-          items:
-            type: integer
-            description: Array of invoice ids.
     Invoice:
       type: object
       properties:
@@ -411,6 +396,21 @@ components:
           type: array
           items:
             type: object
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: string
+    BatchRequest:
+      type: object
+      properties:
+        ids:
+          type: array
+          items:
+            type: integer
+            description: Array of invoice ids.
   parameters:
     AccountId:
       name: Account-ID

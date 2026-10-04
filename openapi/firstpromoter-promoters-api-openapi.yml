@@ -953,34 +953,23 @@ paths:
     servers:
     - url: https://api.firstpromoter.com/api/v2/company
 components:
+  parameters:
+    AccountId:
+      name: Account-ID
+      in: header
+      required: true
+      description: Account identifier that specifies which account is making the request
+      schema:
+        type: string
+        example: acc_123456
+    AccountId_2:
+      name: Account-ID
+      in: header
+      required: true
+      description: Account id. You can find your Account ID on Your FirstPromoter Dashboard. Navigate to Settings → Integrations
+      schema:
+        type: string
   schemas:
-    SubAffiliate:
-      type: object
-      properties:
-        id:
-          type: integer
-        name:
-          type: string
-        email:
-          type: string
-        stats:
-          type: object
-          properties:
-            clicks_count:
-              type: integer
-            referrals_count:
-              type: integer
-            sales_count:
-              type: integer
-            customers_count:
-              type: integer
-            revenue_amount:
-              type: number
-            active_customers_count:
-              type: integer
-        joined_at:
-          type: string
-          format: date-time
     Promoter:
       type: object
       properties:
@@ -1031,43 +1020,6 @@ components:
             $ref: '#/components/schemas/PromoterCampaign'
         is_confirmed:
           type: boolean
-    PromoterProfile:
-      type: object
-      properties:
-        id:
-          type: integer
-        first_name:
-          type: string
-        last_name:
-          type: string
-        website:
-          type: string
-        company_name:
-          type: string
-        phone_number:
-          type: string
-        vat_id:
-          type: string
-        country:
-          type: string
-        address:
-          type: string
-        avatar:
-          type: string
-        instagram_url:
-          type: string
-        youtube_url:
-          type: string
-        linkedin_url:
-          type: string
-        facebook_url:
-          type: string
-        twitter_url:
-          type: string
-        twitch_url:
-          type: string
-        tiktok_url:
-          type: string
     PromoterCampaign:
       type: object
       properties:
@@ -1110,129 +1062,263 @@ components:
           type: string
         has_monetary_rewards:
           type: boolean
-    CustomFieldFilter:
-      type: object
-      required:
-      - key
-      - operator
-      - value
-      properties:
-        key:
-          type: string
-          description: The key custom_field key
-        operator:
-          type: string
-          enum:
-          - exact
-          - partial
-          description: The custom field operator
-        value:
-          oneOf:
-          - type: string
-          - type: array
-            items:
-              type: string
-          description: The value of the custom field. Must be String or Array of strings
-    BatchOperationResponse:
+    PromoterProfile:
       type: object
       properties:
         id:
           type: integer
-          description: Batch ID
-        status:
+        first_name:
           type: string
-          enum:
-          - completed
-          - pending
-          - in_progress
-          - failed
-          - stopped
-          description: Status of the batch operation
-        total:
-          type: integer
-          description: Total number of promoters
-        selected_total:
-          type: integer
-          description: Total number of selected promoters
-        processed_count:
-          type: integer
-          description: Number of processed promoters
-        failed_count:
-          type: integer
-          description: Number of failed promoters
-        action_label:
+        last_name:
           type: string
-          description: Label for the action
-        created_at:
+        website:
           type: string
-          format: date-time
-          description: Creation date of the batch operation
-        updated_at:
+        company_name:
           type: string
-          format: date-time
-          description: Last update date of the batch operation
-        meta:
+        phone_number:
+          type: string
+        vat_id:
+          type: string
+        country:
+          type: string
+        address:
+          type: string
+        avatar:
+          type: string
+        instagram_url:
+          type: string
+        youtube_url:
+          type: string
+        linkedin_url:
+          type: string
+        facebook_url:
+          type: string
+        twitter_url:
+          type: string
+        twitch_url:
+          type: string
+        tiktok_url:
+          type: string
+    SubAffiliate:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        email:
+          type: string
+        stats:
           type: object
-          description: Additional metadata
-        progress:
+          properties:
+            clicks_count:
+              type: integer
+            referrals_count:
+              type: integer
+            sales_count:
+              type: integer
+            customers_count:
+              type: integer
+            revenue_amount:
+              type: number
+            active_customers_count:
+              type: integer
+        joined_at:
+          type: string
+          format: date-time
+    PromoterListItem:
+      type: object
+      properties:
+        id:
           type: integer
-          description: Progress of the batch operation
-        processing_errors:
+          description: Id of the promoter
+        email:
+          type: string
+          description: Email address of the promoter
+        name:
+          type: string
+          description: Full name of the promoter
+        cust_id:
+          type:
+          - string
+          - 'null'
+          description: Cust ID of the promoter
+        note:
+          type:
+          - string
+          - 'null'
+          description: Optional note about the promoter
+        stats:
+          type: object
+          description: Performance statistics for the promoter
+          properties:
+            clicks_count:
+              type: integer
+              description: Number of clicks generated
+            referrals_count:
+              type: integer
+              description: Number of referrals generated
+            sales_count:
+              type: integer
+              description: Number of sales generated
+            customers_count:
+              type: integer
+              description: Number of customers referred
+            revenue_amount:
+              type: integer
+              description: Total revenue generated
+            active_customers_count:
+              type: integer
+              description: Number of active customers
+        is_customized:
+          type: boolean
+          description: Whether the promoter has customized settings
+        fraud_suspicions:
           type: array
+          description: List of potential fraud flags
           items:
             type: string
-          description: List of processing errors if any
-    ErrorResponse:
-      type: object
-      properties:
-        message:
+        is_confirmed:
+          type: boolean
+          description: Whether the promoter has confirmed their account
+        invoice_details_status:
           type: string
-          description: Error message
-        code:
-          type: string
-          description: Error code
-    PromoterChartData:
-      type: object
-      properties:
-        period_from:
-          type: string
-          format: date
-          description: Start date of the chart data period
-        period_to:
-          type: string
-          format: date
-          description: End date of the chart data period
-        selection:
-          type: string
-          description: Type of data being displayed
+          description: Status of the promoter's invoice details
           enum:
-          - revenue
-          - clicks
-          - referrals
-          - customers
-          - cancellations
-        selection_items:
+          - pending
+          - approved
+          - denied
+        profile:
+          $ref: '#/components/schemas/PromoterProfile_2'
+        joined_at:
+          type: string
+          format: date-time
+          description: Date and time when the promoter joined.
+        last_login_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: Date and time of the promoter's last login.
+        archived_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: Date and time when the promoter was archived, if applicable.
+        custom_fields:
+          type:
+          - object
+          - 'null'
+          description: Custom fields for the promoter, based on company settings. This is a key-value pair object where keys are custom field identifiers and values are the corresponding data.
+        password_setup_url:
+          type:
+          - string
+          - 'null'
+          description: URL for the promoter to set up their password
+        first_event_at:
+          type: string
+          format: date-time
+          description: Date and time of the promoter's first activity.
+        promoter_campaigns:
           type: array
-          description: Data points for the chart
+          description: List of campaigns associated with the promoter
           items:
-            type: array
-            description: A date-value pair
-            items:
-              oneOf:
-              - type: string
-                description: Date label for the data point (format depends on group_by)
-              - type: number
-                description: Value for the data point
-            minItems: 2
-            maxItems: 2
-        group_by:
-          type: string
-          description: Time unit used for grouping the data
-          enum:
-          - day
-          - week
-          - month
-          - year
+            type: object
+            properties:
+              id:
+                type: integer
+                description: ID of the promoter-campaign association
+              campaign_id:
+                type: integer
+                description: ID of the campaign
+              promoter_id:
+                type: integer
+                description: ID of the promoter
+              state:
+                type: string
+                description: State of the promoter in this campaign
+                enum:
+                - pending
+                - accepted
+                - rejected
+                - blocked
+                - inactive
+                - not_set
+              created_at:
+                type: string
+                format: date-time
+                description: When the promoter was added to the campaign
+              campaign:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    description: ID of the campaign
+                  name:
+                    type: string
+                    description: Name of the campaign
+                  color:
+                    type: string
+                    description: Color code associated with the campaign
+              coupon:
+                type: string
+                description: Coupon code for this campaign
+              ref_token:
+                type: string
+                description: Referral token for this campaign
+              ref_link:
+                type: string
+                description: Referral link for this campaign
+        balances:
+          type: object
+          description: Earnings balance breakdown for the promoter
+          properties:
+            cash:
+              type:
+              - number
+              - 'null'
+            credits:
+              type:
+              - number
+              - 'null'
+            points:
+              type:
+              - number
+              - 'null'
+            free_months:
+              type:
+              - number
+              - 'null'
+            discount:
+              type:
+              - number
+              - 'null'
+        track_ad_traffic:
+          type:
+          - boolean
+          - 'null'
+          description: Whether ad traffic tracking is enabled for this promoter. Null means the campaign default is used.
+        auth_provider:
+          type:
+          - string
+          - 'null'
+          description: OAuth provider used to authenticate (e.g. google). Null if using email/password.
+        selected_payout_method:
+          type:
+          - object
+          - 'null'
+          description: The promoter's currently selected payout method. Omitted when the `exclude_payout_method=true` query parameter is set.
+          properties:
+            id:
+              type: integer
+            method:
+              type: string
+            date_added:
+              type: string
+              format: date-time
+            is_disabled:
+              type: boolean
     Promoter_2:
       type: object
       properties:
@@ -1440,32 +1526,66 @@ components:
               type:
               - string
               - 'null'
-    PromoterCreate:
+    Ids:
+      type: array
+      description: Array of promoter ids. If there are more than __5__ ids on this param/field, the action will be processed asynchronously. The response for the batch status will most likely be `in_progress`. The available statuses are `pending`, `in_progress`, `completed`, `failed` and `stopped`
+      items:
+        type: integer
+    CustomFieldFilter:
       type: object
       required:
-      - email
+      - key
+      - operator
+      - value
+      properties:
+        key:
+          type: string
+          description: The key custom_field key
+        operator:
+          type: string
+          enum:
+          - exact
+          - partial
+          description: The custom field operator
+        value:
+          oneOf:
+          - type: string
+          - type: array
+            items:
+              type: string
+          description: The value of the custom field. Must be String or Array of strings
+    PromoterUpdate:
+      type: object
       properties:
         email:
           type: string
           format: email
           description: Email address of the promoter
+        find_by:
+          type: string
+          enum:
+          - email
+          - cust_id
+          - auth_token
+          - ref_token
+          - promo_code
+          description: "Find by attribute. Required when you want to find the promoter using another parameter like the email, cust_id, auth_token, ref_token, or promo_code instead of an ID. \n \n  Your request should follow the format `https://api.firstpromoter.com/api/v2/company/promoters/{email, cust_id, auth_token, ref_token, or promo_code}`"
         cust_id:
           type:
           - string
           - 'null'
           description: Cust ID of the promoter
+        custom_fields:
+          type: array
+          description: "Custom fields must be a Hash with the keys being the ones from the company custom fields and values must be String or Array of Strings. These are based on the custom fields that you set in your Settings > Affiliate portal > Custom fields.\n \n **Note**: Each item will have to be set as `custom_fields[my_custom_field_key]: my_custom_field_value`"
         profile:
           $ref: '#/components/schemas/PromoterProfile_2'
-        initial_campaign_id:
-          type: integer
-          description: The ID of the campaign promoter will be added first
-        drip_emails:
+        profile[_destroy_w8form]:
           type: boolean
-          description: Send a welcome email to the promoter
-        always_approve:
+          description: Destroy W8 form
+        profile[_destroy_w9form]:
           type: boolean
-          default: true
-          description: Whether the promoter should be automatically accepted into the campaign upon creation. Set to `false` to create the promoter in a pending state instead, requiring manual acceptance or rejection.
+          description: Destroy W9 form
     PromoterProfile_2:
       type: object
       properties:
@@ -1575,11 +1695,32 @@ components:
           - string
           - 'null'
           description: Promoter's TikTok URL
-    Ids:
-      type: array
-      description: Array of promoter ids. If there are more than __5__ ids on this param/field, the action will be processed asynchronously. The response for the batch status will most likely be `in_progress`. The available statuses are `pending`, `in_progress`, `completed`, `failed` and `stopped`
-      items:
-        type: integer
+    PromoterCreate:
+      type: object
+      required:
+      - email
+      properties:
+        email:
+          type: string
+          format: email
+          description: Email address of the promoter
+        cust_id:
+          type:
+          - string
+          - 'null'
+          description: Cust ID of the promoter
+        profile:
+          $ref: '#/components/schemas/PromoterProfile_2'
+        initial_campaign_id:
+          type: integer
+          description: The ID of the campaign promoter will be added first
+        drip_emails:
+          type: boolean
+          description: Send a welcome email to the promoter
+        always_approve:
+          type: boolean
+          default: true
+          description: Whether the promoter should be automatically accepted into the campaign upon creation. Set to `false` to create the promoter in a pending state instead, requiring manual acceptance or rejection.
     PromoterFilters:
       type: object
       properties:
@@ -1736,247 +1877,106 @@ components:
           - rejected
           - not_submitted
           description: Filter promoters by their invoice details status
-    PromoterUpdate:
+    PromoterChartData:
       type: object
       properties:
-        email:
+        period_from:
           type: string
-          format: email
-          description: Email address of the promoter
-        find_by:
+          format: date
+          description: Start date of the chart data period
+        period_to:
           type: string
+          format: date
+          description: End date of the chart data period
+        selection:
+          type: string
+          description: Type of data being displayed
           enum:
-          - email
-          - cust_id
-          - auth_token
-          - ref_token
-          - promo_code
-          description: "Find by attribute. Required when you want to find the promoter using another parameter like the email, cust_id, auth_token, ref_token, or promo_code instead of an ID. \n \n  Your request should follow the format `https://api.firstpromoter.com/api/v2/company/promoters/{email, cust_id, auth_token, ref_token, or promo_code}`"
-        cust_id:
-          type:
-          - string
-          - 'null'
-          description: Cust ID of the promoter
-        custom_fields:
+          - revenue
+          - clicks
+          - referrals
+          - customers
+          - cancellations
+        selection_items:
           type: array
-          description: "Custom fields must be a Hash with the keys being the ones from the company custom fields and values must be String or Array of Strings. These are based on the custom fields that you set in your Settings > Affiliate portal > Custom fields.\n \n **Note**: Each item will have to be set as `custom_fields[my_custom_field_key]: my_custom_field_value`"
-        profile:
-          $ref: '#/components/schemas/PromoterProfile_2'
-        profile[_destroy_w8form]:
-          type: boolean
-          description: Destroy W8 form
-        profile[_destroy_w9form]:
-          type: boolean
-          description: Destroy W9 form
-    PromoterListItem:
+          description: Data points for the chart
+          items:
+            type: array
+            description: A date-value pair
+            items:
+              oneOf:
+              - type: string
+                description: Date label for the data point (format depends on group_by)
+              - type: number
+                description: Value for the data point
+            minItems: 2
+            maxItems: 2
+        group_by:
+          type: string
+          description: Time unit used for grouping the data
+          enum:
+          - day
+          - week
+          - month
+          - year
+    BatchOperationResponse:
       type: object
       properties:
         id:
           type: integer
-          description: Id of the promoter
-        email:
+          description: Batch ID
+        status:
           type: string
-          description: Email address of the promoter
-        name:
+          enum:
+          - completed
+          - pending
+          - in_progress
+          - failed
+          - stopped
+          description: Status of the batch operation
+        total:
+          type: integer
+          description: Total number of promoters
+        selected_total:
+          type: integer
+          description: Total number of selected promoters
+        processed_count:
+          type: integer
+          description: Number of processed promoters
+        failed_count:
+          type: integer
+          description: Number of failed promoters
+        action_label:
           type: string
-          description: Full name of the promoter
-        cust_id:
-          type:
-          - string
-          - 'null'
-          description: Cust ID of the promoter
-        note:
-          type:
-          - string
-          - 'null'
-          description: Optional note about the promoter
-        stats:
+          description: Label for the action
+        created_at:
+          type: string
+          format: date-time
+          description: Creation date of the batch operation
+        updated_at:
+          type: string
+          format: date-time
+          description: Last update date of the batch operation
+        meta:
           type: object
-          description: Performance statistics for the promoter
-          properties:
-            clicks_count:
-              type: integer
-              description: Number of clicks generated
-            referrals_count:
-              type: integer
-              description: Number of referrals generated
-            sales_count:
-              type: integer
-              description: Number of sales generated
-            customers_count:
-              type: integer
-              description: Number of customers referred
-            revenue_amount:
-              type: integer
-              description: Total revenue generated
-            active_customers_count:
-              type: integer
-              description: Number of active customers
-        is_customized:
-          type: boolean
-          description: Whether the promoter has customized settings
-        fraud_suspicions:
+          description: Additional metadata
+        progress:
+          type: integer
+          description: Progress of the batch operation
+        processing_errors:
           type: array
-          description: List of potential fraud flags
           items:
             type: string
-        is_confirmed:
-          type: boolean
-          description: Whether the promoter has confirmed their account
-        invoice_details_status:
+          description: List of processing errors if any
+    ErrorResponse:
+      type: object
+      properties:
+        message:
           type: string
-          description: Status of the promoter's invoice details
-          enum:
-          - pending
-          - approved
-          - denied
-        profile:
-          $ref: '#/components/schemas/PromoterProfile_2'
-        joined_at:
+          description: Error message
+        code:
           type: string
-          format: date-time
-          description: Date and time when the promoter joined.
-        last_login_at:
-          type:
-          - string
-          - 'null'
-          format: date-time
-          description: Date and time of the promoter's last login.
-        archived_at:
-          type:
-          - string
-          - 'null'
-          format: date-time
-          description: Date and time when the promoter was archived, if applicable.
-        custom_fields:
-          type:
-          - object
-          - 'null'
-          description: Custom fields for the promoter, based on company settings. This is a key-value pair object where keys are custom field identifiers and values are the corresponding data.
-        password_setup_url:
-          type:
-          - string
-          - 'null'
-          description: URL for the promoter to set up their password
-        first_event_at:
-          type: string
-          format: date-time
-          description: Date and time of the promoter's first activity.
-        promoter_campaigns:
-          type: array
-          description: List of campaigns associated with the promoter
-          items:
-            type: object
-            properties:
-              id:
-                type: integer
-                description: ID of the promoter-campaign association
-              campaign_id:
-                type: integer
-                description: ID of the campaign
-              promoter_id:
-                type: integer
-                description: ID of the promoter
-              state:
-                type: string
-                description: State of the promoter in this campaign
-                enum:
-                - pending
-                - accepted
-                - rejected
-                - blocked
-                - inactive
-                - not_set
-              created_at:
-                type: string
-                format: date-time
-                description: When the promoter was added to the campaign
-              campaign:
-                type: object
-                properties:
-                  id:
-                    type: integer
-                    description: ID of the campaign
-                  name:
-                    type: string
-                    description: Name of the campaign
-                  color:
-                    type: string
-                    description: Color code associated with the campaign
-              coupon:
-                type: string
-                description: Coupon code for this campaign
-              ref_token:
-                type: string
-                description: Referral token for this campaign
-              ref_link:
-                type: string
-                description: Referral link for this campaign
-        balances:
-          type: object
-          description: Earnings balance breakdown for the promoter
-          properties:
-            cash:
-              type:
-              - number
-              - 'null'
-            credits:
-              type:
-              - number
-              - 'null'
-            points:
-              type:
-              - number
-              - 'null'
-            free_months:
-              type:
-              - number
-              - 'null'
-            discount:
-              type:
-              - number
-              - 'null'
-        track_ad_traffic:
-          type:
-          - boolean
-          - 'null'
-          description: Whether ad traffic tracking is enabled for this promoter. Null means the campaign default is used.
-        auth_provider:
-          type:
-          - string
-          - 'null'
-          description: OAuth provider used to authenticate (e.g. google). Null if using email/password.
-        selected_payout_method:
-          type:
-          - object
-          - 'null'
-          description: The promoter's currently selected payout method. Omitted when the `exclude_payout_method=true` query parameter is set.
-          properties:
-            id:
-              type: integer
-            method:
-              type: string
-            date_added:
-              type: string
-              format: date-time
-            is_disabled:
-              type: boolean
-  parameters:
-    AccountId:
-      name: Account-ID
-      in: header
-      required: true
-      description: Account identifier that specifies which account is making the request
-      schema:
-        type: string
-        example: acc_123456
-    AccountId_2:
-      name: Account-ID
-      in: header
-      required: true
-      description: Account id. You can find your Account ID on Your FirstPromoter Dashboard. Navigate to Settings → Integrations
-      schema:
-        type: string
+          description: Error code
   securitySchemes:
     BearerAuth:
       type: http

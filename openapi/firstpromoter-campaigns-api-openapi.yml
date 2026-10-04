@@ -320,56 +320,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Reward'
-    Link:
-      type: object
-      required:
-      - name
-      - url
-      properties:
-        id:
-          type: integer
-        name:
-          type: string
-        url:
-          type: string
-        _destroy:
-          type: boolean
-    UpgradeDetails:
-      type: object
-      required:
-      - campaign_id
-      - amount
-      - metric
-      properties:
-        campaign_id:
-          type: integer
-        amount:
-          type: integer
-        metric:
-          type: string
-          enum:
-          - customers
-          - revenue
-    Reward:
-      type: object
-      required:
-      - apply_on
-      - product_ids
-      - reward_id
-      properties:
-        apply_on:
-          type: string
-          enum:
-          - monthly
-          - yearly
-          - one_time
-          - all
-          - specific
-        product_ids:
-          type: array
-          items: {}
-        reward_id:
-          type: integer
     CampaignUpdate:
       type: object
       properties:
@@ -416,6 +366,56 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Reward'
+    UpgradeDetails:
+      type: object
+      required:
+      - campaign_id
+      - amount
+      - metric
+      properties:
+        campaign_id:
+          type: integer
+        amount:
+          type: integer
+        metric:
+          type: string
+          enum:
+          - customers
+          - revenue
+    Reward:
+      type: object
+      required:
+      - apply_on
+      - product_ids
+      - reward_id
+      properties:
+        apply_on:
+          type: string
+          enum:
+          - monthly
+          - yearly
+          - one_time
+          - all
+          - specific
+        product_ids:
+          type: array
+          items: {}
+        reward_id:
+          type: integer
+    Link:
+      type: object
+      required:
+      - name
+      - url
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        url:
+          type: string
+        _destroy:
+          type: boolean
     Campaign:
       type: object
       properties:

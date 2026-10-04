@@ -143,19 +143,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    Error:
-      type: object
-      properties:
-        message:
-          type: string
-        code:
-          type: string
-        errors:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              type: string
     CustomReferralStatus:
       type: object
       properties:
@@ -184,6 +171,19 @@ components:
           type: string
           format: date-time
           description: When the status was last updated
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: string
+        errors:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string
   parameters:
     AccountId:
       name: Account-ID
