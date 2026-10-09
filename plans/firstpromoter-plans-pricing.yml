@@ -101,3 +101,28 @@ api_access:
     pricing, quota or metered charge is published.
 verification_note: Prices, tier thresholds, campaign/website/affiliate limits and the 14-day no-credit-card trial
   were re-read from the live pricing page on 2026-08-13 and match the values recorded here.
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - subscription
+  units: []
+  plans:
+  - name: Starter
+    access: other
+    model: subscription
+    model_how: derived
+    units: []
+    periods: []
+  - name: Business
+    access: other
+    model: subscription
+    model_how: derived
+    units: []
+    periods: []
+  - name: Enterprise
+    access: other
+    model: subscription
+    model_how: derived
+    units: []
+    periods: []

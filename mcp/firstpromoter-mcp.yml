@@ -254,3 +254,18 @@ notes:
   at a Mintlify preview host (firstpromoter.main-kill-isr.mintlify.me). That is the documentation-search
   MCP emitted by the docs platform, not the FirstPromoter product MCP server, and it is not treated as
   an agent surface for FirstPromoter.
+rfc9728:
+  endpoint: https://mcp.firstpromoter.com
+  metadata_url: https://mcp.firstpromoter.com/.well-known/oauth-protected-resource
+  discovered_via: WWW-Authenticate resource_metadata on an anonymous POST initialize
+  fetched: '2026-09-25'
+  http_status: 200
+  content_type: application/json
+  document:
+    resource: https://mcp.firstpromoter.com
+    authorization_servers:
+    - https://mcp.firstpromoter.com
+    scopes_supported:
+    - mcp
+    bearer_methods_supported:
+    - header
