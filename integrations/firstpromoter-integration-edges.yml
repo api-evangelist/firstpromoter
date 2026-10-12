@@ -1,0 +1,20 @@
+generated: '2026-10-12'
+method: searched
+source:
+- https://n8n.io/integrations/firstpromoter/
+checked:
+- https://composio.dev/toolkits/firstpromoter
+- https://monid.ai/tools/firstpromoter
+- https://n8n.io/integrations/firstpromoter/
+- https://zapier.com/apps/firstpromoter/integrations
+summary: null
+marketplace_apps:
+- marketplace: n8n
+  channel: open-source-node
+  app: firstpromoter
+  url: https://n8n.io/integrations/firstpromoter/
+  identity: title
+  pair_pages: 0
+  pairs: []
+edges: []
+templates: []
