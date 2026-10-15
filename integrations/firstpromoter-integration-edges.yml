@@ -7,6 +7,7 @@ checked:
 - https://monid.ai/tools/firstpromoter
 - https://n8n.io/integrations/firstpromoter/
 - https://zapier.com/apps/firstpromoter/integrations
+- stripe/integrations/stripe-integration-edges.yml
 summary: null
 marketplace_apps:
 - marketplace: n8n
@@ -16,5 +17,22 @@ marketplace_apps:
   identity: title
   pair_pages: 0
   pairs: []
-edges: []
+edges:
+- partner_name: Stripe (own)
+  partner: stripe
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://marketplace.stripe.com/apps/firstpromoter
+  mirror_of: stripe/integrations/stripe-integration-edges.yml
+  apps:
+  - FirstPromoter
+  listing_count: 1
+  detected: '2026-10-15'
+  detected_by: mirror-platform-listings.py
+  category: affiliate_and_referrals
 templates: []
