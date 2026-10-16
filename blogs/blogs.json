@@ -2,8 +2,8 @@
   "repo": "firstpromoter",
   "feeds": [
     {
-      "source": "https://help.firstpromoter.com/en/",
-      "feed_url": "https://help.firstpromoter.com/en/feed.xml",
+      "source": "https://firstpromoter.com/blog",
+      "feed_url": "https://firstpromoter.com/blog/feed/",
       "title": "",
       "saved": 0,
       "method": "discovered"
@@ -16,8 +16,8 @@
       "method": "feed"
     }
   ],
-  "post_count": 37,
-  "fetched": "2026-10-03T12:30:02Z",
+  "post_count": 38,
+  "fetched": "2026-10-10T13:15:00Z",
   "agent_pulled": "2026-06-27",
   "feed_nature": "vendor-blog",
   "feed_nature_basis": "path_blog",
