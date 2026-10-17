@@ -320,68 +320,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Reward'
-    CampaignUpdate:
-      type: object
-      properties:
-        name:
-          type: string
-        landing_url:
-          type: string
-        ref_token_param:
-          type: string
-          enum:
-          - ?fpr
-          - ?via
-          - ?fp_ref
-          - ?deal
-          - ?ref
-          - ?_from
-          - ?_by
-          - ?_go
-        color:
-          type: string
-        visitor_cookie_life:
-          type: integer
-        auto_approve_promoters:
-          type: boolean
-        is_private:
-          type: boolean
-        track_ad_traffic:
-          type: string
-          enum:
-          - pending
-          - allow
-          - block
-        links:
-          type: array
-          items:
-            $ref: '#/components/schemas/Link'
-        upgrade_details:
-          $ref: '#/components/schemas/UpgradeDetails'
-        rewards_for_promoters:
-          type: array
-          items:
-            $ref: '#/components/schemas/Reward'
-        rewards_for_referrals:
-          type: array
-          items:
-            $ref: '#/components/schemas/Reward'
-    UpgradeDetails:
-      type: object
-      required:
-      - campaign_id
-      - amount
-      - metric
-      properties:
-        campaign_id:
-          type: integer
-        amount:
-          type: integer
-        metric:
-          type: string
-          enum:
-          - customers
-          - revenue
     Reward:
       type: object
       required:
@@ -416,6 +354,22 @@ components:
           type: string
         _destroy:
           type: boolean
+    UpgradeDetails:
+      type: object
+      required:
+      - campaign_id
+      - amount
+      - metric
+      properties:
+        campaign_id:
+          type: integer
+        amount:
+          type: integer
+        metric:
+          type: string
+          enum:
+          - customers
+          - revenue
     Campaign:
       type: object
       properties:
@@ -612,6 +566,52 @@ components:
                     name:
                       type: string
                       description: Product name
+    CampaignUpdate:
+      type: object
+      properties:
+        name:
+          type: string
+        landing_url:
+          type: string
+        ref_token_param:
+          type: string
+          enum:
+          - ?fpr
+          - ?via
+          - ?fp_ref
+          - ?deal
+          - ?ref
+          - ?_from
+          - ?_by
+          - ?_go
+        color:
+          type: string
+        visitor_cookie_life:
+          type: integer
+        auto_approve_promoters:
+          type: boolean
+        is_private:
+          type: boolean
+        track_ad_traffic:
+          type: string
+          enum:
+          - pending
+          - allow
+          - block
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/Link'
+        upgrade_details:
+          $ref: '#/components/schemas/UpgradeDetails'
+        rewards_for_promoters:
+          type: array
+          items:
+            $ref: '#/components/schemas/Reward'
+        rewards_for_referrals:
+          type: array
+          items:
+            $ref: '#/components/schemas/Reward'
   parameters:
     AccountId:
       name: Account-ID

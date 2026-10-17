@@ -216,29 +216,7 @@ paths:
       operationId: postContractDocumentsDraft
       x-operation-id-source: derived
 components:
-  parameters:
-    AccountId:
-      name: Account-ID
-      in: header
-      required: true
-      description: Account identifier that specifies which account is making the request
-      schema:
-        type: string
-        example: acc_123456
   schemas:
-    ValidationError:
-      type: object
-      properties:
-        message:
-          type: string
-        errors:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              type: string
-        code:
-          type: string
     Promoter:
       type: object
       properties:
@@ -253,20 +231,6 @@ components:
           properties:
             avatar:
               type: string
-    Error:
-      type: object
-      properties:
-        message:
-          type: string
-        code:
-          type: string
-    Contract:
-      type: object
-      properties:
-        id:
-          type: integer
-        name:
-          type: string
     ContractVersion:
       type: object
       properties:
@@ -283,6 +247,13 @@ components:
           - 'null'
         content_hosted:
           type: boolean
+    Contract:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
     ContractDocument:
       type: object
       properties:
@@ -305,6 +276,35 @@ components:
           $ref: '#/components/schemas/ContractVersion'
         contract:
           $ref: '#/components/schemas/Contract'
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: string
+    ValidationError:
+      type: object
+      properties:
+        message:
+          type: string
+        errors:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string
+        code:
+          type: string
+  parameters:
+    AccountId:
+      name: Account-ID
+      in: header
+      required: true
+      description: Account identifier that specifies which account is making the request
+      schema:
+        type: string
+        example: acc_123456
   securitySchemes:
     BearerAuth:
       type: http

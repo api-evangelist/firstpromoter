@@ -161,16 +161,6 @@ paths:
       - Referral Links
 components:
   schemas:
-    Error:
-      type: object
-      properties:
-        message:
-          type: string
-        code:
-          type: string
-      required:
-      - message
-      - code
     ReferralLink:
       type: object
       properties:
@@ -206,6 +196,16 @@ components:
               type:
               - string
               - 'null'
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: string
+      required:
+      - message
+      - code
   parameters:
     AccountId:
       name: Account-ID

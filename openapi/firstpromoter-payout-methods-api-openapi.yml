@@ -174,12 +174,15 @@ paths:
           $ref: '#/components/responses/Conflict'
 components:
   responses:
-    Unauthorized:
-      description: Unauthorized
+    Conflict:
+      description: Conflict
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
+          example:
+            message: Failed to destroy Rewards::Providers::Account
+            code: destroy_failed
     Forbidden:
       description: Forbidden
       content:
@@ -189,6 +192,12 @@ components:
           example:
             message: Invalid user type
             code: forbidden
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
     ValidationError:
       description: Validation Error
       content:
@@ -222,15 +231,6 @@ components:
           example:
             message: Invalid method
             code: invalid_params
-    Conflict:
-      description: Conflict
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-          example:
-            message: Failed to destroy Rewards::Providers::Account
-            code: destroy_failed
     NotFound:
       description: Not Found
       content:
@@ -251,6 +251,52 @@ components:
           type: string
         crypto_currency:
           type: string
+    WiseDetails:
+      type: object
+      required:
+      - wise_email
+      properties:
+        wise_email:
+          type: string
+          format: email
+    PaypalDetails:
+      type: object
+      required:
+      - paypal_email
+      properties:
+        paypal_email:
+          type: string
+          format: email
+    PayoutMethodUpdate:
+      type: object
+      required:
+      - details
+      - method
+      - promoter_id
+      properties:
+        method:
+          type: string
+          enum:
+          - paypal
+          - bank
+          - wise
+          - crypto
+          - custom
+          - dots
+        is_disabled:
+          type: boolean
+        is_selected:
+          type: boolean
+        promoter_id:
+          type: integer
+          description: Id of the promoter
+        details:
+          type: object
+          oneOf:
+          - $ref: '#/components/schemas/PaypalDetails'
+          - $ref: '#/components/schemas/BankDetails'
+          - $ref: '#/components/schemas/WiseDetails'
+          - $ref: '#/components/schemas/CryptoDetails'
     PayoutMethod:
       type: object
       properties:
@@ -283,89 +329,6 @@ components:
           - $ref: '#/components/schemas/CryptoDetails'
         managed_payouts:
           type: boolean
-    WiseDetails:
-      type: object
-      required:
-      - wise_email
-      properties:
-        wise_email:
-          type: string
-          format: email
-    PaypalDetails:
-      type: object
-      required:
-      - paypal_email
-      properties:
-        paypal_email:
-          type: string
-          format: email
-    Error:
-      type: object
-      properties:
-        message:
-          type: string
-        code:
-          type: string
-    PayoutMethodCreate:
-      type: object
-      required:
-      - method
-      - details
-      - promoter_id
-      properties:
-        method:
-          type: string
-          enum:
-          - paypal
-          - bank
-          - wise
-          - crypto
-          - custom
-          - dots
-        is_disabled:
-          type: boolean
-        is_selected:
-          type: boolean
-        promoter_id:
-          type: integer
-          description: Id of the promoter
-        details:
-          type: object
-          oneOf:
-          - $ref: '#/components/schemas/PaypalDetails'
-          - $ref: '#/components/schemas/BankDetails'
-          - $ref: '#/components/schemas/WiseDetails'
-          - $ref: '#/components/schemas/CryptoDetails'
-    PayoutMethodUpdate:
-      type: object
-      required:
-      - details
-      - method
-      - promoter_id
-      properties:
-        method:
-          type: string
-          enum:
-          - paypal
-          - bank
-          - wise
-          - crypto
-          - custom
-          - dots
-        is_disabled:
-          type: boolean
-        is_selected:
-          type: boolean
-        promoter_id:
-          type: integer
-          description: Id of the promoter
-        details:
-          type: object
-          oneOf:
-          - $ref: '#/components/schemas/PaypalDetails'
-          - $ref: '#/components/schemas/BankDetails'
-          - $ref: '#/components/schemas/WiseDetails'
-          - $ref: '#/components/schemas/CryptoDetails'
     BankDetails:
       type: object
       required:
@@ -489,6 +452,43 @@ components:
           type: string
         bank_address:
           type: string
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: string
+    PayoutMethodCreate:
+      type: object
+      required:
+      - method
+      - details
+      - promoter_id
+      properties:
+        method:
+          type: string
+          enum:
+          - paypal
+          - bank
+          - wise
+          - crypto
+          - custom
+          - dots
+        is_disabled:
+          type: boolean
+        is_selected:
+          type: boolean
+        promoter_id:
+          type: integer
+          description: Id of the promoter
+        details:
+          type: object
+          oneOf:
+          - $ref: '#/components/schemas/PaypalDetails'
+          - $ref: '#/components/schemas/BankDetails'
+          - $ref: '#/components/schemas/WiseDetails'
+          - $ref: '#/components/schemas/CryptoDetails'
   parameters:
     AccountId:
       name: Account-ID

@@ -464,19 +464,6 @@ components:
         type: string
         example: acc_123456
   schemas:
-    Error:
-      type: object
-      properties:
-        message:
-          type: string
-        code:
-          type: string
-        errors:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              type: string
     BatchOperationResult:
       type: object
       properties:
@@ -511,6 +498,19 @@ components:
           type: array
           items:
             type: string
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: string
+        errors:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string
     Asset:
       type: object
       properties:

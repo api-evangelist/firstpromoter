@@ -323,41 +323,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    BatchResponse:
-      type: object
-      properties:
-        id:
-          type: integer
-        status:
-          type: string
-          enum:
-          - pending
-          - completed
-          - failed
-        total:
-          type: integer
-        selected_total:
-          type: integer
-        processed_count:
-          type: integer
-        failed_count:
-          type: integer
-        action_label:
-          type: string
-        created_at:
-          type: string
-          format: date-time
-        updated_at:
-          type: string
-          format: date-time
-        meta:
-          type: object
-        progress:
-          type: integer
-        processing_errors:
-          type: array
-          items:
-            type: object
     Invoice:
       type: object
       properties:
@@ -396,13 +361,6 @@ components:
           type: array
           items:
             type: object
-    Error:
-      type: object
-      properties:
-        message:
-          type: string
-        code:
-          type: string
     BatchRequest:
       type: object
       properties:
@@ -411,6 +369,48 @@ components:
           items:
             type: integer
             description: Array of invoice ids.
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: string
+    BatchResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+        status:
+          type: string
+          enum:
+          - pending
+          - completed
+          - failed
+        total:
+          type: integer
+        selected_total:
+          type: integer
+        processed_count:
+          type: integer
+        failed_count:
+          type: integer
+        action_label:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+        meta:
+          type: object
+        progress:
+          type: integer
+        processing_errors:
+          type: array
+          items:
+            type: object
   parameters:
     AccountId:
       name: Account-ID

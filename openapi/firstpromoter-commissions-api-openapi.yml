@@ -755,14 +755,6 @@ paths:
     - url: https://api.firstpromoter.com/api/v2/company
 components:
   parameters:
-    AccountId:
-      name: Account-ID
-      in: header
-      required: true
-      description: Account identifier that specifies which account is making the request
-      schema:
-        type: string
-        example: acc_123456
     CommissionFilters:
       name: filters
       in: query
@@ -782,6 +774,14 @@ components:
             enum:
             - 'yes'
             - 'no'
+    AccountId:
+      name: Account-ID
+      in: header
+      required: true
+      description: Account identifier that specifies which account is making the request
+      schema:
+        type: string
+        example: acc_123456
     AccountId_2:
       name: Account-ID
       in: header
@@ -790,13 +790,6 @@ components:
       schema:
         type: string
   schemas:
-    Error:
-      type: object
-      properties:
-        message:
-          type: string
-        code:
-          type: string
     Reward:
       type: object
       properties:
@@ -804,18 +797,6 @@ components:
           type: integer
         name:
           type: string
-    PromoterCampaign:
-      type: object
-      properties:
-        id:
-          type: integer
-        campaign_id:
-          type: integer
-        created_at:
-          type: string
-          format: date-time
-        campaign:
-          $ref: '#/components/schemas/Campaign'
     Referral:
       type:
       - object
@@ -838,6 +819,13 @@ components:
           type:
           - string
           - 'null'
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: string
     Commission:
       type: object
       properties:
@@ -892,55 +880,27 @@ components:
           type: number
         is_paid:
           type: boolean
-    BatchOperationResponse:
+    PromoterCampaign:
       type: object
       properties:
         id:
           type: integer
-          description: Batch ID
-        status:
-          type: string
-          enum:
-          - completed
-          - pending
-          - in_progress
-          - failed
-          - stopped
-          description: Status of the batch operation
-        total:
+        campaign_id:
           type: integer
-          description: Total number of items
-        selected_total:
-          type: integer
-          description: Total number of selected items
-        processed_count:
-          type: integer
-          description: Number of processed items
-        failed_count:
-          type: integer
-          description: Number of failed operations
-        action_label:
-          type: string
-          description: Label for the action
         created_at:
           type: string
           format: date-time
-          description: Creation date of the batch operation
-        updated_at:
+        campaign:
+          $ref: '#/components/schemas/Campaign'
+    CommissionUpdate:
+      type: object
+      properties:
+        internal_note:
           type: string
-          format: date-time
-          description: Last update date of the batch operation
-        meta:
-          type: object
-          description: Additional metadata
-        progress:
-          type: integer
-          description: Progress of the batch operation
-        processing_errors:
-          type: array
-          items:
-            type: string
-          description: List of processing errors if any
+          description: Internal note visible only by the team
+        external_note:
+          type: string
+          description: External note visible by the promoter
     CommissionFilters:
       type: object
       properties:
@@ -1036,24 +996,6 @@ components:
             items:
               type: integer
           description: Plan id
-    CommissionUpdate:
-      type: object
-      properties:
-        internal_note:
-          type: string
-          description: Internal note visible only by the team
-        external_note:
-          type: string
-          description: External note visible by the promoter
-    ErrorResponse:
-      type: object
-      properties:
-        message:
-          type: string
-          description: Error message
-        code:
-          type: string
-          description: Error code
     CommissionSorting:
       type: object
       properties:
@@ -1089,6 +1031,64 @@ components:
           items:
             type: integer
           description: Array of commission Ids. If there are more than __5__ ids on this param/field, the action will be processed asynchronously. The response for the batch status will most likely be `in_progress`. The available statuses are `pending`, `in_progress`, `completed`, `failed` and `stopped`
+    BatchOperationResponse:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Batch ID
+        status:
+          type: string
+          enum:
+          - completed
+          - pending
+          - in_progress
+          - failed
+          - stopped
+          description: Status of the batch operation
+        total:
+          type: integer
+          description: Total number of items
+        selected_total:
+          type: integer
+          description: Total number of selected items
+        processed_count:
+          type: integer
+          description: Number of processed items
+        failed_count:
+          type: integer
+          description: Number of failed operations
+        action_label:
+          type: string
+          description: Label for the action
+        created_at:
+          type: string
+          format: date-time
+          description: Creation date of the batch operation
+        updated_at:
+          type: string
+          format: date-time
+          description: Last update date of the batch operation
+        meta:
+          type: object
+          description: Additional metadata
+        progress:
+          type: integer
+          description: Progress of the batch operation
+        processing_errors:
+          type: array
+          items:
+            type: string
+          description: List of processing errors if any
+    ErrorResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Error message
+        code:
+          type: string
+          description: Error code
     Commission_2:
       type: object
       properties:

@@ -146,7 +146,24 @@ paths:
       operationId: postWebhooksByWebhookIdWebhookDeliveriesByIdRetryDelivery
       x-operation-id-source: derived
 components:
+  parameters:
+    AccountId:
+      name: Account-ID
+      in: header
+      required: true
+      description: Account ID. Found in your FirstPromoter dashboard under Settings → Integrations.
+      schema:
+        type: string
   schemas:
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Human-readable error description.
+        code:
+          type: string
+          description: Machine-readable error code.
     WebhookDelivery:
       type: object
       properties:
@@ -218,23 +235,6 @@ components:
           - 'null'
           format: date-time
           description: ISO 8601 timestamp of when the delivery was acknowledged by your endpoint. `null` if not yet delivered.
-    Error:
-      type: object
-      properties:
-        message:
-          type: string
-          description: Human-readable error description.
-        code:
-          type: string
-          description: Machine-readable error code.
-  parameters:
-    AccountId:
-      name: Account-ID
-      in: header
-      required: true
-      description: Account ID. Found in your FirstPromoter dashboard under Settings → Integrations.
-      schema:
-        type: string
   securitySchemes:
     BearerAuth:
       type: http

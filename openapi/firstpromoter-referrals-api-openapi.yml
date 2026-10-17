@@ -716,51 +716,7 @@ paths:
     - url: https://api.firstpromoter.com/api/v2/company
       description: Production server
 components:
-  parameters:
-    AccountId:
-      name: Account-ID
-      in: header
-      required: true
-      description: Account identifier that specifies which account is making the request
-      schema:
-        type: string
-        example: acc_123456
-    AccountId_2:
-      name: Account-ID
-      in: header
-      required: true
-      description: Account id. You can find your Account ID on Your FirstPromoter Dashboard. Navigate to Settings → Integrations
-      schema:
-        type: string
   schemas:
-    Error:
-      type: object
-      properties:
-        message:
-          type: string
-        code:
-          type: string
-        errors:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              type: string
-      required:
-      - message
-      - code
-    PromoterCampaign:
-      type: object
-      properties:
-        id:
-          type: integer
-        campaign_id:
-          type: integer
-        created_at:
-          type: string
-          format: date-time
-        campaign:
-          $ref: '#/components/schemas/Campaign'
     Referral:
       type: object
       properties:
@@ -801,6 +757,34 @@ components:
           type: string
         color:
           type: string
+    Error:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: string
+        errors:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string
+      required:
+      - message
+      - code
+    PromoterCampaign:
+      type: object
+      properties:
+        id:
+          type: integer
+        campaign_id:
+          type: integer
+        created_at:
+          type: string
+          format: date-time
+        campaign:
+          $ref: '#/components/schemas/Campaign'
     Promoter:
       type: object
       properties:
@@ -814,39 +798,6 @@ components:
         name:
           type: string
           description: Name of the promoter
-    Error_2:
-      type: object
-      properties:
-        message:
-          type: string
-        code:
-          type: string
-        errors:
-          type: object
-          additionalProperties:
-            type: array
-            items:
-              type: string
-    PromoterCampaign_2:
-      type: object
-      properties:
-        id:
-          type: integer
-          description: Id of the promoter campaign
-        campaign_id:
-          type: integer
-          description: Id of the campaign
-        promoter_id:
-          type: integer
-          description: Id of the promoter
-        created_at:
-          type: string
-          format: date-time
-          description: Date and time when the promoter campaign was created
-        promoter:
-          $ref: '#/components/schemas/Promoter'
-        campaign:
-          $ref: '#/components/schemas/Campaign_2'
     BatchSelectionRequest:
       type: object
       properties:
@@ -974,6 +925,19 @@ components:
           - string
           - 'null'
           description: Color assigned to the campaign
+    Error_2:
+      type: object
+      properties:
+        message:
+          type: string
+        code:
+          type: string
+        errors:
+          type: object
+          additionalProperties:
+            type: array
+            items:
+              type: string
     BatchOperationResponse:
       type: object
       properties:
@@ -1020,6 +984,42 @@ components:
           items:
             type: string
             description: List of processing errors
+    PromoterCampaign_2:
+      type: object
+      properties:
+        id:
+          type: integer
+          description: Id of the promoter campaign
+        campaign_id:
+          type: integer
+          description: Id of the campaign
+        promoter_id:
+          type: integer
+          description: Id of the promoter
+        created_at:
+          type: string
+          format: date-time
+          description: Date and time when the promoter campaign was created
+        promoter:
+          $ref: '#/components/schemas/Promoter'
+        campaign:
+          $ref: '#/components/schemas/Campaign_2'
+  parameters:
+    AccountId:
+      name: Account-ID
+      in: header
+      required: true
+      description: Account identifier that specifies which account is making the request
+      schema:
+        type: string
+        example: acc_123456
+    AccountId_2:
+      name: Account-ID
+      in: header
+      required: true
+      description: Account id. You can find your Account ID on Your FirstPromoter Dashboard. Navigate to Settings → Integrations
+      schema:
+        type: string
   securitySchemes:
     BearerAuth:
       type: http

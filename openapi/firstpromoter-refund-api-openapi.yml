@@ -143,6 +143,14 @@ paths:
       operationId: postRefund
       x-operation-id-source: derived
 components:
+  parameters:
+    AccountId:
+      name: Account-ID
+      in: header
+      required: true
+      description: Account id. You can find your Account ID on Your FirstPromoter Dashboard. Navigate to Settings → Integrations
+      schema:
+        type: string
   schemas:
     Promoter:
       type: object
@@ -297,14 +305,6 @@ components:
           - string
           - 'null'
           example: null
-  parameters:
-    AccountId:
-      name: Account-ID
-      in: header
-      required: true
-      description: Account id. You can find your Account ID on Your FirstPromoter Dashboard. Navigate to Settings → Integrations
-      schema:
-        type: string
   securitySchemes:
     BearerAuth:
       type: http

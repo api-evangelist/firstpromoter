@@ -415,6 +415,15 @@ paths:
       operationId: postRewardsByIdHide
       x-operation-id-source: derived
 components:
+  parameters:
+    AccountId:
+      name: Account-ID
+      in: header
+      required: true
+      description: Account identifier that specifies which account is making the request
+      schema:
+        type: string
+        example: acc_123456
   schemas:
     Error:
       type: object
@@ -590,15 +599,6 @@ components:
           type: string
           description: Error code
           example: invalid_record
-  parameters:
-    AccountId:
-      name: Account-ID
-      in: header
-      required: true
-      description: Account identifier that specifies which account is making the request
-      schema:
-        type: string
-        example: acc_123456
   securitySchemes:
     BearerAuth:
       type: http
