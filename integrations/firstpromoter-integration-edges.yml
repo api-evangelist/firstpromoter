@@ -4,9 +4,16 @@ source:
 - https://n8n.io/integrations/firstpromoter/
 checked:
 - https://a2aregistry.org/api/agents
+- https://api.nuget.org/v3
 - https://composio.dev/toolkits/firstpromoter
+- https://crates.io/api/v1
 - https://monid.ai/tools/firstpromoter
 - https://n8n.io/integrations/firstpromoter/
+- https://proxy.golang.org
+- https://pypi.org/pypi
+- https://registry.npmjs.org
+- https://repo1.maven.org/maven2
+- https://rubygems.org/api/v1
 - https://zapier.com/apps/firstpromoter/integrations
 - stripe/integrations/stripe-integration-edges.yml
 summary: null
@@ -69,4 +76,34 @@ edges:
     detected: '2026-10-15'
   detected_by: sweep-ai-agents.py
   first_seen: '2026-10-15'
+- partner_name: npm registry
+  partner: npm
+  partner_match: register
+  type: register
+  direction: provider-built
+  category: official SDK (JavaScript/TypeScript)
+  evidence: https://www.npmjs.com/package/@firstpromoter/n8n-nodes-firstpromoter
+  channel: package-registry
+  relationship: distribution-channel
+  contract_reference:
+    register: npm registry (public registry JSON)
+    spec_file: null
+    language: JavaScript/TypeScript
+    packages:
+    - name: '@firstpromoter/n8n-nodes-firstpromoter'
+      version: 0.1.3
+      released: '2026-06-11'
+      released_field: modified
+      lapsed: false
+      page: https://www.npmjs.com/package/@firstpromoter/n8n-nodes-firstpromoter
+      repo_leg: domain:firstpromoter.com
+      publisher_leg: email:firstpromoter.com
+      matched_by: domain
+    current: true
+    signal_note: 'an official package on the registry: distribution, not an integration; lapsed = no release in
+      24 months'
+    detected_by: sweep-official-sdks.py
+    detected: '2026-10-18'
+  detected_by: sweep-official-sdks.py
+  first_seen: '2026-10-18'
 templates: []
