@@ -9,6 +9,13 @@
       "method": "discovered"
     },
     {
+      "source": "https://firstpromoter.com/blog/feed/",
+      "feed_url": "https://firstpromoter.com/blog/feed/",
+      "title": "",
+      "saved": 0,
+      "method": "feed"
+    },
+    {
       "source": "https://help.firstpromoter.com/en/feed.xml",
       "feed_url": "https://help.firstpromoter.com/en/feed.xml",
       "title": "",
@@ -16,8 +23,8 @@
       "method": "feed"
     }
   ],
-  "post_count": 38,
-  "fetched": "2026-10-10T13:15:00Z",
+  "post_count": 47,
+  "fetched": "2026-10-17T14:53:57Z",
   "agent_pulled": "2026-06-27",
   "feed_nature": "vendor-blog",
   "feed_nature_basis": "path_blog",
