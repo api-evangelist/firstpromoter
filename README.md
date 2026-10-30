@@ -1,4 +1,4 @@
-# FirstPromoter (firstpromoter)
+# FirstPromoter
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,53 +64,265 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-FirstPromoter is an all-in-one affiliate and referral tracking platform built for SaaS and subscription-based companies. It provides a REST API for managing promoters, tracking referrals, running campaigns, and automating reward distribution. The platform is Stripe-native and supports percentage of sale, flat fee, one-time, lifetime, and tiered commission models with multi-currency support across 190 currencies.
+FirstPromoter is an affiliate, referral and influencer marketing platform for SaaS and subscription businesses, run by Igil Web SRL since 2016. It tracks clicks, leads and sales, manages promoters and campaigns, calculates multi-tier commissions and rewards, and pays affiliates through PayPal, Wise, Stripe and managed payouts. The public v2 REST API spans 37 first-party OpenAPI definitions and 179 operations across an admin surface, a promoter-facing surface and a server-side tracking surface, alongside a 44-event webhooks v2 system, a browser tracking library, and a remote MCP server for AI clients.
 
-APIs.json: https://raw.githubusercontent.com/api-evangelist/firstpromoter/refs/heads/main/apis.yml
+**Areas:** Affiliate Marketing · Referral Tracking · Software-as-a-Service · Commission Management · Reward Distribution · Promoters · Partner Marketing · Influencer Marketing · Payouts · Attribution · Webhook · MCP
 
-Naftiko: https://github.com/naftiko/fleet?utm_source=api-evangelist&utm_medium=readme&utm_campaign=firstpromoter-api-evangelist&utm_content=repo
+## FirstPromoter on APIs.io
 
-## Tags
+Everything profiled for FirstPromoter is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/firstpromoter/](https://apis.io/providers/firstpromoter/)** — or go straight to one of the APIs or properties below.
 
-- Affiliate Marketing
-- Referral Tracking
-- SaaS
-- Commission Management
-- Reward Distribution
-- Promoters
+### APIs (30)
 
-## APIs
+- [FirstPromoter Asset Categories API](https://apis.io/apis/firstpromoter/firstpromoter-asset-categories-api/) — The Asset Categories API from FirstPromoter — 2 operation(s) for asset categories.
+- [FirstPromoter Assets API](https://apis.io/apis/firstpromoter/firstpromoter-assets-api/) — The Assets API from FirstPromoter — 4 operation(s) for assets.
+- [FirstPromoter Batch Processes API](https://apis.io/apis/firstpromoter/firstpromoter-batch-processes-api/) — The Batch Processes API from FirstPromoter — 3 operation(s) for batch processes.
+- [FirstPromoter Campaigns API](https://apis.io/apis/firstpromoter/firstpromoter-campaigns-api/) — The Campaigns API from FirstPromoter — 2 operation(s) for campaigns.
+- [FirstPromoter Cancellation API](https://apis.io/apis/firstpromoter/firstpromoter-cancellation-api/) — The Cancellation API from FirstPromoter — 1 operation(s) for cancellation.
+- [FirstPromoter Commissions API](https://apis.io/apis/firstpromoter/firstpromoter-commissions-api/) — The Commissions API from FirstPromoter — 9 operation(s) for commissions.
+- [FirstPromoter Contract Documents API](https://apis.io/apis/firstpromoter/firstpromoter-contract-documents-api/) — The Contract Documents API from FirstPromoter — 4 operation(s) for contract documents.
+- [FirstPromoter Contracts API](https://apis.io/apis/firstpromoter/firstpromoter-contracts-api/) — The Contracts API from FirstPromoter — 2 operation(s) for contracts.
+- [FirstPromoter Custom Referral Statuses API](https://apis.io/apis/firstpromoter/firstpromoter-custom-referral-statuses-api/) — The Custom Referral Statuses API from FirstPromoter — 3 operation(s) for custom referral statuses.
+- [FirstPromoter Dashboards API](https://apis.io/apis/firstpromoter/firstpromoter-dashboards-api/) — The Dashboards API from FirstPromoter — 4 operation(s) for dashboards.
+- [FirstPromoter Email Settings API](https://apis.io/apis/firstpromoter/firstpromoter-email-settings-api/) — The Email Settings API from FirstPromoter — 2 operation(s) for email settings.
+- [FirstPromoter Emails API](https://apis.io/apis/firstpromoter/firstpromoter-emails-api/) — The Emails API from FirstPromoter — 8 operation(s) for emails.
+- [FirstPromoter Invoice Templates API](https://apis.io/apis/firstpromoter/firstpromoter-invoice-templates-api/) — The Invoice Templates API from FirstPromoter — 3 operation(s) for invoice templates.
+- [FirstPromoter Invoices API](https://apis.io/apis/firstpromoter/firstpromoter-invoices-api/) — The Invoices API from FirstPromoter — 8 operation(s) for invoices.
+- [FirstPromoter Payments Batches API](https://apis.io/apis/firstpromoter/firstpromoter-payments-batches-api/) — The Payments Batches API from FirstPromoter — 2 operation(s) for payments batches.
+- [FirstPromoter Payout Methods API](https://apis.io/apis/firstpromoter/firstpromoter-payout-methods-api/) — The Payout Methods API from FirstPromoter — 2 operation(s) for payout methods.
+- [FirstPromoter Payouts API](https://apis.io/apis/firstpromoter/firstpromoter-payouts-api/) — The Payouts API from FirstPromoter — 10 operation(s) for payouts.
+- [FirstPromoter Products API](https://apis.io/apis/firstpromoter/firstpromoter-products-api/) — The Products API from FirstPromoter — 2 operation(s) for products.
+- [FirstPromoter Promo Codes API](https://apis.io/apis/firstpromoter/firstpromoter-promo-codes-api/) — The Promo Codes API from FirstPromoter — 2 operation(s) for promo codes.
+- [FirstPromoter Promoter Campaigns API](https://apis.io/apis/firstpromoter/firstpromoter-promoter-campaigns-api/) — The Promoter Campaigns API from FirstPromoter — 5 operation(s) for promoter campaigns.
+- [FirstPromoter Promoters API](https://apis.io/apis/firstpromoter/firstpromoter-promoters-api/) — The Promoters API from FirstPromoter — 16 operation(s) for promoters.
+- [FirstPromoter Referral Links API](https://apis.io/apis/firstpromoter/firstpromoter-referral-links-api/) — The Referral Links API from FirstPromoter — 2 operation(s) for referral links.
+- [FirstPromoter Referrals API](https://apis.io/apis/firstpromoter/firstpromoter-referrals-api/) — The Referrals API from FirstPromoter — 8 operation(s) for referrals.
+- [FirstPromoter Refund API](https://apis.io/apis/firstpromoter/firstpromoter-refund-api/) — The Refund API from FirstPromoter — 1 operation(s) for refund.
+- [FirstPromoter Reports API](https://apis.io/apis/firstpromoter/firstpromoter-reports-api/) — The Reports API from FirstPromoter — 7 operation(s) for reports.
+- [FirstPromoter Rewards API](https://apis.io/apis/firstpromoter/firstpromoter-rewards-api/) — The Rewards API from FirstPromoter — 3 operation(s) for rewards.
+- [FirstPromoter Sale API](https://apis.io/apis/firstpromoter/firstpromoter-sale-api/) — The Sale API from FirstPromoter — 1 operation(s) for sale.
+- [FirstPromoter Signup API](https://apis.io/apis/firstpromoter/firstpromoter-signup-api/) — The Signup API from FirstPromoter — 1 operation(s) for signup.
+- [FirstPromoter Webhook Deliveries API](https://apis.io/apis/firstpromoter/firstpromoter-webhook-deliveries-api/) — The Webhook Deliveries API from FirstPromoter — 3 operation(s) for webhook deliveries.
+- [FirstPromoter Webhooks API](https://apis.io/apis/firstpromoter/firstpromoter-webhooks-api/) — The Webhooks API from FirstPromoter — 4 operation(s) for webhooks.
 
-### FirstPromoter Admin API
+### Published properties
 
-REST API v2 for managing affiliate programs, promoters, campaigns, referrals, rewards, and payouts. Base URL: `https://api.firstpromoter.com/api/v2`. Authentication uses Bearer token plus Account-ID header.
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-- Documentation: https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction
-- GitHub Org: https://github.com/firstpromoter
+#### AsyncAPI (1)
 
-## Plans, Rate Limits, and FinOps
+Event-driven and webhook contracts.
 
-- **Plans/Pricing**: [plans/firstpromoter-plans-pricing.yml](plans/firstpromoter-plans-pricing.yml) — Three tiers: Starter ($49/month), Business ($99/month), Enterprise ($149/month). All plans include a 14-day free trial and 0% transaction fees.
-- **Rate Limits**: [rate-limits/firstpromoter-rate-limits.yml](rate-limits/firstpromoter-rate-limits.yml) — 400 requests per minute per account; HTTP 429 returned on excess; pagination capped at 100 items per page.
-- **FinOps**: [finops/firstpromoter-finops.yml](finops/firstpromoter-finops.yml) — FOCUS-aligned subscription cost model covering all three SKUs with no overage or transaction fees.
+- [Firstpromoter Webhooks](https://apis.io/asyncapis/firstpromoter/firstpromoter-webhooks/)
 
-## Timestamps
+#### MCP servers (1)
 
-- Created: 2026-06-13
-- Modified: 2026-06-13
+Model Context Protocol servers that expose the API to agents.
 
-## Common
+- [FirstPromoter MCP Server](https://apis.io/servers/firstpromoter/firstpromoter-mcp-server/)
 
-| Type | URL |
-|------|-----|
-| Website | https://firstpromoter.com/ |
-| Documentation | https://docs.firstpromoter.com/ |
-| GitHub Org | https://github.com/firstpromoter |
-| LinkedIn | https://www.linkedin.com/company/first-promoter |
-| Blog | https://firstpromoter.com/blog |
-| Pricing | https://firstpromoter.com/pricing |
-| X | https://x.com/firstpromoter |
+#### Agentic access (1)
 
-## Maintainers
+Which operations an agent can call, which act, and which need a human in the loop.
 
-- **Kin Lane** — kin@apievangelist.com
+- [Firstpromoter Agentic Access](https://apis.io/agentic-access/firstpromoter/firstpromoter-agentic-access/)
+
+#### JSON Schema (3)
+
+The data models the API reads and writes.
+
+- [Commission](https://apis.io/schemas/firstpromoter/firstpromoter-commission/)
+- [Promoter](https://apis.io/schemas/firstpromoter/firstpromoter-promoter/)
+- [Referral](https://apis.io/schemas/firstpromoter/firstpromoter-referral/)
+
+#### JSON-LD (1)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [Firstpromoter Context](https://apis.io/jsonld/firstpromoter/firstpromoter-context/)
+
+#### Vocabulary (1)
+
+The provider's domain terms, defined.
+
+- [Firstpromoter Vocabulary](https://apis.io/vocabularies/firstpromoter/firstpromoter-vocabulary/)
+
+#### Examples (3)
+
+Example requests and responses.
+
+- [Firstpromoter Create Promoter Example](https://apis.io/examples/firstpromoter/firstpromoter-create-promoter-example/)
+- [Firstpromoter Track Sale Example](https://apis.io/examples/firstpromoter/firstpromoter-track-sale-example/)
+- [Firstpromoter Webhook Event Example](https://apis.io/examples/firstpromoter/firstpromoter-webhook-event-example/)
+
+#### Collections (37)
+
+Postman and Open Collection request collections.
+
+- [FirstPromoter Admin Payouts API](https://apis.io/collections/firstpromoter/open-firstpromoter-v2-advanced-payout-methods/)
+- [FirstPromoter Admin API - Products](https://apis.io/collections/firstpromoter/open-firstpromoter-v2-advanced-products/)
+- [FirstPromoter Assets](https://apis.io/collections/firstpromoter/open-firstpromoter-v2-affiliate-assets/)
+- [FirstPromoter Affiliate Campaigns API](https://apis.io/collections/firstpromoter/open-firstpromoter-v2-affiliate-campaigns/)
+- [FirstPromoter API](https://apis.io/collections/firstpromoter/open-firstpromoter-v2-affiliate-commissions/)
+- [FirstPromoter Contract Documents API](https://apis.io/collections/firstpromoter/open-firstpromoter-v2-affiliate-contract-documents/)
+- [FirstPromoter Email Settings API](https://apis.io/collections/firstpromoter/open-firstpromoter-v2-affiliate-email-settings/)
+- [FirstPromoter API](https://apis.io/collections/firstpromoter/open-firstpromoter-v2-affiliate-payout-methods/)
+- [FirstPromoter Affiliate Payouts API](https://apis.io/collections/firstpromoter/open-firstpromoter-v2-affiliate-payouts/)
+- [FirstPromoter API](https://apis.io/collections/firstpromoter/open-firstpromoter-v2-affiliate-promo-codes/)
+- [FirstPromoter API](https://apis.io/collections/firstpromoter/open-firstpromoter-v2-affiliate-promoter-campaigns/)
+- [FirstPromoter API](https://apis.io/collections/firstpromoter/open-firstpromoter-v2-affiliate-promoters/)
+- [FirstPromoter API](https://apis.io/collections/firstpromoter/open-firstpromoter-v2-affiliate-referral-links/)
+- [FirstPromoter API](https://apis.io/collections/firstpromoter/open-firstpromoter-v2-affiliate-referrals/)
+- [FirstPromoter API](https://apis.io/collections/firstpromoter/open-firstpromoter-v2-affiliate-reports/)
+- [FirstPromoter Asset Categories API](https://apis.io/collections/firstpromoter/open-firstpromoter-v2-asset-categories/)
+- [FirstPromoter Assets API](https://apis.io/collections/firstpromoter/open-firstpromoter-v2-assets/)
+- [FirstPromoter Batch Processes API](https://apis.io/collections/firstpromoter/open-firstpromoter-v2-batches/)
+- [FirstPromoter Campaigns API](https://apis.io/collections/firstpromoter/open-firstpromoter-v2-campaigns/)
+- [FirstPromoter Commissions API](https://apis.io/collections/firstpromoter/open-firstpromoter-v2-commissions/)
+- [FirstPromoter Contract Documents API](https://apis.io/collections/firstpromoter/open-firstpromoter-v2-contract-documents/)
+- [FirstPromoter Contracts API](https://apis.io/collections/firstpromoter/open-firstpromoter-v2-contracts/)
+- [FirstPromoter Custom Referral Statuses API](https://apis.io/collections/firstpromoter/open-firstpromoter-v2-custom-referral-statuses/)
+- [FirstPromoter Dashboards API](https://apis.io/collections/firstpromoter/open-firstpromoter-v2-dashboard/)
+- [FirstPromoter Email API](https://apis.io/collections/firstpromoter/open-firstpromoter-v2-emails/)
+- …and 12 more published on APIs.io
+
+#### Overlays (37)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Firstpromoter V2 Advanced Payout Methods Overlay](https://apis.io/overlays/firstpromoter/firstpromoter-v2-advanced-payout-methods-overlay/)
+- [Firstpromoter V2 Advanced Products Overlay](https://apis.io/overlays/firstpromoter/firstpromoter-v2-advanced-products-overlay/)
+- [Firstpromoter V2 Affiliate Assets Overlay](https://apis.io/overlays/firstpromoter/firstpromoter-v2-affiliate-assets-overlay/)
+- [Firstpromoter V2 Affiliate Campaigns Overlay](https://apis.io/overlays/firstpromoter/firstpromoter-v2-affiliate-campaigns-overlay/)
+- [Firstpromoter V2 Affiliate Commissions Overlay](https://apis.io/overlays/firstpromoter/firstpromoter-v2-affiliate-commissions-overlay/)
+- [Firstpromoter V2 Affiliate Contract Documents Overlay](https://apis.io/overlays/firstpromoter/firstpromoter-v2-affiliate-contract-documents-overlay/)
+- [Firstpromoter V2 Affiliate Email Settings Overlay](https://apis.io/overlays/firstpromoter/firstpromoter-v2-affiliate-email-settings-overlay/)
+- [Firstpromoter V2 Affiliate Payout Methods Overlay](https://apis.io/overlays/firstpromoter/firstpromoter-v2-affiliate-payout-methods-overlay/)
+- [Firstpromoter V2 Affiliate Payouts Overlay](https://apis.io/overlays/firstpromoter/firstpromoter-v2-affiliate-payouts-overlay/)
+- [Firstpromoter V2 Affiliate Promo Codes Overlay](https://apis.io/overlays/firstpromoter/firstpromoter-v2-affiliate-promo-codes-overlay/)
+- [Firstpromoter V2 Affiliate Promoter Campaigns Overlay](https://apis.io/overlays/firstpromoter/firstpromoter-v2-affiliate-promoter-campaigns-overlay/)
+- [Firstpromoter V2 Affiliate Promoters Overlay](https://apis.io/overlays/firstpromoter/firstpromoter-v2-affiliate-promoters-overlay/)
+- [Firstpromoter V2 Affiliate Referral Links Overlay](https://apis.io/overlays/firstpromoter/firstpromoter-v2-affiliate-referral-links-overlay/)
+- [Firstpromoter V2 Affiliate Referrals Overlay](https://apis.io/overlays/firstpromoter/firstpromoter-v2-affiliate-referrals-overlay/)
+- [Firstpromoter V2 Affiliate Reports Overlay](https://apis.io/overlays/firstpromoter/firstpromoter-v2-affiliate-reports-overlay/)
+- [Firstpromoter V2 Asset Categories Overlay](https://apis.io/overlays/firstpromoter/firstpromoter-v2-asset-categories-overlay/)
+- [Firstpromoter V2 Assets Overlay](https://apis.io/overlays/firstpromoter/firstpromoter-v2-assets-overlay/)
+- [Firstpromoter V2 Batches Overlay](https://apis.io/overlays/firstpromoter/firstpromoter-v2-batches-overlay/)
+- [Firstpromoter V2 Campaigns Overlay](https://apis.io/overlays/firstpromoter/firstpromoter-v2-campaigns-overlay/)
+- [Firstpromoter V2 Commissions Overlay](https://apis.io/overlays/firstpromoter/firstpromoter-v2-commissions-overlay/)
+- [Firstpromoter V2 Contract Documents Overlay](https://apis.io/overlays/firstpromoter/firstpromoter-v2-contract-documents-overlay/)
+- [Firstpromoter V2 Contracts Overlay](https://apis.io/overlays/firstpromoter/firstpromoter-v2-contracts-overlay/)
+- [Firstpromoter V2 Custom Referral Statuses Overlay](https://apis.io/overlays/firstpromoter/firstpromoter-v2-custom-referral-statuses-overlay/)
+- [Firstpromoter V2 Dashboard Overlay](https://apis.io/overlays/firstpromoter/firstpromoter-v2-dashboard-overlay/)
+- [Firstpromoter V2 Emails Overlay](https://apis.io/overlays/firstpromoter/firstpromoter-v2-emails-overlay/)
+- …and 12 more published on APIs.io
+
+#### Governance rules (1)
+
+Spectral rulesets for the provider's contracts.
+
+- [FirstPromoter — jsonschema rules](https://apis.io/rules/firstpromoter/firstpromoter-jsonschema-spectral-rules/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Firstpromoter Authentication](https://apis.io/security/firstpromoter/firstpromoter-authentication/)
+- [Firstpromoter Domain Security](https://apis.io/security/firstpromoter/firstpromoter-domain-security/)
+
+#### OAuth scopes (1)
+
+The permissions the API asks for.
+
+- [Firstpromoter Scopes](https://apis.io/scopes/firstpromoter/firstpromoter-scopes/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Firstpromoter Plans Pricing](https://apis.io/plans/firstpromoter/firstpromoter-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Firstpromoter Rate Limits](https://apis.io/rate-limits/firstpromoter/firstpromoter-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Firstpromoter Finops](https://apis.io/finops/firstpromoter/firstpromoter-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://firstpromoter.com/)
+- [Documentation](https://docs.firstpromoter.com/)
+- [Getting started](https://docs.firstpromoter.com/quickstart)
+- [API reference](https://docs.firstpromoter.com/api-reference-v2/api-admin/introduction)
+- [Pricing](https://firstpromoter.com/pricing)
+- [Sign up](https://app.firstpromoter.com/signup)
+- [Support](https://help.firstpromoter.com/en/)
+- [Changelog](https://changelog.firstpromoter.com/)
+- [Blog](https://firstpromoter.com/blog)
+- [Compliance](https://firstpromoter.com/gdpr)
+- [Terms of service](https://firstpromoter.com/terms)
+- [Privacy policy](https://firstpromoter.com/privacy)
+- [GitHub](https://github.com/firstpromoter)
+
+## API Evangelist rating
+
+**Kin Score 63.3** — strong · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 80.0 |
+| Contract quality | 65.3 |
+| Contract governance | 18.2 |
+| Operational transparency | 31.6 |
+| Developer ergonomics | 71.4 |
+| Access clarity | 77.6 |
+
+**Agent readiness 61.2** — agent-ready (gated down from agent-native)
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | documented (partial credit) |
+| MCP Server | verified |
+| Auth Clarity | served (partial credit) |
+| Idempotency | — |
+| Error Semantics | verified |
+| OpenAPI Examples | partial |
+| Rate Limit Signal | documented (partial credit) |
+| Event Surface Described | yes |
+| Agent Skills | yes |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | served (partial credit) |
+| Protected Resource Metadata | verified |
+| Dynamic Client Registration | yes |
+| Agentic Commerce | — |
+| Pagination Ratio | — |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 39.2** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/firstpromoter/](https://apis.io/providers/firstpromoter/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for FirstPromoter: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/firstpromoter/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
